@@ -105,7 +105,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/data/jabatan/delete') ?>",
+                        url: "./delete",
                         type: 'POST',
                         data: {
                             id: event,
@@ -158,7 +158,7 @@
     function actionEdit(event, title) {
         <?php if (listHakAksesCustomAllowNew('data', 'jabatan', 'edit')) { ?>
             $.ajax({
-                url: "<?= base_url('a/data/jabatan/edit') ?>",
+                url: "./edit",
                 type: 'POST',
                 data: {
                     id: event,
@@ -207,7 +207,7 @@
 
     function actionAdd(event) {
         $.ajax({
-            url: "<?= base_url('a/data/jabatan/add') ?>",
+            url: "./add",
             type: 'GET',
             dataType: 'JSON',
             beforeSend: function() {
@@ -287,7 +287,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?= base_url('a/data/jabatan/getAll') ?>",
+                "url": "./getAll",
                 "type": "POST",
 
             },
