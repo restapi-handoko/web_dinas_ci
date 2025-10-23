@@ -184,12 +184,12 @@ class Jabatan extends BaseController
 
     public function getParent()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -239,12 +239,12 @@ class Jabatan extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -292,12 +292,12 @@ class Jabatan extends BaseController
 
     public function addSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'name' => [
@@ -386,12 +386,12 @@ class Jabatan extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'name' => [
