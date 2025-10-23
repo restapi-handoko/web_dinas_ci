@@ -42,3 +42,8 @@ $routes->post('/webadmin/data/pegawai/editSave', 'Webadmin\Data\Pegawai::editSav
 $routes->post('/webadmin/data/pegawai/createAkun', 'Webadmin\Data\Pegawai::createAkun');
 $routes->post('/webadmin/data/pegawai/resetAkun', 'Webadmin\Data\Pegawai::resetAkun');
 $routes->post('/webadmin/data/pegawai/getParent', 'Webadmin\Data\Pegawai::getParent');
+
+$routes->get('/webadmin/web/maklumat', 'Webadmin\Web\Maklumat::index');
+$routes->get('/webadmin/web/maklumat/edit', 'Webadmin\Web\Maklumat::edit');
+$routes->post('/webadmin/web/maklumat/save', 'Webadmin\Web\Maklumat::save');
+$routes->post('/webadmin/web/maklumat/uploadImage', 'Webadmin\Web\Maklumat::uploadImage');
