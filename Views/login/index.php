@@ -18,24 +18,24 @@
 
     <meta itemprop="name" content="Website Resmi Dinas Pendidikan dan Kebudayaan Kab. Lampung Tengah" />
     <meta itemprop="description" content="Website Resmi Dinas Pendidikan dan Kebudayaan Kab. Lampung Tengah" />
-    <meta itemprop="image" content="<?= base_url('favicon/android-icon-192x192.png'); ?>" />
+    <meta itemprop="image" content="<?= base_url() . 'favicon/android-icon-192x192.png' ?>" />
 
-    <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url('favicon/apple-icon-57x57.png'); ?>">
-    <link rel="apple-touch-icon" sizes="60x60" href="<?= base_url('favicon/apple-icon-60x60.png'); ?>">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?= base_url('favicon/apple-icon-72x72.png'); ?>">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url('favicon/apple-icon-76x76.png'); ?>">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?= base_url('favicon/apple-icon-114x114.png'); ?>">
-    <link rel="apple-touch-icon" sizes="120x120" href="<?= base_url('favicon/apple-icon-120x120.png'); ?>">
-    <link rel="apple-touch-icon" sizes="144x144" href="<?= base_url('favicon/apple-icon-144x144.png'); ?>">
-    <link rel="apple-touch-icon" sizes="152x152" href="<?= base_url('favicon/apple-icon-152x152.png'); ?>">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('favicon/apple-icon-180x180.png'); ?>">
-    <link rel="icon" type="image/png" sizes="192x192" href="<?= base_url('favicon/android-icon-192x192.png'); ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('favicon/favicon-32x32.png'); ?>">
-    <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('favicon/favicon-96x96.png'); ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('favicon/favicon-16x16.png'); ?>">
-    <link rel="manifest" href="<?= base_url('favicon/manifest.json'); ?>">
+    <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url() . 'favicon/apple-icon-57x57.png' ?>">
+    <link rel="apple-touch-icon" sizes="60x60" href="<?= base_url() . 'favicon/apple-icon-60x60.png' ?>">
+    <link rel="apple-touch-icon" sizes="72x72" href="<?= base_url() . 'favicon/apple-icon-72x72.png' ?>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url() . 'favicon/apple-icon-76x76.png' ?>">
+    <link rel="apple-touch-icon" sizes="114x114" href="<?= base_url() . 'favicon/apple-icon-114x114.png' ?>">
+    <link rel="apple-touch-icon" sizes="120x120" href="<?= base_url() . 'favicon/apple-icon-120x120.png' ?>">
+    <link rel="apple-touch-icon" sizes="144x144" href="<?= base_url() . 'favicon/apple-icon-144x144.png' ?>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?= base_url() . 'favicon/apple-icon-152x152.png' ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() . 'favicon/apple-icon-180x180.png' ?>">
+    <link rel="icon" type="image/png" sizes="192x192" href="<?= base_url() . 'favicon/android-icon-192x192.png' ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() . 'favicon/favicon-32x32.png' ?>">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url() . 'favicon/favicon-96x96.png' ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() . 'favicon/favicon-16x16.png' ?>">
+    <link rel="manifest" href="<?= base_url() . 'favicon/manifest.json' ?>">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="<?= base_url('favicon/ms-icon-144x144.png'); ?>">
+    <meta name="msapplication-TileImage" content="<?= base_url() . 'favicon/ms-icon-144x144.png' ?>">
     <meta name="theme-color" content="#ffffff">
 
     <link href="<?= base_url() ?>assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
-                                    <img src="<?= base_url() ?>/assets/images/profile-img.png" alt="" class="img-fluid">
+                                    <img src="<?= base_url() ?>assets/images/profile-img.png" alt="" class="img-fluid">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                 <a href="index.html" class="auth-logo-light">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="<?= base_url() ?>/assets/images/logo-light.svg" alt="" class="rounded-circle" height="34">
+                                            <img src="<?= base_url() ?>assets/images/logo-light.svg" alt="" class="rounded-circle" height="34">
                                         </span>
                                     </div>
                                 </a>
@@ -76,13 +76,13 @@
                                 <a href="index.html" class="auth-logo-dark">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="<?= base_url() ?>/assets/images/logo.svg" alt="" class="rounded-circle" height="34">
+                                            <img src="<?= base_url() ?>assets/images/logo.svg" alt="" class="rounded-circle" height="34">
                                         </span>
                                     </div>
                                 </a>
                             </div>
                             <div class="p-2">
-                                <form class="form-horizontal" action="/auth/login" method="post">
+                                <form class="form-horizontal" action="./auth/login" method="post">
 
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
@@ -155,15 +155,15 @@
     <!-- end account-pages -->
 
     <!-- JAVASCRIPT -->
-    <script src="<?= base_url() ?>/assets/libs/jquery/jquery.min.js"></script>
-    <script src="<?= base_url() ?>/assets/js/blockUI.min.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/node-waves/waves.min.js"></script>
+    <script src="<?= base_url() ?>assets/libs/jquery/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/blockUI.min.js"></script>
+    <script src="<?= base_url() ?>assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url() ?>assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="<?= base_url() ?>assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="<?= base_url() ?>assets/libs/node-waves/waves.min.js"></script>
     <!-- App js -->
-    <script src="<?= base_url() ?>/assets/js/app.js"></script>
-    <script src="<?= base_url() ?>/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/app.js"></script>
+    <script src="<?= base_url() ?>assets/libs/sweetalert2/sweetalert2.min.js"></script>
     <script>
         <?php if (isset($error)) { ?>
             Swal.fire(
@@ -178,7 +178,7 @@
             var dataString = $(this).serialize();
             $.ajax({
                 type: "POST",
-                url: '/auth/login',
+                url: './auth/login',
                 data: dataString,
                 dataType: 'JSON',
                 beforeSend: function() {
