@@ -72,7 +72,7 @@ class Dokumen extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/informasi/dokumen/data'));
+        return redirect()->to(base_url('webadmin/informasi/dokumen/data'));
     }
 
     public function data()
@@ -88,7 +88,7 @@ class Dokumen extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/informasi/dokumen/index', $data);
+        return view('webadmin/informasi/dokumen/index', $data);
     }
 
     public function add()
@@ -107,18 +107,18 @@ class Dokumen extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/informasi/dokumen/add');
+        $response->data = view('webadmin/informasi/dokumen/add');
         return json_encode($response);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -145,7 +145,7 @@ class Dokumen extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/informasi/dokumen/edit', $data);
+                $response->data = view('webadmin/informasi/dokumen/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -158,12 +158,12 @@ class Dokumen extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -238,12 +238,12 @@ class Dokumen extends BaseController
 
     public function addSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'judul' => [
@@ -356,12 +356,12 @@ class Dokumen extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [

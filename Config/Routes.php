@@ -161,3 +161,87 @@ $routes->post('/webadmin/galeri/video/getAll', 'Webadmin\Galer\Video::getAll');
 $routes->post('/webadmin/galeri/video/delete', 'Webadmin\Galer\Video::delete');
 $routes->post('/webadmin/galeri/video/addSave', 'Webadmin\Galer\Video::addSave');
 $routes->post('/webadmin/galeri/video/editSave', 'Webadmin\Galer\Video::editSave');
+
+$routes->get('/webadmin/informasi/agenda', 'Webadmin\Informasi\Agenda::index');
+$routes->get('/webadmin/informasi/agenda/data', 'Webadmin\Informasi\Agenda::data');
+$routes->get('/webadmin/informasi/agenda/add', 'Webadmin\Informasi\Agenda::add');
+$routes->post('/webadmin/informasi/agenda/edit', 'Webadmin\Informasi\Agenda::edit');
+$routes->post('/webadmin/informasi/agenda/detail', 'Webadmin\Informasi\Agenda::detail');
+$routes->post('/webadmin/informasi/agenda/getAll', 'Webadmin\Informasi\Agenda::getAll');
+$routes->post('/webadmin/informasi/agenda/delete', 'Webadmin\Informasi\Agenda::delete');
+$routes->post('/webadmin/informasi/agenda/addSave', 'Webadmin\Informasi\Agenda::addSave');
+$routes->post('/webadmin/informasi/agenda/editSave', 'Webadmin\Informasi\Agenda::editSave');
+$routes->post('/webadmin/informasi/agenda/uploadImage', 'Webadmin\Informasi\Agenda::uploadImage');
+
+$routes->get('/webadmin/informasi/berita', 'Webadmin\Informasi\Berita::index');
+$routes->get('/webadmin/informasi/berita/data', 'Webadmin\Informasi\Berita::data');
+$routes->get('/webadmin/informasi/berita/add', 'Webadmin\Informasi\Berita::add');
+$routes->post('/webadmin/informasi/berita/edit', 'Webadmin\Informasi\Berita::edit');
+$routes->post('/webadmin/informasi/berita/detail', 'Webadmin\Informasi\Berita::detail');
+$routes->post('/webadmin/informasi/berita/getAll', 'Webadmin\Informasi\Berita::getAll');
+$routes->post('/webadmin/informasi/berita/delete', 'Webadmin\Informasi\Berita::delete');
+$routes->post('/webadmin/informasi/berita/addSave', 'Webadmin\Informasi\Berita::addSave');
+$routes->post('/webadmin/informasi/berita/editSave', 'Webadmin\Informasi\Berita::editSave');
+$routes->post('/webadmin/informasi/berita/uploadImage', 'Webadmin\Informasi\Berita::uploadImage');
+
+$routes->get('/webadmin/informasi/dokumen', 'Webadmin\Informasi\Dokumen::index');
+$routes->get('/webadmin/informasi/dokumen/data', 'Webadmin\Informasi\Dokumen::data');
+$routes->get('/webadmin/informasi/dokumen/add', 'Webadmin\Informasi\Dokumen::add');
+$routes->post('/webadmin/informasi/dokumen/edit', 'Webadmin\Informasi\Dokumen::edit');
+$routes->post('/webadmin/informasi/dokumen/detail', 'Webadmin\Informasi\Dokumen::detail');
+$routes->post('/webadmin/informasi/dokumen/getAll', 'Webadmin\Informasi\Dokumen::getAll');
+$routes->post('/webadmin/informasi/dokumen/delete', 'Webadmin\Informasi\Dokumen::delete');
+$routes->post('/webadmin/informasi/dokumen/addSave', 'Webadmin\Informasi\Dokumen::addSave');
+$routes->post('/webadmin/informasi/dokumen/editSave', 'Webadmin\Informasi\Dokumen::editSave');
+
+$routes->get('/webadmin/informasi/katberita', 'Webadmin\Informasi\Katberita::index');
+$routes->get('/webadmin/informasi/katberita/data', 'Webadmin\Informasi\Katberita::data');
+$routes->get('/webadmin/informasi/katberita/add', 'Webadmin\Informasi\Katberita::add');
+$routes->post('/webadmin/informasi/katberita/edit', 'Webadmin\Informasi\Katberita::edit');
+$routes->post('/webadmin/informasi/katberita/detail', 'Webadmin\Informasi\Katberita::detail');
+$routes->post('/webadmin/informasi/katberita/getAll', 'Webadmin\Informasi\Katberita::getAll');
+$routes->post('/webadmin/informasi/katberita/delete', 'Webadmin\Informasi\Katberita::delete');
+$routes->post('/webadmin/informasi/katberita/addSave', 'Webadmin\Informasi\Katberita::addSave');
+$routes->post('/webadmin/informasi/katberita/editSave', 'Webadmin\Informasi\Katberita::editSave');
+
+$routes->get('/webadmin/informasi/katregulasi', 'Webadmin\Informasi\Katregulasi::index');
+$routes->get('/webadmin/informasi/katregulasi/data', 'Webadmin\Informasi\Katregulasi::data');
+$routes->get('/webadmin/informasi/katregulasi/add', 'Webadmin\Informasi\Katregulasi::add');
+$routes->post('/webadmin/informasi/katregulasi/edit', 'Webadmin\Informasi\Katregulasi::edit');
+$routes->post('/webadmin/informasi/katregulasi/detail', 'Webadmin\Informasi\Katregulasi::detail');
+$routes->post('/webadmin/informasi/katregulasi/getAll', 'Webadmin\Informasi\Katregulasi::getAll');
+$routes->post('/webadmin/informasi/katregulasi/delete', 'Webadmin\Informasi\Katregulasi::delete');
+$routes->post('/webadmin/informasi/katregulasi/addSave', 'Webadmin\Informasi\Katregulasi::addSave');
+$routes->post('/webadmin/informasi/katregulasi/editSave', 'Webadmin\Informasi\Katregulasi::editSave');
+
+$routes->get('/webadmin/informasi/pengumuman', 'Webadmin\Informasi\Pengumuman::index');
+$routes->get('/webadmin/informasi/pengumuman/data', 'Webadmin\Informasi\Pengumuman::data');
+$routes->get('/webadmin/informasi/pengumuman/add', 'Webadmin\Informasi\Pengumuman::add');
+$routes->post('/webadmin/informasi/pengumuman/edit', 'Webadmin\Informasi\Pengumuman::edit');
+$routes->post('/webadmin/informasi/pengumuman/detail', 'Webadmin\Informasi\Pengumuman::detail');
+$routes->post('/webadmin/informasi/pengumuman/getAll', 'Webadmin\Informasi\Pengumuman::getAll');
+$routes->post('/webadmin/informasi/pengumuman/delete', 'Webadmin\Informasi\Pengumuman::delete');
+$routes->post('/webadmin/informasi/pengumuman/addSave', 'Webadmin\Informasi\Pengumuman::addSave');
+$routes->post('/webadmin/informasi/pengumuman/editSave', 'Webadmin\Informasi\Pengumuman::editSave');
+$routes->post('/webadmin/informasi/pengumuman/uploadImage', 'Webadmin\Informasi\Pengumuman::uploadImage');
+
+$routes->get('/webadmin/informasi/regulasi', 'Webadmin\Informasi\Regulasi::index');
+$routes->get('/webadmin/informasi/regulasi/data', 'Webadmin\Informasi\Regulasi::data');
+$routes->get('/webadmin/informasi/regulasi/add', 'Webadmin\Informasi\Regulasi::add');
+$routes->post('/webadmin/informasi/regulasi/edit', 'Webadmin\Informasi\Regulasi::edit');
+$routes->post('/webadmin/informasi/regulasi/detail', 'Webadmin\Informasi\Regulasi::detail');
+$routes->post('/webadmin/informasi/regulasi/getAll', 'Webadmin\Informasi\Regulasi::getAll');
+$routes->post('/webadmin/informasi/regulasi/delete', 'Webadmin\Informasi\Regulasi::delete');
+$routes->post('/webadmin/informasi/regulasi/addSave', 'Webadmin\Informasi\Regulasi::addSave');
+$routes->post('/webadmin/informasi/regulasi/editSave', 'Webadmin\Informasi\Regulasi::editSave');
+
+$routes->get('/webadmin/informasi/sop', 'Webadmin\Informasi\Sop::index');
+$routes->get('/webadmin/informasi/sop/data', 'Webadmin\Informasi\Sop::data');
+$routes->get('/webadmin/informasi/sop/add', 'Webadmin\Informasi\Sop::add');
+$routes->post('/webadmin/informasi/sop/edit', 'Webadmin\Informasi\Sop::edit');
+$routes->post('/webadmin/informasi/sop/detail', 'Webadmin\Informasi\Sop::detail');
+$routes->post('/webadmin/informasi/sop/getAll', 'Webadmin\Informasi\Sop::getAll');
+$routes->post('/webadmin/informasi/sop/delete', 'Webadmin\Informasi\Sop::delete');
+$routes->post('/webadmin/informasi/sop/addSave', 'Webadmin\Informasi\Sop::addSave');
+$routes->post('/webadmin/informasi/sop/editSave', 'Webadmin\Informasi\Sop::editSave');
+$routes->post('/webadmin/informasi/sop/uploadImage', 'Webadmin\Informasi\Sop::uploadImage');

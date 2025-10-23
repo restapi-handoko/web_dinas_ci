@@ -58,7 +58,7 @@ class Katberita extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/informasi/katberita/data'));
+        return redirect()->to(base_url('webadmin/informasi/katberita/data'));
     }
 
     public function data()
@@ -74,7 +74,7 @@ class Katberita extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/informasi/katberita/index', $data);
+        return view('webadmin/informasi/katberita/index', $data);
     }
 
     public function add()
@@ -93,18 +93,18 @@ class Katberita extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/informasi/katberita/add');
+        $response->data = view('webadmin/informasi/katberita/add');
         return json_encode($response);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -131,7 +131,7 @@ class Katberita extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/informasi/katberita/edit', $data);
+                $response->data = view('webadmin/informasi/katberita/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -144,12 +144,12 @@ class Katberita extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -197,12 +197,12 @@ class Katberita extends BaseController
 
     public function addSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'name' => [
@@ -275,12 +275,12 @@ class Katberita extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'name' => [

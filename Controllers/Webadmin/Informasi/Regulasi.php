@@ -75,7 +75,7 @@ class Regulasi extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/informasi/regulasi/data'));
+        return redirect()->to(base_url('webadmin/informasi/regulasi/data'));
     }
 
     public function data()
@@ -91,7 +91,7 @@ class Regulasi extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/informasi/regulasi/index', $data);
+        return view('webadmin/informasi/regulasi/index', $data);
     }
 
     public function add()
@@ -112,18 +112,18 @@ class Regulasi extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/informasi/regulasi/add', $data);
+        $response->data = view('webadmin/informasi/regulasi/add', $data);
         return json_encode($response);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -151,7 +151,7 @@ class Regulasi extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/informasi/regulasi/edit', $data);
+                $response->data = view('webadmin/informasi/regulasi/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -164,12 +164,12 @@ class Regulasi extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -244,12 +244,12 @@ class Regulasi extends BaseController
 
     public function addSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'kategori' => [
@@ -390,12 +390,12 @@ class Regulasi extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [

@@ -77,7 +77,7 @@ class Sop extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/informasi/sop/data'));
+        return redirect()->to(base_url('webadmin/informasi/sop/data'));
     }
 
     public function data()
@@ -93,7 +93,7 @@ class Sop extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/informasi/sop/index', $data);
+        return view('webadmin/informasi/sop/index', $data);
     }
 
     public function add()
@@ -114,18 +114,18 @@ class Sop extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/informasi/sop/add', $x);
+        $response->data = view('webadmin/informasi/sop/add', $x);
         return json_encode($response);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -153,7 +153,7 @@ class Sop extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/informasi/sop/edit', $data);
+                $response->data = view('webadmin/informasi/sop/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -166,12 +166,12 @@ class Sop extends BaseController
 
     public function detail()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -198,7 +198,7 @@ class Sop extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/informasi/sop/detail', $data);
+                $response->data = view('webadmin/informasi/sop/detail', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -211,12 +211,12 @@ class Sop extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -291,12 +291,12 @@ class Sop extends BaseController
 
     public function addSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'bidang' => [
@@ -443,12 +443,12 @@ class Sop extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
