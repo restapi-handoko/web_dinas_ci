@@ -18,4 +18,4 @@ $routes->get('/auth/logout', 'Auth::logout');
 $routes->post('/auth/login', 'Auth::login');
 // $routes->get('/auth/login', 'Auth::login');
 
-$routes->get('/webadmin/home', 'Webadmin/Home::index');
+$routes->get('/webadmin/home', 'Webadmin\Home::index');
