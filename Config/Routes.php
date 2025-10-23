@@ -21,16 +21,6 @@ $routes->post('/auth/login', 'Auth::login');
 $routes->get('/webadmin/home', 'Webadmin\Home::index');
 $routes->get('/webadmin/notallow', 'Webadmin\Notallow::index');
 
-$routes->get('/webadmin/pengguna', 'Webadmin\Pengguna::index');
-$routes->get('/webadmin/pengguna/data', 'Webadmin\Pengguna::data');
-$routes->get('/webadmin/pengguna/add', 'Webadmin\Pengguna::add');
-$routes->post('/webadmin/pengguna/edit', 'Webadmin\Pengguna::edit');
-$routes->post('/webadmin/pengguna/getAll', 'Webadmin\Pengguna::getAll');
-$routes->post('/webadmin/pengguna/reset', 'Webadmin\Pengguna::reset');
-$routes->post('/webadmin/pengguna/delete', 'Webadmin\Pengguna::delete');
-$routes->post('/webadmin/pengguna/addSave', 'Webadmin\Pengguna::addSave');
-$routes->post('/webadmin/pengguna/editSave', 'Webadmin\Pengguna::editSave');
-
 $routes->get('/webadmin/data/jabatan', 'Webadmin\Data\Jabatan::index');
 $routes->get('/webadmin/data/jabatan/data', 'Webadmin\Data\Jabatan::data');
 $routes->get('/webadmin/data/jabatan/add', 'Webadmin\Data\Jabatan::add');
@@ -93,3 +83,54 @@ $routes->get('/webadmin/web/visimisi', 'Webadmin\Web\Visimisi::index');
 $routes->get('/webadmin/web/visimisi/edit', 'Webadmin\Web\Visimisi::edit');
 $routes->post('/webadmin/web/visimisi/save', 'Webadmin\Web\Visimisi::save');
 $routes->post('/webadmin/web/visimisi/uploadImage', 'Webadmin\Web\Visimisi::uploadImage');
+
+$routes->get('/webadmin/setting/appslider', 'Webadmin\Setting\Appslider::index');
+$routes->get('/webadmin/setting/appslider/data', 'Webadmin\Setting\Appslider::data');
+$routes->get('/webadmin/setting/appslider/add', 'Webadmin\Setting\Appslider::add');
+$routes->post('/webadmin/setting/appslider/edit', 'Webadmin\Setting\Appslider::edit');
+$routes->post('/webadmin/setting/appslider/getAll', 'Webadmin\Setting\Appslider::getAll');
+$routes->post('/webadmin/setting/appslider/delete', 'Webadmin\Setting\Appslider::delete');
+$routes->post('/webadmin/setting/appslider/addSave', 'Webadmin\Setting\Appslider::addSave');
+$routes->post('/webadmin/setting/appslider/editSave', 'Webadmin\Setting\Appslider::editSave');
+
+$routes->get('/webadmin/setting/hakaccess', 'Webadmin\Setting\Hakaccess::index');
+$routes->get('/webadmin/setting/hakaccess/data', 'Webadmin\Setting\Hakaccess::data');
+$routes->post('/webadmin/setting/hakaccess/edit', 'Webadmin\Setting\Hakaccess::edit');
+$routes->post('/webadmin/setting/hakaccess/getAll', 'Webadmin\Setting\Hakaccess::getAll');
+$routes->post('/webadmin/setting/hakaccess/save', 'Webadmin\Setting\Hakaccess::save');
+
+$routes->get('/webadmin/setting/menulain', 'Webadmin\Setting\Menulain::index');
+$routes->get('/webadmin/setting/menulain/data', 'Webadmin\Setting\Menulain::data');
+$routes->get('/webadmin/setting/menulain/add', 'Webadmin\Setting\Menulain::add');
+$routes->post('/webadmin/setting/menulain/edit', 'Webadmin\Setting\Menulain::edit');
+$routes->post('/webadmin/setting/menulain/detail', 'Webadmin\Setting\Menulain::detail');
+$routes->post('/webadmin/setting/menulain/getAll', 'Webadmin\Setting\Menulain::getAll');
+$routes->post('/webadmin/setting/menulain/delete', 'Webadmin\Setting\Menulain::delete');
+$routes->post('/webadmin/setting/menulain/addSave', 'Webadmin\Setting\Menulain::addSave');
+$routes->post('/webadmin/setting/menulain/editSave', 'Webadmin\Setting\Menulain::editSave');
+$routes->post('/webadmin/setting/menulain/uploadImage', 'Webadmin\Setting\Menulain::uploadImage');
+
+$routes->get('/webadmin/setting/pengguna', 'Webadmin\Setting\Pengguna::index');
+$routes->get('/webadmin/setting/pengguna/data', 'Webadmin\Setting\Pengguna::data');
+$routes->get('/webadmin/setting/pengguna/add', 'Webadmin\Setting\Pengguna::add');
+$routes->post('/webadmin/setting/pengguna/edit', 'Webadmin\Setting\Pengguna::edit');
+$routes->post('/webadmin/setting/pengguna/getAll', 'Webadmin\Setting\Pengguna::getAll');
+$routes->post('/webadmin/setting/pengguna/reset', 'Webadmin\Setting\Pengguna::reset');
+$routes->post('/webadmin/setting/pengguna/delete', 'Webadmin\Setting\Pengguna::delete');
+$routes->post('/webadmin/setting/pengguna/addSave', 'Webadmin\Setting\Pengguna::addSave');
+$routes->post('/webadmin/setting/pengguna/editSave', 'Webadmin\Setting\Pengguna::editSave');
+
+$routes->get('/webadmin/setting/portallayanan', 'Webadmin\Setting\Portallayanan::index');
+$routes->get('/webadmin/setting/portallayanan/data', 'Webadmin\Setting\Portallayanan::data');
+$routes->get('/webadmin/setting/portallayanan/add', 'Webadmin\Setting\Portallayanan::add');
+$routes->post('/webadmin/setting/portallayanan/edit', 'Webadmin\Setting\Portallayanan::edit');
+$routes->post('/webadmin/setting/portallayanan/getAll', 'Webadmin\Setting\Portallayanan::getAll');
+$routes->post('/webadmin/setting/portallayanan/delete', 'Webadmin\Setting\Portallayanan::delete');
+$routes->post('/webadmin/setting/portallayanan/addSave', 'Webadmin\Setting\Portallayanan::addSave');
+$routes->post('/webadmin/setting/portallayanan/editSave', 'Webadmin\Setting\Portallayanan::editSave');
+
+$routes->get('/webadmin/setting/website', 'Webadmin\Setting\Website::index');
+$routes->get('/webadmin/setting/website/data', 'Webadmin\Setting\Website::data');
+$routes->post('/webadmin/setting/website/edit', 'Webadmin\Setting\Website::edit');
+$routes->post('/webadmin/setting/website/save', 'Webadmin\Setting\Website::save');
+$routes->post('/webadmin/setting/website/getAll', 'Webadmin\Setting\Website::getAll');

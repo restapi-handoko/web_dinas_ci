@@ -18,6 +18,11 @@ class Website extends BaseController
 
     public function index()
     {
+        return redirect()->to(base_url('webadmin/setting/website/data'));
+    }
+
+    public function data()
+    {
         $data['title'] = 'Managemen Website';
         $Profilelib = new Profilelib();
         $user = $Profilelib->user();
@@ -33,17 +38,17 @@ class Website extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/setting/website/index', $data);
+        return view('webadmin/setting/website/index', $data);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $Profilelib = new Profilelib();
         $user = $Profilelib->user();
@@ -62,18 +67,18 @@ class Website extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/setting/website/edit', $data);
+        $response->data = view('webadmin/setting/website/edit', $data);
         return json_encode($response);
     }
 
     public function save()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'judul' => [

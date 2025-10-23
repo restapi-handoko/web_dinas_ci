@@ -81,7 +81,7 @@ class Pengguna extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/setting/pengguna/data'));
+        return redirect()->to(base_url('webadmin/setting/pengguna/data'));
     }
     public function data()
     {
@@ -96,17 +96,17 @@ class Pengguna extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/setting/pengguna/index', $data);
+        return view('webadmin/setting/pengguna/index', $data);
     }
 
     public function detail()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -133,7 +133,7 @@ class Pengguna extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/setting/pengguna/detail', $data);
+                $response->data = view('webadmin/setting/pengguna/detail', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -146,12 +146,12 @@ class Pengguna extends BaseController
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -178,7 +178,7 @@ class Pengguna extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/setting/pengguna/edit', $data);
+                $response->data = view('webadmin/setting/pengguna/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -191,12 +191,12 @@ class Pengguna extends BaseController
 
     public function reset()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -242,12 +242,12 @@ class Pengguna extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -320,12 +320,12 @@ class Pengguna extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [

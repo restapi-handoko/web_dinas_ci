@@ -74,7 +74,7 @@ class Portallayanan extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/setting/portallayanan/data'));
+        return redirect()->to(base_url('webadmin/setting/portallayanan/data'));
     }
 
     public function data()
@@ -90,7 +90,7 @@ class Portallayanan extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/setting/portallayanan/index', $data);
+        return view('webadmin/setting/portallayanan/index', $data);
     }
 
     public function add()
@@ -109,18 +109,18 @@ class Portallayanan extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/setting/portallayanan/add');
+        $response->data = view('webadmin/setting/portallayanan/add');
         return json_encode($response);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -147,7 +147,7 @@ class Portallayanan extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/setting/portallayanan/edit', $data);
+                $response->data = view('webadmin/setting/portallayanan/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -160,12 +160,12 @@ class Portallayanan extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -240,12 +240,12 @@ class Portallayanan extends BaseController
 
     public function addSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'judul' => [
@@ -361,7 +361,7 @@ class Portallayanan extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil disimpan.";
-                $response->redirect = base_url('a/setting/portallayanan/data');
+                $response->redirect = base_url('webadmin/setting/portallayanan/data');
                 return json_encode($response);
             } else {
                 unlink($dir . '/' . $newNamelampiranFile);
@@ -376,12 +376,12 @@ class Portallayanan extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -487,7 +487,7 @@ class Portallayanan extends BaseController
                     $response = new \stdClass;
                     $response->status = 201;
                     $response->message = "Tidak ada perubahan data yang disimpan.";
-                    $response->redirect = base_url('a/setting/portallayanan/data');
+                    $response->redirect = base_url('webadmin/setting/portallayanan/data');
                     return json_encode($response);
                 }
             }
@@ -547,7 +547,7 @@ class Portallayanan extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil diupdate.";
-                $response->redirect = base_url('a/setting/portallayanan/data');
+                $response->redirect = base_url('webadmin/setting/portallayanan/data');
                 return json_encode($response);
             } else {
                 if ($filenamelampiranFile != '') {

@@ -91,7 +91,7 @@ class Menulain extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/setting/menulain/data'));
+        return redirect()->to(base_url('webadmin/setting/menulain/data'));
     }
 
     public function data()
@@ -107,7 +107,7 @@ class Menulain extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/setting/menulain/index', $data);
+        return view('webadmin/setting/menulain/index', $data);
     }
 
     public function add()
@@ -128,18 +128,18 @@ class Menulain extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/setting/menulain/add', $data);
+        $response->data = view('webadmin/setting/menulain/add', $data);
         return json_encode($response);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -167,7 +167,7 @@ class Menulain extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/setting/menulain/edit', $data);
+                $response->data = view('webadmin/setting/menulain/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -180,12 +180,12 @@ class Menulain extends BaseController
 
     public function detail()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -212,7 +212,7 @@ class Menulain extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/setting/menulain/detail', $data);
+                $response->data = view('webadmin/setting/menulain/detail', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -225,12 +225,12 @@ class Menulain extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -307,12 +307,12 @@ class Menulain extends BaseController
 
     public function addSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'judul' => [
@@ -448,12 +448,12 @@ class Menulain extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [

@@ -71,6 +71,11 @@ class Hakaccess extends BaseController
 
     public function index()
     {
+        return redirect()->to(base_url('webadmin/setting/hakaccess/data'));
+    }
+
+    public function data()
+    {
         $data['title'] = 'Hak Akses';
         $Profilelib = new Profilelib();
         $user = $Profilelib->user();
@@ -82,17 +87,17 @@ class Hakaccess extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/setting/hakaccess/index', $data);
+        return view('webadmin/setting/hakaccess/index', $data);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -132,7 +137,7 @@ class Hakaccess extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/setting/hakaccess/role', $data);
+                $response->data = view('webadmin/setting/hakaccess/role', $data);
                 return json_encode($response);
             } else {
                 $data['u_id'] = $id;
@@ -141,7 +146,7 @@ class Hakaccess extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/setting/hakaccess/role', $data);
+                $response->data = view('webadmin/setting/hakaccess/role', $data);
                 return json_encode($response);
             }
         }
@@ -149,12 +154,12 @@ class Hakaccess extends BaseController
 
     public function save()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'user_id' => [
