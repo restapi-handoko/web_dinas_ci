@@ -81,7 +81,7 @@ class Jabatan extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/data/jabatan/data'));
+        return redirect()->to(base_url('webadmin/data/jabatan/data'));
     }
 
     public function data()
@@ -97,7 +97,7 @@ class Jabatan extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/data/jabatan/index', $data);
+        return view('webadmin/data/jabatan/index', $data);
     }
 
     public function add()
@@ -116,7 +116,7 @@ class Jabatan extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/data/jabatan/add');
+        $response->data = view('webadmin/data/jabatan/add');
         return json_encode($response);
     }
 
@@ -171,7 +171,7 @@ class Jabatan extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/data/jabatan/edit', $data);
+                $response->data = view('webadmin/data/jabatan/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
