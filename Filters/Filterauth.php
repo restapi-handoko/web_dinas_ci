@@ -34,12 +34,12 @@ class Filterauth implements FilterInterface
                     if ($totalSegment > 0) {
                         $uriMain = $uri->getSegment(1);
 
-                        if ($uriMain === "" || $uriMain === "home" || $uriMain === "auth") {
+                        if ($uriMain === "" || $uriMain === "web" || $uriMain === "auth") {
                         } else {
                             $uriMainMenu = $uri->getSegment(2);
-                            if ($uriMain == "a" && $uriMainMenu == "home") {
+                            if ($uriMain == "webadmin" && $uriMainMenu == "home") {
                             } else {
-                                if ($uriMain != "a") {
+                                if ($uriMain != "webadmin") {
                                     return redirect()->to(base_url('webadmin/home'));
                                 }
 
@@ -103,7 +103,7 @@ class Filterauth implements FilterInterface
                     if ($totalSegment > 0) {
                         $uriMain = $uri->getSegment(1);
 
-                        if ($uriMain == "" || $uriMain == "home" || $uriMain == "auth") {
+                        if ($uriMain == "" || $uriMain == "webadmin" || $uriMain == "auth") {
                         } else {
                             return redirect()->to(base_url('auth'));
                         }
@@ -116,7 +116,7 @@ class Filterauth implements FilterInterface
 
                     $uriMain = $uri->getSegment(1);
 
-                    if ($uriMain == "" || $uriMain == "home" || $uriMain == "auth") {
+                    if ($uriMain == "" || $uriMain == "webadmin" || $uriMain == "auth") {
                     } else {
                         return redirect()->to(base_url('auth'));
                     }
@@ -154,7 +154,7 @@ class Filterauth implements FilterInterface
                     if ($totalSegment == 0) {
 
                         $uriMain = $uri->getSegment(1);
-                        if ($uriMain === "" || $uriMain === "home") {
+                        if ($uriMain === "" || $uriMain === "webadmin") {
                         } else {
                             return redirect()->to(base_url('webadmin/home'));
                             // if ($level == 1) {
