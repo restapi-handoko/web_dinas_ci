@@ -152,7 +152,7 @@
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">
-                                <img src="<?= base_url() ?>/assets/images/profile-img.png" alt="" class="img-fluid">
+                                <img src="<?= base_url() ?>assets/images/profile-img.png" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -299,7 +299,7 @@
                                         <li class="list-group-item py-3">
                                             <div class="d-flex">
                                                 <div class="me-3">
-                                                    <img src="<?= base_url() ?>/assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded">
+                                                    <img src="<?= base_url() ?>assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded">
                                                 </div>
 
                                                 <div class="align-self-center overflow-hidden me-auto">
@@ -326,7 +326,7 @@
                                         <li class="list-group-item py-3">
                                             <div class="d-flex">
                                                 <div class="me-3">
-                                                    <img src="<?= base_url() ?>/assets/images/small/img-6.jpg" alt="" class="avatar-md h-auto d-block rounded">
+                                                    <img src="<?= base_url() ?>assets/images/small/img-6.jpg" alt="" class="avatar-md h-auto d-block rounded">
                                                 </div>
                                                 <div class="align-self-center overflow-hidden me-auto">
                                                     <div>
@@ -352,7 +352,7 @@
                                         <li class="list-group-item py-3">
                                             <div class="d-flex">
                                                 <div class="me-3">
-                                                    <img src="<?= base_url() ?>/assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded">
+                                                    <img src="<?= base_url() ?>assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded">
                                                 </div>
 
                                                 <div class="align-self-center overflow-hidden me-auto">
@@ -379,7 +379,7 @@
                                         <li class="list-group-item py-3">
                                             <div class="d-flex">
                                                 <div class="me-3">
-                                                    <img src="<?= base_url() ?>/assets/images/small/img-1.jpg" alt="" class="avatar-md h-auto d-block rounded">
+                                                    <img src="<?= base_url() ?>assets/images/small/img-1.jpg" alt="" class="avatar-md h-auto d-block rounded">
                                                 </div>
 
                                                 <div class="align-self-center overflow-hidden me-auto">
@@ -413,7 +413,7 @@
                                         <li class="list-group-item py-3">
                                             <div class="d-flex">
                                                 <div class="me-3">
-                                                    <img src="<?= base_url() ?>/assets/images/small/img-6.jpg" alt="" class="avatar-md h-auto d-block rounded">
+                                                    <img src="<?= base_url() ?>assets/images/small/img-6.jpg" alt="" class="avatar-md h-auto d-block rounded">
                                                 </div>
 
                                                 <div class="align-self-center overflow-hidden me-auto">
@@ -441,7 +441,7 @@
                                         <li class="list-group-item py-3">
                                             <div class="d-flex">
                                                 <div class="me-3">
-                                                    <img src="<?= base_url() ?>/assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded">
+                                                    <img src="<?= base_url() ?>assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded">
                                                 </div>
 
                                                 <div class="align-self-center overflow-hidden me-auto">
@@ -468,7 +468,7 @@
                                         <li class="list-group-item py-3">
                                             <div class="d-flex">
                                                 <div class="me-3">
-                                                    <img src="<?= base_url() ?>/assets/images/small/img-1.jpg" alt="" class="avatar-md h-auto d-block rounded">
+                                                    <img src="<?= base_url() ?>assets/images/small/img-1.jpg" alt="" class="avatar-md h-auto d-block rounded">
                                                 </div>
 
                                                 <div class="align-self-center overflow-hidden me-auto">
@@ -495,7 +495,7 @@
                                         <li class="list-group-item py-3">
                                             <div class="d-flex">
                                                 <div class="me-3">
-                                                    <img src="<?= base_url() ?>/assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded">
+                                                    <img src="<?= base_url() ?>assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded">
                                                 </div>
 
                                                 <div class="align-self-center overflow-hidden me-auto">
@@ -577,7 +577,7 @@
                                     <div class="d-flex">
                                         <div class="flex-shrink-0 me-3">
                                             <div class="avatar-xs">
-                                                <img src="<?= base_url() ?>/assets/images/users/avatar-2.jpg" alt="" class="img-fluid d-block rounded-circle">
+                                                <img src="<?= base_url() ?>assets/images/users/avatar-2.jpg" alt="" class="img-fluid d-block rounded-circle">
                                             </div>
                                         </div>
                                         <div class="flex-grow-1">
@@ -852,7 +852,7 @@
                                 </tr>
                                 <tbody>
                                     <tr>
-                                        <td style="width: 100px;"><img src="<?= base_url() ?>/assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded"></td>
+                                        <td style="width: 100px;"><img src="<?= base_url() ?>assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded"></td>
                                         <td>
                                             <h5 class="font-size-13 text-truncate mb-1"><a href="javascript: void(0);" class="text-dark">Beautiful Day with Friends</a></h5>
                                             <p class="text-muted mb-0">10 Nov, 2020</p>
@@ -877,7 +877,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td><img src="<?= base_url() ?>/assets/images/small/img-6.jpg" alt="" class="avatar-md h-auto d-block rounded"></td>
+                                        <td><img src="<?= base_url() ?>assets/images/small/img-6.jpg" alt="" class="avatar-md h-auto d-block rounded"></td>
                                         <td>
                                             <h5 class="font-size-13 text-truncate mb-1"><a href="javascript: void(0);" class="text-dark">Drawing a sketch</a></h5>
                                             <p class="text-muted mb-0">02 Nov, 2020</p>
@@ -902,7 +902,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td><img src="<?= base_url() ?>/assets/images/small/img-1.jpg" alt="" class="avatar-md h-auto d-block rounded"></td>
+                                        <td><img src="<?= base_url() ?>assets/images/small/img-1.jpg" alt="" class="avatar-md h-auto d-block rounded"></td>
                                         <td>
                                             <h5 class="font-size-13 text-truncate mb-1"><a href="javascript: void(0);" class="text-dark">Riding bike on road</a></h5>
                                             <p class="text-muted mb-0">24 Oct, 2020</p>
@@ -927,7 +927,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td><img src="<?= base_url() ?>/assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded"></td>
+                                        <td><img src="<?= base_url() ?>assets/images/small/img-2.jpg" alt="" class="avatar-md h-auto d-block rounded"></td>
                                         <td>
                                             <h5 class="font-size-13 text-truncate mb-1"><a href="javascript: void(0);" class="text-dark">Project discussion with team</a></h5>
                                             <p class="text-muted mb-0">15 Oct, 2020</p>
@@ -1055,8 +1055,8 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptBottom'); ?>
-<script src="<?= base_url() ?>/assets/libs/apexcharts/apexcharts.min.js"></script>
-<script src="<?= base_url() ?>/assets/js/pages/dashboard-blog.init.js"></script>
+<script src="<?= base_url() ?>assets/libs/apexcharts/apexcharts.min.js"></script>
+<script src="<?= base_url() ?>assets/js/pages/dashboard-blog.init.js"></script>
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptTop'); ?>
