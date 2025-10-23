@@ -19,12 +19,26 @@ $routes->post('/auth/login', 'Auth::login');
 // $routes->get('/auth/login', 'Auth::login');
 
 $routes->get('/webadmin/home', 'Webadmin\Home::index');
+
 $routes->get('/webadmin/data/jabatan', 'Webadmin\Data\Jabatan::index');
 $routes->get('/webadmin/data/jabatan/data', 'Webadmin\Data\Jabatan::data');
 $routes->get('/webadmin/data/jabatan/add', 'Webadmin\Data\Jabatan::add');
-$routes->get('/webadmin/data/jabatan/edit', 'Webadmin\Data\Jabatan::edit');
+$routes->post('/webadmin/data/jabatan/edit', 'Webadmin\Data\Jabatan::edit');
 $routes->post('/webadmin/data/jabatan/getAll', 'Webadmin\Data\Jabatan::getAll');
 $routes->post('/webadmin/data/jabatan/getParent', 'Webadmin\Data\Jabatan::getParent');
 $routes->post('/webadmin/data/jabatan/delete', 'Webadmin\Data\Jabatan::delete');
 $routes->post('/webadmin/data/jabatan/addSave', 'Webadmin\Data\Jabatan::addSave');
 $routes->post('/webadmin/data/jabatan/editSave', 'Webadmin\Data\Jabatan::editSave');
+
+$routes->get('/webadmin/data/pegawai', 'Webadmin\Data\Pegawai::index');
+$routes->get('/webadmin/data/pegawai/data', 'Webadmin\Data\Pegawai::data');
+$routes->get('/webadmin/data/pegawai/add', 'Webadmin\Data\Pegawai::add');
+$routes->post('/webadmin/data/pegawai/edit', 'Webadmin\Data\Pegawai::edit');
+$routes->post('/webadmin/data/pegawai/getAll', 'Webadmin\Data\Pegawai::getAll');
+$routes->post('/webadmin/data/pegawai/detail', 'Webadmin\Data\Pegawai::detail');
+$routes->post('/webadmin/data/pegawai/delete', 'Webadmin\Data\Pegawai::delete');
+$routes->post('/webadmin/data/pegawai/addSave', 'Webadmin\Data\Pegawai::addSave');
+$routes->post('/webadmin/data/pegawai/editSave', 'Webadmin\Data\Pegawai::editSave');
+$routes->post('/webadmin/data/pegawai/createAkun', 'Webadmin\Data\Pegawai::createAkun');
+$routes->post('/webadmin/data/pegawai/resetAkun', 'Webadmin\Data\Pegawai::resetAkun');
+$routes->post('/webadmin/data/pegawai/getParent', 'Webadmin\Data\Pegawai::getParent');

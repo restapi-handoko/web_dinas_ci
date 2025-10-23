@@ -109,7 +109,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/data/pegawai/resetAkun') ?>",
+                        url: "./resetAkun",
                         type: 'POST',
                         data: {
                             id: event,
@@ -172,7 +172,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/data/pegawai/createAkun') ?>",
+                        url: "./createAkun",
                         type: 'POST',
                         data: {
                             id: event,
@@ -235,7 +235,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/data/pegawai/delete') ?>",
+                        url: "./delete",
                         type: 'POST',
                         data: {
                             id: event,
@@ -288,7 +288,7 @@
     function actionEdit(event, title) {
         <?php if (listHakAksesCustomAllowNew('data', 'pegawai', 'edit')) { ?>
             $.ajax({
-                url: "<?= base_url('a/data/pegawai/edit') ?>",
+                url: "./edit",
                 type: 'POST',
                 data: {
                     id: event,
@@ -338,7 +338,7 @@
     function actionDetail(event, title) {
         <?php if (listHakAksesCustomAllowNew('data', 'pegawai', 'detail')) { ?>
             $.ajax({
-                url: "<?= base_url('a/data/pegawai/detail') ?>",
+                url: "./detail",
                 type: 'POST',
                 data: {
                     id: event,
@@ -387,7 +387,7 @@
 
     function actionAdd(event) {
         $.ajax({
-            url: "<?= base_url('a/data/pegawai/add') ?>",
+            url: "./add",
             type: 'GET',
             dataType: 'JSON',
             beforeSend: function() {
@@ -467,7 +467,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?= base_url('a/data/pegawai/getAll') ?>",
+                "url": "./getAll",
                 "type": "POST",
 
             },
