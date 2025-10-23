@@ -34,7 +34,7 @@ class Tugasfungsi extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/web/tugasfungsi/index', $data);
+        return view('webadmin/web/tugasfungsi/index', $data);
     }
 
     public function edit()
@@ -54,17 +54,17 @@ class Tugasfungsi extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/web/tugasfungsi/edit', $data);
+        return view('webadmin/web/tugasfungsi/edit', $data);
     }
 
     public function save()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'isi' => [

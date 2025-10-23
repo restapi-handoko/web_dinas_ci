@@ -34,7 +34,7 @@ class Motto extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/web/motto/index', $data);
+        return view('webadmin/web/motto/index', $data);
     }
 
     public function edit()
@@ -54,17 +54,17 @@ class Motto extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/web/motto/edit', $data);
+        return view('webadmin/web/motto/edit', $data);
     }
 
     public function save()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'isi' => [

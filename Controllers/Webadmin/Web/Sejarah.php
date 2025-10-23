@@ -34,7 +34,7 @@ class Sejarah extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/web/sejarah/index', $data);
+        return view('webadmin/web/sejarah/index', $data);
     }
 
     public function edit()
@@ -54,17 +54,17 @@ class Sejarah extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/web/sejarah/edit', $data);
+        return view('webadmin/web/sejarah/edit', $data);
     }
 
     public function save()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'isi' => [

@@ -34,7 +34,7 @@ class Struktur extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/web/struktur/index', $data);
+        return view('webadmin/web/struktur/index', $data);
     }
 
     public function edit()
@@ -54,17 +54,17 @@ class Struktur extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/web/struktur/edit', $data);
+        return view('webadmin/web/struktur/edit', $data);
     }
 
     public function save()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'isi' => [

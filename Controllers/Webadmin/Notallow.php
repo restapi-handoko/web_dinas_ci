@@ -30,6 +30,6 @@ class Notallow extends BaseController
         $data['user'] = $user->data;
         $data['title'] = 'Not Allowed';
 
-        return view('a/error/notallow', $data);
+        return view('webadmin/error/notallow', $data);
     }
 }

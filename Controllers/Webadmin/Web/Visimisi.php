@@ -34,7 +34,7 @@ class Visimisi extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/web/visimisi/index', $data);
+        return view('webadmin/web/visimisi/index', $data);
     }
 
     public function edit()
@@ -54,17 +54,17 @@ class Visimisi extends BaseController
             $data['data'] = $oldData;
         }
 
-        return view('a/web/visimisi/edit', $data);
+        return view('webadmin/web/visimisi/edit', $data);
     }
 
     public function save()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'isi' => [
