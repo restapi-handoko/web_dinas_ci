@@ -78,7 +78,7 @@ class Video extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/galeri/video/data'));
+        return redirect()->to(base_url('webadmin/galeri/video/data'));
     }
 
     public function data()
@@ -94,7 +94,7 @@ class Video extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/galeri/video/index', $data);
+        return view('webadmin/galeri/video/index', $data);
     }
 
     public function add()
@@ -113,18 +113,18 @@ class Video extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/galeri/video/add');
+        $response->data = view('webadmin/galeri/video/add');
         return json_encode($response);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -151,7 +151,7 @@ class Video extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/galeri/video/edit', $data);
+                $response->data = view('webadmin/galeri/video/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -164,12 +164,12 @@ class Video extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -244,12 +244,12 @@ class Video extends BaseController
 
     public function addSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'judul' => [
@@ -356,7 +356,7 @@ class Video extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil disimpan.";
-                $response->redirect = base_url('a/galeri/video/data');
+                $response->redirect = base_url('webadmin/galeri/video/data');
                 return json_encode($response);
             } else {
                 unlink($dir . '/' . $newNamelampiranFile);
@@ -371,12 +371,12 @@ class Video extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -484,7 +484,7 @@ class Video extends BaseController
                     $response = new \stdClass;
                     $response->status = 201;
                     $response->message = "Tidak ada perubahan data yang disimpan.";
-                    $response->redirect = base_url('a/galeri/video/data');
+                    $response->redirect = base_url('webadmin/galeri/video/data');
                     return json_encode($response);
                 }
             }
@@ -533,7 +533,7 @@ class Video extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil diupdate.";
-                $response->redirect = base_url('a/galeri/video/data');
+                $response->redirect = base_url('webadmin/galeri/video/data');
                 return json_encode($response);
             } else {
                 if ($filenamelampiranFile != '') {

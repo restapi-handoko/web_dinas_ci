@@ -134,3 +134,30 @@ $routes->get('/webadmin/setting/website/data', 'Webadmin\Setting\Website::data')
 $routes->post('/webadmin/setting/website/edit', 'Webadmin\Setting\Website::edit');
 $routes->post('/webadmin/setting/website/save', 'Webadmin\Setting\Website::save');
 $routes->post('/webadmin/setting/website/getAll', 'Webadmin\Setting\Website::getAll');
+
+$routes->get('/webadmin/galeri/foto', 'Webadmin\Galer\Foto::index');
+$routes->get('/webadmin/galeri/foto/data', 'Webadmin\Galer\Foto::data');
+$routes->get('/webadmin/galeri/foto/add', 'Webadmin\Galer\Foto::add');
+$routes->post('/webadmin/galeri/foto/edit', 'Webadmin\Galer\Foto::edit');
+$routes->post('/webadmin/galeri/foto/getAll', 'Webadmin\Galer\Foto::getAll');
+$routes->post('/webadmin/galeri/foto/delete', 'Webadmin\Galer\Foto::delete');
+$routes->post('/webadmin/galeri/foto/addSave', 'Webadmin\Galer\Foto::addSave');
+$routes->post('/webadmin/galeri/foto/editSave', 'Webadmin\Galer\Foto::editSave');
+
+$routes->get('/webadmin/galeri/slider', 'Webadmin\Galer\Slider::index');
+$routes->get('/webadmin/galeri/slider/data', 'Webadmin\Galer\Slider::data');
+$routes->get('/webadmin/galeri/slider/add', 'Webadmin\Galer\Slider::add');
+$routes->post('/webadmin/galeri/slider/edit', 'Webadmin\Galer\Slider::edit');
+$routes->post('/webadmin/galeri/slider/getAll', 'Webadmin\Galer\Slider::getAll');
+$routes->post('/webadmin/galeri/slider/delete', 'Webadmin\Galer\Slider::delete');
+$routes->post('/webadmin/galeri/slider/addSave', 'Webadmin\Galer\Slider::addSave');
+$routes->post('/webadmin/galeri/slider/editSave', 'Webadmin\Galer\Slider::editSave');
+
+$routes->get('/webadmin/galeri/video', 'Webadmin\Galer\Video::index');
+$routes->get('/webadmin/galeri/video/data', 'Webadmin\Galer\Video::data');
+$routes->get('/webadmin/galeri/video/add', 'Webadmin\Galer\Video::add');
+$routes->post('/webadmin/galeri/video/edit', 'Webadmin\Galer\Video::edit');
+$routes->post('/webadmin/galeri/video/getAll', 'Webadmin\Galer\Video::getAll');
+$routes->post('/webadmin/galeri/video/delete', 'Webadmin\Galer\Video::delete');
+$routes->post('/webadmin/galeri/video/addSave', 'Webadmin\Galer\Video::addSave');
+$routes->post('/webadmin/galeri/video/editSave', 'Webadmin\Galer\Video::editSave');

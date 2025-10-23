@@ -73,7 +73,7 @@ class Slider extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/galeri/slider/data'));
+        return redirect()->to(base_url('webadmin/galeri/slider/data'));
     }
 
     public function data()
@@ -89,7 +89,7 @@ class Slider extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/galeri/slider/index', $data);
+        return view('webadmin/galeri/slider/index', $data);
     }
 
     public function add()
@@ -108,18 +108,18 @@ class Slider extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/galeri/slider/add');
+        $response->data = view('webadmin/galeri/slider/add');
         return json_encode($response);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -146,7 +146,7 @@ class Slider extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/galeri/slider/edit', $data);
+                $response->data = view('webadmin/galeri/slider/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -159,12 +159,12 @@ class Slider extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -239,12 +239,12 @@ class Slider extends BaseController
 
     public function addSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'judul' => [
@@ -351,7 +351,7 @@ class Slider extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil disimpan.";
-                $response->redirect = base_url('a/galeri/slider/data');
+                $response->redirect = base_url('webadmin/galeri/slider/data');
                 return json_encode($response);
             } else {
                 unlink($dir . '/' . $newNamelampiranFile);
@@ -366,12 +366,12 @@ class Slider extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -479,7 +479,7 @@ class Slider extends BaseController
                     $response = new \stdClass;
                     $response->status = 201;
                     $response->message = "Tidak ada perubahan data yang disimpan.";
-                    $response->redirect = base_url('a/galeri/slider/data');
+                    $response->redirect = base_url('webadmin/galeri/slider/data');
                     return json_encode($response);
                 }
             }
@@ -528,7 +528,7 @@ class Slider extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil diupdate.";
-                $response->redirect = base_url('a/galeri/slider/data');
+                $response->redirect = base_url('webadmin/galeri/slider/data');
                 return json_encode($response);
             } else {
                 if ($filenamelampiranFile != '') {

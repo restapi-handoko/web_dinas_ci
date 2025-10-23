@@ -72,7 +72,7 @@ class Foto extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/galeri/foto/data'));
+        return redirect()->to(base_url('webadmin/galeri/foto/data'));
     }
 
     public function data()
@@ -88,7 +88,7 @@ class Foto extends BaseController
 
         $data['user'] = $user->data;
 
-        return view('a/galeri/foto/index', $data);
+        return view('webadmin/galeri/foto/index', $data);
     }
 
     public function add()
@@ -107,18 +107,18 @@ class Foto extends BaseController
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('a/galeri/foto/add');
+        $response->data = view('webadmin/galeri/foto/add');
         return json_encode($response);
     }
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -145,7 +145,7 @@ class Foto extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
-                $response->data = view('a/galeri/foto/edit', $data);
+                $response->data = view('webadmin/galeri/foto/edit', $data);
                 return json_encode($response);
             } else {
                 $response = new \stdClass;
@@ -158,12 +158,12 @@ class Foto extends BaseController
 
     public function delete()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -238,12 +238,12 @@ class Foto extends BaseController
 
     public function addSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'judul' => [
@@ -341,7 +341,7 @@ class Foto extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil disimpan.";
-                $response->redirect = base_url('a/galeri/foto/data');
+                $response->redirect = base_url('webadmin/galeri/foto/data');
                 return json_encode($response);
             } else {
                 unlink($dir . '/' . $newNamelampiranFile);
@@ -356,12 +356,12 @@ class Foto extends BaseController
 
     public function editSave()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
@@ -459,7 +459,7 @@ class Foto extends BaseController
                     $response = new \stdClass;
                     $response->status = 201;
                     $response->message = "Tidak ada perubahan data yang disimpan.";
-                    $response->redirect = base_url('a/galeri/foto/data');
+                    $response->redirect = base_url('webadmin/galeri/foto/data');
                     return json_encode($response);
                 }
             }
@@ -508,7 +508,7 @@ class Foto extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil diupdate.";
-                $response->redirect = base_url('a/galeri/foto/data');
+                $response->redirect = base_url('webadmin/galeri/foto/data');
                 return json_encode($response);
             } else {
                 if ($filenamelampiranFile != '') {
