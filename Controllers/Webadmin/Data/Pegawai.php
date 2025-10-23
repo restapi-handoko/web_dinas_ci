@@ -445,36 +445,36 @@ class Pegawai extends BaseController
                 }
 
                 if ($this->_db->affectedRows() > 0) {
-                    try {
-                        $this->_db->table('_tb_pegawai')->where('pid', $id)->delete();
+                    // try {
+                    $this->_db->table('_tb_pegawai')->where('pid', $id)->delete();
 
-                        if ($this->_db->affectedRows() > 0) {
-                            if ($current->image !== null) {
-                                try {
-                                    $dir = FCPATH . "uploads/pegawai";
-                                    unlink($dir . '/' . $current->image);
-                                } catch (\Throwable $err) {
-                                }
+                    if ($this->_db->affectedRows() > 0) {
+                        if ($current->image !== null) {
+                            try {
+                                $dir = FCPATH . "uploads/pegawai";
+                                unlink($dir . '/' . $current->image);
+                            } catch (\Throwable $err) {
                             }
-                            $this->_db->transCommit();
-                            $response = new \stdClass;
-                            $response->status = 200;
-                            $response->message = "Data berhasil dihapus.";
-                            return json_encode($response);
-                        } else {
-                            $this->_db->transRollback();
-                            $response = new \stdClass;
-                            $response->status = 400;
-                            $response->message = "Data gagal dihapus.";
-                            return json_encode($response);
                         }
-                    } catch (\Throwable $th) {
+                        $this->_db->transCommit();
+                        $response = new \stdClass;
+                        $response->status = 200;
+                        $response->message = "Data berhasil dihapus.";
+                        return json_encode($response);
+                    } else {
                         $this->_db->transRollback();
                         $response = new \stdClass;
                         $response->status = 400;
                         $response->message = "Data gagal dihapus.";
                         return json_encode($response);
                     }
+                    // } catch (\Throwable $th) {
+                    //     $this->_db->transRollback();
+                    //     $response = new \stdClass;
+                    //     $response->status = 400;
+                    //     $response->message = "Data gagal dihapus.";
+                    //     return json_encode($response);
+                    // }
                 } else {
                     $this->_db->transRollback();
                     $response = new \stdClass;
