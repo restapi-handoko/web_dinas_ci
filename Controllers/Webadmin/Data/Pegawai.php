@@ -444,8 +444,8 @@ class Pegawai extends BaseController
                     return json_encode($response);
                 }
 
-                if ($this->_db->affectedRows() > 0) {
-                    // try {
+                // if ($this->_db->affectedRows() > 0) {
+                try {
                     $this->_db->table('_tb_pegawai')->where('pid', $id)->delete();
 
                     if ($this->_db->affectedRows() > 0) {
@@ -468,20 +468,20 @@ class Pegawai extends BaseController
                         $response->message = "Data gagal dihapus.";
                         return json_encode($response);
                     }
-                    // } catch (\Throwable $th) {
-                    //     $this->_db->transRollback();
-                    //     $response = new \stdClass;
-                    //     $response->status = 400;
-                    //     $response->message = "Data gagal dihapus.";
-                    //     return json_encode($response);
-                    // }
-                } else {
+                } catch (\Throwable $th) {
                     $this->_db->transRollback();
                     $response = new \stdClass;
                     $response->status = 400;
                     $response->message = "Data gagal dihapus.";
                     return json_encode($response);
                 }
+                // } else {
+                //     $this->_db->transRollback();
+                //     $response = new \stdClass;
+                //     $response->status = 400;
+                //     $response->message = "Data gagal dihapus.";
+                //     return json_encode($response);
+                // }
             } else {
                 $response = new \stdClass;
                 $response->status = 400;
