@@ -258,7 +258,7 @@ class Auth extends BaseController
             $response->status = 200;
             $response->message = 'Login berhasil.';
             // if ((int)$result->level == 1) {
-            $response->redirect = base_url('a/home');
+            $response->redirect = base_url('webadmin/home');
             // } else if ((int)$result->level == 2) {
             //     $response->redirect = base_url('sp/home');
             // } else if ((int)$result->level == 3) {

@@ -206,7 +206,7 @@
                                     "warning"
                                 ).then((valRes) => {
                                     // setTimeout(function() {
-                                    document.location.href = msg.url;
+                                    document.location.href = msg.redirect;
                                     // }, 2000);
 
                                 })
@@ -218,7 +218,7 @@
                                 'success'
                             ).then((valRes) => {
                                 // setTimeout(function() {
-                                document.location.href = msg.url;
+                                document.location.href = msg.redirect;
                                 // }, 2000);
                             })
                         }
@@ -229,7 +229,7 @@
                             'success'
                         ).then((valRes) => {
                             // setTimeout(function() {
-                            document.location.href = msg.url;
+                            document.location.href = msg.redirect;
                             // }, 2000);
                             // document.location.href = window.location.href + "dashboard";
                         })
