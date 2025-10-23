@@ -168,7 +168,8 @@ class Auth extends BaseController
             }
         }
     }
-    public function login()
+
+    public function postLogin()
     {
         $Profilelib = new Profilelib();
         $user = $Profilelib->user();
