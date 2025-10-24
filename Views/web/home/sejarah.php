@@ -60,7 +60,9 @@
                                                 </ul>
                                                 <ul class="entry__meta text-right">
                                                     <li class="entry__meta-date">
-                                                        <span style="color:#305b90;"><?= $data->tanggal ?> | Dibaca : <?= $data->view ?> x</span>
+                                                        <span style="color:#305b90;"><?php //echo $data->tanggal 
+                                                                                        ?> | Dibaca : <?php //echo $data->view 
+                                                                                                        ?> x</span>
                                                     </li>
                                                 </ul>
                                             </div>
