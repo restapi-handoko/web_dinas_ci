@@ -51,7 +51,7 @@
 
     <link rel='https://api.w.org/' href='<?= base_url('assets') ?>/wp-json/index.html' />
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc0db0.html?rsd" />
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="<?= base_url('assets') ?>/wp-includes/wlwmanifest.xml" />
 
     <meta name="generator" content="WordPress 5.0.3" />
     <link rel="alternate" type="application/json+oembed" href="<?= base_url('assets') ?>/wp-json/oembed/1.0/embed36a8.json?url=http%3A%2F%2Fkemoboydesign.com%2Fthemes%2Fsoftia%2F" />
