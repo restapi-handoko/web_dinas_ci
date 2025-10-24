@@ -59,7 +59,7 @@
             <div id="blog" data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid vc_custom_1550325921674 vc_row-has-fill">
                 <div class="shapes-box">
                     <span data-parallax='{"x": 150, "y": -20, "rotateZ":500}'>
-                        <img src="<?= base_url() ?>wp-content/uploads/2019/01/fl-shape-1.png" alt="">
+                        <img src="<?= base_url('web') ?>/wp-content/uploads/2019/01/fl-shape-1.png" alt="">
                     </span>
                     <span data-parallax='{"x": 250, "y": 150, "rotateZ":500}'>
                         <img src="<?= base_url('web') ?>/wp-content/uploads/2019/01/fl-shape-2.png" alt="">
