@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-10">
                 <label for="_album" class="col-form-label">Album:</label>
-                <input type="text" class="form-control album" id="_album" name="_album" placeholder="Ketik atau pilih album..." onfocusin="inputFocus(this); showAlbumSuggestions()" oninput="showAlbumSuggestions()" onblur="hideAlbumSuggestions()" autocomplete="off">
+                <input type="text" class="form-control album" id="_album" name="_album" placeholder="Ketik atau pilih album..." onfocusin="inputFocus(this); showAlbumSuggestions();" oninput="showAlbumSuggestions();" onblur="hideAlbumSuggestions();" autocomplete="off">
                 <div id="albumSuggestions" class="album-suggestions"></div>
                 <div class="help-block _album"></div>
             </div>
