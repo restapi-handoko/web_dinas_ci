@@ -6,8 +6,8 @@
         <div class="container">
 
             <a class="navbarg-brand" href="index" style="width:200px">
-                <img class="light-logo" src="<?= base_url('web') ?>/wp-content/images/logo-light.png" title="<?= $footer->judul ?>" alt="<?= $footer->judul ?>">
-                <img class="dark-logo" src="<?= base_url('web') ?>/wp-content/images/logo-dark.png" title="<?= $footer->judul ?>" alt="<?= $footer->judul ?>">
+                <img class="light-logo" src="<?= base_url('assets') ?>/wp-content/images/logo-light.png" title="<?= $footer->judul ?>" alt="<?= $footer->judul ?>">
+                <img class="dark-logo" src="<?= base_url('assets') ?>/wp-content/images/logo-dark.png" title="<?= $footer->judul ?>" alt="<?= $footer->judul ?>">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
