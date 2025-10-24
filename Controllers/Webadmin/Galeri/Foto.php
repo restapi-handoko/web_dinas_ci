@@ -106,7 +106,7 @@ class Foto extends BaseController
         }
 
         $albums = $this->_db->table('_tb_foto') // Ganti dengan tabel album Anda
-            ->select('DISTINCT(album) as album') // Ganti dengan nama kolom yang sesuai
+            ->select('DISTINCT(album) as nama_album') // Ganti dengan nama kolom yang sesuai
             ->orderBy('album', 'ASC')
             ->get()
             ->getResult();
