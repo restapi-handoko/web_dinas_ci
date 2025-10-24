@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col-lg-10">
                 <label for="_album" class="col-form-label">Album:</label>
-                <input type="text" class="form-control album" id="_album" name="_album" placeholder="Ketik atau pilih album..." onfocusin="inputFocus(this); showAlbumSuggestions();" oninput="showAlbumSuggestions();" onblur="hideAlbumSuggestions();" autocomplete="off">
-                <div id="albumSuggestions" class="album-suggestions"></div>
+                <div class="position-relative">
+                    <input type="text" class="form-control album" id="_album" name="_album" placeholder="Ketik atau pilih album..." onfocusin="inputFocus(this); showAlbumSuggestions()" oninput="showAlbumSuggestions()" autocomplete="off">
+                    <div id="albumSuggestions" class="album-suggestions"></div>
+                </div>
                 <div class="help-block _album"></div>
             </div>
             <div class="col-lg-10">
@@ -57,6 +59,7 @@
         <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
     </div>
 </form>
+
 <style>
     .album-suggestions {
         position: absolute;
@@ -66,15 +69,17 @@
         max-height: 200px;
         overflow-y: auto;
         z-index: 1000;
-        width: calc(100% - 30px);
+        width: 100%;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         display: none;
+        margin-top: 2px;
     }
 
     .album-suggestion-item {
         padding: 8px 12px;
         cursor: pointer;
         border-bottom: 1px solid #f0f0f0;
+        font-size: 14px;
     }
 
     .album-suggestion-item:hover {
@@ -89,34 +94,68 @@
         background-color: #007bff;
         color: white;
     }
+
+    .position-relative {
+        position: relative;
+    }
 </style>
 
 <script>
     let albumSuggestions = [];
     let currentSuggestionIndex = -1;
+    let isSelectingSuggestion = false;
 
     // Fungsi untuk memuat suggestions album dari database
     function loadAlbumSuggestions() {
+        console.log('Loading album suggestions...');
         $.ajax({
-            url: './getAlbums', // Ganti dengan endpoint yang sesuai
+            url: './getAlbums', // Pastikan endpoint ini benar
             type: 'GET',
             dataType: 'JSON',
             success: function(resul) {
+                console.log('Album suggestions loaded:', resul);
                 if (resul.status === 200) {
                     albumSuggestions = resul.data;
+                } else {
+                    console.error('Failed to load album suggestions:', resul.message);
                 }
             },
-            error: function() {
-                console.log('Gagal memuat suggestions album');
+            error: function(xhr, status, error) {
+                console.error('Error loading album suggestions:', error);
+                // Fallback data untuk testing
+                albumSuggestions = [{
+                        nama_album: "Liburan 2024"
+                    },
+                    {
+                        nama_album: "Wisata Alam"
+                    },
+                    {
+                        nama_album: "Keluarga"
+                    },
+                    {
+                        nama_album: "Acara Kantor"
+                    },
+                    {
+                        nama_album: "Hobby Photography"
+                    }
+                ];
             }
         });
     }
 
     // Fungsi untuk menampilkan suggestions
     function showAlbumSuggestions() {
+        if (isSelectingSuggestion) {
+            isSelectingSuggestion = false;
+            return;
+        }
+
         const input = document.getElementById('_album');
         const suggestionsContainer = document.getElementById('albumSuggestions');
         const inputValue = input.value.toLowerCase();
+
+        console.log('Input value:', inputValue);
+        console.log('Available suggestions:', albumSuggestions);
 
         if (inputValue.length < 1) {
             suggestionsContainer.style.display = 'none';
@@ -124,8 +163,10 @@
         }
 
         const filteredSuggestions = albumSuggestions.filter(album =>
-            album.nama_album.toLowerCase().includes(inputValue)
+            album.nama_album && album.nama_album.toLowerCase().includes(inputValue)
         );
+
+        console.log('Filtered suggestions:', filteredSuggestions);
 
         if (filteredSuggestions.length === 0) {
             suggestionsContainer.style.display = 'none';
@@ -150,41 +191,71 @@
     // Fungsi untuk menyembunyikan suggestions
     function hideAlbumSuggestions() {
         setTimeout(() => {
-            const suggestionsContainer = document.getElementById('albumSuggestions');
-            suggestionsContainer.style.display = 'none';
+            if (!isSelectingSuggestion) {
+                const suggestionsContainer = document.getElementById('albumSuggestions');
+                suggestionsContainer.style.display = 'none';
+            }
         }, 200);
     }
 
     // Fungsi untuk memilih suggestion
     function selectAlbumSuggestion(albumName) {
+        isSelectingSuggestion = true;
         document.getElementById('_album').value = albumName;
         document.getElementById('albumSuggestions').style.display = 'none';
         currentSuggestionIndex = -1;
+
+        // Clear error styling jika ada
+        $("input#_album").css("color", "");
+        $("input#_album").css("border-color", "");
+        $('._album').html('');
     }
 
     // Handle keyboard navigation
-    document.getElementById('_album').addEventListener('keydown', function(e) {
-        const suggestionsContainer = document.getElementById('albumSuggestions');
-        const items = suggestionsContainer.getElementsByClassName('album-suggestion-item');
+    document.addEventListener('DOMContentLoaded', function() {
+        const albumInput = document.getElementById('_album');
 
-        if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            if (currentSuggestionIndex < items.length - 1) {
-                currentSuggestionIndex++;
-                updateActiveSuggestion(items);
-            }
-        } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            if (currentSuggestionIndex > 0) {
-                currentSuggestionIndex--;
-                updateActiveSuggestion(items);
-            }
-        } else if (e.key === 'Enter' && currentSuggestionIndex >= 0) {
-            e.preventDefault();
-            items[currentSuggestionIndex].click();
-        } else if (e.key === 'Escape') {
-            suggestionsContainer.style.display = 'none';
-            currentSuggestionIndex = -1;
+        if (albumInput) {
+            albumInput.addEventListener('keydown', function(e) {
+                const suggestionsContainer = document.getElementById('albumSuggestions');
+                const items = suggestionsContainer.getElementsByClassName('album-suggestion-item');
+
+                if (suggestionsContainer.style.display === 'none') {
+                    return;
+                }
+
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (currentSuggestionIndex < items.length - 1) {
+                        currentSuggestionIndex++;
+                        updateActiveSuggestion(items);
+                    }
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (currentSuggestionIndex > 0) {
+                        currentSuggestionIndex--;
+                        updateActiveSuggestion(items);
+                    }
+                } else if (e.key === 'Enter' && currentSuggestionIndex >= 0) {
+                    e.preventDefault();
+                    items[currentSuggestionIndex].click();
+                } else if (e.key === 'Escape') {
+                    suggestionsContainer.style.display = 'none';
+                    currentSuggestionIndex = -1;
+                }
+            });
+
+            // Hide suggestions ketika klik di luar
+            document.addEventListener('click', function(e) {
+                const suggestionsContainer = document.getElementById('albumSuggestions');
+                const albumInput = document.getElementById('_album');
+
+                if (suggestionsContainer && albumInput &&
+                    !suggestionsContainer.contains(e.target) &&
+                    !albumInput.contains(e.target)) {
+                    suggestionsContainer.style.display = 'none';
+                }
+            });
         }
     });
 
@@ -192,16 +263,26 @@
         for (let i = 0; i < items.length; i++) {
             if (i === currentSuggestionIndex) {
                 items[i].classList.add('active');
+                // Scroll ke item yang aktif
+                items[i].scrollIntoView({
+                    block: 'nearest'
+                });
             } else {
                 items[i].classList.remove('active');
             }
         }
     }
 
-    // Panggil fungsi load suggestions ketika modal dibuka
+    // Panggil fungsi load suggestions ketika modal dibuka atau halaman loaded
     document.addEventListener('DOMContentLoaded', function() {
         loadAlbumSuggestions();
     });
+
+    // Jika menggunakan modal Bootstrap, tambahkan event ketika modal shown
+    $('#content-detailModal').on('shown.bs.modal', function() {
+        loadAlbumSuggestions();
+    });
+
 
     function loadFileImage() {
         const input = document.getElementsByName('_file')[0];
