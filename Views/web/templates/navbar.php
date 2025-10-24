@@ -20,31 +20,31 @@
             <!-- Top Menu -->
             <div class="collapse navbar-collapse justify-content-end" id="navbar">
                 <ul id="primary-menu" class="navbar-nav ml-auto align-items-center">
-                    <li id="menu-item-149" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-149"><a class="nav-link" href="<?= base_url('web') ?>home">Home</a></li>
+                    <li id="menu-item-149" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-149"><a class="nav-link" href="<?= base_url('web') ?>/home">Home</a></li>
                     <li id="menu-item-155" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children m-dropdown m-dropdown-multilevel menu-item-155"><a class="nav-link" href="#">Profile</a>
                         <ul class="sub-menu m-dropdown-menu">
-                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>profil">Profil Instansi</a></li>
-                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>sambutan">Sambutan Kepala</a></li>
-                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>maklumat">Maklumat</a></li>
-                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>motto">Motto</a></li>
-                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>visi-misi">Visi Misi</a></li>
-                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>tugas-fungsi">Tugas & Fungsi</a></li>
-                            <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>struktur-organisasi">Struktur Organisasi</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>/profil">Profil Instansi</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>/sambutan">Sambutan Kepala</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>/maklumat">Maklumat</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>/motto">Motto</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>/visi-misi">Visi Misi</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>/tugas-fungsi">Tugas & Fungsi</a></li>
+                            <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>/struktur-organisasi">Struktur Organisasi</a></li>
                         </ul>
                     </li>
-                    <li id="menu-item-123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-123"><a class="nav-link" href="<?= base_url('web') ?>berita">Berita</a></li>
+                    <li id="menu-item-123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-123"><a class="nav-link" href="<?= base_url('web') ?>/berita">Berita</a></li>
                     <li id="menu-item-155" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children m-dropdown m-dropdown-multilevel menu-item-155"><a class="nav-link" href="#">Gallery</a>
                         <ul class="sub-menu m-dropdown-menu">
-                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>gallery-album">Foto</a></li>
-                            <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>gallery-video">Video</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>/gallery-album">Foto</a></li>
+                            <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>/gallery-video">Video</a></li>
                         </ul>
                     </li>
                     <li id="menu-item-155" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children m-dropdown m-dropdown-multilevel menu-item-155"><a class="nav-link" href="#">Informasi</a>
                         <ul class="sub-menu m-dropdown-menu" style="width:250px">
-                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>data-dokumen">Dokumen</a></li>
-                            <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>data-pengumuman">Pengumuman</a></li>
-                            <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>layanan">Layanan</a></li>
-                            <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>aplikasi">Aplikasi</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>/data-dokumen">Dokumen</a></li>
+                            <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>/data-pengumuman">Pengumuman</a></li>
+                            <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>/layanan">Layanan</a></li>
+                            <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>/aplikasi">Aplikasi</a></li>
                             <!--<li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="mekanisme-pengaduan">Mekanisme Pengaduan</a></li>-->
                         </ul>
                     </li>
