@@ -23,6 +23,7 @@ $routes->get('/web/berita/(:segment)/(:segment)', 'Web\Berita::detail/$1/$2');
 
 $routes->get('/web/foto', 'Web\Foto::index');
 $routes->get('/web/foto/(:segment)', 'Web\Foto::detail/$1');
+$routes->get('/web/video', 'Web\Video::index');
 
 $routes->get('/web/lihatpoling', 'Web\Home::viewPoling');
 $routes->post('/web/ubahpoling', 'Web\Home::postPoling');

@@ -9,7 +9,7 @@ use App\Controllers\BaseController;
 // header("Access-Control-Allow-Methods: POST");
 // header("Access-Control-Max-Age: 3600");
 // header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-class Foto extends BaseController
+class Video extends BaseController
 {
     var $folderImage = 'masterdata';
     private $_db;
@@ -22,15 +22,13 @@ class Foto extends BaseController
 
     public function index()
     {
-        $data['title'] = 'FOTO ALBUM';
+        $data['title'] = 'Video';
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
-        $data['dataAlbum'] = $this->_db->table('_tb_foto')
-            ->select("*, count(album) as jumlah")
+        $data['dataVideo'] = $this->_db->table('_tb_video')
             ->where('status', 1)
-            ->groupBy('album')
-            ->orderBy('album', 'ASC')
+            ->orderBy('created_at', 'DESC')
             ->limit(10)
             ->get()->getResult();
 
@@ -64,33 +62,6 @@ class Foto extends BaseController
         //     'hasNext' => $currentPage < $totalPages
         // ];
 
-        return view('web/galeri/foto/index', $data);
-    }
-
-    public function detail($album)
-    {
-        // Query database
-        $data['fotos'] = $this->_db->table('_tb_foto')
-            ->select("*")
-            ->where('status', 1)
-            ->where('album', $album)
-            ->orderBy('created_at', 'DESC')
-            ->get()->getResult();
-
-        if (!$data['fotos']) {
-            return view('404');
-        }
-        $data['title'] = 'Detail Album';
-        $data['admin'] = false;
-        $data['album'] = $album;
-
-        $data['footer'] = getFooterPublik();
-        $data['dataBerita'] = $this->_db->table('_tb_berita a')
-            ->select("a.*, b.kategori")
-            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
-            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
-            ->limit(10)
-            ->get()->getResult();
-        return view('web/galeri/foto/detail', $data);
+        return view('web/galeri/video/index', $data);
     }
 }
