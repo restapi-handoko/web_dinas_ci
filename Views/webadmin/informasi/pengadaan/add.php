@@ -256,7 +256,7 @@
             const fileF = document.getElementsByName('_file_lampiran')[0].files[0];
             formUpload.append('_file_lampiran', fileF);
         }
-        const file = document.getElementsByName('_file')[0].files[0];
+        // const file = document.getElementsByName('_file')[0].files[0];
         // formUpload.append('_file', file);
         formUpload.append('kategori', kategori);
         formUpload.append('judul', judul);
