@@ -9,41 +9,52 @@
                 <!-- Widget Kiri -->
                 <div class="col-md-8 col-sm-12">
                     <div class="ettitle jl_cat_mid_title text-center widget-title">
-                        <h4 class="categories-title title jl_title_c">Album Foto </h4>
+                        <h4 class="categories-title title jl_title_c">
+                            <a href="<?= base_url('web') ?>/foto" class="btn btn-light text-secondary float-left"><i class="fas fa-arrow-left"></i> <b class="text-secondary">Album</b> </a>
+                            <?= $album ?>
+                        </h4>
                     </div>
+
                     <div class="widget_jl_wrapper">
                         <div class="bt_post_widget">
-                            <div class="row">
-                                <?php if (isset($dataAlbum)) { ?>
-                                    <?php if (count($dataAlbum) > 0) { ?>
-                                        <?php foreach ($dataAlbum as $key => $value) { ?>
-                                            <div class="col-md-6 mb-4">
-                                                <div class="jl_topik_center blog-style-one blog-small-grid">
-                                                    <div class="jl_topik_center_w jl_radus_e" style="max-height: 300px!important;">
-                                                        <div class="jl_f_img_bg" style="background-image: url(<?= $value->image ?>);"></div>
-                                                        <a href="<?= base_url('web') ?>/foto/<?= $value->album ?>" title="Lihat Foto" class="jl_f_img_link"></a>
-                                                        <a download>
-                                                            <span class="jl_post_type_icon">
-                                                                <i class="jli-gallery"></i>
-                                                            </span>
-                                                        </a>
-                                                        <div class="text-box">
-                                                            <span class="jl_f_cat"><a class="post-category-color-text" style="background: #305b90;" href="foto/detail/7.html"><?= $value->jumlah ?> Foto</a></span>
-                                                            <h3>
-                                                                <a href="foto/detail/7.html" title="Lihat Foto" class=""><?= $value->album ?></a>
-                                                            </h3>
+                            <div class="jl_m_center blog-style-one blog-small-grid">
+                                <div class="jl-w-slider jl_full_feature_w mb-0">
+                                    <div class="jl-eb-slider jelly_loading_pro" data-arrows="true" data-play="true" data-effect="false" data-speed="500" data-autospeed="7000" data-loop="true" data-dots="false" data-swipe="true" data-items="1" data-xs-items="1" data-sm-items="1" data-md-items="1" data-lg-items="1" data-xl-items="1">
+                                        <?php if (isset($dataAlbum)) { ?>
+                                            <?php if (count($dataAlbum) > 0) { ?>
+                                                <?php foreach ($dataAlbum as $key => $value) { ?>
+                                                    <div class="item-slide jl_radus_e">
+                                                        <div class="slide-inner">
+                                                            <a onclick="lihatfoto('<?= $value->id ?>','<?= $value->album ?>')">
+                                                                <img src="<?= base_url('uploads/foto') . '/' . $value->image ?>" width="100%" title="Lembata" />
+                                                            </a>
+                                                            <div class="text-box">
+                                                                <div class="d-flex align-items-center">
+                                                                    <!-- <span class="badge badge-primary inner">
+                                                                <h6>
+                                                                    <span class="text-light">Lembata</span>
+                                                                </h6>
+                                                            </span> -->
+                                                                    <!-- <span class="jl_post_meta pl-2 pb-3">
+                                                                <span class="post-date" style="color:#305b90;"> Selasa, 25 April 2023</span>
+                                                            </span> -->
+                                                                </div>
+
+                                                                <h6 class="text-light text-center">
+                                                                    <a><?= $value->judul ?></a>
+                                                                </h6>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                <?php } ?>
+                                            <?php } ?>
                                         <?php } ?>
-                                    <?php } ?>
-                                <?php } ?>
+                                    </div>
+                                </div>
                             </div>
-
-
                         </div>
                     </div>
+                    <hr>
                 </div>
                 <!-- Widget kanan  -->
                 <div class="col-md-4 col-sm-12">

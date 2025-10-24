@@ -26,68 +26,63 @@ class Foto extends BaseController
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
-        $data['dataBerita'] = $this->_db->table('_tb_berita a')
-            ->select("a.*, b.kategori")
-            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
-            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
+        $data['dataAlbum'] = $this->_db->table('_tb_foto')
+            ->select("*, count(album) as jumlah")
+            ->where('status', 1)
+            ->groupBy('album')
+            ->orderBy('album', 'ASC')
             ->limit(10)
             ->get()->getResult();
 
-        $countBerita = $this->_db->table('_tb_berita')->where('status', 1)->countAllResults();
-        $perPage = 10;
+        // $countBerita = $this->_db->table('_tb_berita')->where('status', 1)->countAllResults();
+        // $perPage = 10;
 
-        // Get current page from URL, default to 1
-        $currentPage = $this->request->getGet('page') ? (int)$this->request->getGet('page') : 1;
-        $offset = ($currentPage - 1) * $perPage;
+        // // Get current page from URL, default to 1
+        // $currentPage = $this->request->getGet('page') ? (int)$this->request->getGet('page') : 1;
+        // $offset = ($currentPage - 1) * $perPage;
 
-        // Calculate total pages
-        $totalPages = ceil($countBerita / $perPage);
+        // // Calculate total pages
+        // $totalPages = ceil($countBerita / $perPage);
 
-        // Get data dengan limit dan offset
-        $data['dataBeritas'] = $this->_db->table('_tb_berita a')
-            ->select("a.*, b.kategori")
-            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
-            ->where('a.status', 1)
-            ->orderBy('a.tanggal', 'DESC')
-            ->limit($perPage, $offset)
-            ->get()
-            ->getResult();
+        // // Get data dengan limit dan offset
+        // $data['dataBeritas'] = $this->_db->table('_tb_berita a')
+        //     ->select("a.*, b.kategori")
+        //     ->join("_tb_kategori_berita b", "b.kid = a.k_id")
+        //     ->where('a.status', 1)
+        //     ->orderBy('a.tanggal', 'DESC')
+        //     ->limit($perPage, $offset)
+        //     ->get()
+        //     ->getResult();
 
-        // Data untuk pagination
-        $data['pagination'] = [
-            'currentPage' => $currentPage,
-            'totalPages' => $totalPages,
-            'totalItems' => $countBerita,
-            'perPage' => $perPage,
-            'hasPrevious' => $currentPage > 1,
-            'hasNext' => $currentPage < $totalPages
-        ];
+        // // Data untuk pagination
+        // $data['pagination'] = [
+        //     'currentPage' => $currentPage,
+        //     'totalPages' => $totalPages,
+        //     'totalItems' => $countBerita,
+        //     'perPage' => $perPage,
+        //     'hasPrevious' => $currentPage > 1,
+        //     'hasNext' => $currentPage < $totalPages
+        // ];
 
         return view('web/foto/index', $data);
     }
 
-    public function detail($tgl, $url)
+    public function detail($album)
     {
-        // Validasi tambahan di controller jika perlu
-        if (!preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/', $tgl)) {
-            return view('404');
-        }
-
         // Query database
-        $data['berita'] = $this->_db->table('_tb_berita a')
-            ->select("a.*, b.kategori")
-            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
-            ->where('a.tanggal', $tgl)
-            ->where('a.url', $url)
-            ->where('a.status', 1)
-            ->get()
-            ->getRowObject();
+        $data['fotos'] = $this->_db->table('_tb_foto')
+            ->select("*")
+            ->where('status', 1)
+            ->where('album', $album)
+            ->orderBy('created_at', 'DESC')
+            ->get()->getResult();
 
-        if (!$data['berita']) {
+        if (!$data['fotos']) {
             return view('404');
         }
-        $data['title'] = 'Berita';
+        $data['title'] = 'Detail Album';
         $data['admin'] = false;
+        $data['album'] = $album;
 
         $data['footer'] = getFooterPublik();
         $data['dataBerita'] = $this->_db->table('_tb_berita a')
@@ -96,6 +91,6 @@ class Foto extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(10)
             ->get()->getResult();
-        return view('web/berita/detail', $data);
+        return view('web/foto/detail', $data);
     }
 }
