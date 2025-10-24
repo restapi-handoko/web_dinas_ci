@@ -43,10 +43,10 @@ class Pengadaan extends BaseController
                         <a href="javascript:actionHapus(\'' . $list->pid . '\', \'' . str_replace("'", "", $list->judul) . '\');" class="delete" id="delete"><button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
                         <i class="bx bx-trash font-size-16 align-middle"></i></button>
                         </a>';
-            if ($list->image !== null) {
-                $image = '<img alt="Image placeholder" src="' . base_url() . '/uploads/pengadaan/' . $list->image . '" width="80px" height="50px">';
+            if ($list->lampiran !== null) {
+                $lampiran = '<a target="_blank" href="' . base_url() . '/uploads/pengadaan/' . $list->lampiran . '" class="badge badge-pill badge-soft-success">Lampiran</a>';
             } else {
-                $image = "-";
+                $lampiran = "-";
             }
             $row[] = $action;
             switch ((int)$list->status) {
@@ -60,7 +60,7 @@ class Pengadaan extends BaseController
             $row[] = $list->tanggal;
             $row[] = $list->kategori;
             $row[] = $list->judul;
-            $row[] = $image;
+            $row[] = $lampiran;
             // $row[] = $list->deskripsi;
 
             $data[] = $row;

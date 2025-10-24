@@ -47,7 +47,7 @@
                                     <th>Tanggal Terbit</th>
                                     <th>Kategori</th>
                                     <th>Judul</th>
-                                    <th data-orderable="false">Gambar</th>
+                                    <th data-orderable="false">Lampiran</th>
                                     <!-- <th>Deskripsi</th> -->
                                 </tr>
                             </thead>
