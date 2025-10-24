@@ -31,4 +31,16 @@ class Home extends BaseController
 
         return view('web/home/index', $data);
     }
+
+    public function profil()
+    {
+        $data['title'] = 'Profil Instansi';
+        $data['admin'] = false;
+
+        $data['footer'] = getFooterPublik();
+        $data['data'] = $this->_db->table('_web_profil')->where('id', 1)->get()->getRowObject();
+        $data['dataBeritas'] = $this->_db->table('_tb_berita')->where('status', 1)->orderBy('tanggal', 'DESC')->get()->getResult();
+
+        return view('web/home/profil', $data);
+    }
 }

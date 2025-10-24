@@ -13,6 +13,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Web\Home::index');
 $routes->get('/web/home', 'Web\Home::index');
+$routes->get('/web/profil', 'Web\Home::profil');
 
 // $routes->get('/home', 'Home::index');
 $routes->get('/auth', 'Auth::index');
