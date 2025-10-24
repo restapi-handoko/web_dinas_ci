@@ -224,8 +224,8 @@
     <script type='text/javascript' src='<?= base_url('assets') ?>/wp-content/themes/softia/assets/js/skip-link-focus-fix4a7d.js?ver=20151215'></script>
     <script type='text/javascript' src='<?= base_url('assets') ?>/wp-includes/js/wp-embed.minaead.js?ver=5.0.3'></script>
     <script type='text/javascript' src='<?= base_url('assets') ?>/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.mine23c.js?ver=5.7'></script>
-    <script type='text/javascript' src='<?= base_url('assets') ?>/wp-content/plugins/softia-core/assets/js/particles/particles.min8a54.js?ver=1.0.0'></script>
-    <script type='text/javascript' src='<?= base_url('assets') ?>/wp-content/plugins/softia-core/assets/js/particles/particles-app8a54.js?ver=1.0.0'></script>
+    <!-- <script type='text/javascript' src='<?= base_url('assets') ?>/wp-content/plugins/softia-core/assets/js/particles/particles.min8a54.js?ver=1.0.0'></script> -->
+    <!-- <script type='text/javascript' src='<?= base_url('assets') ?>/wp-content/plugins/softia-core/assets/js/particles/particles-app8a54.js?ver=1.0.0'></script> -->
     <script type='text/javascript' src='<?= base_url('assets') ?>/wp-content/plugins/softia-core/assets/js/parallax/jquery.parallax-scroll8a54.js?ver=1.0.0'></script>
     <!-- <script type='text/javascript' src='https://www.youtube.com/iframe_api?ver=5.7'></script> -->
     <script type='text/javascript' src='<?= base_url('assets') ?>/wp-content/plugins/js_composer/assets/lib/bower/skrollr/dist/skrollr.mine23c.js?ver=5.7'></script>
