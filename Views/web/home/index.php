@@ -409,7 +409,7 @@
                             <div class="item-slide jl_radus_e">
                                 <div class="slide-inner">
                                     <a href="index.html" target="_blank">
-                                        <img src="public/img/banner/1658642029_3da19d397e07fd8c975c.jpeg" title="Tetap Terapkan Protokol Kesehatan" />
+                                        <img src="<?= base_url('assets') ?>/img/banner/1658642029_3da19d397e07fd8c975c.jpeg" title="Tetap Terapkan Protokol Kesehatan" />
                                     </a>
                                 </div>
                             </div>
