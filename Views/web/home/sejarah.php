@@ -16,20 +16,20 @@
                                         <span class="meta-category-small single_meta_category">
                                             <a class="post-category-color-text" style="background:#305b90" href="<?= base_url() ?>"><i class="fa fa-home"></i></a>
                                         </span>
-                                        <span class="meta-category-small single_meta_category">
+                                        <!-- <span class="meta-category-small single_meta_category">
                                             <a class="post-category-color-text" style="background:#305b90" href="#">
                                                 <i class="fa fa-chevron-right"></i>
                                             </a>
-                                        </span>
+                                        </span> -->
                                         <span class="meta-category-small single_meta_category">
                                             <a class="post-category-color-text" style="background:#305b90">Page</a>
                                         </span>
                                         <div class="d-none d-lg-block d-xl-block">
-                                            <span class="meta-category-small single_meta_category">
+                                            <!-- <span class="meta-category-small single_meta_category">
                                                 <a class="post-category-color-text" style="background:#305b90" href="#">
                                                     <i class="fa fa-chevron-right"></i>
                                                 </a>
-                                            </span>
+                                            </span> -->
                                             <span class="meta-category-small single_meta_category">
                                                 <a class="post-category-color-text" style="background:#305b90" href="#">
                                                     Sejarah</i>
