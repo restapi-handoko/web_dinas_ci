@@ -35,7 +35,7 @@
 
     <link rel='stylesheet' id='wp-block-library-css' href='<?= base_url('assets') ?>/wp-includes/css/dist/block-library/style.minaead.css?ver=5.0.3' type='text/css' media='all' />
     <link rel='stylesheet' id='contact-form-7-css' href='<?= base_url('assets') ?>/wp-content/plugins/contact-form-7/includes/css/styles3c21.css?ver=5.1.1' type='text/css' media='all' />
-    <link rel='stylesheet' id='fonts-css' href='http://fonts.googleapis.com/css?family=Poppins%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i%7CNunito%3A200%2C200i%2C300%2C300i%2C400%2C400i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i&amp;ver=5.0.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='fonts-css' href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i%7CNunito%3A200%2C200i%2C300%2C300i%2C400%2C400i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i&amp;ver=5.0.3' type='text/css' media='all' />
     <link rel='stylesheet' id='bootstrap-css' href='<?= base_url('assets') ?>/wp-content/themes/softia/assets/css/bootstrap.mina352.css?ver=4.1.3' type='text/css' media='all' />
     <link rel='stylesheet' id='magnific-popup-css' href='<?= base_url('assets') ?>/wp-content/themes/softia/assets/vendor/magnific/magnific-popup8a54.css?ver=1.0.0' type='text/css' media='all' />
     <link rel='stylesheet' id='owl-carousel-css' href='<?= base_url('assets') ?>/wp-content/themes/softia/assets/vendor/owl-carousel/css/owl.carousel.min77e6.css?ver=2.2.1' type='text/css' media='all' />
