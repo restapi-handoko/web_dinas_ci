@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Motto\Web;
+namespace App\Controllers\Webadmin\Web;
 
 use App\Controllers\BaseController;
 use Config\Services;
