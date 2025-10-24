@@ -515,27 +515,6 @@
         });
     }
 
-    function penawaran() {
-
-        $.ajax({
-            type: "post",
-            url: "https://cms.datagoe.com/home/penawaran22",
-            dataType: "json",
-            data: {
-                csrf_tokencmsdatagoe: $('input[name=csrf_tokencmsdatagoe]').val(),
-            },
-            success: function(response) {
-                $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
-                $('.viewmodal').html(response.data).show();
-                $('#modalview').modal('show');
-                $('body').removeClass("modal-open");
-            },
-            error: function(xhr, ajaxOptions, thrownerror) {
-                $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
-            }
-        });
-
-    }
     // poll
     $('.btnsimpanisipoling').click(function(e) {
 
