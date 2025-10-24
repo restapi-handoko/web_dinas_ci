@@ -45,11 +45,7 @@
                     <div class="jl_ft_w">
                         <center>
                             <p style="color:#fff; text-indent: 0%; margin-bottom: 1px;">
-
-                                <a class="text-light mb-1" target="_parent" href="page/redaksi.html" style="font-size: 14px;"> <i class=""></i> Redaksi | </a>
-                                <a class="text-light mb-1" target="_parent" href="page/syarat-dan-kondisi.html" style="font-size: 14px;"> <i class=""></i> Syarat & Kondisi | </a>
-                                <a class="text-light mb-1" target="_parent" href="petasitus.html" style="font-size: 14px;"> <i class=""></i> Peta Situs | </a>
-                                <a style="font-size: 14px;color:#fff;" target="_blank" href="http://diskominfo.lampungtengahkab.go.id"> &copy; <?= date('Y'); ?> - iskominfo Kab. Lampung Tengah </a>
+                                <a style="font-size: 14px;color:#fff;" target="_blank" href="http://diskominfo.lampungtengahkab.go.id"> &copy; <?= date('Y'); ?> - Diskominfo Kab. Lampung Tengah </a>
                         </center>
                     </div>
                 </div>
