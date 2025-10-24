@@ -74,7 +74,7 @@
                                     <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pegawai.html"><i class="fas fa-user-tie" style="font-size: small;"></i>Data Pegawai</a></li> -->
                                 </ul>
                             </li>
-                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="opini.html"> <i class=""></i>BERITA<span class="border-menu"></span> </a></li>
+                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/berita"> <i class=""></i>BERITA<span class="border-menu"></span> </a></li>
 
                             <li class="menu-item menu-item-has-children">
                                 <a href="index.html#">INFORMASI<span class="border-menu"></span></a>
@@ -183,7 +183,7 @@
                 </ul>
             </li>
 
-            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="opini.html"> <i class=""></i>BERITA<span class="border-menu"></span> </a></li>
+            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/berita"> <i class=""></i>BERITA<span class="border-menu"></span> </a></li>
 
             <li class="menu-item menu-item-has-children">
                 <a href="index.html#">INFORMASI<span class="border-menu"></span></a>

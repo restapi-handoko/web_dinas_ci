@@ -18,6 +18,8 @@ $routes->get('/web/visi-misi', 'Web\Home::visiMisi');
 $routes->get('/web/struktur', 'Web\Home::struktur');
 $routes->get('/web/tugas-fungsi', 'Web\Home::tugasFungsi');
 
+$routes->get('/web/berita', 'Web\Berita::index');
+
 // $routes->get('/home', 'Home::index');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/auth/logout', 'Auth::logout');
