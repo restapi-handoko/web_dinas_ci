@@ -30,7 +30,7 @@
                                             <?php if (count($dataSliders) > 0) { ?>
                                                 <?php foreach ($dataSliders as $key => $value) { ?>
                                                     <div class="carousel-item <?= $key == 0 ? "active" : "" ?>">
-                                                        <img src="<?= base_url() . 'uploads/appslider/' . $value->image ?>" class="d-block w-100" alt="<?= $value->judul ?>">
+                                                        <img src="<?= base_url() . '/uploads/appslider/' . $value->image ?>" class="d-block w-100" alt="<?= $value->judul ?>">
                                                     </div>
                                                 <?php } ?>
                                             <?php } ?>
@@ -62,28 +62,28 @@
                         <img src="<?= base_url() ?>wp-content/uploads/2019/01/fl-shape-1.png" alt="">
                     </span>
                     <span data-parallax='{"x": 250, "y": 150, "rotateZ":500}'>
-                        <img src="<?= base_url('web') ?>wp-content/uploads/2019/01/fl-shape-2.png" alt="">
+                        <img src="<?= base_url('web') ?>/wp-content/uploads/2019/01/fl-shape-2.png" alt="">
                     </span>
                     <span data-parallax='{"x": -180, "y": 80, "rotateY":2000}'>
-                        <img src="<?= base_url('web') ?>wp-content/uploads/2019/01/fl-shape-3.png" alt="">
+                        <img src="<?= base_url('web') ?>/wp-content/uploads/2019/01/fl-shape-3.png" alt="">
                     </span>
                     <span data-parallax='{"x": -20, "y": 180}'>
-                        <img src="<?= base_url('web') ?>wp-content/uploads/2019/01/fl-shape-4.png" alt="">
+                        <img src="<?= base_url('web') ?>/wp-content/uploads/2019/01/fl-shape-4.png" alt="">
                     </span>
                     <span data-parallax='{"x": 300, "y": 70}'>
-                        <img src="<?= base_url('web') ?>wp-content/uploads/2019/01/fl-shape-5.png" alt="">
+                        <img src="<?= base_url('web') ?>/wp-content/uploads/2019/01/fl-shape-5.png" alt="">
                     </span>
                     <span data-parallax='{"x": 250, "y": 180, "rotateZ":1500}'>
-                        <img src="<?= base_url('web') ?>wp-content/uploads/2019/01/fl-shape-6.png" alt="">
+                        <img src="<?= base_url('web') ?>/wp-content/uploads/2019/01/fl-shape-6.png" alt="">
                     </span>
                     <span data-parallax='{"x": 250, "y": 180, "rotateZ":2000}'>
-                        <img src="<?= base_url('web') ?>wp-content/uploads/2019/01/fl-shape-7.png" alt="">
+                        <img src="<?= base_url('web') ?>/wp-content/uploads/2019/01/fl-shape-7.png" alt="">
                     </span>
                     <span data-parallax='{"x": 60, "y": 150}'>
-                        <img src="<?= base_url('web') ?>wp-content/uploads/2019/01/fl-shape-9.png" alt="">
+                        <img src="<?= base_url('web') ?>/wp-content/uploads/2019/01/fl-shape-9.png" alt="">
                     </span>
                     <span data-parallax='{"x": -30, "y": 150, "rotateZ":1500}'>
-                        <img src="<?= base_url('web') ?>wp-content/uploads/2019/01/fl-shape-1.png" alt="">
+                        <img src="<?= base_url('web') ?>/wp-content/uploads/2019/01/fl-shape-1.png" alt="">
                     </span>
                 </div>
                 <div class="wpb_column vc_column_container vc_col-sm-12">
@@ -108,8 +108,8 @@
                                                 <div class="col-md-4" style="height:550px">
                                                     <div class="blog-item">
                                                         <div class="blog-img">
-                                                            <a href="<?= base_url('web/berita') . $value->tanggal . '/' . $value->url ?>">
-                                                                <img src="<?= base_url() ?>uploads/berita/widget/<?= $value->image ?>" alt="<?= $value->judul ?>" style="height:250px">
+                                                            <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>">
+                                                                <img src="<?= base_url() ?>/uploads/berita/widget/<?= $value->image ?>" alt="<?= $value->judul ?>" style="height:250px">
                                                             </a>
                                                         </div>
 
@@ -117,7 +117,7 @@
                                                             <div class="entry-meta">
                                                                 <div class="post-meta"><?= $value->tanggal ?></div>
                                                             </div>
-                                                            <h4 class="font-alt"><a class="dark-color" href="<?= base_url('web/berita') . $value->tanggal . '/' . $value->url ?>"><?= $value->judul ?></a></h4>
+                                                            <h4 class="font-alt"><a class="dark-color" href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>"><?= $value->judul ?></a></h4>
                                                             <p><?= substr(@$value->deskripsi, 0, 100); ?>&hellip;</p>
                                                         </div>
                                                     </div>
