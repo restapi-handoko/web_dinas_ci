@@ -441,7 +441,7 @@ class Pengguna extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil disimpan.";
-                $response->redirect = base_url('a/penguna');
+                $response->redirect = base_url('webadmin/penguna');
                 return json_encode($response);
             } else {
                 unlink($dir . '/' . $newNamelampiran);
@@ -585,7 +585,7 @@ class Pengguna extends BaseController
                     $response = new \stdClass;
                     $response->status = 201;
                     $response->message = "Tidak ada perubahan data yang disimpan.";
-                    $response->redirect = base_url('a/pengguna');
+                    $response->redirect = base_url('webadmin/pengguna');
                     return json_encode($response);
                 }
             }
@@ -649,7 +649,7 @@ class Pengguna extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil diupdate.";
-                $response->redirect = base_url('a/pengguna/data');
+                $response->redirect = base_url('webadmin/pengguna/data');
                 return json_encode($response);
             } else {
                 unlink($dir . '/' . $newNamelampiran);

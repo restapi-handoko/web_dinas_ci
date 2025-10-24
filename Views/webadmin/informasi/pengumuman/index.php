@@ -108,7 +108,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/informasi/pengumuman/delete') ?>",
+                        url: "./delete",
                         type: 'POST',
                         data: {
                             id: event,
@@ -161,7 +161,7 @@
     function actionDetail(event, title) {
         <?php if (listHakAksesCustomAllowNew('informasi', 'pengumuman', 'detail')) { ?>
             $.ajax({
-                url: "<?= base_url('a/informasi/pengumuman/detail') ?>",
+                url: "./detail",
                 type: 'POST',
                 data: {
                     id: event,
@@ -211,7 +211,7 @@
     function actionEdit(event, title) {
         <?php if (listHakAksesCustomAllowNew('informasi', 'pengumuman', 'edit')) { ?>
             $.ajax({
-                url: "<?= base_url('a/informasi/pengumuman/edit') ?>",
+                url: "./edit",
                 type: 'POST',
                 data: {
                     id: event,
@@ -260,7 +260,7 @@
 
     function actionAdd(event) {
         $.ajax({
-            url: "<?= base_url('a/informasi/pengumuman/add') ?>",
+            url: "./add",
             type: 'GET',
             dataType: 'JSON',
             beforeSend: function() {
@@ -340,7 +340,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?= base_url('a/informasi/pengumuman/getAll') ?>",
+                "url": "./getAll",
                 "type": "POST",
 
             },

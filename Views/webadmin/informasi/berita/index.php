@@ -110,7 +110,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/informasi/berita/delete') ?>",
+                        url: "./delete",
                         type: 'POST',
                         data: {
                             id: event,
@@ -163,7 +163,7 @@
     function actionEdit(event, title) {
         <?php if (listHakAksesCustomAllowNew('informasi', 'berita', 'edit')) { ?>
             $.ajax({
-                url: "<?= base_url('a/informasi/berita/edit') ?>",
+                url: "./edit",
                 type: 'POST',
                 data: {
                     id: event,
@@ -213,7 +213,7 @@
     function actionDetail(event, title) {
         <?php if (listHakAksesCustomAllowNew('informasi', 'berita', 'detail')) { ?>
             $.ajax({
-                url: "<?= base_url('a/informasi/berita/detail') ?>",
+                url: "./detail",
                 type: 'POST',
                 data: {
                     id: event,
@@ -262,7 +262,7 @@
 
     function actionAdd(event) {
         $.ajax({
-            url: "<?= base_url('a/informasi/berita/add') ?>",
+            url: "./add",
             type: 'GET',
             dataType: 'JSON',
             beforeSend: function() {
@@ -342,7 +342,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?= base_url('a/informasi/berita/getAll') ?>",
+                "url": "./getAll",
                 "type": "POST",
 
             },

@@ -109,7 +109,7 @@ class Motto extends BaseController
                 if ($current->isi === $isi) {
                     $response = new \stdClass;
                     $response->status = 201;
-                    $response->redirect = base_url('a/web/motto');
+                    $response->redirect = base_url('webadmin/web/motto');
                     $response->message = "Tidak ada perubahan data yang disimpan.";
                     return json_encode($response);
                 }
@@ -121,7 +121,7 @@ class Motto extends BaseController
                 if ($this->_db->affectedRows() > 0) {
                     $response = new \stdClass;
                     $response->status = 200;
-                    $response->redirect = base_url('a/web/motto');
+                    $response->redirect = base_url('webadmin/web/motto');
                     $response->message = "Motto Instansi Berhasil Disimpan.";
                     return json_encode($response);
                 } else {
@@ -139,7 +139,7 @@ class Motto extends BaseController
                 if ($this->_db->affectedRows() > 0) {
                     $response = new \stdClass;
                     $response->status = 200;
-                    $response->redirect = base_url('a/web/motto');
+                    $response->redirect = base_url('webadmin/web/motto');
                     $response->message = "Motto Instansi Berhasil Disimpan.";
                     return json_encode($response);
                 } else {

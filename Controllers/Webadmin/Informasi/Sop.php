@@ -426,7 +426,7 @@ class Sop extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil disimpan.";
-                $response->redirect = base_url('a/informasi/sop/data');
+                $response->redirect = base_url('webadmin/informasi/sop/data');
                 return json_encode($response);
             } else {
                 if ($filenamelampiran != '') {
@@ -567,7 +567,7 @@ class Sop extends BaseController
                     $response = new \stdClass;
                     $response->status = 201;
                     $response->message = "Tidak ada perubahan data yang disimpan.";
-                    $response->redirect = base_url('a/informasi/sop/data');
+                    $response->redirect = base_url('webadmin/informasi/sop/data');
                     return json_encode($response);
                 }
             }
@@ -617,7 +617,7 @@ class Sop extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil diupdate.";
-                $response->redirect = base_url('a/informasi/sop/data');
+                $response->redirect = base_url('webadmin/informasi/sop/data');
                 return json_encode($response);
             } else {
                 if ($filenamelampiran != '') {

@@ -175,7 +175,7 @@
     function actionEdit(event, title) {
         <?php if (listHakAksesCustomAllowNew('setting', 'website', 'edit')) { ?>
             $.ajax({
-                url: "<?= base_url('a/setting/website/edit') ?>",
+                url: "./edit",
                 type: 'POST',
                 data: {
                     id: event,

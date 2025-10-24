@@ -4,7 +4,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="<?= ($uri->getSegment(1) == "a" && $uri->getSegment(2) == "home") ? 'javascript:;' : base_url('a/home') ?>" class="logo logo-dark">
+                <a href="<?= ($uri->getSegment(1) == "a" && $uri->getSegment(2) == "home") ? 'javascript:;' : base_url('webadmin/home') ?>" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="<?= base_url() ?>/assets/images/logo.svg" alt="" height="22">
                     </span>
@@ -13,7 +13,7 @@
                     </span>
                 </a>
 
-                <a href="<?= ($uri->getSegment(1) == "a" && $uri->getSegment(2) == "home") ? 'javascript:;' : base_url('a/home') ?>" class="logo logo-light">
+                <a href="<?= ($uri->getSegment(1) == "a" && $uri->getSegment(2) == "home") ? 'javascript:;' : base_url('webadmin/home') ?>" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="<?= base_url() ?>/assets/images/logo-light.svg" alt="" height="22">
                     </span>

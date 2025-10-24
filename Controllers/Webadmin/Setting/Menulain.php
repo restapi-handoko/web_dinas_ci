@@ -434,7 +434,7 @@ class Menulain extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil disimpan.";
-                $response->redirect = base_url('a/setting/menulain/data');
+                $response->redirect = base_url('webadmin/setting/menulain/data');
                 return json_encode($response);
             } else {
                 $this->_db->transRollback();
@@ -612,7 +612,7 @@ class Menulain extends BaseController
                 $response = new \stdClass;
                 $response->status = 201;
                 $response->message = "Tidak ada perubahan data yang disimpan.";
-                $response->redirect = base_url('a/setting/menulain/data');
+                $response->redirect = base_url('webadmin/setting/menulain/data');
                 return json_encode($response);
             }
 
@@ -632,7 +632,7 @@ class Menulain extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil diupdate.";
-                $response->redirect = base_url('a/setting/menulain/data');
+                $response->redirect = base_url('webadmin/setting/menulain/data');
                 return json_encode($response);
             } else {
                 $this->_db->transRollback();

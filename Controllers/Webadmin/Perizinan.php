@@ -86,7 +86,7 @@ class Perizinan extends BaseController
 
     public function index()
     {
-        return redirect()->to(base_url('a/perizinan/data'));
+        return redirect()->to(base_url('webadmin/perizinan/data'));
     }
 
     public function data()
@@ -441,7 +441,7 @@ class Perizinan extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil disimpan.";
-                $response->redirect = base_url('a/perizinan/data');
+                $response->redirect = base_url('webadmin/perizinan/data');
                 return json_encode($response);
             } else {
                 unlink($dir . '/' . $newNamelampiran);
@@ -622,7 +622,7 @@ class Perizinan extends BaseController
                     $response = new \stdClass;
                     $response->status = 201;
                     $response->message = "Tidak ada perubahan data yang disimpan.";
-                    $response->redirect = base_url('a/perizinan/data');
+                    $response->redirect = base_url('webadmin/perizinan/data');
                     return json_encode($response);
                 }
             }
@@ -693,7 +693,7 @@ class Perizinan extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil diupdate.";
-                $response->redirect = base_url('a/perizinan/data');
+                $response->redirect = base_url('webadmin/perizinan/data');
                 return json_encode($response);
             } else {
                 unlink($dir . '/' . $newNamelampiran);

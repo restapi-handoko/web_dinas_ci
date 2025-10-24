@@ -106,7 +106,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/galeri/video/delete') ?>",
+                        url: "./delete",
                         type: 'POST',
                         data: {
                             id: event,
@@ -159,7 +159,7 @@
     function actionEdit(event, title) {
         <?php if (listHakAksesCustomAllowNew('galeri', 'video', 'edit')) { ?>
             $.ajax({
-                url: "<?= base_url('a/galeri/video/edit') ?>",
+                url: "./edit",
                 type: 'POST',
                 data: {
                     id: event,
@@ -208,7 +208,7 @@
 
     function actionAdd(event) {
         $.ajax({
-            url: "<?= base_url('a/galeri/video/add') ?>",
+            url: "./add",
             type: 'GET',
             dataType: 'JSON',
             beforeSend: function() {
@@ -288,7 +288,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?= base_url('a/galeri/video/getAll') ?>",
+                "url": "./getAll",
                 "type": "POST",
 
             },

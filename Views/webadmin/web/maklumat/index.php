@@ -33,7 +33,7 @@
                             </div>
                             <?php if (listHakAksesCustomAllowNew('web', 'maklumat', 'edit')) { ?>
                                 <div class="col-6 text-end">
-                                    <a href="<?= base_url('a/web/maklumat/edit') ?>" class="btn btn-primary btn-rounded waves-effect waves-light" style="min-width: 6rem;"><i class="bx bx-edit font-size-16 align-middle me-2"></i> Edit </a>
+                                    <a href="<?= base_url('webadmin/web/maklumat/edit') ?>" class="btn btn-primary btn-rounded waves-effect waves-light" style="min-width: 6rem;"><i class="bx bx-edit font-size-16 align-middle me-2"></i> Edit </a>
                                 </div>
                             <?php } ?>
                         </div>

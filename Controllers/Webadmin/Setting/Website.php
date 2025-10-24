@@ -282,7 +282,7 @@ class Website extends BaseController
                         $response = new \stdClass;
                         $response->status = 201;
                         $response->message = "Tidak ada perubahan data yang disimpan.";
-                        $response->redirect = base_url('a/setting/website');
+                        $response->redirect = base_url('webadmin/setting/website');
                         return json_encode($response);
                     }
                 }
@@ -315,7 +315,7 @@ class Website extends BaseController
                         $this->_db->transCommit();
                         $response = new \stdClass;
                         $response->status = 200;
-                        $response->redirect = base_url('a/setting/website');
+                        $response->redirect = base_url('webadmin/setting/website');
                         $response->message = "Informasi Website Berhasil Disimpan.";
                         return json_encode($response);
                     } else {
@@ -368,7 +368,7 @@ class Website extends BaseController
                         $this->_db->transCommit();
                         $response = new \stdClass;
                         $response->status = 200;
-                        $response->redirect = base_url('a/setting/website');
+                        $response->redirect = base_url('webadmin/setting/website');
                         $response->message = "Informasi Website Berhasil Disimpan.";
                         return json_encode($response);
                     } else {

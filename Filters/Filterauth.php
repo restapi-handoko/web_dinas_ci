@@ -56,7 +56,7 @@ class Filterauth implements FilterInterface
 
                                 if (!(submenu_showed_access($dataAccess, $uriMainMenu, $uriMainSubMenu))) {
                                     return redirect()->to(base_url('webadmin/notallow'));
-                                    // return redirect()->to(base_url('a/home'));
+                                    // return redirect()->to(base_url('webadmin/home'));
                                 }
 
                                 $uriMainSubMenuAksi = $uri->getSegment(4);
@@ -73,14 +73,14 @@ class Filterauth implements FilterInterface
                                 }
 
                                 // if (!(access_allowed($dataAccess, $uriMainMenu, $uriMainSubMenu))) {
-                                //     return redirect()->to(base_url('a/notallow'));
+                                //     return redirect()->to(base_url('webadmin/notallow'));
                                 // }
                             }
 
 
                             // if ($level == 1) {
                             //     if ($uriMain != "a") {
-                            //         return redirect()->to(base_url('a/home'));
+                            //         return redirect()->to(base_url('webadmin/home'));
                             //     }
                             // } else if ($level == 2) {
                             //     if ($uriMain != "sp") {
@@ -158,7 +158,7 @@ class Filterauth implements FilterInterface
                         } else {
                             return redirect()->to(base_url('webadmin/home'));
                             // if ($level == 1) {
-                            //     return redirect()->to(base_url('a/home'));
+                            //     return redirect()->to(base_url('webadmin/home'));
                             // } else if ($level == 2) {
                             //     return redirect()->to(base_url('sp/home'));
                             // } else if ($level == 3) {
@@ -170,7 +170,7 @@ class Filterauth implements FilterInterface
                     } else {
                         return redirect()->to(base_url('webadmin/home'));
                         // if ($level == 1) {
-                        //     return redirect()->to(base_url('a/home'));
+                        //     return redirect()->to(base_url('webadmin/home'));
                         // } else if ($level == 2) {
                         //     return redirect()->to(base_url('sp/home'));
                         // } else if ($level == 3) {

@@ -103,7 +103,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/informasi/katberita/delete') ?>",
+                        url: "./delete",
                         type: 'POST',
                         data: {
                             id: event,
@@ -156,7 +156,7 @@
     function actionEdit(event, title) {
         <?php if (listHakAksesCustomAllowNew('informasi', 'katberita', 'edit')) { ?>
             $.ajax({
-                url: "<?= base_url('a/informasi/katberita/edit') ?>",
+                url: "./edit",
                 type: 'POST',
                 data: {
                     id: event,
@@ -205,7 +205,7 @@
 
     function actionAdd(event) {
         $.ajax({
-            url: "<?= base_url('a/informasi/katberita/add') ?>",
+            url: "./add",
             type: 'GET',
             dataType: 'JSON',
             beforeSend: function() {
@@ -285,7 +285,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?= base_url('a/informasi/katberita/getAll') ?>",
+                "url": "./getAll",
                 "type": "POST",
 
             },

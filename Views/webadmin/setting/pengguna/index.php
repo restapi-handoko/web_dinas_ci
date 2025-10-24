@@ -103,7 +103,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/setting/pengguna/reset') ?>",
+                        url: "./reset",
                         type: 'POST',
                         data: {
                             id: event,
@@ -166,7 +166,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/setting/pengguna/delete') ?>",
+                        url: "./delete",
                         type: 'POST',
                         data: {
                             id: event,
@@ -219,7 +219,7 @@
     function actionEdit(event, title) {
         <?php if (listHakAksesCustomAllowNew('setting', 'pengguna', 'edit')) { ?>
             $.ajax({
-                url: "<?= base_url('a/setting/pengguna/edit') ?>",
+                url: "./edit",
                 type: 'POST',
                 data: {
                     id: event,
@@ -269,7 +269,7 @@
     function actionDetail(event, title) {
         <?php if (listHakAksesCustomAllowNew('setting', 'pengguna', 'detail')) { ?>
             $.ajax({
-                url: "<?= base_url('a/setting/pengguna/detail') ?>",
+                url: "./detail",
                 type: 'POST',
                 data: {
                     id: event,
@@ -359,7 +359,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?= base_url('a/setting/pengguna/getAll') ?>",
+                "url": "./getAll",
                 "type": "POST",
 
             },

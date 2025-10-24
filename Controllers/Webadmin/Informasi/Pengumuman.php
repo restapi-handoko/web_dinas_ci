@@ -459,7 +459,7 @@ class Pengumuman extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil disimpan.";
-                $response->redirect = base_url('a/informasi/pengumuman/data');
+                $response->redirect = base_url('webadmin/informasi/pengumuman/data');
                 return json_encode($response);
             } else {
                 if ($filenamelampiran != '') {
@@ -611,7 +611,7 @@ class Pengumuman extends BaseController
                         $response = new \stdClass;
                         $response->status = 201;
                         $response->message = "Tidak ada perubahan data yang disimpan.";
-                        $response->redirect = base_url('a/informasi/pengumuman/data');
+                        $response->redirect = base_url('webadmin/informasi/pengumuman/data');
                         return json_encode($response);
                     }
                 }
@@ -620,7 +620,7 @@ class Pengumuman extends BaseController
                         $response = new \stdClass;
                         $response->status = 201;
                         $response->message = "Tidak ada perubahan data yang disimpan.";
-                        $response->redirect = base_url('a/informasi/pengumuman/data');
+                        $response->redirect = base_url('webadmin/informasi/pengumuman/data');
                         return json_encode($response);
                     }
                 }
@@ -697,7 +697,7 @@ class Pengumuman extends BaseController
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Data berhasil diupdate.";
-                $response->redirect = base_url('a/informasi/pengumuman/data');
+                $response->redirect = base_url('webadmin/informasi/pengumuman/data');
                 return json_encode($response);
             } else {
                 if ($filenamelampiran != '') {

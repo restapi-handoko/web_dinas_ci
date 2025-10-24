@@ -85,7 +85,7 @@
     function actionRoleAccess(event, title) {
         <?php if (listHakAksesCustomAllowNew('setting', 'hakaccess', 'edit')) { ?>
             $.ajax({
-                url: "<?= base_url('a/setting/hakaccess/edit') ?>",
+                url: "./edit",
                 type: 'POST',
                 data: {
                     id: event,
@@ -189,7 +189,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?= base_url('a/setting/hakaccess/getAll') ?>",
+                "url": "./getAll",
                 "type": "POST",
 
             },

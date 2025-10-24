@@ -62,7 +62,7 @@
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        url: "<?= base_url('a/setting/hakaccess/save') ?>",
+                        url: "./save",
                         type: 'POST',
                         data: {
                             user_id: userid,

@@ -1,4 +1,4 @@
-<form id="formAddModalData" action="./website/save" method="post" enctype="multipart/form-data">
+<form id="formAddModalData" action="./save" method="post" enctype="multipart/form-data">
     <div class="modal-body">
         <div class="row">
             <div class="col-lg-6">
@@ -325,7 +325,7 @@
                 }, false);
                 return xhr;
             },
-            url: "./website/save",
+            url: "./save",
             type: 'POST',
             data: formUpload,
             contentType: false,
