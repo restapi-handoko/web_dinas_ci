@@ -50,7 +50,7 @@
                                                             <span> | </span>
                                                             <span class="post-date" style="color:#647277;"><i class="mdi mdi-calendar-multiple-check"></i><?= $value->tanggal ?></span>
                                                             <div class="d-none d-md-block">
-                                                                <p><?= potong_teks($value->deskripsi, 200) ?>
+                                                                <p><?= potong_teks($value->deskripsi, 200) ?> ...
                                                                     <span class="float-right"> <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" class="btn btn-block btn-light btn-sm text-light">Selengkapnya »</a></span>
 
                                                                 </p>
