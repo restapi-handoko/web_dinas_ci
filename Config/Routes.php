@@ -186,6 +186,17 @@ $routes->post('/webadmin/informasi/berita/addSave', 'Webadmin\Informasi\Berita::
 $routes->post('/webadmin/informasi/berita/editSave', 'Webadmin\Informasi\Berita::editSave');
 $routes->post('/webadmin/informasi/berita/uploadImage', 'Webadmin\Informasi\Berita::uploadImage');
 
+$routes->get('/webadmin/informasi/pengadaan', 'Webadmin\Informasi\Pengadaan::index');
+$routes->get('/webadmin/informasi/pengadaan/data', 'Webadmin\Informasi\Pengadaan::data');
+$routes->get('/webadmin/informasi/pengadaan/add', 'Webadmin\Informasi\Pengadaan::add');
+$routes->post('/webadmin/informasi/pengadaan/edit', 'Webadmin\Informasi\Pengadaan::edit');
+$routes->post('/webadmin/informasi/pengadaan/detail', 'Webadmin\Informasi\Pengadaan::detail');
+$routes->post('/webadmin/informasi/pengadaan/getAll', 'Webadmin\Informasi\Pengadaan::getAll');
+$routes->post('/webadmin/informasi/pengadaan/delete', 'Webadmin\Informasi\Pengadaan::delete');
+$routes->post('/webadmin/informasi/pengadaan/addSave', 'Webadmin\Informasi\Pengadaan::addSave');
+$routes->post('/webadmin/informasi/pengadaan/editSave', 'Webadmin\Informasi\Pengadaan::editSave');
+$routes->post('/webadmin/informasi/pengadaan/uploadImage', 'Webadmin\Informasi\Pengadaan::uploadImage');
+
 $routes->get('/webadmin/informasi/dokumen', 'Webadmin\Informasi\Dokumen::index');
 $routes->get('/webadmin/informasi/dokumen/data', 'Webadmin\Informasi\Dokumen::data');
 $routes->get('/webadmin/informasi/dokumen/add', 'Webadmin\Informasi\Dokumen::add');
@@ -205,6 +216,16 @@ $routes->post('/webadmin/informasi/katberita/getAll', 'Webadmin\Informasi\Katber
 $routes->post('/webadmin/informasi/katberita/delete', 'Webadmin\Informasi\Katberita::delete');
 $routes->post('/webadmin/informasi/katberita/addSave', 'Webadmin\Informasi\Katberita::addSave');
 $routes->post('/webadmin/informasi/katberita/editSave', 'Webadmin\Informasi\Katberita::editSave');
+
+$routes->get('/webadmin/informasi/katpengadaan', 'Webadmin\Informasi\Katpengadaan::index');
+$routes->get('/webadmin/informasi/katpengadaan/data', 'Webadmin\Informasi\Katpengadaan::data');
+$routes->get('/webadmin/informasi/katpengadaan/add', 'Webadmin\Informasi\Katpengadaan::add');
+$routes->post('/webadmin/informasi/katpengadaan/edit', 'Webadmin\Informasi\Katpengadaan::edit');
+$routes->post('/webadmin/informasi/katpengadaan/detail', 'Webadmin\Informasi\Katpengadaan::detail');
+$routes->post('/webadmin/informasi/katpengadaan/getAll', 'Webadmin\Informasi\Katpengadaan::getAll');
+$routes->post('/webadmin/informasi/katpengadaan/delete', 'Webadmin\Informasi\Katpengadaan::delete');
+$routes->post('/webadmin/informasi/katpengadaan/addSave', 'Webadmin\Informasi\Katpengadaan::addSave');
+$routes->post('/webadmin/informasi/katpengadaan/editSave', 'Webadmin\Informasi\Katpengadaan::editSave');
 
 $routes->get('/webadmin/informasi/katregulasi', 'Webadmin\Informasi\Katregulasi::index');
 $routes->get('/webadmin/informasi/katregulasi/data', 'Webadmin\Informasi\Katregulasi::data');
