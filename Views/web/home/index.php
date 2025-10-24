@@ -63,29 +63,31 @@
                                 <?php if (isset($dataBerita)) { ?>
                                     <?php if (count($dataBerita) > 0) { ?>
                                         <?php foreach ($dataBerita as $key => $value) { ?>
-                                            <div class="item-slide jl_m_center_w jl_radus_e">
-                                                <div class="slide-inner">
-                                                    <div class="jl_m_center_w jl_radus_e">
-                                                        <div class="jl_f_img_bg" style="background-image: url('<?= base_url() ?>uploads/berita/<?= $value->image ?>');"></div>
-                                                        <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" class="jl_f_img_link"></a>
-                                                        <div class="text-box">
-                                                            <div class="d-flex align-items-center">
-                                                                <span class="badge badge-primary">
-                                                                    <a href="javascript:;"><?= $value->kategori ?></a>
-                                                                </span>
-                                                                <span class="jl_post_meta pl-2 pb-3">
-                                                                    <span class="post-date" style="color:#305b90;"> <?= $value->tanggal ?></span>
-                                                                </span>
+                                            <?php if ($key == 0) { ?>
+                                                <div class="item-slide jl_m_center_w jl_radus_e">
+                                                    <div class="slide-inner">
+                                                        <div class="jl_m_center_w jl_radus_e">
+                                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url() ?>uploads/berita/<?= $value->image ?>');"></div>
+                                                            <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" class="jl_f_img_link"></a>
+                                                            <div class="text-box">
+                                                                <div class="d-flex align-items-center">
+                                                                    <span class="badge badge-primary">
+                                                                        <a href="javascript:;"><?= $value->kategori ?></a>
+                                                                    </span>
+                                                                    <span class="jl_post_meta pl-2 pb-3">
+                                                                        <span class="post-date" style="color:#305b90;"> <?= $value->tanggal ?></span>
+                                                                    </span>
+                                                                </div>
+
+                                                                <h3>
+                                                                    <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>"><?= $value->judul ?></a>
+                                                                </h3>
+
                                                             </div>
-
-                                                            <h3>
-                                                                <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>"><?= $value->judul ?></a>
-                                                            </h3>
-
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            <?php } ?>
                                         <?php } ?>
                                     <?php } ?>
                                 <?php } ?>

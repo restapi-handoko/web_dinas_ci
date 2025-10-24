@@ -30,7 +30,9 @@ class Home extends BaseController
         $data['dataBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
-            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')->get()->getResult();
+            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
+            ->limit(5)
+            ->get()->getResult();
 
         return view('web/home/index', $data);
     }
