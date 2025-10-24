@@ -44,6 +44,7 @@
                                     <th data-orderable="false">#</th>
                                     <th data-orderable="false">Aksi</th>
                                     <th>Status</th>
+                                    <th>Album</th>
                                     <th>Judul</th>
                                     <th data-orderable="false">Gambar</th>
                                 </tr>

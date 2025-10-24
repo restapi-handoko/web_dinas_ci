@@ -2,6 +2,12 @@
     <div class="modal-body">
         <div class="row">
             <div class="col-lg-10">
+                <label for="_album" class="col-form-label">Album:</label>
+                <input type="text" class="form-control album" id="_album" name="_album" placeholder="Ketik atau pilih album..." onfocusin="inputFocus(this); showAlbumSuggestions()" oninput="showAlbumSuggestions()" onblur="hideAlbumSuggestions()" autocomplete="off">
+                <div id="albumSuggestions" class="album-suggestions"></div>
+                <div class="help-block _album"></div>
+            </div>
+            <div class="col-lg-10">
                 <label for="_judul" class="col-form-label">Judul:</label>
                 <input type="text" class="form-control judul" id="_judul" name="_judul" placeholder="Judul..." onfocusin="inputFocus(this);">
                 <div class="help-block _judul"></div>
@@ -51,8 +57,152 @@
         <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
     </div>
 </form>
+<style>
+    .album-suggestions {
+        position: absolute;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+        width: calc(100% - 30px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+
+    .album-suggestion-item {
+        padding: 8px 12px;
+        cursor: pointer;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .album-suggestion-item:hover {
+        background-color: #f8f9fa;
+    }
+
+    .album-suggestion-item:last-child {
+        border-bottom: none;
+    }
+
+    .album-suggestion-item.active {
+        background-color: #007bff;
+        color: white;
+    }
+</style>
 
 <script>
+    let albumSuggestions = [];
+    let currentSuggestionIndex = -1;
+
+    // Fungsi untuk memuat suggestions album dari database
+    function loadAlbumSuggestions() {
+        $.ajax({
+            url: './getAlbums', // Ganti dengan endpoint yang sesuai
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(resul) {
+                if (resul.status === 200) {
+                    albumSuggestions = resul.data;
+                }
+            },
+            error: function() {
+                console.log('Gagal memuat suggestions album');
+            }
+        });
+    }
+
+    // Fungsi untuk menampilkan suggestions
+    function showAlbumSuggestions() {
+        const input = document.getElementById('_album');
+        const suggestionsContainer = document.getElementById('albumSuggestions');
+        const inputValue = input.value.toLowerCase();
+
+        if (inputValue.length < 1) {
+            suggestionsContainer.style.display = 'none';
+            return;
+        }
+
+        const filteredSuggestions = albumSuggestions.filter(album =>
+            album.nama_album.toLowerCase().includes(inputValue)
+        );
+
+        if (filteredSuggestions.length === 0) {
+            suggestionsContainer.style.display = 'none';
+            return;
+        }
+
+        suggestionsContainer.innerHTML = '';
+        filteredSuggestions.forEach((suggestion, index) => {
+            const div = document.createElement('div');
+            div.className = 'album-suggestion-item';
+            div.textContent = suggestion.nama_album;
+            div.onclick = function() {
+                selectAlbumSuggestion(suggestion.nama_album);
+            };
+            suggestionsContainer.appendChild(div);
+        });
+
+        suggestionsContainer.style.display = 'block';
+        currentSuggestionIndex = -1;
+    }
+
+    // Fungsi untuk menyembunyikan suggestions
+    function hideAlbumSuggestions() {
+        setTimeout(() => {
+            const suggestionsContainer = document.getElementById('albumSuggestions');
+            suggestionsContainer.style.display = 'none';
+        }, 200);
+    }
+
+    // Fungsi untuk memilih suggestion
+    function selectAlbumSuggestion(albumName) {
+        document.getElementById('_album').value = albumName;
+        document.getElementById('albumSuggestions').style.display = 'none';
+        currentSuggestionIndex = -1;
+    }
+
+    // Handle keyboard navigation
+    document.getElementById('_album').addEventListener('keydown', function(e) {
+        const suggestionsContainer = document.getElementById('albumSuggestions');
+        const items = suggestionsContainer.getElementsByClassName('album-suggestion-item');
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (currentSuggestionIndex < items.length - 1) {
+                currentSuggestionIndex++;
+                updateActiveSuggestion(items);
+            }
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (currentSuggestionIndex > 0) {
+                currentSuggestionIndex--;
+                updateActiveSuggestion(items);
+            }
+        } else if (e.key === 'Enter' && currentSuggestionIndex >= 0) {
+            e.preventDefault();
+            items[currentSuggestionIndex].click();
+        } else if (e.key === 'Escape') {
+            suggestionsContainer.style.display = 'none';
+            currentSuggestionIndex = -1;
+        }
+    });
+
+    function updateActiveSuggestion(items) {
+        for (let i = 0; i < items.length; i++) {
+            if (i === currentSuggestionIndex) {
+                items[i].classList.add('active');
+            } else {
+                items[i].classList.remove('active');
+            }
+        }
+    }
+
+    // Panggil fungsi load suggestions ketika modal dibuka
+    document.addEventListener('DOMContentLoaded', function() {
+        loadAlbumSuggestions();
+    });
+
     function loadFileImage() {
         const input = document.getElementsByName('_file')[0];
         if (input.files && input.files[0]) {
@@ -96,6 +246,7 @@
 
     $("#formAddModalData").on("submit", function(e) {
         e.preventDefault();
+        const album = document.getElementsByName('_album')[0].value;
         const judul = document.getElementsByName('_judul')[0].value;
         const fileName = document.getElementsByName('_file')[0].value;
 
@@ -104,6 +255,13 @@
             status = "1";
         } else {
             status = "0";
+        }
+
+        if (album === "") {
+            $("input#_album").css("color", "#dc3545");
+            $("input#_album").css("border-color", "#dc3545");
+            $('._album').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Album tidak boleh kosong.</li></ul>');
+            return false;
         }
 
         if (judul === "") {
@@ -139,6 +297,7 @@
         const formUpload = new FormData();
         const file = document.getElementsByName('_file')[0].files[0];
         formUpload.append('_file', file);
+        formUpload.append('album', album);
         formUpload.append('judul', judul);
         formUpload.append('status', status);
 

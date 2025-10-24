@@ -21,6 +21,9 @@ $routes->get('/web/tugas-fungsi', 'Web\Home::tugasFungsi');
 $routes->get('/web/berita', 'Web\Berita::index');
 $routes->get('/web/berita/(:segment)/(:segment)', 'Web\Berita::detail/$1/$2');
 
+$routes->get('/web/foto', 'Web\Foto::index');
+$routes->get('/web/berita/(:segment)/(:segment)', 'Web\Berita::detail/$1/$2');
+
 $routes->get('/web/lihatpoling', 'Web\Home::viewPoling');
 $routes->post('/web/ubahpoling', 'Web\Home::postPoling');
 
@@ -150,6 +153,7 @@ $routes->post('/webadmin/setting/website/getAll', 'Webadmin\Setting\Website::get
 $routes->get('/webadmin/galeri/foto', 'Webadmin\Galeri\Foto::index');
 $routes->get('/webadmin/galeri/foto/data', 'Webadmin\Galeri\Foto::data');
 $routes->get('/webadmin/galeri/foto/add', 'Webadmin\Galeri\Foto::add');
+$routes->get('/webadmin/galeri/foto/getAlbums', 'Webadmin\Galeri\Foto::getAlbums');
 $routes->post('/webadmin/galeri/foto/edit', 'Webadmin\Galeri\Foto::edit');
 $routes->post('/webadmin/galeri/foto/getAll', 'Webadmin\Galeri\Foto::getAll');
 $routes->post('/webadmin/galeri/foto/delete', 'Webadmin\Galeri\Foto::delete');

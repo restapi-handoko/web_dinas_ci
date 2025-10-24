@@ -54,6 +54,7 @@ class Foto extends BaseController
                     $row[] = '<span class="badge badge-pill badge-soft-danger">Tidak Terpublish</span>';
                     break;
             }
+            $row[] = $list->album;
             $row[] = $list->judul;
             $row[] = $image;
 
@@ -89,6 +90,32 @@ class Foto extends BaseController
         $data['user'] = $user->data;
 
         return view('webadmin/galeri/foto/index', $data);
+    }
+
+    public function getAlbums()
+    {
+        $Profilelib = new Profilelib();
+        $user = $Profilelib->user();
+        if ($user->code != 200) {
+            delete_cookie('jwt');
+            session()->destroy();
+            $response = new \stdClass;
+            $response->status = 401;
+            $response->message = "Permintaan diizinkan";
+            return json_encode($response);
+        }
+
+        $albums = $this->_db->table('_tb_foto') // Ganti dengan tabel album Anda
+            ->select('DISTINCT(album) as album') // Ganti dengan nama kolom yang sesuai
+            ->orderBy('album', 'ASC')
+            ->get()
+            ->getResult();
+
+        return $this->response->setJSON([
+            'status' => 200,
+            'message' => 'Success',
+            'data' => $albums
+        ]);
     }
 
     public function add()
@@ -246,6 +273,12 @@ class Foto extends BaseController
         // }
 
         $rules = [
+            'album' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Album tidak boleh kosong. ',
+                ]
+            ],
             'judul' => [
                 'rules' => 'required|trim',
                 'errors' => [
@@ -272,6 +305,7 @@ class Foto extends BaseController
             $response = new \stdClass;
             $response->status = 400;
             $response->message = $this->validator->getError('judul')
+                . $this->validator->getError('album')
                 . $this->validator->getError('status')
                 . $this->validator->getError('_file');
             return json_encode($response);
@@ -287,6 +321,7 @@ class Foto extends BaseController
                 return json_encode($response);
             }
 
+            $album = htmlspecialchars($this->request->getVar('album'), true);
             $judul = htmlspecialchars($this->request->getVar('judul'), true);
             $status = htmlspecialchars($this->request->getVar('status'), true);
 
@@ -299,6 +334,7 @@ class Foto extends BaseController
             }
 
             $data = [
+                'album' => $album,
                 'judul' => $judul,
                 'status' => $status,
                 'url' => $slug . '.html',
@@ -370,6 +406,12 @@ class Foto extends BaseController
                     'required' => 'Id tidak boleh kosong. ',
                 ]
             ],
+            'album' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Album tidak boleh kosong. ',
+                ]
+            ],
             'judul' => [
                 'rules' => 'required|trim',
                 'errors' => [
@@ -403,6 +445,7 @@ class Foto extends BaseController
             $response = new \stdClass;
             $response->status = 400;
             $response->message = $this->validator->getError('id')
+                . $this->validator->getError('album')
                 . $this->validator->getError('judul')
                 . $this->validator->getError('status')
                 . $this->validator->getError('_file');
@@ -421,6 +464,7 @@ class Foto extends BaseController
             }
 
             $id = htmlspecialchars($this->request->getVar('id'), true);
+            $album = htmlspecialchars($this->request->getVar('album'), true);
             $judul = htmlspecialchars($this->request->getVar('judul'), true);
             $status = htmlspecialchars($this->request->getVar('status'), true);
 
@@ -434,6 +478,7 @@ class Foto extends BaseController
             }
 
             $data = [
+                'album' => $album,
                 'judul' => $judul,
                 'status' => $status,
                 'user_updated' => $user->data->uid,
@@ -453,7 +498,7 @@ class Foto extends BaseController
 
             if (
                 (int)$status === (int)$oldData->status
-                && $judul === $oldData->judul
+                && $judul === $oldData->judul && $album === $oldData->album
             ) {
                 if ($filenamelampiranFile == '') {
                     $response = new \stdClass;
