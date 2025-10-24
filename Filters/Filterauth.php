@@ -103,7 +103,7 @@ class Filterauth implements FilterInterface
                     if ($totalSegment > 0) {
                         $uriMain = $uri->getSegment(1);
 
-                        if ($uriMain == "" || $uriMain == "webadmin" || $uriMain == "auth") {
+                        if ($uriMain == "" || $uriMain == "webadmin" || $uriMain == "auth" || $uriMain == "web") {
                         } else {
                             return redirect()->to(base_url('auth'));
                         }
@@ -116,7 +116,7 @@ class Filterauth implements FilterInterface
 
                     $uriMain = $uri->getSegment(1);
 
-                    if ($uriMain == "" || $uriMain == "webadmin" || $uriMain == "auth") {
+                    if ($uriMain == "" || $uriMain == "webadmin" || $uriMain == "auth" || $uriMain == "web") {
                     } else {
                         return redirect()->to(base_url('auth'));
                     }
@@ -154,7 +154,7 @@ class Filterauth implements FilterInterface
                     if ($totalSegment == 0) {
 
                         $uriMain = $uri->getSegment(1);
-                        if ($uriMain === "" || $uriMain === "webadmin") {
+                        if ($uriMain === "" || $uriMain === "webadmin" || $uriMain == "web") {
                         } else {
                             return redirect()->to(base_url('webadmin/home'));
                             // if ($level == 1) {
