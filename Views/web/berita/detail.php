@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="single_content_header jl_single_feature_below">
                                         <div class="">
-                                            <img width="1000" height="650" src="<?= base_url() ?>uploads/berita/<?= $value->image ?>" class="" alt="" loading="lazy">
+                                            <img width="1000" height="650" src="<?= base_url() ?>uploads/berita/<?= $berita->image ?>" class="" alt="" loading="lazy">
                                         </div>
                                     </div>
 
@@ -93,15 +93,15 @@
                                             <div class="jl_single_share_wrapper jl_clear_at">
                                                 <ul class="single_post_share_icon_post">
                                                     <li class="single_post_share_facebook">
-                                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" target="_blank"><i class="jli-facebook"></i>
+                                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?= base_url('web/berita') . '/' . $berita->tanggal . '/' . $berita->url ?>" target="_blank"><i class="jli-facebook"></i>
                                                         </a>
                                                     </li>
                                                     <li class="single_post_share_twitter">
-                                                        <a href="https://twitter.com/intent/tweet?url=<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" target="_blank"><i class="jli-twitter"></i>
+                                                        <a href="https://twitter.com/intent/tweet?url=<?= base_url('web/berita') . '/' . $berita->tanggal . '/' . $berita->url ?>" target="_blank"><i class="jli-twitter"></i>
                                                         </a>
                                                     </li>
                                                     <li class="single_post_share_whatsapp">
-                                                        <a href="whatsapp://send?text=<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" target="_blank"><i class="fab fa-whatsapp"></i>
+                                                        <a href="whatsapp://send?text=<?= base_url('web/berita') . '/' . $berita->tanggal . '/' . $berita->url ?>" target="_blank"><i class="fab fa-whatsapp"></i>
                                                         </a>
                                                     </li>
                                                     <li class="single_post_share_linkedin">
