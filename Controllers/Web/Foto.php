@@ -64,7 +64,7 @@ class Foto extends BaseController
         //     'hasNext' => $currentPage < $totalPages
         // ];
 
-        return view('web/foto/index', $data);
+        return view('web/galeri/foto/index', $data);
     }
 
     public function detail($album)
@@ -91,6 +91,6 @@ class Foto extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(10)
             ->get()->getResult();
-        return view('web/foto/detail', $data);
+        return view('web/galeri/foto/detail', $data);
     }
 }
