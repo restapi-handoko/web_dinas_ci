@@ -23,10 +23,13 @@
                     <li id="menu-item-149" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-149"><a class="nav-link" href="<?= base_url('web') ?>home">Home</a></li>
                     <li id="menu-item-155" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children m-dropdown m-dropdown-multilevel menu-item-155"><a class="nav-link" href="#">Profile</a>
                         <ul class="sub-menu m-dropdown-menu">
-                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>sejarah-visi-misi">Sejarah & Visi Misi</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>profil">Profil Instansi</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>sambutan">Sambutan Kepala</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>maklumat">Maklumat</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>motto">Motto</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>visi-misi">Visi Misi</a></li>
+                            <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a class="nav-link" href="<?= base_url('web') ?>tugas-fungsi">Tugas & Fungsi</a></li>
                             <li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-156"><a class="nav-link" href="<?= base_url('web') ?>struktur-organisasi">Struktur Organisasi</a></li>
-                            <li id="menu-item-170" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-170"><a class="nav-link" href="<?= base_url('web') ?>tupoksi">Tupoksi</a></li>
-                            <li id="menu-item-168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-168"><a class="nav-link" href="<?= base_url('web') ?>data-pegawai">Data Pegawai</a></li>
                         </ul>
                     </li>
                     <li id="menu-item-123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-123"><a class="nav-link" href="<?= base_url('web') ?>berita">Berita</a></li>
