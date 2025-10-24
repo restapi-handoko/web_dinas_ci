@@ -20,7 +20,7 @@
                                             <div class="col-md-6 mb-4">
                                                 <div class="jl_topik_center blog-style-one blog-small-grid">
                                                     <div class="jl_topik_center_w jl_radus_e" style="max-height: 300px!important;">
-                                                        <div class="jl_f_img_bg" style="background-image: url(<?= $value->image ?>);"></div>
+                                                        <div class="jl_f_img_bg" style="background-image: url(<?= base_url('uploads/foto') . '/' . $value->image ?>);"></div>
                                                         <a href="<?= base_url('web') ?>/foto/<?= $value->album ?>" title="Lihat Foto" class="jl_f_img_link"></a>
                                                         <a download>
                                                             <span class="jl_post_type_icon">
