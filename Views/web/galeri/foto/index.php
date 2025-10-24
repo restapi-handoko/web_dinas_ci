@@ -21,16 +21,16 @@
                                                 <div class="jl_topik_center blog-style-one blog-small-grid">
                                                     <div class="jl_topik_center_w jl_radus_e" style="max-height: 300px!important;">
                                                         <div class="jl_f_img_bg" style="background-image: url(<?= base_url('uploads/foto') . '/' . $value->image ?>);"></div>
-                                                        <a href="<?= base_url('web') ?>/foto/<?= $value->album ?>" title="Lihat Foto" class="jl_f_img_link"></a>
+                                                        <a href="<?= base_url('web/foto') . '/' . strtolower($value->album) ?>" title="Lihat Foto" class="jl_f_img_link"></a>
                                                         <a download>
                                                             <span class="jl_post_type_icon">
                                                                 <i class="jli-gallery"></i>
                                                             </span>
                                                         </a>
                                                         <div class="text-box">
-                                                            <span class="jl_f_cat"><a class="post-category-color-text" style="background: #305b90;" href="foto/detail/7.html"><?= $value->jumlah ?> Foto</a></span>
+                                                            <span class="jl_f_cat"><a class="post-category-color-text" style="background: #305b90;" href="<?= base_url('web/foto') . '/' . strtolower($value->album) ?>"><?= $value->jumlah ?> Foto</a></span>
                                                             <h3>
-                                                                <a href="foto/detail/7.html" title="Lihat Foto" class=""><?= $value->album ?></a>
+                                                                <a href="<?= base_url('web/foto') . '/' . strtolower($value->album) ?>" title="Lihat Foto" class=""><?= $value->album ?></a>
                                                             </h3>
                                                         </div>
                                                     </div>
