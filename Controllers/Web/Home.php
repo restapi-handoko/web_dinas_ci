@@ -133,4 +133,28 @@ class Home extends BaseController
         $response->error = "Permintaan diizinkan";
         return json_encode($response);
     }
+
+    public function viewPoling()
+    {
+
+        $x['polling'] = $this->_db->table('_tb_polling_layanan')
+            ->select("nilai, 
+                CASE 
+                    WHEN nilai = 2 THEN 'Sangat Baik'
+                    WHEN nilai = 3 THEN 'Baik' 
+                    WHEN nilai = 4 THEN 'Cukup Baik'
+                    WHEN nilai = 6 THEN 'Belum Tahu'
+                    ELSE 'Tidak Diketahui'
+                END as keterangan, 
+                COUNT(nilai) as jumlah,
+                (SELECT COUNT(*) FROM _tb_polling_layanan) as total_responden")
+            ->groupBy('nilai')
+            ->orderBy('nilai', 'ASC')
+            ->get()->getResult();
+
+
+        $response = new \stdClass;
+        $response->data = view('web/templates/egov/view_polling', $x);
+        return json_encode($response);
+    }
 }

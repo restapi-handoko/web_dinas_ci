@@ -21,6 +21,7 @@ $routes->get('/web/tugas-fungsi', 'Web\Home::tugasFungsi');
 $routes->get('/web/berita', 'Web\Berita::index');
 $routes->get('/web/berita/(:segment)/(:segment)', 'Web\Berita::detail/$1/$2');
 
+$routes->get('/web/lihatpoling', 'Web\Home::viewPoling');
 $routes->post('/web/ubahpoling', 'Web\Home::postPoling');
 
 // $routes->get('/home', 'Home::index');
