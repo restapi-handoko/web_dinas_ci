@@ -582,7 +582,7 @@
 </script>
 <div class="viewdata"></div>
 <div class="viewmodal"></div>
-
+<!-- 
 <script>
     $('.modal-dialog').draggable();
     $(function() {
@@ -597,7 +597,7 @@
 
     });
 </script>
-
+ -->
 
 <script src="<?= base_url('assets') ?>/standar/assets/js/purecounter.js"></script>
 
