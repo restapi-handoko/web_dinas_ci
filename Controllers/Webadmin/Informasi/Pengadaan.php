@@ -332,15 +332,30 @@ class Pengadaan extends BaseController
                     'required' => 'Status tidak boleh kosong. ',
                 ]
             ],
-            '_file' => [
-                'rules' => 'uploaded[_file]|max_size[_file,20480]|mime_in[_file,image/jpeg,image/jpg,image/png]',
-                'errors' => [
-                    'uploaded' => 'Pilih gambar berita terlebih dahulu. ',
-                    'max_size' => 'Ukuran gambar berita terlalu besar. ',
-                    'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar. '
-                ]
-            ],
+            // '_file' => [
+            //     'rules' => 'uploaded[_file]|max_size[_file,20480]|mime_in[_file,image/jpeg,image/jpg,image/png]',
+            //     'errors' => [
+            //         'uploaded' => 'Pilih gambar berita terlebih dahulu. ',
+            //         'max_size' => 'Ukuran gambar berita terlalu besar. ',
+            //         'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar. '
+            //     ]
+            // ],
         ];
+
+        $filenamelampiranFile = dot_array_search('_file_lampiran.name', $_FILES);
+        if ($filenamelampiranFile != '') {
+            $lampiranValFile = [
+                '_file_lampiran' => [
+                    'rules' => 'uploaded[_file_lampiran]|max_size[_file_lampiran,5148]|mime_in[_file_lampiran,image/jpeg,image/jpg,image/png,application/pdf]',
+                    'errors' => [
+                        'uploaded' => 'Pilih file pengadaan terlebih dahulu. ',
+                        'max_size' => 'Ukuran file pengadaan terlalu besar. ',
+                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar/pdf. '
+                    ]
+                ],
+            ];
+            $rules = array_merge($rules, $lampiranValFile);
+        }
 
         if (!$this->validate($rules)) {
             $response = new \stdClass;
@@ -350,7 +365,7 @@ class Pengadaan extends BaseController
                 . $this->validator->getError('tanggal')
                 . $this->validator->getError('isi')
                 . $this->validator->getError('status')
-                . $this->validator->getError('_file');
+                . $this->validator->getError('_file_lampiran');
             return json_encode($response);
         } else {
             $Profilelib = new Profilelib();
@@ -393,26 +408,45 @@ class Pengadaan extends BaseController
 
             $dir = FCPATH . "uploads/pengadaan";
 
-            $lampiran = $this->request->getFile('_file');
-            $filesNamelampiran = $lampiran->getName();
-            $newNamelampiran = _create_name_foto($filesNamelampiran);
+            // $lampiran = $this->request->getFile('_file');
+            // $filesNamelampiran = $lampiran->getName();
+            // $newNamelampiran = _create_name_foto($filesNamelampiran);
 
-            if ($lampiran->isValid() && !$lampiran->hasMoved()) {
-                $lampiran->move($dir, $newNamelampiran);
-                $data['image'] = $newNamelampiran;
-            } else {
-                $response = new \stdClass;
-                $response->status = 400;
-                $response->message = "Gagal mengupload file.";
-                return json_encode($response);
+            // if ($lampiran->isValid() && !$lampiran->hasMoved()) {
+            //     $lampiran->move($dir, $newNamelampiran);
+            //     $data['image'] = $newNamelampiran;
+            // } else {
+            //     $response = new \stdClass;
+            //     $response->status = 400;
+            //     $response->message = "Gagal mengupload file.";
+            //     return json_encode($response);
+            // }
+
+            if ($filenamelampiranFile != '') {
+                $lampiranFile = $this->request->getFile('_file_lampiran');
+                $filesNamelampiranFile = $lampiranFile->getName();
+                $newNamelampiranFile = _create_name_foto($filesNamelampiranFile);
+
+                if ($lampiranFile->isValid() && !$lampiranFile->hasMoved()) {
+                    $lampiranFile->move($dir, $newNamelampiranFile);
+                    $data['lampiran'] = $newNamelampiranFile;
+                } else {
+                    $response = new \stdClass;
+                    $response->status = 400;
+                    $response->message = "Gagal mengupload file.";
+                    return json_encode($response);
+                }
             }
+
 
 
             $this->_db->transBegin();
             try {
                 $this->_db->table('_tb_pengadaan')->insert($data);
             } catch (\Exception $e) {
-                unlink($dir . '/' . $newNamelampiran);
+                if ($filenamelampiranFile != '') {
+                    unlink($dir . '/' . $newNamelampiranFile);
+                }
                 $this->_db->transRollback();
 
                 $response = new \stdClass;
@@ -430,7 +464,9 @@ class Pengadaan extends BaseController
                 $response->redirect = base_url('webadmin/informasi/pengadaan/data');
                 return json_encode($response);
             } else {
-                unlink($dir . '/' . $newNamelampiran);
+                if ($filenamelampiranFile != '') {
+                    unlink($dir . '/' . $newNamelampiranFile);
+                }
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;
@@ -488,19 +524,19 @@ class Pengadaan extends BaseController
             ],
         ];
 
-        $filenamelampiran = dot_array_search('_file.name', $_FILES);
-        if ($filenamelampiran != '') {
-            $lampiranVal = [
-                '_file' => [
-                    'rules' => 'uploaded[_file]|max_size[_file,1024]|mime_in[_file,image/jpeg,image/jpg,image/png]',
+        $filenamelampiranFile = dot_array_search('_file_lampiran.name', $_FILES);
+        if ($filenamelampiranFile != '') {
+            $lampiranValFile = [
+                '_file_lampiran' => [
+                    'rules' => 'uploaded[_file_lampiran]|max_size[_file_lampiran,5148]|mime_in[_file_lampiran,image/jpeg,image/jpg,image/png,application/pdf]',
                     'errors' => [
-                        'uploaded' => 'Pilih gambar berita terlebih dahulu. ',
-                        'max_size' => 'Ukuran gambar berita terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar. '
+                        'uploaded' => 'Pilih file pengumuman terlebih dahulu. ',
+                        'max_size' => 'Ukuran file pengumuman terlalu besar. ',
+                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar/pdf. '
                     ]
                 ],
             ];
-            $rules = array_merge($rules, $lampiranVal);
+            $rules = array_merge($rules, $lampiranValFile);
         }
 
         if (!$this->validate($rules)) {
@@ -512,7 +548,7 @@ class Pengadaan extends BaseController
                 . $this->validator->getError('tanggal')
                 . $this->validator->getError('isi')
                 . $this->validator->getError('status')
-                . $this->validator->getError('_file');
+                . $this->validator->getError('_file_lampiran');
             return json_encode($response);
         } else {
 
@@ -573,7 +609,7 @@ class Pengadaan extends BaseController
                 && $tanggal === $oldData->tanggal
                 && $isi === $oldData->deskripsi
             ) {
-                if ($filenamelampiran == '') {
+                if ($filenamelampiranFile == '') {
                     $response = new \stdClass;
                     $response->status = 201;
                     $response->message = "Tidak ada perubahan data yang disimpan.";
@@ -584,18 +620,19 @@ class Pengadaan extends BaseController
 
             $dir = FCPATH . "uploads/pengadaan";
 
-            if ($filenamelampiran != '') {
-                $lampiran = $this->request->getFile('_file');
-                $filesNamelampiran = $lampiran->getName();
-                $newNamelampiran = _create_name_foto($filesNamelampiran);
 
-                if ($lampiran->isValid() && !$lampiran->hasMoved()) {
-                    $lampiran->move($dir, $newNamelampiran);
-                    $data['image'] = $newNamelampiran;
+            if ($filenamelampiranFile != '') {
+                $lampiranFile = $this->request->getFile('_file_lampiran');
+                $filesNamelampiranFile = $lampiranFile->getName();
+                $newNamelampiranFile = _create_name_foto($filesNamelampiranFile);
+
+                if ($lampiranFile->isValid() && !$lampiranFile->hasMoved()) {
+                    $lampiranFile->move($dir, $newNamelampiranFile);
+                    $data['lampiran'] = $newNamelampiranFile;
                 } else {
                     $response = new \stdClass;
                     $response->status = 400;
-                    $response->message = "Gagal mengupload gambar.";
+                    $response->message = "Gagal mengupload file.";
                     return json_encode($response);
                 }
             }
@@ -604,8 +641,8 @@ class Pengadaan extends BaseController
             try {
                 $this->_db->table('_tb_pengadaan')->where('pid', $oldData->pid)->update($data);
             } catch (\Exception $e) {
-                if ($filenamelampiran != '') {
-                    unlink($dir . '/' . $newNamelampiran);
+                if ($filenamelampiranFile != '') {
+                    unlink($dir . '/' . $newNamelampiranFile);
                 }
                 $this->_db->transRollback();
                 $response = new \stdClass;
@@ -615,10 +652,10 @@ class Pengadaan extends BaseController
             }
 
             if ($this->_db->affectedRows() > 0) {
-                if ($filenamelampiran != '') {
-                    if ($oldData->image !== null) {
+                if ($filenamelampiranFile != '') {
+                    if ($oldData->lampiran !== null) {
                         try {
-                            unlink($dir . '/' . $oldData->image);
+                            unlink($dir . '/' . $oldData->lampiran);
                         } catch (\Throwable $th) {
                         }
                     }
@@ -630,8 +667,8 @@ class Pengadaan extends BaseController
                 $response->redirect = base_url('webadmin/informasi/pengadaan/data');
                 return json_encode($response);
             } else {
-                if ($filenamelampiran != '') {
-                    unlink($dir . '/' . $newNamelampiran);
+                if ($filenamelampiranFile != '') {
+                    unlink($dir . '/' . $newNamelampiranFile);
                 }
                 $this->_db->transRollback();
                 $response = new \stdClass;

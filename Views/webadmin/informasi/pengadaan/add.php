@@ -32,7 +32,15 @@
                 <textarea id="_isi" name="_isi"></textarea>
             </div>
             <div class="col-lg-12 mt-4">
-                <div class="row mt-4">
+                <div class="col-lg-6">
+                    <div class="mt-3">
+                        <label for="_file_lampiran" class="form-label">Lampiran Pengadaan: </label>
+                        <input class="form-control" type="file" id="_file_lampiran" name="_file_lampiran" onFocus="inputFocus(this);" accept="image/*, application/pdf" onchange="loadFilePdf()">
+                        <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Images</code> and Maximum File Size <code>5 Mb</code></p>
+                        <div class="help-block _file_lampiran" for="_file_lampiran"></div>
+                    </div>
+                </div>
+                <!-- <div class="row mt-4">
                     <div class="col-lg-6">
                         <div class="mt-3">
                             <label for="_file" class="form-label">Gambar Pengadaan: </label>
@@ -49,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-12 text-end">
                 <h5 class="font-size-14 mb-3">Status Publikasi</h5>
@@ -131,13 +139,55 @@
         }
     }
 
+    function loadFilePdf() {
+        const inputF = document.getElementsByName('_file_lampiran')[0];
+        if (inputF.files && inputF.files[0]) {
+            var fileF = inputF.files[0];
+
+            var mime_typesF = ['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'];
+
+            if (mime_typesF.indexOf(fileF.type) == -1) {
+                inputF.value = "";
+                // $('.imagePreviewUpload').attr('src', '');
+                Swal.fire(
+                    'Warning!!!',
+                    "Hanya file type gambar yang diizinkan.",
+                    'warning'
+                );
+                return false;
+            }
+
+            if (fileF.size > 1 * 5124 * 1000) {
+                inputF.value = "";
+                // $('.imagePreviewUpload').attr('src', '');
+                Swal.fire(
+                    'Warning!!!',
+                    "Ukuran file tidak boleh lebih dari 5 Mb.",
+                    'warning'
+                );
+                return false;
+            }
+
+            // var reader = new FileReader();
+
+            // reader.onload = function(e) {
+            //     $('.imagePreviewUpload').attr('src', e.target.result);
+            // }
+
+            // reader.readAsDataURL(input.files[0]);
+        } else {
+            console.log("failed Load");
+        }
+    }
+
     $("#formAddModalData").on("submit", function(e) {
         e.preventDefault();
         const judul = document.getElementsByName('_judul')[0].value;
         const tanggal = document.getElementsByName('_tanggal')[0].value;
         const isi = editorAdd.getData();
-        const fileName = document.getElementsByName('_file')[0].value;
+        // const fileName = document.getElementsByName('_file')[0].value;
         const kategori = document.getElementsByName('_kategori')[0].value;
+        const fileNameLampiran = document.getElementsByName('_file_lampiran')[0].value;
 
         let status;
         if ($('#status_publikasi').is(":checked")) {
@@ -156,54 +206,58 @@
         if (judul === "") {
             $("input#_judul").css("color", "#dc3545");
             $("input#_judul").css("border-color", "#dc3545");
-            $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul berita tidak boleh kosong.</li></ul>');
+            $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul pengadaan tidak boleh kosong.</li></ul>');
             return false;
         }
 
         if (judul.length < 5) {
             $("input#_judul").css("color", "#dc3545");
             $("input#_judul").css("border-color", "#dc3545");
-            $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul berita minimal 5 karakter.</li></ul>');
+            $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul pengadaan minimal 5 karakter.</li></ul>');
             return false;
         }
 
         if (judul.length > 250) {
             $("input#_judul").css("color", "#dc3545");
             $("input#_judul").css("border-color", "#dc3545");
-            $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul berita maksimal 250 karakter.</li></ul>');
+            $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul pengadaan maksimal 250 karakter.</li></ul>');
             return false;
         }
 
         if (tanggal === "") {
             $("input#_tanggal").css("color", "#dc3545");
             $("input#_tanggal").css("border-color", "#dc3545");
-            $('._tanggal').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Tanggal berita tidak boleh kosong.</li></ul>');
+            $('._tanggal').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Tanggal pengadaan tidak boleh kosong.</li></ul>');
             return false;
         }
 
         if (isi.length < 5) {
             Swal.fire(
                 "Peringatan!",
-                "Isi dari konten berita minimal 5 kata.",
+                "Isi dari konten pengadaan minimal 5 kata.",
                 "warning"
             );
             return true;
         }
-        if (fileName === "") {
-            // $("input#_file").css("color", "#dc3545");
-            // $("input#_file").css("border-color", "#dc3545");
-            // $('._file').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Silahkan pilih file gambar pengguna.</li></ul>');
-            Swal.fire(
-                "Peringatan!",
-                "Gambar berita belum dipilih.",
-                "warning"
-            );
-            return true;
-        }
+        // if (fileName === "") {
+        //     // $("input#_file").css("color", "#dc3545");
+        //     // $("input#_file").css("border-color", "#dc3545");
+        //     // $('._file').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Silahkan pilih file gambar pengguna.</li></ul>');
+        //     Swal.fire(
+        //         "Peringatan!",
+        //         "Gambar berita belum dipilih.",
+        //         "warning"
+        //     );
+        //     return true;
+        // }
 
         const formUpload = new FormData();
+        if (fileNameLampiran !== "") {
+            const fileF = document.getElementsByName('_file_lampiran')[0].files[0];
+            formUpload.append('_file_lampiran', fileF);
+        }
         const file = document.getElementsByName('_file')[0].files[0];
-        formUpload.append('_file', file);
+        // formUpload.append('_file', file);
         formUpload.append('kategori', kategori);
         formUpload.append('judul', judul);
         formUpload.append('tanggal', tanggal);

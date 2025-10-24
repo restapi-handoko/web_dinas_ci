@@ -1,7 +1,7 @@
 <?php if (isset($data)) { ?>
     <form id="formEditModalData" action="./editSave" method="post" enctype="multipart/form-data">
         <input type="hidden" id="_id" name="_id" value="<?= $data->pid ?>">
-        <input type="hidden" id="_old_image" name="_old_image" value="<?= $data->image ?>">
+        <input type="hidden" id="_old_lampiran" name="_old_lampiran" value="<?= $data->lampiran ?>">
         <div class="modal-body">
             <div class="row">
                 <div class="col-lg-6">
@@ -35,25 +35,20 @@
                     <textarea id="_isi" name="_isi"><?= $data->deskripsi ?></textarea>
                 </div>
                 <div class="col-lg-12 mt-4">
-                    <div class="row mt-4">
-                        <div class="col-lg-6">
-                            <div class="mt-3">
-                                <label for="_file" class="form-label">Gambar Pengadaan: </label>
-                                <input class="form-control" type="file" id="_file" name="_file" onFocus="inputFocus(this);" accept="image/*" onchange="loadFileImage()">
-                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Images</code> and Maximum File Size <code>500 Kb</code></p>
-                                <div class="help-block _file" for="_file"></div>
-                            </div>
+                    <div class="col-lg-6">
+                        <div class="mt-3">
+                            <label for="_file_lampiran" class="form-label">Lampiran Pengadaan: </label>
+                            <input class="form-control" type="file" id="_file_lampiran" name="_file_lampiran" onFocus="inputFocus(this);" accept="image/*, application/pdf" onchange="loadFilePdf()">
+                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Images</code> and Maximum File Size <code>5 Mb</code></p>
+                            <div class="help-block _file_lampiran" for="_file_lampiran"></div>
                         </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <div class="preview-image-upload">
-                                    <?php if ($data->image !== null) { ?>
-                                        <img class="imagePreviewUpload" src="<?= base_url('uploads/pengadaan') . '/' . $data->image ?>" id="imagePreviewUpload" />
-                                    <?php } else { ?>
-                                        <img class="imagePreviewUpload" id="imagePreviewUpload" />
-                                    <?php } ?>
-                                    <button type="button" class="btn-remove-preview-image">Remove</button>
-                                </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <div class="preview-image-upload">
+                                <?php if ($data->lampiran !== null) { ?>
+                                    <a target="_blank" href="<?= base_url() . '/uploads/pengadaan/' . $data->lampiran ?>" class="badge badge-pill badge-soft-success">Lampiran Pengadaan</a>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -138,14 +133,49 @@
             }
         }
 
+        function loadFilePdf() {
+            const inputF = document.getElementsByName('_file_lampiran')[0];
+            if (inputF.files && inputF.files[0]) {
+                var fileF = inputF.files[0];
+
+                var mime_types = ['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'];
+
+                if (mime_types.indexOf(fileF.type) == -1) {
+                    inputF.value = "";
+                    $('.preview-image-upload').css('display', 'block');
+                    Swal.fire(
+                        'Warning!!!',
+                        "Hanya file type gambar yang diizinkan.",
+                        'warning'
+                    );
+                    return false;
+                }
+
+                if (fileF.size > 5 * 1024 * 1000) {
+                    inputF.value = "";
+                    $('.preview-image-upload').css('display', 'block');
+                    Swal.fire(
+                        'Warning!!!',
+                        "Ukuran file tidak boleh lebih dari 5 Mb.",
+                        'warning'
+                    );
+                    return false;
+                }
+
+                $('.preview-image-upload').css('display', 'none');
+            } else {
+                console.log("failed Load");
+            }
+        }
+
         $("#formEditModalData").on("submit", function(e) {
             e.preventDefault();
             const id = document.getElementsByName('_id')[0].value;
-            const old_image = document.getElementsByName('_old_image')[0].value;
+            const old_lampiran = document.getElementsByName('_old_lampiran')[0].value;
             const judul = document.getElementsByName('_judul')[0].value;
             const tanggal = document.getElementsByName('_tanggal')[0].value;
             const isi = editorAdd.getData();
-            const fileName = document.getElementsByName('_file')[0].value;
+            const fileNameFile = document.getElementsByName('_file_lampiran')[0].value;
             const kategori = document.getElementsByName('_kategori')[0].value;
 
             let status;
@@ -199,21 +229,10 @@
                 return true;
             }
 
-            if (old_image === "") {
-                if (fileName === "") {
-                    Swal.fire(
-                        "Peringatan!",
-                        "Gambar pengadaan belum dipilih.",
-                        "warning"
-                    );
-                    return true;
-                }
-            }
-
             const formUpload = new FormData();
-            if (fileName !== "") {
-                const file = document.getElementsByName('_file')[0].files[0];
-                formUpload.append('_file', file);
+            if (fileNameFile !== "") {
+                const fileF = document.getElementsByName('_file_lampiran')[0].files[0];
+                formUpload.append('_file_lampiran', fileF);
             }
             formUpload.append('id', id);
             formUpload.append('kategori', kategori);
