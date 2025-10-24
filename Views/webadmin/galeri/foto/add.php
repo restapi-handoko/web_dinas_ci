@@ -281,7 +281,7 @@
         if (judul.length > 100) {
             $("input#_judul").css("color", "#dc3545");
             $("input#_judul").css("border-color", "#dc3545");
-            $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul maksimal 50 karakter.</li></ul>');
+            $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul maksimal 100 karakter.</li></ul>');
             return false;
         }
 
