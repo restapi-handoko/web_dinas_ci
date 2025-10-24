@@ -257,7 +257,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-3 p-0  pl-3">
                                             <a href="detail/pengaruh-kemajuan-teknologi-komunikasi-dan-informasi-terhadap-karakter-anak.html">
-                                                <img src="public/img/informasi/berita/1690274601_e67e70d3ccacdc0c476b.png" alt="Pengaruh Kemajuan Teknologi Komunikasi dan Informasi Terhadap Karakter Anak" class="rounded">
+                                                <img src="<?= base_url('assets') ?>/img/informasi/berita/1690274601_e67e70d3ccacdc0c476b.png" alt="Pengaruh Kemajuan Teknologi Komunikasi dan Informasi Terhadap Karakter Anak" class="rounded">
                                             </a>
                                         </div>
                                         <div class="col-9">
@@ -282,7 +282,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-3 p-0  pl-3">
                                             <a href="https://cms.datagoe.com/detail/lantik-karo-perencanaan-dan-organisasi-ini-pesan-menpora-amali">
-                                                <img src="public/img/informasi/berita/1649427829_79b53cb35750dfca57cd.jpg" alt="Lantik Karo Perencanaan dan Organisasi, Ini Pesan Menpora Amali" class="rounded">
+                                                <img src="<?= base_url('assets') ?>/img/informasi/berita/1649427829_79b53cb35750dfca57cd.jpg" alt="Lantik Karo Perencanaan dan Organisasi, Ini Pesan Menpora Amali" class="rounded">
                                             </a>
                                         </div>
                                         <div class="col-9">
@@ -307,7 +307,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-3 p-0  pl-3">
                                             <a href="detail/buka-peluang-ekonomi-kreatif-dengan-infrastuktur-dan-talenta-digital.html">
-                                                <img src="public/img/informasi/berita/1649428629_ebe3cbb1ca13030c101c.jpeg" alt="Buka Peluang Ekonomi Kreatif dengan Infrastuktur dan Talenta Digital" class="rounded">
+                                                <img src="<?= base_url('assets') ?>/img/informasi/berita/1649428629_ebe3cbb1ca13030c101c.jpeg" alt="Buka Peluang Ekonomi Kreatif dengan Infrastuktur dan Talenta Digital" class="rounded">
                                             </a>
                                         </div>
                                         <div class="col-9">
@@ -332,7 +332,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-3 p-0  pl-3">
                                             <a href="detail/lkpp-2020-raih-wtp-ini-harapan-presiden-jokowi-kepada-pimpinan-kementerianlembaga.html">
-                                                <img src="public/img/informasi/berita/1649427954_de93dccf8d3260bef391.jpeg" alt="LKPP 2020 Raih WTP, Ini Harapan Presiden Jokowi kepada Pimpinan Kementerian/Lembaga" class="rounded">
+                                                <img src="<?= base_url('assets') ?>/img/informasi/berita/1649427954_de93dccf8d3260bef391.jpeg" alt="LKPP 2020 Raih WTP, Ini Harapan Presiden Jokowi kepada Pimpinan Kementerian/Lembaga" class="rounded">
                                             </a>
                                         </div>
                                         <div class="col-9">
@@ -357,7 +357,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-3 p-0  pl-3">
                                             <a href="detail/menpora-amali-hadiri-penyampaian-lhp-lkpp-2020-secara-virtual.html">
-                                                <img src="public/img/informasi/berita/1649428562_63cd1f00021540e3b0eb.jpeg" alt="Menpora Amali Hadiri Penyampaian LHP LKPP 2020 Secara Virtual" class="rounded">
+                                                <img src="<?= base_url('assets') ?>/img/informasi/berita/1649428562_63cd1f00021540e3b0eb.jpeg" alt="Menpora Amali Hadiri Penyampaian LHP LKPP 2020 Secara Virtual" class="rounded">
                                             </a>
                                         </div>
                                         <div class="col-9">
@@ -382,7 +382,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-3 p-0  pl-3">
                                             <a href="detail/menpora-puji-ketum-fpti-yenny-wahid-atas-prestasi-dua-atlet-panjat-tebing-indonesia.html">
-                                                <img src="public/img/informasi/berita/1649428155_00e0f38eb04f08218555.jpg" alt="Menpora Puji Ketum FPTI Yenny Wahid atas Prestasi Dua Atlet Panjat Tebing Indonesia" class="rounded">
+                                                <img src="<?= base_url('assets') ?>/img/informasi/berita/1649428155_00e0f38eb04f08218555.jpg" alt="Menpora Puji Ketum FPTI Yenny Wahid atas Prestasi Dua Atlet Panjat Tebing Indonesia" class="rounded">
                                             </a>
                                         </div>
                                         <div class="col-9">
@@ -475,7 +475,7 @@
                                                 <div class="profile-image-wrapper">
                                                     <div class="profile-image">
                                                         <div class="avatar">
-                                                            <img src="public/img/section/1655792214_70107ab76c42da98cef0.png" alt="Card Picture">
+                                                            <img src="<?= base_url('assets') ?>/img/section/1655792214_70107ab76c42da98cef0.png" alt="Card Picture">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -501,7 +501,7 @@
                                                 <div class="profile-image-wrapper">
                                                     <div class="profile-image">
                                                         <div class="avatar">
-                                                            <img src="public/img/section/1655792202_eca61b1640dcdda50be4.png" alt="Card Picture">
+                                                            <img src="<?= base_url('assets') ?>/img/section/1655792202_eca61b1640dcdda50be4.png" alt="Card Picture">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -527,7 +527,7 @@
                                                 <div class="profile-image-wrapper">
                                                     <div class="profile-image">
                                                         <div class="avatar">
-                                                            <img src="public/img/section/1655791207_4c583efb71366983ae12.png" alt="Card Picture">
+                                                            <img src="<?= base_url('assets') ?>/img/section/1655791207_4c583efb71366983ae12.png" alt="Card Picture">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -553,7 +553,7 @@
                                                 <div class="profile-image-wrapper">
                                                     <div class="profile-image">
                                                         <div class="avatar">
-                                                            <img src="public/img/section/1655791375_bed701f9e766b52f59ac.png" alt="Card Picture">
+                                                            <img src="<?= base_url('assets') ?>/img/section/1655791375_bed701f9e766b52f59ac.png" alt="Card Picture">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -579,7 +579,7 @@
                                                 <div class="profile-image-wrapper">
                                                     <div class="profile-image">
                                                         <div class="avatar">
-                                                            <img src="public/img/section/1655791791_3724d6d86a2f9576a145.png" alt="Card Picture">
+                                                            <img src="<?= base_url('assets') ?>/img/section/1655791791_3724d6d86a2f9576a145.png" alt="Card Picture">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -605,7 +605,7 @@
                                                 <div class="profile-image-wrapper">
                                                     <div class="profile-image">
                                                         <div class="avatar">
-                                                            <img src="public/img/section/1655791700_3a9c6901c6da15da8cb0.png" alt="Card Picture">
+                                                            <img src="<?= base_url('assets') ?>/img/section/1655791700_3a9c6901c6da15da8cb0.png" alt="Card Picture">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -631,7 +631,7 @@
                                                 <div class="profile-image-wrapper">
                                                     <div class="profile-image">
                                                         <div class="avatar">
-                                                            <img src="public/img/section/1655791541_d700245f9a864657be9d.png" alt="Card Picture">
+                                                            <img src="<?= base_url('assets') ?>/img/section/1655791541_d700245f9a864657be9d.png" alt="Card Picture">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -666,7 +666,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="jl_topik_center blog-style-one blog-small-grid">
                                         <div class="jl_topik_center_w jl_radus_e" style="max-height: 350px!important;">
-                                            <div class="jl_f_img_bg" style="background-image: url('public/img/ebook/thumb/thumb_1639400811_8036ce709ce1978cbe3d.png');"></div>
+                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/ebook/thumb/thumb_1639400811_8036ce709ce1978cbe3d.png');"></div>
                                             <a onclick="lihatbook('8','Informasi Publik')" title="Lihat Detail" class="jl_f_img_link"></a>
 
                                             <div class="text-box">
@@ -685,7 +685,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="jl_topik_center blog-style-one blog-small-grid">
                                         <div class="jl_topik_center_w jl_radus_e" style="max-height: 350px!important;">
-                                            <div class="jl_f_img_bg" style="background-image: url('public/img/ebook/thumb/thumb_1639361251_8c7e8af5a81339c63bf9.png');"></div>
+                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/ebook/thumb/thumb_1639361251_8c7e8af5a81339c63bf9.png');"></div>
                                             <a onclick="lihatbook('7','Informasi Publik')" title="Lihat Detail" class="jl_f_img_link"></a>
 
                                             <div class="text-box">
@@ -704,7 +704,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="jl_topik_center blog-style-one blog-small-grid">
                                         <div class="jl_topik_center_w jl_radus_e" style="max-height: 350px!important;">
-                                            <div class="jl_f_img_bg" style="background-image: url('public/img/ebook/thumb/thumb_1639579019_ea6360db0359f7106061.jpg');"></div>
+                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/ebook/thumb/thumb_1639579019_ea6360db0359f7106061.jpg');"></div>
                                             <a onclick="lihatbook('6','Cerita Rakyat')" title="Lihat Detail" class="jl_f_img_link"></a>
 
                                             <div class="text-box">
@@ -723,7 +723,7 @@
                                 <div class="col-md-6 mb-4">
                                     <div class="jl_topik_center blog-style-one blog-small-grid">
                                         <div class="jl_topik_center_w jl_radus_e" style="max-height: 350px!important;">
-                                            <div class="jl_f_img_bg" style="background-image: url('public/img/ebook/thumb/thumb_1639578966_3427d41502e76bb7fb11.jpg');"></div>
+                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/ebook/thumb/thumb_1639578966_3427d41502e76bb7fb11.jpg');"></div>
                                             <a onclick="lihatbook('5','Informasi Publik')" title="Lihat Detail" class="jl_f_img_link"></a>
 
                                             <div class="text-box">
@@ -792,7 +792,7 @@
                         <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
                             <div class="card-body p-1 ">
                                 <div class=" justify-content-between align-items-center text-center">
-                                    <a rel="nofollow" data-toggle="modal" data-target="#modalViewsambutan" data-backdrop="static" data-keyboard="false"><img src="public/img/konfigurasi/pimpinan/1666974119_e6c4ee83f9e5204955fe.png" title="Baca sambutan Admin Dinas"></a>
+                                    <a rel="nofollow" data-toggle="modal" data-target="#modalViewsambutan" data-backdrop="static" data-keyboard="false"><img src="<?= base_url('assets') ?>/img/konfigurasi/pimpinan/1666974119_e6c4ee83f9e5204955fe.png" title="Baca sambutan Admin Dinas"></a>
                                     <br>
 
                                     <span class="badge badge-light-primary profile-badge text-center">Agus Suptianto <i class="fas fa-arrow-right"></i></span>
@@ -846,8 +846,8 @@
                                                 <div class="jl_grid_overlay_col">
                                                     <div class="jl_grid_verlay_wrap jl_radus_e">
                                                         <a onclick="lihatinfo('9')">
-                                                            <div class="jl_f_img_bg" style="background-image: url('public/img/informasi/infografis/1666836591_a7f275b099bba1f337dc.png');"></div>
-                                                            <a href="public/img/informasi/infografis/1666836591_a7f275b099bba1f337dc.png" download>
+                                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/informasi/infografis/1666836591_a7f275b099bba1f337dc.png');"></div>
+                                                            <a href="<?= base_url('assets') ?>/img/informasi/infografis/1666836591_a7f275b099bba1f337dc.png" download>
                                                                 <span class="jl_post_type_icon"><i class="jli-gallery"></i></span>
                                                             </a>
                                                         </a>
@@ -862,8 +862,8 @@
                                                 <div class="jl_grid_overlay_col">
                                                     <div class="jl_grid_verlay_wrap jl_radus_e">
                                                         <a onclick="lihatinfo('7')">
-                                                            <div class="jl_f_img_bg" style="background-image: url('public/img/informasi/infografis/1666836763_7199eae813fcf44003c1.jpg');"></div>
-                                                            <a href="public/img/informasi/infografis/1666836763_7199eae813fcf44003c1.jpg" download>
+                                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/informasi/infografis/1666836763_7199eae813fcf44003c1.jpg');"></div>
+                                                            <a href="<?= base_url('assets') ?>/img/informasi/infografis/1666836763_7199eae813fcf44003c1.jpg" download>
                                                                 <span class="jl_post_type_icon"><i class="jli-gallery"></i></span>
                                                             </a>
                                                         </a>
@@ -878,8 +878,8 @@
                                                 <div class="jl_grid_overlay_col">
                                                     <div class="jl_grid_verlay_wrap jl_radus_e">
                                                         <a onclick="lihatinfo('6')">
-                                                            <div class="jl_f_img_bg" style="background-image: url('public/img/informasi/infografis/1638761531_e0124927df005023b977.jpeg');"></div>
-                                                            <a href="public/img/informasi/infografis/1638761531_e0124927df005023b977.jpeg" download>
+                                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/informasi/infografis/1638761531_e0124927df005023b977.jpeg');"></div>
+                                                            <a href="<?= base_url('assets') ?>/img/informasi/infografis/1638761531_e0124927df005023b977.jpeg" download>
                                                                 <span class="jl_post_type_icon"><i class="jli-gallery"></i></span>
                                                             </a>
                                                         </a>
@@ -894,8 +894,8 @@
                                                 <div class="jl_grid_overlay_col">
                                                     <div class="jl_grid_verlay_wrap jl_radus_e">
                                                         <a onclick="lihatinfo('5')">
-                                                            <div class="jl_f_img_bg" style="background-image: url('public/img/informasi/infografis/1638761953_37739d0da03652bb60cd.png');"></div>
-                                                            <a href="public/img/informasi/infografis/1638761953_37739d0da03652bb60cd.png" download>
+                                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/informasi/infografis/1638761953_37739d0da03652bb60cd.png');"></div>
+                                                            <a href="<?= base_url('assets') ?>/img/informasi/infografis/1638761953_37739d0da03652bb60cd.png" download>
                                                                 <span class="jl_post_type_icon"><i class="jli-gallery"></i></span>
                                                             </a>
                                                         </a>
@@ -910,8 +910,8 @@
                                                 <div class="jl_grid_overlay_col">
                                                     <div class="jl_grid_verlay_wrap jl_radus_e">
                                                         <a onclick="lihatinfo('4')">
-                                                            <div class="jl_f_img_bg" style="background-image: url('public/img/informasi/infografis/1638761583_c0d10721fde79e3224a5.jpg');"></div>
-                                                            <a href="public/img/informasi/infografis/1638761583_c0d10721fde79e3224a5.jpg" download>
+                                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/informasi/infografis/1638761583_c0d10721fde79e3224a5.jpg');"></div>
+                                                            <a href="<?= base_url('assets') ?>/img/informasi/infografis/1638761583_c0d10721fde79e3224a5.jpg" download>
                                                                 <span class="jl_post_type_icon"><i class="jli-gallery"></i></span>
                                                             </a>
                                                         </a>
@@ -926,8 +926,8 @@
                                                 <div class="jl_grid_overlay_col">
                                                     <div class="jl_grid_verlay_wrap jl_radus_e">
                                                         <a onclick="lihatinfo('3')">
-                                                            <div class="jl_f_img_bg" style="background-image: url('public/img/informasi/infografis/1638761689_1ee8af85c9b1b4f8ee5b.jpeg');"></div>
-                                                            <a href="public/img/informasi/infografis/1638761689_1ee8af85c9b1b4f8ee5b.jpeg" download>
+                                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/informasi/infografis/1638761689_1ee8af85c9b1b4f8ee5b.jpeg');"></div>
+                                                            <a href="<?= base_url('assets') ?>/img/informasi/infografis/1638761689_1ee8af85c9b1b4f8ee5b.jpeg" download>
                                                                 <span class="jl_post_type_icon"><i class="jli-gallery"></i></span>
                                                             </a>
                                                         </a>
@@ -942,8 +942,8 @@
                                                 <div class="jl_grid_overlay_col">
                                                     <div class="jl_grid_verlay_wrap jl_radus_e">
                                                         <a onclick="lihatinfo('2')">
-                                                            <div class="jl_f_img_bg" style="background-image: url('public/img/informasi/infografis/1638761743_e37a26ddd2b4a5be19c4.jpeg');"></div>
-                                                            <a href="public/img/informasi/infografis/1638761743_e37a26ddd2b4a5be19c4.jpeg" download>
+                                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/informasi/infografis/1638761743_e37a26ddd2b4a5be19c4.jpeg');"></div>
+                                                            <a href="<?= base_url('assets') ?>/img/informasi/infografis/1638761743_e37a26ddd2b4a5be19c4.jpeg" download>
                                                                 <span class="jl_post_type_icon"><i class="jli-gallery"></i></span>
                                                             </a>
                                                         </a>
@@ -958,8 +958,8 @@
                                                 <div class="jl_grid_overlay_col">
                                                     <div class="jl_grid_verlay_wrap jl_radus_e">
                                                         <a onclick="lihatinfo('1')">
-                                                            <div class="jl_f_img_bg" style="background-image: url('public/img/informasi/infografis/1638761650_69a7e858b593cba59fb4.jpg');"></div>
-                                                            <a href="public/img/informasi/infografis/1638761650_69a7e858b593cba59fb4.jpg" download>
+                                                            <div class="jl_f_img_bg" style="background-image: url('<?= base_url('assets') ?>/img/informasi/infografis/1638761650_69a7e858b593cba59fb4.jpg');"></div>
+                                                            <a href="<?= base_url('assets') ?>/img/informasi/infografis/1638761650_69a7e858b593cba59fb4.jpg" download>
                                                                 <span class="jl_post_type_icon"><i class="jli-gallery"></i></span>
                                                             </a>
                                                         </a>
@@ -1134,7 +1134,7 @@
                                 <div class="d-flex justify-content-center">
                                     <center>
                                         <a href="https://lapor.go.id" target="_blank">
-                                            <img src="public/img/linkterkait/1681902947_870056369b988232f4ff.png" alt="" style="max-height: 47px" />
+                                            <img src="<?= base_url('assets') ?>/img/linkterkait/1681902947_870056369b988232f4ff.png" alt="" style="max-height: 47px" />
 
                                             LAPOR.GO.ID </a>
                                     </center>
