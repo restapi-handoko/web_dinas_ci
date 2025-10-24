@@ -30,7 +30,7 @@
                                             <?php if (count($dataSliders) > 0) { ?>
                                                 <?php foreach ($dataSliders as $key => $value) { ?>
                                                     <div class="carousel-item <?= $key == 0 ? "active" : "" ?>">
-                                                        <img src="<?= base_url() . 'uploads/appslider/' . $value->image ?>" class="d-block w-100" alt="<?= $value->judul ?>">
+                                                        <img src="<?= base_url() . 'uploads/slider/' . $value->image ?>" class="d-block w-100" alt="<?= $value->judul ?>">
                                                     </div>
                                                 <?php } ?>
                                             <?php } ?>
@@ -109,7 +109,7 @@
                                                     <div class="blog-item">
                                                         <div class="blog-img">
                                                             <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>">
-                                                                <img src="<?= base_url() ?>uploads/berita/widget/<?= $value->image ?>" alt="<?= $value->judul ?>" style="height:250px">
+                                                                <img src="<?= base_url() ?>uploads/berita/<?= $value->image ?>" alt="<?= $value->judul ?>" style="height:250px">
                                                             </a>
                                                         </div>
 
