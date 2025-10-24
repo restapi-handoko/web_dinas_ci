@@ -521,7 +521,7 @@
         let data = new FormData(form);
         $.ajax({
             type: "post",
-            url: 'https://cms.datagoe.com/poling/ubahpoling',
+            url: '<?= base_url('web') ?>/ubahpoling',
             data: data,
             enctype: 'multipart/form-data',
             processData: false,
@@ -546,7 +546,7 @@
                         // showConfirmButton: false,
                         // timer: 3550
                     });
-                    $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
+                    // $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
                 }
                 if (response.gagal) {
 
@@ -557,7 +557,7 @@
                         // showConfirmButton: false,
                         // timer: 3550
                     });
-                    $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
+                    // $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
                 }
                 if (response.sukses) {
 
@@ -568,14 +568,14 @@
                         // showConfirmButton: false,
                         // timer: 3550
                     }).then(function() {
-                        window.location = 'https://cms.datagoe.com/';
+                        window.location = '<?= base_url() ?>';
                     });
                 }
 
             },
             error: function(xhr, ajaxOptions, thrownerror) {
 
-                $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
+                // $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
             }
         });
     });

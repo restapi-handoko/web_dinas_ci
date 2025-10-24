@@ -96,4 +96,41 @@ class Home extends BaseController
 
         return view('web/home/tugas-fungsi', $data);
     }
+
+    public function postPoling()
+    {
+        $nilaiPoling = htmlspecialchars($this->request->getVar('poling_id'), true);
+
+        if ((int)$nilaiPoling > 0) {
+            $this->_db->transBegin();
+            $data = [
+                'nilai' => $nilaiPoling,
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+
+            try {
+                $this->_db->table('_tb_polling_layanan')->insert($data);
+                if ($this->_db->affectedRows() > 0) {
+                    $this->_db->transCommit();
+                    $response = new \stdClass;
+                    $response->sukses = "Polling berhasil disimpan.";
+                    return json_encode($response);
+                } else {
+                    $this->_db->transRollback();
+                    $response = new \stdClass;
+                    $response->gagal = "Gagal menyimpan polling.";
+                    return json_encode($response);
+                }
+            } catch (\Throwable $th) {
+                $this->_db->transRollback();
+                $response = new \stdClass;
+                $response->gagal = "Gagal menyimpan polling.";
+                return json_encode($response);
+            }
+        }
+
+        $response = new \stdClass;
+        $response->error = "Permintaan diizinkan";
+        return json_encode($response);
+    }
 }
