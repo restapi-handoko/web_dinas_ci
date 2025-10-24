@@ -4,11 +4,11 @@
             <div class="row justify-content-between align-items-center text-center">
                 <div class="col-md-6 pt-2">
 
-                    <img class="" src="public/img/konfigurasi/logo/p3.png" alt="" width="300" />
+                    <img class="" src="<?= base_url() ?>/assets/wp-content/images/logo-dark.png" alt="" width="300" />
 
                     <hr>
-                    <span class="text-light">
-                        Content Management System (CMS) DATAGOE dibuat khusus untuk situs pemerintahan, yayasan, sekolah, company profile dan lain-lain. CMS ini dibangun dengan Framework Codeigniter Versi 4.5.3 dan akan terus diupdate. </span>
+                    <!-- <span class="text-light">
+                        Content Management System (CMS) DATAGOE dibuat khusus untuk situs pemerintahan, yayasan, sekolah, company profile dan lain-lain. CMS ini dibangun dengan Framework Codeigniter Versi 4.5.3 dan akan terus diupdate. </span> -->
                 </div>
                 <div class="col-md-6 pt-2">
                     <br>

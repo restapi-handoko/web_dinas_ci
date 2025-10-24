@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="logo_small_wrapper col-md-4 col-sm-12 col-xs-12 mt-3 d-flex align-items-center">
-                    <a class="logo-mod-a text-center" href="https://cms.datagoe.com/">
+                    <a class="logo-mod-a text-center" href="<?= base_url('web') ?>/">
                         <img class="jl_logo_n logo_mod" src="public/img/konfigurasi/logo/p3.png" alt="CMS Datagoe" />
                     </a>
                     <div class="d-block d-sm-none search_header_menu jl_nav_mobile">
@@ -34,7 +34,7 @@
                         <div class="jl-eb-slider jelly_loading_pro" data-arrows="true" data-play="true" data-effect="false" data-speed="500" data-autospeed="7000" data-loop="true" data-dots="false" data-swipe="true" data-items="1" data-xs-items="1" data-sm-items="1" data-md-items="1" data-lg-items="1" data-xl-items="1">
                             <div class="item-slide jl_radus_e">
                                 <div class="slide-inner">
-                                    <a href="https://cms.datagoe.com" target="_blank">
+                                    <a href="<?= base_url('web') ?>" target="_blank">
                                         <img src="public/img/banner/1698764451_47333064c15c2e7399c1.jpg" title="Ads Google" />
                                     </a>
                                 </div>
@@ -79,13 +79,13 @@
                             <li class="menu-item menu-item-has-children">
                                 <a href="index.html#">INFORMASI<span class="border-menu"></span></a>
                                 <ul class="sub-menu">
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="https://cms.datagoe.com/layanan"><i class="fas fa-chalkboard-teacher" style="font-size: small;"></i>Layanan</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/layanan"><i class="fas fa-chalkboard-teacher" style="font-size: small;"></i>Layanan</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pengumuman.html"><i class="fas fa-bullhorn" style="font-size: small;"></i>Pengumuman</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="https://cms.datagoe.com/agenda"><i class="far fa-calendar-check" style="font-size: small;"></i>Agenda</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/agenda"><i class="far fa-calendar-check" style="font-size: small;"></i>Agenda</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bankdata.html"><i class="fas fa-database" style="font-size: small;"></i>Bank Data</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="produkhukum.html"><i class="fa fa-balance-scale" style="font-size: small;"></i>Produk Hukum</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="https://cms.datagoe.com/infografis"><i class="far fa-images" style="font-size: small;"></i>Infografis</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="https://cms.datagoe.com/transparansi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi Anggaran</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/infografis"><i class="far fa-images" style="font-size: small;"></i>Infografis</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/transparansi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi Anggaran</a></li>
                                     <li class="menu-item menu-item-has-children"><a target="_parent" href="index.html#"><i class="fas fa-expand" style="font-size: small;"></i> Informasi Berkala</a>
                                         <ul class="sub-menu">
                                             <!-- looping sub-submenu -->
@@ -110,7 +110,7 @@
                             <li class="menu-item menu-item-has-children">
                                 <a href="index.html#">INTERAKSI<span class="border-menu"></span></a>
                                 <ul class="sub-menu">
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="https://cms.datagoe.com/survey"><i class="far fa-check-square" style="font-size: small;"></i>Survei</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/survey"><i class="far fa-check-square" style="font-size: small;"></i>Survei</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="masukansaran.html"><i class="far fa-comments" style="font-size: small;"></i>Masukan Saran</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bukutamu.html"><i class="far fa-comment-alt" style="font-size: small;"></i>Buku Tamu</a></li>
                                 </ul>
@@ -157,7 +157,7 @@
                 <a href="page/sejarah.html">PROFIL DINAS<span class="border-menu"></span></a>
             </li>
             <li class="menu-item current-menu-item current_page_item">
-                <a href="https://cms.datagoe.com/transparansi">TRANSPARANSI ANGGARAN<span class="border-menu"></span></a>
+                <a href="<?= base_url('web') ?>/transparansi">TRANSPARANSI ANGGARAN<span class="border-menu"></span></a>
             </li>
         </ul>
     </div>
@@ -187,13 +187,13 @@
             <li class="menu-item menu-item-has-children">
                 <a href="index.html#">INFORMASI<span class="border-menu"></span></a>
                 <ul class="sub-menu">
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="https://cms.datagoe.com/layanan"><i class="fas fa-chalkboard-teacher" style="font-size: small;"></i>Layanan</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/layanan"><i class="fas fa-chalkboard-teacher" style="font-size: small;"></i>Layanan</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pengumuman.html"><i class="fas fa-bullhorn" style="font-size: small;"></i>Pengumuman</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="https://cms.datagoe.com/agenda"><i class="far fa-calendar-check" style="font-size: small;"></i>Agenda</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/agenda"><i class="far fa-calendar-check" style="font-size: small;"></i>Agenda</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bankdata.html"><i class="fas fa-database" style="font-size: small;"></i>Bank Data</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="produkhukum.html"><i class="fa fa-balance-scale" style="font-size: small;"></i>Produk Hukum</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="https://cms.datagoe.com/infografis"><i class="far fa-images" style="font-size: small;"></i>Infografis</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="https://cms.datagoe.com/transparansi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi Anggaran</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/infografis"><i class="far fa-images" style="font-size: small;"></i>Infografis</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/transparansi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi Anggaran</a></li>
                     <li class="menu-item menu-item-has-children"><a target="_parent" href="index.html#"><i class="fas fa-expand" style="font-size: small;"></i> Informasi Berkala</a>
                         <ul class="sub-menu">
                             <!-- looping sub-submenu -->
@@ -216,7 +216,7 @@
             <li class="menu-item menu-item-has-children">
                 <a href="index.html#">INTERAKSI<span class="border-menu"></span></a>
                 <ul class="sub-menu">
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="https://cms.datagoe.com/survey"><i class="far fa-check-square" style="font-size: small;"></i>Survei</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/survey"><i class="far fa-check-square" style="font-size: small;"></i>Survei</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="masukansaran.html"><i class="far fa-comments" style="font-size: small;"></i>Masukan Saran</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bukutamu.html"><i class="far fa-comment-alt" style="font-size: small;"></i>Buku Tamu</a></li>
                 </ul>
