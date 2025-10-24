@@ -137,32 +137,32 @@ $routes->post('/webadmin/setting/website/edit', 'Webadmin\Setting\Website::edit'
 $routes->post('/webadmin/setting/website/save', 'Webadmin\Setting\Website::save');
 $routes->post('/webadmin/setting/website/getAll', 'Webadmin\Setting\Website::getAll');
 
-$routes->get('/webadmin/galeri/foto', 'Webadmin\Galer\Foto::index');
-$routes->get('/webadmin/galeri/foto/data', 'Webadmin\Galer\Foto::data');
-$routes->get('/webadmin/galeri/foto/add', 'Webadmin\Galer\Foto::add');
-$routes->post('/webadmin/galeri/foto/edit', 'Webadmin\Galer\Foto::edit');
-$routes->post('/webadmin/galeri/foto/getAll', 'Webadmin\Galer\Foto::getAll');
-$routes->post('/webadmin/galeri/foto/delete', 'Webadmin\Galer\Foto::delete');
-$routes->post('/webadmin/galeri/foto/addSave', 'Webadmin\Galer\Foto::addSave');
-$routes->post('/webadmin/galeri/foto/editSave', 'Webadmin\Galer\Foto::editSave');
+$routes->get('/webadmin/galeri/foto', 'Webadmin\Galeri\Foto::index');
+$routes->get('/webadmin/galeri/foto/data', 'Webadmin\Galeri\Foto::data');
+$routes->get('/webadmin/galeri/foto/add', 'Webadmin\Galeri\Foto::add');
+$routes->post('/webadmin/galeri/foto/edit', 'Webadmin\Galeri\Foto::edit');
+$routes->post('/webadmin/galeri/foto/getAll', 'Webadmin\Galeri\Foto::getAll');
+$routes->post('/webadmin/galeri/foto/delete', 'Webadmin\Galeri\Foto::delete');
+$routes->post('/webadmin/galeri/foto/addSave', 'Webadmin\Galeri\Foto::addSave');
+$routes->post('/webadmin/galeri/foto/editSave', 'Webadmin\Galeri\Foto::editSave');
 
-$routes->get('/webadmin/galeri/slider', 'Webadmin\Galer\Slider::index');
-$routes->get('/webadmin/galeri/slider/data', 'Webadmin\Galer\Slider::data');
-$routes->get('/webadmin/galeri/slider/add', 'Webadmin\Galer\Slider::add');
-$routes->post('/webadmin/galeri/slider/edit', 'Webadmin\Galer\Slider::edit');
-$routes->post('/webadmin/galeri/slider/getAll', 'Webadmin\Galer\Slider::getAll');
-$routes->post('/webadmin/galeri/slider/delete', 'Webadmin\Galer\Slider::delete');
-$routes->post('/webadmin/galeri/slider/addSave', 'Webadmin\Galer\Slider::addSave');
-$routes->post('/webadmin/galeri/slider/editSave', 'Webadmin\Galer\Slider::editSave');
+$routes->get('/webadmin/galeri/slider', 'Webadmin\Galeri\Slider::index');
+$routes->get('/webadmin/galeri/slider/data', 'Webadmin\Galeri\Slider::data');
+$routes->get('/webadmin/galeri/slider/add', 'Webadmin\Galeri\Slider::add');
+$routes->post('/webadmin/galeri/slider/edit', 'Webadmin\Galeri\Slider::edit');
+$routes->post('/webadmin/galeri/slider/getAll', 'Webadmin\Galeri\Slider::getAll');
+$routes->post('/webadmin/galeri/slider/delete', 'Webadmin\Galeri\Slider::delete');
+$routes->post('/webadmin/galeri/slider/addSave', 'Webadmin\Galeri\Slider::addSave');
+$routes->post('/webadmin/galeri/slider/editSave', 'Webadmin\Galeri\Slider::editSave');
 
-$routes->get('/webadmin/galeri/video', 'Webadmin\Galer\Video::index');
-$routes->get('/webadmin/galeri/video/data', 'Webadmin\Galer\Video::data');
-$routes->get('/webadmin/galeri/video/add', 'Webadmin\Galer\Video::add');
-$routes->post('/webadmin/galeri/video/edit', 'Webadmin\Galer\Video::edit');
-$routes->post('/webadmin/galeri/video/getAll', 'Webadmin\Galer\Video::getAll');
-$routes->post('/webadmin/galeri/video/delete', 'Webadmin\Galer\Video::delete');
-$routes->post('/webadmin/galeri/video/addSave', 'Webadmin\Galer\Video::addSave');
-$routes->post('/webadmin/galeri/video/editSave', 'Webadmin\Galer\Video::editSave');
+$routes->get('/webadmin/galeri/video', 'Webadmin\Galeri\Video::index');
+$routes->get('/webadmin/galeri/video/data', 'Webadmin\Galeri\Video::data');
+$routes->get('/webadmin/galeri/video/add', 'Webadmin\Galeri\Video::add');
+$routes->post('/webadmin/galeri/video/edit', 'Webadmin\Galeri\Video::edit');
+$routes->post('/webadmin/galeri/video/getAll', 'Webadmin\Galeri\Video::getAll');
+$routes->post('/webadmin/galeri/video/delete', 'Webadmin\Galeri\Video::delete');
+$routes->post('/webadmin/galeri/video/addSave', 'Webadmin\Galeri\Video::addSave');
+$routes->post('/webadmin/galeri/video/editSave', 'Webadmin\Galeri\Video::editSave');
 
 $routes->get('/webadmin/informasi/agenda', 'Webadmin\Informasi\Agenda::index');
 $routes->get('/webadmin/informasi/agenda/data', 'Webadmin\Informasi\Agenda::data');
