@@ -90,6 +90,8 @@ class Filters extends BaseFilters
                 'except' => [
                     'webadmin',
                     'webadmin/*',
+                    'web',
+                    'web/*',
                     'home',
                     'home/*',
                     'auth',
