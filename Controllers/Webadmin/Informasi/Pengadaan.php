@@ -257,10 +257,10 @@ class Pengadaan extends BaseController
                     $this->_db->table('_tb_pengadaan')->where('pid', $id)->delete();
 
                     if ($this->_db->affectedRows() > 0) {
-                        if ($current->image !== null) {
+                        if ($current->lampiran !== null) {
                             try {
                                 $dir = FCPATH . "uploads/pengadaan";
-                                unlink($dir . '/' . $current->image);
+                                unlink($dir . '/' . $current->lampiran);
                             } catch (\Throwable $err) {
                             }
                         }
