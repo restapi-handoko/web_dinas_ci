@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
 
-    <title><?php echo $hasil_footer['judul']; ?></title>
+    <title><?= $footer->judul ?></title>
     <link rel="icon" href="<?= base_url('web') ?>wp-content/images/lampung-tengah.png" sizes="32x32" />
     <link rel="icon" href="<?= base_url('web') ?>wp-content/images/lampung-tengah.png" sizes="192x192" />
     <link rel="apple-touch-icon-precomposed" href="<?= base_url('web') ?>wp-content/images/lampung-tengah.png" />
