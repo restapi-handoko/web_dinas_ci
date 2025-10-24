@@ -32,6 +32,8 @@ class Filterauth implements FilterInterface
                     $uri = current_url(true);
                     $totalSegment = $uri->getTotalSegments();
                     if ($totalSegment > 0) {
+                        var_dump($totalSegment);
+                        die;
                         $uriMain = $uri->getSegment(1);
 
                         if ($uriMain === "" || $uriMain === "web" || $uriMain === "auth") {
