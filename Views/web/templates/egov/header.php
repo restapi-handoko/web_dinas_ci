@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="logo_small_wrapper col-md-4 col-sm-12 col-xs-12 mt-3 d-flex align-items-center">
                     <a class="logo-mod-a text-center" href="<?= base_url('web') ?>/">
-                        <img class="jl_logo_n logo_mod" src="public/img/konfigurasi/logo/p3.png" alt="CMS Datagoe" />
+                        <img class="jl_logo_n logo_mod" src="<?= base_url() ?>/assets/wp-content/images/logo-dark.png" alt="CMS Datagoe" />
                     </a>
                     <div class="d-block d-sm-none search_header_menu jl_nav_mobile">
                         <div class="menu_mobile_icons">
@@ -32,20 +32,19 @@
 
                     <div class="jl-w-slider jl_full_feature_w ">
                         <div class="jl-eb-slider jelly_loading_pro" data-arrows="true" data-play="true" data-effect="false" data-speed="500" data-autospeed="7000" data-loop="true" data-dots="false" data-swipe="true" data-items="1" data-xs-items="1" data-sm-items="1" data-md-items="1" data-lg-items="1" data-xl-items="1">
-                            <div class="item-slide jl_radus_e">
-                                <div class="slide-inner">
-                                    <a href="<?= base_url('web') ?>" target="_blank">
-                                        <img src="public/img/banner/1698764451_47333064c15c2e7399c1.jpg" title="Ads Google" />
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item-slide jl_radus_e">
-                                <div class="slide-inner">
-                                    <a href="index.html" target="_blank">
-                                        <img src="public/img/banner/1666587280_0cef4b8a5570755da611.jpg" title="Stop Gratifikasi" />
-                                    </a>
-                                </div>
-                            </div>
+                            <?php if (isset($dataSliders)) { ?>
+                                <?php if (count($dataSliders) > 0) { ?>
+                                    <?php foreach ($dataSliders as $key => $value) { ?>
+                                        <div class="item-slide jl_radus_e">
+                                            <div class="slide-inner">
+                                                <a href="javascript:;">
+                                                    <img src="<?= base_url() . 'uploads/slider/' . $value->image ?>" title="<?= $value->judul ?>" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
