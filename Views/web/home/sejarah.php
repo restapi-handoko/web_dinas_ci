@@ -32,12 +32,12 @@
                                             </span>
                                             <span class="meta-category-small single_meta_category">
                                                 <a class="post-category-color-text" style="background:#305b90" href="#">
-                                                    Visi dan Misi</i>
+                                                    Sejarah</i>
                                                 </a>
                                             </span>
                                         </div>
                                         <h6><span class="badge badge-light-primary"></span></h6>
-                                        <h2 class="single_post_title_main">Visi dan Misi</h2>
+                                        <h2 class="single_post_title_main">Sejarah</h2>
 
                                         <!-- <span class="jl_post_meta">
                                             <div class="row align-items-center">
@@ -80,15 +80,15 @@
                                             <div class="jl_single_share_wrapper jl_clear_at">
                                                 <ul class="single_post_share_icon_post">
                                                     <li class="single_post_share_facebook">
-                                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?= base_url('web') ?>/visi-misi" target="_blank"><i class="jli-facebook"></i>
+                                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?= base_url('web') ?>/sejarah" target="_blank"><i class="jli-facebook"></i>
                                                         </a>
                                                     </li>
                                                     <li class="single_post_share_twitter">
-                                                        <a href="https://twitter.com/intent/tweet?url=<?= base_url('web') ?>/visi-misi" target="_blank"><i class="jli-twitter"></i>
+                                                        <a href="https://twitter.com/intent/tweet?url=<?= base_url('web') ?>/sejarah" target="_blank"><i class="jli-twitter"></i>
                                                         </a>
                                                     </li>
                                                     <li class="single_post_share_whatsapp">
-                                                        <a href="whatsapp://send?text=<?= base_url('web') ?>/visi-misi" target="_blank"><i class="fab fa-whatsapp"></i>
+                                                        <a href="whatsapp://send?text=<?= base_url('web') ?>/sejarah" target="_blank"><i class="fab fa-whatsapp"></i>
                                                         </a>
                                                     </li>
                                                     <li class="single_post_share_linkedin">

@@ -62,15 +62,16 @@
 
                     <div class="d-flex justify-content-between">
                         <ul id="mainmenu" class="jl_main_menu">
-                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="index.html"> <i class="fas fa-home"></i>HOME<span class="border-menu"></span> </a></li>
+                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url() ?>"> <i class="fas fa-home"></i>HOME<span class="border-menu"></span> </a></li>
 
                             <li class="menu-item menu-item-has-children">
                                 <a href="index.html#">PROFIL<span class="border-menu"></span></a>
                                 <ul class="sub-menu">
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/visi-dan-misi.html"><i class="mdi mdi-library-books" style="font-size: small;"></i>Visi dan Misi</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/struktur-organisasi.html"><i class="fa fa-users" style="font-size: small;"></i>Struktur Organisasi</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/tugas-pokok-dan-fungsi.html"><i class="mdi mdi-buffer" style="font-size: small;"></i>Tugas Pokok dan Fungsi</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pegawai.html"><i class="fas fa-user-tie" style="font-size: small;"></i>Data Pegawai</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/sejarah"><i class="mdi mdi-library-books" style="font-size: small;"></i>Sejarah</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/visi-misi"><i class="mdi mdi-library-books" style="font-size: small;"></i>Visi dan Misi</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/struktur"><i class="fa fa-users" style="font-size: small;"></i>Struktur Organisasi</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/tugas-fungsi"><i class="mdi mdi-buffer" style="font-size: small;"></i>Tugas Pokok dan Fungsi</a></li>
+                                    <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pegawai.html"><i class="fas fa-user-tie" style="font-size: small;"></i>Data Pegawai</a></li> -->
                                 </ul>
                             </li>
                             <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="opini.html"> <i class=""></i>BERITA<span class="border-menu"></span> </a></li>
@@ -114,7 +115,7 @@
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bukutamu.html"><i class="far fa-comment-alt" style="font-size: small;"></i>Buku Tamu</a></li>
                                 </ul>
                             </li>
-                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="ebook.html"> <i class="mdi mdi-book-open-page-variant"></i>E-BOOK<span class="border-menu"></span> </a></li>
+                            <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="ebook.html"> <i class="mdi mdi-book-open-page-variant"></i>E-BOOK<span class="border-menu"></span> </a></li> -->
 
                         </ul>
 
@@ -169,15 +170,16 @@
 
         <ul id="mobile_menu_slide" class="menu_moble_slide">
 
-            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="index.html"> <i class="fas fa-home"></i>HOME<span class="border-menu"></span> </a></li>
+            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url() ?>"> <i class="fas fa-home"></i>HOME<span class="border-menu"></span> </a></li>
 
             <li class="menu-item menu-item-has-children">
                 <a href="index.html#">PROFIL<span class="border-menu"></span></a>
                 <ul class="sub-menu">
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/visi-dan-misi.html"><i class="mdi mdi-library-books" style="font-size: small;"></i>Visi dan Misi</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/struktur-organisasi.html"><i class="fa fa-users" style="font-size: small;"></i>Struktur Organisasi</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/tugas-pokok-dan-fungsi.html"><i class="mdi mdi-buffer" style="font-size: small;"></i>Tugas Pokok dan Fungsi</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pegawai.html"><i class="fas fa-user-tie" style="font-size: small;"></i>Data Pegawai</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/sejarah"><i class="mdi mdi-library-books" style="font-size: small;"></i>Sejarah</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/visi-misi"><i class="mdi mdi-library-books" style="font-size: small;"></i>Visi dan Misi</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/struktur"><i class="fa fa-users" style="font-size: small;"></i>Struktur Organisasi</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/tugas-fungsi"><i class="mdi mdi-buffer" style="font-size: small;"></i>Tugas Pokok dan Fungsi</a></li>
+                    <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pegawai.html"><i class="fas fa-user-tie" style="font-size: small;"></i>Data Pegawai</a></li> -->
                 </ul>
             </li>
 
@@ -221,7 +223,7 @@
                 </ul>
             </li>
 
-            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="ebook.html"> <i class="mdi mdi-book-open-page-variant"></i>E-BOOK<span class="border-menu"></span> </a></li>
+            <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="ebook.html"> <i class="mdi mdi-book-open-page-variant"></i>E-BOOK<span class="border-menu"></span> </a></li> -->
 
         </ul>
 
@@ -230,14 +232,14 @@
                 <div class="jellywp_about_us_widget_wrapper">
                     <div class="social_icons_widget">
                         <ul class="social-icons-list-widget icons_about_widget_display">
-                            <li> <a href="https://www.facebook.com/datagoe" class="facebook" target="_blank"><i class="jli-facebook"></i></a>
+                            <li> <a href="<?= $footer->facebook ?>" class="facebook" target="_blank"><i class="jli-facebook"></i></a>
                             </li>
-                            <li> <a href="http://twitter.com/datagoe" class="twitter" target="_blank"><i class="jli-twitter"></i></a>
+                            <li> <a href="<?= $footer->twitter ?>" class="twitter" target="_blank"><i class="jli-twitter"></i></a>
                             </li>
-                            <li> <a href="https://instagram.com/datagoe" class="instagram" target="_blank"><i class="jli-instagram"></i></a>
+                            <li> <a href="<?= $footer->instagram ?>" class="instagram" target="_blank"><i class="jli-instagram"></i></a>
                             </li>
-                            <li> <a href="https://www.youtube.com/c/datagoe" class="youtube" target="_blank"><i class="jli-youtube"></i></a>
-                            </li>
+                            <!-- <li> <a href="#" class="youtube" target="_blank"><i class="jli-youtube"></i></a>
+                            </li> -->
                         </ul>
                     </div>
                 </div>

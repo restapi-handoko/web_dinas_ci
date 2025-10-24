@@ -37,9 +37,9 @@ class Home extends BaseController
         return view('web/home/index', $data);
     }
 
-    public function profil()
+    public function sejarah()
     {
-        $data['title'] = 'Profil Instansi';
+        $data['title'] = 'Sejarah Instansi';
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
@@ -49,6 +49,21 @@ class Home extends BaseController
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')->get()->getResult();
 
-        return view('web/home/profil', $data);
+        return view('web/home/sejarah', $data);
+    }
+
+    public function visiMisi()
+    {
+        $data['title'] = 'Visi & Misi Instansi';
+        $data['admin'] = false;
+
+        $data['footer'] = getFooterPublik();
+        $data['data'] = $this->_db->table('_web_profil')->where('id', 2)->get()->getRowObject();
+        $data['dataBerita'] = $this->_db->table('_tb_berita a')
+            ->select("a.*, b.kategori")
+            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
+            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')->get()->getResult();
+
+        return view('web/home/visi-misi', $data);
     }
 }
