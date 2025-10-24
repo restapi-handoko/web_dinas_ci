@@ -65,4 +65,37 @@ class Berita extends BaseController
 
         return view('web/berita/index', $data);
     }
+
+    public function detail($tgl, $url)
+    {
+        // Validasi tambahan di controller jika perlu
+        if (!preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/', $tgl)) {
+            return view('404');
+        }
+
+        // Query database
+        $data['berita'] = $this->_db->table('_tb_berita a')
+            ->select("a.*, b.kategori")
+            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
+            ->where('a.tanggal', $tgl)
+            ->where('a.url', $url)
+            ->where('a.status', 1)
+            ->get()
+            ->getRowObject();
+
+        if (!$data['berita']) {
+            return view('404');
+        }
+        $data['title'] = 'Berita';
+        $data['admin'] = false;
+
+        $data['footer'] = getFooterPublik();
+        $data['dataBerita'] = $this->_db->table('_tb_berita a')
+            ->select("a.*, b.kategori")
+            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
+            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
+            ->limit(10)
+            ->get()->getResult();
+        return view('web/berita/detail', $data);
+    }
 }
