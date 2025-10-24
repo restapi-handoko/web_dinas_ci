@@ -26,7 +26,7 @@ class Home extends BaseController
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
-        $data['dataSliders'] = $this->_db->table('_tb_appslider')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
+        $data['dataSliders'] = $this->_db->table('_tb_slider')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
         $data['dataBeritas'] = $this->_db->table('_tb_berita')->where('status', 1)->orderBy('tanggal', 'DESC')->get()->getResult();
 
         return view('web/home/index', $data);
