@@ -661,3 +661,22 @@ function listHakAksesCustomAllowNew($menu, $submenu, $aksi)
         return false;
     }
 }
+
+
+// FUNGSI WEB PUBLIK
+function getFooterPublik()
+{
+    $db      = \Config\Database::connect();
+    try {
+        $data = $db->table('_tb_footer')
+            ->where('id', 1)
+            ->get()->getRowObject();
+        if ($data) {
+            return $data;
+        } else {
+            return false;
+        }
+    } catch (\Exception $e) {
+        return false;
+    }
+}

@@ -11,7 +11,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Web\Home::index');
+$routes->get('/web/home', 'Web\Home::index');
+
 // $routes->get('/home', 'Home::index');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/auth/logout', 'Auth::logout');
