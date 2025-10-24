@@ -982,7 +982,7 @@
 
                                 <!-- Sidebar Widget ISI POLING -->
                                 <div class="text-left text-primary">
-                                    <b>Bagaimanakah menurut Anda dengan Pelayanan dan Kinerja Bagian PBJ ?</b>
+                                    <b>Bagaimanakah menurut Anda dengan Pelayanan dan Kinerja Bagian Pengadaan Barang dan Jasa Sekretariat Daerah Kab. Lampung Tengah ?</b>
                                     <hr>
                                     <form action="https://cms.datagoe.com/" class="formtambah" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                                         <input type="hidden" name="csrf_tokencmsdatagoe" value="54e75f03c3ccb5e008b102e10bc27b73"> <input class=pointer type=radio name=poling_id id=poling_id value='2' />
