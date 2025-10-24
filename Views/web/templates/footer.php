@@ -6,7 +6,7 @@
 							<section id="text-7" class="widget widget_text">
 								<h4 class="widget-title font-alt">About US</h4>
 								<div class="textwidget">
-									<p><?= $footer->tentang ?></p>
+									<p><?= $footer->tentang; ?></p>
 								</div>
 							</section>
 							<section id="softia-social-networks-5" class="widget social_networks">

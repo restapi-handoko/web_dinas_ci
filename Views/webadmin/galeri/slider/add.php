@@ -17,7 +17,7 @@
                         <div class="mt-3">
                             <label for="_file" class="form-label">Gambar Slider: </label>
                             <input class="form-control" type="file" id="_file" name="_file" onFocus="inputFocus(this);" accept="image/*" onchange="loadFileImage()">
-                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Images</code> and Maximum File Size <code>1 Mb</code></p>
+                            <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Gambar</code> dan Maksimum Ukuran Gambar <code>1 Mb</code> dengan ukuran gambar: <code>1274 px X 209 px</code></p>
                             <div class="help-block _file" for="_file"></div>
                         </div>
                     </div>
