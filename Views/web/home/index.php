@@ -429,9 +429,9 @@
                     </div>
                     <div class="row mb-4">
                         <!-- loop -->
-                        <?php if (isset($dataBeritaDinas)) { ?>
-                            <?php if (count($dataBeritaDinas) > 0) { ?>
-                                <?php foreach ($dataBeritaDinas as $key => $value) { ?>
+                        <?php if (isset($dataBerita)) { ?>
+                            <?php if (count($dataBerita) > 0) { ?>
+                                <?php foreach ($dataBerita as $key => $value) { ?>
                                     <div class="col-md-6 col-12">
                                         <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
                                             <div class="card-body p-1">

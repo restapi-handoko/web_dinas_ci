@@ -49,9 +49,6 @@ class Home extends BaseController
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')->get()->getResult();
 
-        var_dump($data);
-        die;
-
         return view('web/home/profil', $data);
     }
 }
