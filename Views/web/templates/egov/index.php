@@ -30,7 +30,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://diskominfotik.lampungtengahkab.go.id/">
     <meta property="og:title" content="Content Management System Datagoe">
-    <meta property="og:image" content="https://cms.datagoe.com/public/img/konfigurasi/logo/p3.png">
+    <meta property="og:image" content="https://cms.datagoe.com/<?= base_url('assets') ?>/img/konfigurasi/logo/p3.png">
     <meta property="og:site_name" content="https://cms.datagoe.com/">
     <meta property="og:description" content="Content Management System (CMS) DATAGOE dibuat khusus untuk situs pemerintahan, yayasan, sekolah, company profile dan lain-lain. CMS ini dibangun dengan Framework Codeigniter Versi 4.5.3 dan akan terus diupdate.">
     <meta property="article:author" content="https://www.facebook.com/datagoesoftware/" />
@@ -44,7 +44,7 @@
     <meta name="twitter:creator" content="@datagoe_wkc">
     <meta name="twitter:title" content="Content Management System Datagoe" />
     <meta name="twitter:description" content="Content Management System (CMS) DATAGOE dibuat khusus untuk situs pemerintahan, yayasan, sekolah, company profile dan lain-lain. CMS ini dibangun dengan Framework Codeigniter Versi 4.5.3 dan akan terus diupdate." />
-    <meta name="twitter:image:src" content="https://cms.datagoe.com/public/img/konfigurasi/logo/p3.png" /> -->
+    <meta name="twitter:image:src" content="https://cms.datagoe.com/<?= base_url('assets') ?>/img/konfigurasi/logo/p3.png" /> -->
 
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets') ?>/app-assets/fonts/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url('assets') ?>/assets/css/bootstrap.css%3Fv2=.css" type="text/css" media="all" />
@@ -630,7 +630,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="card-body p-0">
-                    <p style="text-align:justify; "><img src="public/img/konfigurasi/pimpinan/1666974119_e6c4ee83f9e5204955fe.png" style="float:left; padding: 8px;" height="180" class="img" />
+                    <p style="text-align:justify; "><img src="<?= base_url('assets') ?>/img/konfigurasi/pimpinan/1666974119_e6c4ee83f9e5204955fe.png" style="float:left; padding: 8px;" height="180" class="img" />
                     <p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: sans-serif; font-size: 14px;"><span open="" sans",="" sans-serif;="" font-size:="" 14.56px;="" text-align:="" center;"="" style="color: rgb(80, 93, 105); font-family: Nunito, sans-serif; font-size: 14.56px;">Selamat datang di Website kami Dinas Pemuda Olahraga dan Kebudayaan Kabupaten Lembata, Website ini dimaksudkan sebagai sarana publikasi untuk memberikan Informasi dan gambaran Dinas Pemuda Olahraga dan Kebudayaan Kabupaten Lembata dalam Hal Publikasi kepada masyarakat. Melalui keberadaan website ini kiranya masyarakat dapat mengetahui seluruh informasi tentang Kebijakan Pemerintah Kabupaten Lembata pengelolaan sektor Kepemudaan dan Keolahragaan di wilayah Pemerintahan Kabupaten Lembata.&nbsp;</span><span open="" ",="" sans-serif;="" font-size:="" 14.56px;="" text-align:="" "="" sans",="" center;"="" style="color: rgb(80, 93, 105); font-family: Nunito, sans-serif; font-size: 14.56px; border-width: 0px; border-style: solid; border-color: rgb(229, 231, 235);">Diharapkan website ini bisa dijadikan sebagai salah satu media komunikasi yang efektif, dapat memberi</span><span style="font-size: 16px;">﻿</span><span open="" ",="" sans-serif;="" font-size:="" 14.56px;="" text-align:="" "="" sans",="" center;"="" style="color: rgb(80, 93, 105); font-family: Nunito, sans-serif; font-size: 14.56px; border-width: 0px; border-style: solid; border-color: rgb(229, 231, 235);">kan informasi, layanan yang akurat dan akuntabel untuk membangun&nbsp;<span lang="EN-US" style="border-width: 0px; border-style: solid; border-color: rgb(229, 231, 235);">olahraga</span>&nbsp;di Kabupaten&nbsp;<span lang="EN-US" style="border-width: 0px; border-style: solid; border-color: rgb(229, 231, 235);">Lembata</span>.&nbsp;</span></p>
                     <p class="MsoNormal" style="color: rgb(0, 0, 0); font-family: sans-serif; font-size: 14px;"><span open="" sans",="" sans-serif;="" font-size:="" 14.56px;="" text-align:="" center;"="" style="color: rgb(80, 93, 105); font-family: Nunito, sans-serif; font-size: 14.56px;">Dan sebagai wujud rasa tanggungjawab kami dalam rangka meningkatkan pelayanan kepada masyarakat, maka kami adakan website dinas ini. Kritik dan saran terhadap kekurangan dan kesalahan yang ada sangat kami harapkan guna penyempurnaan Website ini dimasa akan datang. Semoga Website ini memberikan manfaat bagi kita semua. Terima Kasih..!</span></p>
                     </p>
