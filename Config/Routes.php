@@ -16,6 +16,7 @@ $routes->get('/web/home', 'Web\Home::index');
 $routes->get('/web/sejarah', 'Web\Home::sejarah');
 $routes->get('/web/visi-misi', 'Web\Home::visiMisi');
 $routes->get('/web/struktur', 'Web\Home::struktur');
+$routes->get('/web/tugas-fungsi', 'Web\Home::tugasFungsi');
 
 // $routes->get('/home', 'Home::index');
 $routes->get('/auth', 'Auth::index');
