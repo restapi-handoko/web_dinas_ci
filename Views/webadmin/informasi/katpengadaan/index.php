@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- <h4 class="card-title">Data Kategori Berita</h4> -->
+                        <!-- <h4 class="card-title">Data Kategori Pengadaan</h4> -->
                         <table id="data-datatables" class="table table-bordered dt-responsive  nowrap w-100">
                             <thead>
                                 <tr>

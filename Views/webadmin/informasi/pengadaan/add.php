@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <label class="form-label">Kategori Berita: </label>
+                    <label class="form-label">Kategori Pengadaan: </label>
                     <select class="form-control select2" name="_kategori" id="_kategori" style="width: 100%" required>
                         <option value="">-- Pilih --</option>
                         <?php if (isset($kategoris)) {
@@ -18,24 +18,24 @@
                 <div class="help-block _kategori" for="_kategori"></div>
             </div>
             <div class="col-lg-2">
-                <label for="_tanggal" class="col-form-label">Tanggal Berita:</label>
+                <label for="_tanggal" class="col-form-label">Tanggal Pengadaan:</label>
                 <input type="date" class="form-control judul" id="_tanggal" name="_tanggal" onfocusin="inputFocus(this);" required />
                 <div class="help-block _tanggal"></div>
             </div>
             <div class="col-lg-10">
-                <label for="_judul" class="col-form-label">Judul Berita:</label>
-                <input type="text" class="form-control judul" id="_judul" name="_judul" placeholder="Judul berita..." onfocusin="inputFocus(this);">
+                <label for="_judul" class="col-form-label">Judul Pengadaan:</label>
+                <input type="text" class="form-control judul" id="_judul" name="_judul" placeholder="Judul pengadaan..." onfocusin="inputFocus(this);">
                 <div class="help-block _judul"></div>
             </div>
             <div class="col-lg-12">
-                <label for="_isi" class="col-form-label">Isi Berita:</label>
+                <label for="_isi" class="col-form-label">Isi Pengadaan:</label>
                 <textarea id="_isi" name="_isi"></textarea>
             </div>
             <div class="col-lg-12 mt-4">
                 <div class="row mt-4">
                     <div class="col-lg-6">
                         <div class="mt-3">
-                            <label for="_file" class="form-label">Gambar Berita: </label>
+                            <label for="_file" class="form-label">Gambar Pengadaan: </label>
                             <input class="form-control" type="file" id="_file" name="_file" onFocus="inputFocus(this);" accept="image/*" onchange="loadFileImage()" required>
                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Images</code> and Maximum File Size <code>500 Kb</code></p>
                             <div class="help-block _file" for="_file"></div>

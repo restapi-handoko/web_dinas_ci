@@ -1,12 +1,12 @@
 <?php if (isset($data)) { ?>
     <form id="formEditModalData" action="./editSave" method="post" enctype="multipart/form-data">
-        <input type="hidden" id="_id" name="_id" value="<?= $data->bid ?>">
+        <input type="hidden" id="_id" name="_id" value="<?= $data->pid ?>">
         <input type="hidden" id="_old_image" name="_old_image" value="<?= $data->image ?>">
         <div class="modal-body">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="mb-3">
-                        <label class="form-label">Kategori Berita: </label>
+                        <label class="form-label">Kategori Pengadaan: </label>
                         <select class="form-control select2" name="_kategori" id="_kategori" style="width: 100%" required>
                             <option value="">-- Pilih --</option>
                             <?php if (isset($kategoris)) {
@@ -21,24 +21,24 @@
                     <div class="help-block _kategori" for="_kategori"></div>
                 </div>
                 <div class="col-lg-2">
-                    <label for="_tanggal" class="col-form-label">Tanggal Berita:</label>
+                    <label for="_tanggal" class="col-form-label">Tanggal Pengadaan:</label>
                     <input type="date" class="form-control judul" id="_tanggal" value="<?= $data->tanggal ?>" name="_tanggal" onfocusin="inputFocus(this);" required />
                     <div class="help-block _tanggal"></div>
                 </div>
                 <div class="col-lg-10">
-                    <label for="_judul" class="col-form-label">Judul Berita:</label>
-                    <input type="text" class="form-control judul" value="<?= $data->judul ?>" id="_judul" name="_judul" placeholder="Judul berita..." onfocusin="inputFocus(this);">
+                    <label for="_judul" class="col-form-label">Judul Pengadaan:</label>
+                    <input type="text" class="form-control judul" value="<?= $data->judul ?>" id="_judul" name="_judul" placeholder="Judul pengadaan..." onfocusin="inputFocus(this);">
                     <div class="help-block _judul"></div>
                 </div>
                 <div class="col-lg-12">
-                    <label for="_isi" class="col-form-label">Isi Berita:</label>
+                    <label for="_isi" class="col-form-label">Isi Pengadaan:</label>
                     <textarea id="_isi" name="_isi"><?= $data->deskripsi ?></textarea>
                 </div>
                 <div class="col-lg-12 mt-4">
                     <div class="row mt-4">
                         <div class="col-lg-6">
                             <div class="mt-3">
-                                <label for="_file" class="form-label">Gambar Berita: </label>
+                                <label for="_file" class="form-label">Gambar Pengadaan: </label>
                                 <input class="form-control" type="file" id="_file" name="_file" onFocus="inputFocus(this);" accept="image/*" onchange="loadFileImage()">
                                 <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg">Images</code> and Maximum File Size <code>500 Kb</code></p>
                                 <div class="help-block _file" for="_file"></div>
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <div class="preview-image-upload">
                                     <?php if ($data->image !== null) { ?>
-                                        <img class="imagePreviewUpload" src="<?= base_url('uploads/berita') . '/' . $data->image ?>" id="imagePreviewUpload" />
+                                        <img class="imagePreviewUpload" src="<?= base_url('uploads/pengadaan') . '/' . $data->image ?>" id="imagePreviewUpload" />
                                     <?php } else { ?>
                                         <img class="imagePreviewUpload" id="imagePreviewUpload" />
                                     <?php } ?>
@@ -165,35 +165,35 @@
             if (judul === "") {
                 $("input#_judul").css("color", "#dc3545");
                 $("input#_judul").css("border-color", "#dc3545");
-                $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul berita tidak boleh kosong.</li></ul>');
+                $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul pengadaan tidak boleh kosong.</li></ul>');
                 return false;
             }
 
             if (judul.length < 5) {
                 $("input#_judul").css("color", "#dc3545");
                 $("input#_judul").css("border-color", "#dc3545");
-                $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul berita minimal 5 karakter.</li></ul>');
+                $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul pengadaan minimal 5 karakter.</li></ul>');
                 return false;
             }
 
             if (judul.length > 250) {
                 $("input#_judul").css("color", "#dc3545");
                 $("input#_judul").css("border-color", "#dc3545");
-                $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul berita maksimal 250 karakter.</li></ul>');
+                $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul pengadaan maksimal 250 karakter.</li></ul>');
                 return false;
             }
 
             if (tanggal === "") {
                 $("input#_tanggal").css("color", "#dc3545");
                 $("input#_tanggal").css("border-color", "#dc3545");
-                $('._tanggal').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Tanggal berita tidak boleh kosong.</li></ul>');
+                $('._tanggal').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Tanggal pengadaan tidak boleh kosong.</li></ul>');
                 return false;
             }
 
             if (isi.length < 5) {
                 Swal.fire(
                     "Peringatan!",
-                    "Isi dari konten berita minimal 5 kata.",
+                    "Isi dari konten pengadaan minimal 5 kata.",
                     "warning"
                 );
                 return true;
@@ -203,7 +203,7 @@
                 if (fileName === "") {
                     Swal.fire(
                         "Peringatan!",
-                        "Gambar berita belum dipilih.",
+                        "Gambar pengadaan belum dipilih.",
                         "warning"
                     );
                     return true;

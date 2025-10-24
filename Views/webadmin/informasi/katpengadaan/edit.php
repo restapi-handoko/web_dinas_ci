@@ -3,8 +3,8 @@
         <input type="hidden" id="_id" name="_id" value="<?= $data->kid ?>" />
         <div class="modal-body" style="padding-top: 0px; padding-bottom: 0px;">
             <div class="mb-3">
-                <label for="_name" class="form-label">Nama Kategori Berita</label>
-                <input type="text" class="form-control name" value="<?= $data->kategori ?>" id="_name" name="_name" placeholder="Nama kategori berita..." onfocusin="inputFocus(this);">
+                <label for="_name" class="form-label">Nama Kategori Pengadaan</label>
+                <input type="text" class="form-control name" value="<?= $data->kategori ?>" id="_name" name="_name" placeholder="Nama kategori pengadaan..." onfocusin="inputFocus(this);">
                 <div class="help-block _name"></div>
             </div>
         </div>

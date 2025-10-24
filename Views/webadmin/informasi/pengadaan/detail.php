@@ -2,15 +2,15 @@
     <div class="modal-body">
         <div class="row">
             <div class="col-lg-12">
-                <label class="col-form-label">Judul Berita:</label>
+                <label class="col-form-label">Judul Pengadaan:</label>
                 <div><?= $data->judul ?></div>
             </div>
             <div class="col-lg-6">
-                <label class="col-form-label">Kategori Berita:</label>
+                <label class="col-form-label">Kategori Pengadaan:</label>
                 <div><?= $data->kategori ?></div>
             </div>
             <div class="col-lg-3">
-                <label class="col-form-label">Tanggal Berita:</label>
+                <label class="col-form-label">Tanggal Pengadaan:</label>
                 <div><?= $data->tanggal ?></div>
             </div>
             <div class="col-lg-3">
@@ -26,13 +26,13 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <label for="_isi" class="col-form-label">Isi Berita:</label>
+                <label for="_isi" class="col-form-label">Isi Pengadaan:</label>
                 <div><?= $data->deskripsi ?></div>
             </div>
             <div class="col-lg-12 mt-4">
 
                 <?php if ($data->image !== null) { ?>
-                    <img class="imagePreviewUpload" src="<?= base_url('uploads/berita') . '/' . $data->image ?>" id="imagePreviewUpload" />
+                    <img class="imagePreviewUpload" src="<?= base_url('uploads/pengadaan') . '/' . $data->image ?>" id="imagePreviewUpload" />
                 <?php } ?>
 
             </div>

@@ -1,8 +1,8 @@
 <form id="formAddModalData" action="./addSave" method="post">
     <div class="modal-body">
         <div class="mb-3">
-            <label for="_name" class="col-form-label">Nama Kategori Berita:</label>
-            <input type="text" class="form-control name" id="_name" name="_name" placeholder="Nama kategori berita..." onfocusin="inputFocus(this);">
+            <label for="_name" class="col-form-label">Nama Kategori Pengadaan:</label>
+            <input type="text" class="form-control name" id="_name" name="_name" placeholder="Nama kategori pengadaan..." onfocusin="inputFocus(this);">
             <div class="help-block _name"></div>
         </div>
     </div>
