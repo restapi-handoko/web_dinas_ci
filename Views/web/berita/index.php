@@ -23,35 +23,35 @@
                                             <div class="card-body p-1">
                                                 <div class="row align-items-center">
                                                     <div class="col-3 p-0  pl-3">
-                                                        <a href="detail/pengaruh-kemajuan-teknologi-komunikasi-dan-informasi-terhadap-karakter-anak.html">
-                                                            <img src="public/img/informasi/berita/1690274601_e67e70d3ccacdc0c476b.png" alt="Pengaruh Kemajuan Teknologi Komunikasi dan Informasi Terhadap Karakter Anak" class="rounded">
+                                                        <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>">
+                                                            <img src="<?= base_url() ?>uploads/berita/<?= $value->image ?>" alt="<?= $value->judul ?>" class="rounded">
                                                         </a>
                                                     </div>
                                                     <div class="col-9">
                                                         <div class="d-block d-sm-none">
                                                             <h5 class="title-card">
-                                                                <a href="detail/pengaruh-kemajuan-teknologi-komunikasi-dan-informasi-terhadap-karakter-anak.html" tabindex="-1">Pengaruh Kemajuan Teknologi Komunikasi dan Informasi Terhadap Karakter Anak</a>
+                                                                <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" tabindex="-1"><?= $value->judul ?></a>
                                                             </h5>
                                                         </div>
                                                         <div class="d-none d-md-block">
                                                             <h6 class="title-cardx">
-                                                                <a href="detail/pengaruh-kemajuan-teknologi-komunikasi-dan-informasi-terhadap-karakter-anak.html" tabindex="-1">Pengaruh Kemajuan Teknologi Komunikasi dan Informasi Terhadap Karakter Anak</a>
+                                                                <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" tabindex="-1"><?= $value->judul ?></a>
                                                             </h6>
                                                         </div>
 
                                                         <span class="jl_post_meta">
                                                             <span class="text-primary">
-                                                                <a href="author/1/Vian%20Taum.html" class="cate"><i class="fas fa-user"></i>Vian Taum</a>
+                                                                <a href="javascript:;" class="cate"><i class="fas fa-user"></i>Admin</a>
                                                             </span>
                                                             <span> | </span>
                                                             <span class="text-primary">
-                                                                <a href="category/artikel.html" class="cate"><i class="mdi mdi-folder-multiple"></i>Artikel</a>
+                                                                <a href="javascript:;" class="cate"><i class="mdi mdi-folder-multiple"></i><?= $value->kategori ?></a>
                                                             </span>
                                                             <span> | </span>
-                                                            <span class="post-date" style="color:#647277;"><i class="mdi mdi-calendar-multiple-check"></i>Senin, 19 Juli 2021</span>
+                                                            <span class="post-date" style="color:#647277;"><i class="mdi mdi-calendar-multiple-check"></i><?= $value->tanggal ?></span>
                                                             <div class="d-none d-md-block">
-                                                                <p> Kehidupan manusia yang bermula dari kesederhanaan kini menjadi kehidupan yang bisa dikategorikan sangat modern. Di jaman yang semakin canggihnya teknologi informasi dan komunikasi yang berkembang s...
-                                                                    <span class="float-right"> <a href="detail/pengaruh-kemajuan-teknologi-komunikasi-dan-informasi-terhadap-karakter-anak.html" class="btn btn-block btn-light btn-sm text-light">Selengkapnya »</a></span>
+                                                                <p><?= potong_teks($value->isi, 100) ?>
+                                                                    <span class="float-right"> <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" class="btn btn-block btn-light btn-sm text-light">Selengkapnya »</a></span>
 
                                                                 </p>
                                                             </div>
