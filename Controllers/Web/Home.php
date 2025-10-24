@@ -66,4 +66,19 @@ class Home extends BaseController
 
         return view('web/home/visi-misi', $data);
     }
+
+    public function struktur()
+    {
+        $data['title'] = 'Struktur Organisasi';
+        $data['admin'] = false;
+
+        $data['footer'] = getFooterPublik();
+        $data['data'] = $this->_db->table('_web_profil')->where('id', 5)->get()->getRowObject();
+        $data['dataBerita'] = $this->_db->table('_tb_berita a')
+            ->select("a.*, b.kategori")
+            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
+            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')->get()->getResult();
+
+        return view('web/home/struktur', $data);
+    }
 }
