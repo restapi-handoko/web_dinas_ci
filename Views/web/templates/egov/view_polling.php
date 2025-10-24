@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="card-header p-1">
-                <h6 class="modal-title mt-1">Hasil Jajak Pendapat</h6>
+                <h6 class="modal-title mt-1">&nbsp;&nbsp;Hasil Jajak Pendapat</h6>
             </div>
             <div class="modal-body">
                 <table class="table table-hover p-0">
