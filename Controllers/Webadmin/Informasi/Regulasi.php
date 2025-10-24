@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Webadmin\Infomasi;
+namespace App\Controllers\Webadmin\Informasi;
 
 use App\Controllers\BaseController;
 use App\Models\Webadmin\RegulasiModel;
