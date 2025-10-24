@@ -19,7 +19,7 @@ $routes->get('/web/struktur', 'Web\Home::struktur');
 $routes->get('/web/tugas-fungsi', 'Web\Home::tugasFungsi');
 
 $routes->get('/web/berita', 'Web\Berita::index');
-$routes->get('/web/berita/([0-9]{4}-[0-9]{2}-[0-9]{2})/([a-zA-Z0-9-]+)', 'Web\Berita::detail/$1/$2');
+$routes->get('/web/berita/(:segment)/(:segment)', 'Web\Berita::detail/$1/$2');
 
 // $routes->get('/home', 'Home::index');
 $routes->get('/auth', 'Auth::index');
