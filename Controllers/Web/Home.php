@@ -39,7 +39,10 @@ class Home extends BaseController
 
         $data['footer'] = getFooterPublik();
         $data['data'] = $this->_db->table('_web_profil')->where('id', 1)->get()->getRowObject();
-        $data['dataBerita'] = $this->_db->table('_tb_berita')->where('status', 1)->orderBy('tanggal', 'DESC')->get()->getResult();
+        $data['dataBerita'] = $this->_db->table('_tb_berita a')
+            ->select("a.*, b.kategori")
+            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
+            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')->get()->getResult();
 
         return view('web/home/profil', $data);
     }
