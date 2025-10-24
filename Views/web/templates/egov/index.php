@@ -95,9 +95,7 @@
             <?= $this->renderSection('content'); ?>
 
             <script>
-                $(document).ready(function() {
-                    penawaran();
-                });
+                $(document).ready(function() {});
             </script>
 
             <?= $this->include('web/templates/egov/footer'); ?>
