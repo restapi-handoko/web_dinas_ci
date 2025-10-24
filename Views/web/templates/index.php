@@ -42,7 +42,7 @@
     <link rel='stylesheet' id='font-awesome-css' href='<?= base_url('assets') ?>/wp-content/plugins/js_composer/assets/lib/bower/font-awesome/css/font-awesome.mine23c.css?ver=5.7' type='text/css' media='all' />
     <link rel='stylesheet' id='themify-css' href='<?= base_url('assets') ?>/wp-content/plugins/softia-core/assets/themify-icons/themify-iconsaead.css?ver=5.0.3' type='text/css' media='all' />
     <link rel='stylesheet' id='softia-social-icons-css' href='<?= base_url('assets') ?>/wp-content/themes/softia/assets/css/social-icons8a54.css?ver=1.0.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='softia-widgets-css' href='w<?= base_url('assets') ?>p-content/themes/softia/assets/css/widgets8a54.css?ver=1.0.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='softia-widgets-css' href='w<?= base_url('assets') ?>/wp-content/themes/softia/assets/css/widgets8a54.css?ver=1.0.0' type='text/css' media='all' />
     <link rel='stylesheet' id='softia-master-css' href='<?= base_url('assets') ?>/wp-content/themes/softia/assets/css/master8a54.css?ver=1.0.0' type='text/css' media='all' />
     <link rel='stylesheet' id='softia-style-css' href='<?= base_url('assets') ?>/wp-content/themes/softia-child/styleaead.css?ver=5.0.3' type='text/css' media='all' />
     <link rel='stylesheet' id='js_composer_front-css' href='<?= base_url('assets') ?>/wp-content/uploads/js_composer/js_composer_front_custome23c.css?ver=5.7' type='text/css' media='all' />
@@ -210,7 +210,7 @@
         <?= $this->renderSection('content'); ?>
 
         <?= $this->include('web/templates/footer'); ?>
-    </div><!-- #page -->
+    </div>
 
     <script type='text/javascript' src='<?= base_url('assets') ?>/wp-content/plugins/contact-form-7/includes/js/scripts3c21.js?ver=5.1.1'></script>
     <script type='text/javascript' src='<?= base_url('assets') ?>/wp-content/themes/softia/assets/js/bootstrap.mina352.js?ver=4.1.3'></script>
