@@ -37,15 +37,16 @@
                     </div>
                 </div>
             </section>
-        </main><!-- #main -->
-    </div><!-- #primary -->
+        </main>
+    </div>
+</div>
 
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
 
-    <?= $this->section('scriptBottom'); ?>
+<?= $this->section('scriptBottom'); ?>
 
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
 
-    <?= $this->section('scriptTop'); ?>
+<?= $this->section('scriptTop'); ?>
 
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
