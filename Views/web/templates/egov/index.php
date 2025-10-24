@@ -76,7 +76,7 @@
             overflow-y: auto;
         }
     </style>
-
+    <?= $this->renderSection('scriptTop'); ?>
 
 </head>
 
@@ -93,7 +93,7 @@
             <input type="hidden" name="csrf_tokencmsdatagoe" value="54e75f03c3ccb5e008b102e10bc27b73" id="csrf_tokencmsdatagoe" />
 
             <?= $this->renderSection('content'); ?>
-
+            <?= $this->renderSection('scriptBottom'); ?>
             <script>
                 $(document).ready(function() {});
             </script>
