@@ -4,22 +4,23 @@
             <div class="card-header ">
                 <h6 class="modal-title mt-0">Detail Agenda </h6>
             </div>
-            <div class="modal-body"> <!-- <div class="form-group row"> --> <img id='img_load' width='100%' src='<?= base_url('assets') ?>/img/informasi/agenda/default.png'> <!-- </div> --> <!-- <div class="table-responsivex"> -->
+            <div class="modal-body">
+                <img id='img_load' width='100%' src='<?= base_url('assets') ?>/img/informasi/agenda/default.png'>
                 <table class="table table-bordered table-hover table-striped">
                     <tbody>
                         <tr>
                             <td colspan="2"><strong><?= $agenda->judul ?></strong></td>
                         </tr>
                         <?php if ($agenda->image !== NULL) { ?>
-                            <tr>
+                            <!-- <tr>
                                 <td colspan="2">
 
                                 </td>
-                            </tr>
+                            </tr> -->
                         <?php } ?>
                         <tr>
                             <td>Tanggal</td>
-                            <td><?= $agenda->tanggal_mulai !== NULL ? 'Mulai : <b>' . $agenda->tanggal_mulai . '</b>' : '' ?><?= $agenda->tanggal_selesai !== NULL ? 'Sampai Dengan : <b>' . $agenda->tanggal_selesai . '</b>' : '' ?></td>
+                            <td><?= $agenda->tanggal_mulai !== NULL ? 'Mulai : <b>' . $agenda->tanggal_mulai . '</b>' : '' ?><?= $agenda->tanggal_selesai !== NULL ? ' Sampai Dengan : <b>' . $agenda->tanggal_selesai . '</b>' : '' ?></td>
                         </tr>
                         <tr>
                             <td>Tempat</td>
