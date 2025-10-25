@@ -50,7 +50,7 @@
                                                                     <span style="font-size: 12px"><?= $value->tahun ?></span>
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    <a target="_parent" href="<?= base_url('web/bankdata/detail') . '/' . $value->url ?>"><span class="badge badge-primary"> <i class="fas fa-eye"></i> Detail</span></a>
+                                                                    <a target="_parent" href="<?= base_url('web/bankdata') . '/' . $value->url ?>"><span class="badge badge-primary"> <i class="fas fa-eye"></i> Detail</span></a>
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>
