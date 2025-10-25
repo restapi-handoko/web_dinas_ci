@@ -9,6 +9,17 @@
                     <input type="text" class="form-control judul" value="<?= $data->judul ?>" id="_judul" name="_judul" placeholder="Judul Pengumuman..." onfocusin="inputFocus(this);">
                     <div class="help-block _judul"></div>
                 </div>
+                <div class="col-lg-4">
+                    <label>Tahun</label>
+                    <div class="position-relative" id="datepicker5">
+                        <input type="text" class="form-control" name="_tahun" value="<?= $data->tahun ?>" data-provide="datepicker" data-date-container='#datepicker5' data-date-format="yyyy" data-date-min-view-mode="2">
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <label for="_sumber" class="col-form-label">Sumber Data:</label>
+                    <input type="text" class="form-control sumber" value="<?= $data->sumber_data ?>" id="_sumber" name="_sumber" placeholder="Sumber data..." onfocusin="inputFocus(this);">
+                    <div class="help-block _sumber"></div>
+                </div>
                 <div class="col-lg-12 mt-4">
                     <div class="row mt-4">
                         <div class="col-lg-6">
@@ -97,6 +108,8 @@
             const id = document.getElementsByName('_id')[0].value;
             const old_lampiran = document.getElementsByName('_old_lampiran')[0].value;
             const judul = document.getElementsByName('_judul')[0].value;
+            const tahun = document.getElementsByName('_tahun')[0].value;
+            const sumber = document.getElementsByName('_sumber')[0].value;
             const fileNameFile = document.getElementsByName('_file_lampiran')[0].value;
 
             let status;
@@ -110,6 +123,20 @@
                 $("input#_judul").css("color", "#dc3545");
                 $("input#_judul").css("border-color", "#dc3545");
                 $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul tidak boleh kosong.</li></ul>');
+                return false;
+            }
+
+            if (tahun === "") {
+                $("input#_tahun").css("color", "#dc3545");
+                $("input#_tahun").css("border-color", "#dc3545");
+                $('._tahun').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Tahun tidak boleh kosong.</li></ul>');
+                return false;
+            }
+
+            if (sumber === "") {
+                $("input#_sumber").css("color", "#dc3545");
+                $("input#_sumber").css("border-color", "#dc3545");
+                $('._sumber').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Sumberdata tidak boleh kosong.</li></ul>');
                 return false;
             }
 
@@ -134,6 +161,8 @@
             }
             formUpload.append('id', id);
             formUpload.append('judul', judul);
+            formUpload.append('tahun', tahun);
+            formUpload.append('sumber_data', sumber);
             formUpload.append('status', status);
 
             $.ajax({

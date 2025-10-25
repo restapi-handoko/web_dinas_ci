@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18">DOKUMEN</h4>
+                    <h4 class="mb-sm-0 font-size-18">Bank Data</h4>
 
                     <!-- <div class="page-title-right">
                         <ol class="breadcrumb m-0">
@@ -28,7 +28,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-6">
-                                <h4 class="card-title">Data Dokumen</h4>
+                                <h4 class="card-title">Data Bank Data</h4>
                             </div>
                             <?php if (listHakAksesCustomAllowNew('informasi', 'dokumen', 'add')) { ?>
                                 <div class="col-6 text-end">
@@ -45,6 +45,7 @@
                                     <th data-orderable="false">Aksi</th>
                                     <th>Status</th>
                                     <th>Judul</th>
+                                    <th>tahun</th>
                                     <th data-orderable="false">Lampiran</th>
                                 </tr>
                             </thead>

@@ -55,6 +55,7 @@ class Dokumen extends BaseController
                     break;
             }
             $row[] = $list->judul;
+            $row[] = $list->tahun;
             $row[] = $lampiran;
 
             $data[] = $row;
@@ -249,7 +250,19 @@ class Dokumen extends BaseController
             'judul' => [
                 'rules' => 'required|trim',
                 'errors' => [
-                    'required' => 'Judul pengumuman tidak boleh kosong. ',
+                    'required' => 'Judul dokumen tidak boleh kosong. ',
+                ]
+            ],
+            'tahun' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Tahun tidak boleh kosong. ',
+                ]
+            ],
+            'sumber_data' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Sumber data tidak boleh kosong. ',
                 ]
             ],
             'status' => [
@@ -272,6 +285,8 @@ class Dokumen extends BaseController
             $response = new \stdClass;
             $response->status = 400;
             $response->message = $this->validator->getError('judul')
+                . $this->validator->getError('tahun')
+                . $this->validator->getError('sumber_data')
                 . $this->validator->getError('status')
                 . $this->validator->getError('_file_lampiran');
             return json_encode($response);
@@ -288,6 +303,8 @@ class Dokumen extends BaseController
             }
 
             $judul = htmlspecialchars($this->request->getVar('judul'), true);
+            $tahun = htmlspecialchars($this->request->getVar('tahun'), true);
+            $sumber_data = htmlspecialchars($this->request->getVar('sumber_data'), true);
             $status = htmlspecialchars($this->request->getVar('status'), true);
 
             $slug = generateSlug($judul);
@@ -300,6 +317,8 @@ class Dokumen extends BaseController
 
             $data = [
                 'judul' => $judul,
+                'tahun' => $tahun,
+                'sumber_data' => $sumber_data,
                 'status' => $status,
                 'url' => $slug . '.html',
                 'user_created' => $user->data->uid,
@@ -373,7 +392,19 @@ class Dokumen extends BaseController
             'judul' => [
                 'rules' => 'required|trim',
                 'errors' => [
-                    'required' => 'Judul berita tidak boleh kosong. ',
+                    'required' => 'Judul tidak boleh kosong. ',
+                ]
+            ],
+            'tahun' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Tahun tidak boleh kosong. ',
+                ]
+            ],
+            'sumber_data' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Sumber data tidak boleh kosong. ',
                 ]
             ],
             'status' => [
@@ -404,6 +435,8 @@ class Dokumen extends BaseController
             $response->status = 400;
             $response->message = $this->validator->getError('id')
                 . $this->validator->getError('judul')
+                . $this->validator->getError('tahun')
+                . $this->validator->getError('sumber_data')
                 . $this->validator->getError('status')
                 . $this->validator->getError('_file_lampiran');
             return json_encode($response);
@@ -422,6 +455,8 @@ class Dokumen extends BaseController
 
             $id = htmlspecialchars($this->request->getVar('id'), true);
             $judul = htmlspecialchars($this->request->getVar('judul'), true);
+            $tahun = htmlspecialchars($this->request->getVar('tahun'), true);
+            $sumber_data = htmlspecialchars($this->request->getVar('sumber_data'), true);
             $status = htmlspecialchars($this->request->getVar('status'), true);
 
             $oldData =  $this->_db->table('_tb_dokumen')->where('id', $id)->get()->getRowObject();
@@ -435,6 +470,8 @@ class Dokumen extends BaseController
 
             $data = [
                 'judul' => $judul,
+                'tahun' => $tahun,
+                'sumber_data' => $sumber_data,
                 'status' => $status,
                 'user_updated' => $user->data->uid,
                 'updated_at' => date('Y-m-d H:i:s'),
@@ -454,6 +491,8 @@ class Dokumen extends BaseController
             if (
                 (int)$status === (int)$oldData->status
                 && $judul === $oldData->judul
+                && $tahun === $oldData->tahun
+                && $sumber_data === $oldData->sumber_data
             ) {
                 if ($filenamelampiranFile == '') {
                     $response = new \stdClass;
