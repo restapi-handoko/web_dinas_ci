@@ -26,6 +26,13 @@ class Foto extends BaseController
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
+        $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
+            ->select("a.*, b.kategori")
+            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
+            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
+            ->limit(5)
+            ->get()->getResult();
+
         $data['dataAlbum'] = $this->_db->table('_tb_foto')
             ->select("*, count(album) as jumlah")
             ->where('status', 1)
@@ -85,11 +92,11 @@ class Foto extends BaseController
         $data['album'] = $album;
 
         $data['footer'] = getFooterPublik();
-        $data['dataBerita'] = $this->_db->table('_tb_berita a')
+        $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
-            ->limit(10)
+            ->limit(5)
             ->get()->getResult();
         return view('web/galeri/foto/detail', $data);
     }

@@ -60,9 +60,9 @@
                         <div class="jl_m_center blog-style-one blog-small-grid">
                             <div class="jl-w-slider jl_full_feature_w">
                                 <!-- <div class="jl-eb-slider jelly_loading_pro" data-arrows="true" data-play="true" data-effect="false" data-speed="500" data-autospeed="7000" data-loop="true" data-dots="true" data-swipe="true" data-items="1" data-xs-items="1" data-sm-items="1" data-md-items="1" data-lg-items="1" data-xl-items="1"> -->
-                                <?php if (isset($dataBerita)) { ?>
-                                    <?php if (count($dataBerita) > 0) { ?>
-                                        <?php foreach ($dataBerita as $key => $value) { ?>
+                                <?php if (isset($dataWidgetBerita)) { ?>
+                                    <?php if (count($dataWidgetBerita) > 0) { ?>
+                                        <?php foreach ($dataWidgetBerita as $key => $value) { ?>
                                             <?php if ($key == 0) { ?>
                                                 <div class="item-slide jl_m_center_w jl_radus_e">
                                                     <div class="slide-inner">
@@ -429,9 +429,9 @@
                     </div>
                     <div class="row mb-4">
                         <!-- loop -->
-                        <?php if (isset($dataBerita)) { ?>
-                            <?php if (count($dataBerita) > 0) { ?>
-                                <?php foreach ($dataBerita as $key => $value) { ?>
+                        <?php if (isset($dataWidgetBerita)) { ?>
+                            <?php if (count($dataWidgetBerita) > 0) { ?>
+                                <?php foreach ($dataWidgetBerita as $key => $value) { ?>
                                     <div class="col-md-6 col-12">
                                         <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
                                             <div class="card-body p-1">

@@ -27,10 +27,16 @@ class Home extends BaseController
 
         $data['footer'] = getFooterPublik();
         $data['dataSliders'] = $this->_db->table('_tb_slider')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
-        $data['dataBerita'] = $this->_db->table('_tb_berita a')
+        $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
+            ->limit(5)
+            ->get()->getResult();
+        $data['dataBeritaPopular'] = $this->_db->table('_tb_berita a')
+            ->select("a.*, b.kategori")
+            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
+            ->where('a.status', 1)->orderBy('a.view', 'DESC')->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
 
@@ -44,10 +50,12 @@ class Home extends BaseController
 
         $data['footer'] = getFooterPublik();
         $data['data'] = $this->_db->table('_web_profil')->where('id', 1)->get()->getRowObject();
-        $data['dataBerita'] = $this->_db->table('_tb_berita a')
+        $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
-            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')->get()->getResult();
+            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
+            ->limit(5)
+            ->get()->getResult();
 
         return view('web/home/sejarah', $data);
     }
@@ -59,10 +67,12 @@ class Home extends BaseController
 
         $data['footer'] = getFooterPublik();
         $data['data'] = $this->_db->table('_web_profil')->where('id', 2)->get()->getRowObject();
-        $data['dataBerita'] = $this->_db->table('_tb_berita a')
+        $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
-            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')->get()->getResult();
+            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
+            ->limit(5)
+            ->get()->getResult();
 
         return view('web/home/visi-misi', $data);
     }
@@ -74,10 +84,12 @@ class Home extends BaseController
 
         $data['footer'] = getFooterPublik();
         $data['data'] = $this->_db->table('_web_profil')->where('id', 5)->get()->getRowObject();
-        $data['dataBerita'] = $this->_db->table('_tb_berita a')
+        $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
-            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')->get()->getResult();
+            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
+            ->limit(5)
+            ->get()->getResult();
 
         return view('web/home/struktur', $data);
     }
@@ -89,10 +101,12 @@ class Home extends BaseController
 
         $data['footer'] = getFooterPublik();
         $data['data'] = $this->_db->table('_web_profil')->where('id', 4)->get()->getRowObject();
-        $data['dataBerita'] = $this->_db->table('_tb_berita a')
+        $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
-            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')->get()->getResult();
+            ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
+            ->limit(5)
+            ->get()->getResult();
 
         return view('web/home/tugas-fungsi', $data);
     }
