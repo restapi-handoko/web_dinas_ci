@@ -7,7 +7,7 @@
                 <div class="help-block _judul"></div>
             </div>
             <div class="col-lg-2">
-                <label>Tahun</label>
+                <label for="_tahun" class="col-form-label">Tahun:</label>
                 <div class="position-relative" id="datepicker5">
                     <input type="text" class="form-control" name="_tahun" data-provide="datepicker" data-date-container='#datepicker5' data-date-format="yyyy" data-date-min-view-mode="2">
                 </div>
