@@ -69,7 +69,7 @@
                                                     <tr>
                                                         <td colspan="2">
                                                             <b>DOKUMEN :</b></br>
-                                                            <ol class="single_post_tag_layout">
+                                                            <ol class="document-list">
                                                                 <?php
                                                                 if ($dokumen->lampiran !== null) {
                                                                     $files = json_decode($dokumen->lampiran, true);
@@ -77,13 +77,13 @@
                                                                         foreach ($files as $index => $file) {
                                                                             $fileName = isset($file['custom_name']) ? $file['custom_name'] : (isset($file['original_name']) ? $file['original_name'] : 'File ' . ($index + 1));
                                                                             $savedName = isset($file['saved_name']) ? $file['saved_name'] : $file; ?>
-                                                                            <li>
-                                                                                <a target="_blank" href="<?= base_url() . '/uploads/dokumen/' . $savedName ?>" title="<?= $fileName ?>"><?= $fileName ?></a>
+                                                                            <li class="document-item">
+                                                                                <a target="_blank" href="<?= base_url() . '/uploads/dokumen/' . $savedName ?>" title="<?= $fileName ?>" class="document-link"><i class="fa fa-file-pdf"></i> <?= $fileName ?></a>
                                                                             </li>
                                                                         <?php }
                                                                     } else { ?>
-                                                                        <li>
-                                                                            <a target="_blank" href="<?= base_url() . '/uploads/dokumen/' . $dokumen->lampiran ?>">Lampiran</a>
+                                                                        <li class="document-item">
+                                                                            <a target="_blank" href="<?= base_url() . '/uploads/dokumen/' . $dokumen->lampiran ?>" class="document-link"><i class="fa fa-file-pdf"></i> Lampiran</a>
                                                                         </li>
                                                                 <?php }
                                                                 }
@@ -92,6 +92,37 @@
                                                         </td>
                                                     </tr>
                                                 </tbody>
+                                                <style>
+                                                    .document-list {
+                                                        list-style-type: decimal;
+                                                        padding-left: 20px;
+                                                        margin: 10px 0;
+                                                    }
+
+                                                    .document-item {
+                                                        margin-bottom: 8px;
+                                                        padding: 5px 0;
+                                                    }
+
+                                                    .document-link {
+                                                        text-decoration: none;
+                                                        color: #007bff;
+                                                        padding: 5px 10px;
+                                                        border-radius: 4px;
+                                                        transition: all 0.3s ease;
+                                                        display: inline-block;
+                                                    }
+
+                                                    .document-link:hover {
+                                                        background-color: #007bff;
+                                                        color: white;
+                                                        text-decoration: none;
+                                                    }
+
+                                                    .document-link .fa {
+                                                        margin-right: 5px;
+                                                    }
+                                                </style>
                                             </table>
                                         </div>
                                         <hr>
