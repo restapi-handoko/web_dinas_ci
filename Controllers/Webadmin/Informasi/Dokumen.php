@@ -584,14 +584,20 @@ class Dokumen extends BaseController
             $uploadedFiles = [];
             $fileNames = $this->request->getPost('file_names');
             $existingFiles = $this->request->getPost('existing_files');
+            $deletedFiles = $this->request->getPost('deleted_files'); // File yang dihapus
             $newFiles = $this->request->getFiles('_file_lampiran');
 
             // Process files
             $finalFiles = [];
 
-            // Handle existing files
+            // Handle existing files (kecuali yang dihapus)
             if (!empty($existingFiles)) {
                 foreach ($existingFiles as $index => $existingFile) {
+                    // Skip files that are marked for deletion
+                    if (!empty($deletedFiles) && in_array($existingFile, $deletedFiles)) {
+                        continue;
+                    }
+
                     $finalFiles[] = [
                         'saved_name' => $existingFile,
                         'custom_name' => $fileNames[$index],
@@ -606,7 +612,11 @@ class Dokumen extends BaseController
                     if ($file->isValid() && !$file->hasMoved()) {
                         $originalName = $file->getName();
                         $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
-                        $customFileName = $fileNames[count($existingFiles) + $index] ?? pathinfo($originalName, PATHINFO_FILENAME);
+
+                        // Calculate correct index for file names
+                        $existingFilesCount = !empty($existingFiles) ? count($existingFiles) : 0;
+                        $customFileName = $fileNames[$existingFilesCount + $index] ?? pathinfo($originalName, PATHINFO_FILENAME);
+
                         $newName = _create_name_foto($customFileName . '.' . $fileExtension);
 
                         if ($file->move($dir, $newName)) {
@@ -628,6 +638,14 @@ class Dokumen extends BaseController
             $this->_db->transBegin();
             try {
                 $this->_db->table('_tb_dokumen')->where('id', $oldData->id)->update($data);
+                if (!empty($deletedFiles)) {
+                    foreach ($deletedFiles as $deletedFile) {
+                        $filePath = $dir . '/' . $deletedFile;
+                        if (file_exists($filePath) && is_file($filePath)) {
+                            unlink($filePath);
+                        }
+                    }
+                }
             } catch (\Exception $e) {
                 // Rollback uploaded files
                 foreach ($uploadedFiles as $uploadedFile) {
@@ -644,12 +662,12 @@ class Dokumen extends BaseController
 
             if ($this->_db->affectedRows() > 0) {
                 // Delete old files that are no longer used
-                $this->cleanupOldFiles($oldData->lampiran, $finalFiles);
+                // $this->cleanupOldFiles($oldData->lampiran, $finalFiles);
 
                 $this->_db->transCommit();
                 $response = new \stdClass;
                 $response->status = 200;
-                $response->message = "Data berhasil diupdate.";
+                $response->message = "Data berhasil diupdate." . (!empty($deletedFiles) ? " " . count($deletedFiles) . " file dihapus." : "");
                 $response->redirect = base_url('webadmin/informasi/dokumen/data');
                 return json_encode($response);
             } else {

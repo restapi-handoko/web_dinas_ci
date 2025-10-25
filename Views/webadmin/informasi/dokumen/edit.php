@@ -265,12 +265,12 @@
 
         function removeFileInput(button) {
             const fileInputGroup = button.closest('.file-input-group');
+            const isExistingFile = fileInputGroup.classList.contains('existing-file');
 
-            // Tampilkan konfirmasi untuk existing files
-            if (fileInputGroup.classList.contains('existing-file')) {
+            if (isExistingFile) {
                 Swal.fire({
                     title: 'Hapus File?',
-                    text: 'File yang dihapus tidak dapat dikembalikan',
+                    text: 'File akan dihapus saat data disimpan',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
@@ -279,7 +279,19 @@
                     cancelButtonText: 'Batal'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        fileInputGroup.remove();
+                        // Hide instead of remove, dan tandai untuk penghapusan
+                        fileInputGroup.style.display = 'none';
+
+                        // Tandai file untuk dihapus
+                        const existingFileInput = fileInputGroup.querySelector('input[name="existing_files[]"]');
+                        if (existingFileInput) {
+                            const deletedFileInput = document.createElement('input');
+                            deletedFileInput.type = 'hidden';
+                            deletedFileInput.name = 'deleted_files[]';
+                            deletedFileInput.value = existingFileInput.value;
+                            document.getElementById('formEditModalData').appendChild(deletedFileInput);
+                        }
+
                         updateRemoveButtons();
                     }
                 });
@@ -290,13 +302,18 @@
         }
 
         function updateRemoveButtons() {
-            const fileInputGroups = document.querySelectorAll('.file-input-group');
+            const visibleFileInputGroups = document.querySelectorAll('.file-input-group[style*="display: block"], .file-input-group:not([style])');
             const removeButtons = document.querySelectorAll('.file-input-group .btn-danger');
 
-            // Disable remove button if only one input remains
-            if (fileInputGroups.length === 1) {
-                removeButtons[0].disabled = true;
-                removeButtons[0].title = 'Tidak dapat menghapus satu-satunya file';
+            // Disable remove button if only one VISIBLE input remains
+            if (visibleFileInputGroups.length === 1) {
+                removeButtons.forEach(button => {
+                    const fileInputGroup = button.closest('.file-input-group');
+                    if (fileInputGroup.style.display !== 'none') {
+                        button.disabled = true;
+                        button.title = 'Tidak dapat menghapus satu-satunya file';
+                    }
+                });
             } else {
                 removeButtons.forEach(button => {
                     button.disabled = false;
@@ -400,21 +417,27 @@
 
             // Check if there are any new file uploads
             fileInputs.forEach(input => {
-                if (input.files && input.files[0]) {
+                const fileInputGroup = input.closest('.file-input-group');
+                // Skip hidden inputs
+                if (fileInputGroup && fileInputGroup.style.display !== 'none' && input.files && input.files[0]) {
                     hasNewFileUpload = true;
                 }
             });
 
             // If no new files are being uploaded, skip file validation
             if (!hasNewFileUpload) {
-                // Only check that all existing files have names
+                // Only check that VISIBLE files have names
                 fileNameInputs.forEach((fileNameInput, index) => {
-                    if (!fileNameInput.value.trim()) {
-                        isValid = false;
-                        errorMessages.push(`Nama file tidak boleh kosong`);
-                        fileNameInput.style.borderColor = '#dc3545';
-                    } else {
-                        fileNameInput.style.borderColor = '';
+                    const fileInputGroup = fileNameInput.closest('.file-input-group');
+                    // Skip validation for hidden inputs
+                    if (fileInputGroup && fileInputGroup.style.display !== 'none') {
+                        if (!fileNameInput.value.trim()) {
+                            isValid = false;
+                            errorMessages.push(`Nama file tidak boleh kosong`);
+                            fileNameInput.style.borderColor = '#dc3545';
+                        } else {
+                            fileNameInput.style.borderColor = '';
+                        }
                     }
                 });
 
@@ -426,9 +449,14 @@
 
             // If there are new file uploads, validate them
             fileInputs.forEach((input, index) => {
+                const fileInputGroup = input.closest('.file-input-group');
+                // Skip hidden inputs
+                if (fileInputGroup && fileInputGroup.style.display === 'none') {
+                    return;
+                }
+
                 const file = input.files ? input.files[0] : null;
                 const fileNameInput = fileNameInputs[index];
-                const isExistingFile = input.closest('.file-input-group').classList.contains('existing-file');
 
                 if (file) {
                     // Validate new file
@@ -462,7 +490,6 @@
                 errors: errorMessages
             };
         }
-
         $("#formEditModalData").on("submit", function(e) {
             e.preventDefault();
             const id = document.getElementsByName('_id')[0].value;
