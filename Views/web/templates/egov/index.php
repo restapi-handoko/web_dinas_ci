@@ -318,35 +318,36 @@
 
     //view pengumuman-----------
     function lihatpengumuman(informasi_id) {
+        document.location.href = `<?= base_url('web/pengumuman') ?>/${informasi_id}`;
 
-        $.ajax({
-            type: "post",
-            url: "<?= base_url('assets') ?>/formlihatpengumuman",
-            data: {
-                // [csrfToken]: csrfHash,
-                csrf_tokencmsdatagoe: $('input[name=csrf_tokencmsdatagoe]').val(),
-                informasi_id: informasi_id
-            },
-            dataType: "json",
+        // $.ajax({
+        //     type: "post",
+        //     url: "<?= base_url('assets') ?>/formlihatpengumuman",
+        //     data: {
+        //         // [csrfToken]: csrfHash,
+        //         csrf_tokencmsdatagoe: $('input[name=csrf_tokencmsdatagoe]').val(),
+        //         informasi_id: informasi_id
+        //     },
+        //     dataType: "json",
 
-            success: function(response) {
-                if (response.sukses) {
+        //     success: function(response) {
+        //         if (response.sukses) {
 
-                    $('.viewmodal').html(response.sukses).show();
-                    $('#modalview').modal({
-                        backdrop: 'static',
-                        keyboard: false
-                    });
-                    $('#modalview').modal('show');
-                    $('body').removeClass("modal-open");
-                    $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
-                }
-            },
-            error: function(xhr, ajaxOptions, thrownerror) {
+        //             $('.viewmodal').html(response.sukses).show();
+        //             $('#modalview').modal({
+        //                 backdrop: 'static',
+        //                 keyboard: false
+        //             });
+        //             $('#modalview').modal('show');
+        //             $('body').removeClass("modal-open");
+        //             $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
+        //         }
+        //     },
+        //     error: function(xhr, ajaxOptions, thrownerror) {
 
-                $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
-            }
-        });
+        //         $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
+        //     }
+        // });
     }
 
     //bank data
