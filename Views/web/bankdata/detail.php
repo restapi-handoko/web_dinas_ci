@@ -115,12 +115,16 @@
 
                                                     .document-link:hover {
                                                         background-color: #007bff;
-                                                        color: white;
+                                                        color: #fff !important;
                                                         text-decoration: none;
                                                     }
 
                                                     .document-link .fa {
                                                         margin-right: 5px;
+                                                    }
+
+                                                    .document-link .fa:hover {
+                                                        color: #fff !important;
                                                     }
                                                 </style>
                                             </table>
