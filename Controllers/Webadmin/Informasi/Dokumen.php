@@ -213,13 +213,7 @@ class Dokumen extends BaseController
                     $this->_db->table('_tb_dokumen')->where('id', $id)->delete();
 
                     if ($this->_db->affectedRows() > 0) {
-                        if ($current->lampiran !== null) {
-                            try {
-                                $dir = FCPATH . "uploads/dokumen";
-                                unlink($dir . '/' . $current->lampiran);
-                            } catch (\Throwable $err) {
-                            }
-                        }
+                        $this->deleteAssociatedFiles($current->lampiran);
                         $this->_db->transCommit();
                         $response = new \stdClass;
                         $response->status = 200;
@@ -245,6 +239,50 @@ class Dokumen extends BaseController
                 $response->message = "Data tidak ditemukan";
                 return json_encode($response);
             }
+        }
+    }
+
+    private function deleteAssociatedFiles($lampiranData)
+    {
+        if (empty($lampiranData)) {
+            return;
+        }
+
+        $dir = FCPATH . "uploads/dokumen";
+
+        try {
+            // Coba decode sebagai JSON array
+            $decodedData = json_decode($lampiranData, true);
+
+            if (json_last_error() === JSON_ERROR_NONE && is_array($decodedData)) {
+                // Format baru: multiple files
+                foreach ($decodedData as $fileInfo) {
+                    if (is_array($fileInfo) && isset($fileInfo['saved_name'])) {
+                        $this->deleteFile($dir, $fileInfo['saved_name']);
+                    } elseif (is_string($fileInfo)) {
+                        $this->deleteFile($dir, $fileInfo);
+                    }
+                }
+            } else {
+                // Format lama: single file
+                $this->deleteFile($dir, $lampiranData);
+            }
+        } catch (\Throwable $err) {
+            log_message('error', 'Error deleting files: ' . $err->getMessage());
+        }
+    }
+
+    private function deleteFile($directory, $fileName)
+    {
+        if (empty($fileName)) {
+            return;
+        }
+
+        $filePath = $directory . '/' . $fileName;
+
+        // Validasi path untuk keamanan
+        if (file_exists($filePath) && is_file($filePath) && strpos(realpath($filePath), realpath($directory)) === 0) {
+            unlink($filePath);
         }
     }
 
