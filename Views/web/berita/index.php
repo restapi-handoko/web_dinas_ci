@@ -159,23 +159,39 @@
                 <!-- Widget kanan  -->
                 <div class="col-md-4 col-sm-12">
                     <div class="theiaStickySidebar">
-                        <!-- sambutan -->
-                        <!-- <div class="section-title">
-                            <h1 class="text-uppercase"><a href="opini.html">Admin Dinas</a></h1>
+                        <div class="section-title">
+                            <h1 class="text-uppercase"><a href="opini.html">Berita Popular</a></h1>
                         </div>
-                        <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
-                            <div class="card-body p-1 ">
-                                <div class=" justify-content-between align-items-center text-center">
-                                    <a rel="nofollow" data-toggle="modal" data-target="#modalViewsambutan" data-backdrop="static" data-keyboard="false"><img src="<?= base_url('assets') ?>/img/konfigurasi/pimpinan/1666974119_e6c4ee83f9e5204955fe.png" title="Baca sambutan Admin Dinas"></a>
-                                    <br>
-
-                                    <span class="badge badge-light-primary profile-badge text-center">Agus Suptianto <i class="fas fa-arrow-right"></i></span>
-
-                                </div>
-
-                            </div>
-                        </div> -->
-                        <!-- end sambutan -->
+                        <?php if (isset($dataWidgetBerita)) { ?>
+                            <?php if (count($dataWidgetBerita) > 0) { ?>
+                                <?php foreach ($dataWidgetBerita as $key => $value) { ?>
+                                    <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
+                                        <div class="card-body p-1">
+                                            <div class="row align-items-center justify-content-center">
+                                                <div class="col-4 pr-2">
+                                                    <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>">
+                                                        <img src="<?= base_url() ?>uploads/berita/<?= $value->image ?>" alt="<?= $value->judul ?>" class="rounded">
+                                                    </a>
+                                                    <!-- <h3 class="text-primary pl-3">1</h3> -->
+                                                </div>
+                                                <div class="col-8 pl-0">
+                                                    <h3 class="title-card">
+                                                        <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" tabindex="-1"><?= $value->judul ?></a>
+                                                    </h3>
+                                                    <span class="jl_post_meta">
+                                                        <span class="text-primary">
+                                                            <a href="javascript:;"><?= $value->kategori ?></a>
+                                                        </span>
+                                                        <span> | </span>
+                                                        <span class="post-date" style="color:#647277;"><?= $value->tanggal ?></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php } ?>
                         <div class="section-title">
                             <h1>Pengumuman</h1>
                         </div>
