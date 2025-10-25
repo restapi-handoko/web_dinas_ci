@@ -43,21 +43,27 @@
                             <div class="mt-3">
                                 <label class="form-label">Lampiran Dokumen: </label>
                                 <button type="button" class="btn btn-sm btn-primary mb-2" onclick="addFileInput()">
-                                    <i class="fa fa-plus"></i> Tambah File
+                                    <i class="fa fa-plus"></i> Tambah File Baru
                                 </button>
 
                                 <div id="fileInputsContainer">
                                     <!-- Existing files -->
                                     <?php foreach ($lampiranFiles as $index => $file): ?>
-                                        <div class="file-input-group mb-2">
+                                        <div class="file-input-group mb-2 existing-file">
                                             <div class="row align-items-center">
                                                 <div class="col-md-5">
                                                     <input type="text" class="form-control form-control-sm file-name-input" placeholder="Nama file (tanpa ekstensi)" name="file_names[]" value="<?= isset($file['custom_name']) ? $file['custom_name'] : '' ?>">
                                                     <input type="hidden" name="existing_files[]" value="<?= isset($file['saved_name']) ? $file['saved_name'] : $file ?>">
+                                                    <small class="existing-file-badge">File Existing</small>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input class="form-control form-control-sm file-input" type="file" name="_file_lampiran[]" accept="image/*, application/pdf" onchange="validateSingleFile(this)">
-                                                    <small class="text-muted">Kosongkan jika tidak ingin mengubah file</small>
+                                                    <input class="form-control form-control-sm file-input" type="file" name="_file_lampiran[]" accept="image/*, application/pdf" onchange="validateSingleFile(this)" style="display: none;">
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary btn-replace-file" onclick="enableFileReplace(this)">
+                                                        <i class="fa fa-sync-alt"></i> Ganti File
+                                                    </button>
+                                                    <small class="text-muted d-block mt-1">
+                                                        File: <?= isset($file['saved_name']) ? $file['saved_name'] : '' ?>
+                                                    </small>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <button type="button" class="btn btn-sm btn-danger" onclick="removeFileInput(this)" <?= count($lampiranFiles) === 1 ? 'disabled' : '' ?>>
@@ -68,8 +74,23 @@
                                             <div class="file-preview mt-1">
                                                 <?php if (isset($file['saved_name'])): ?>
                                                     <div class="file-info">
-                                                        <span class="file-name">File saat ini: <?= isset($file['custom_name']) ? $file['custom_name'] : $file['saved_name'] ?></span>
-                                                        <a target="_blank" href="<?= base_url() . '/uploads/dokumen/' . $file['saved_name'] ?>" class="badge badge-pill badge-soft-success ml-2">Lihat</a>
+                                                        <span class="file-name">
+                                                            <i class="fa fa-file"></i>
+                                                            File saat ini: <?= isset($file['custom_name']) ? $file['custom_name'] : $file['saved_name'] ?>
+                                                        </span>
+                                                        <a target="_blank" href="<?= base_url() . '/uploads/dokumen/' . $file['saved_name'] ?>" class="badge badge-pill badge-soft-success ml-2">
+                                                            <i class="fa fa-eye"></i> Lihat
+                                                        </a>
+                                                        <span class="file-size ml-2">
+                                                            <?php
+                                                            $filePath = FCPATH . "uploads/dokumen/" . $file['saved_name'];
+                                                            if (file_exists($filePath)) {
+                                                                $fileSize = filesize($filePath);
+                                                                $sizeInMB = round($fileSize / (1024 * 1024), 2);
+                                                                echo "($sizeInMB MB)";
+                                                            }
+                                                            ?>
+                                                        </span>
                                                     </div>
                                                 <?php endif; ?>
                                             </div>
@@ -77,10 +98,11 @@
                                     <?php endforeach; ?>
 
                                     <!-- Template for new file inputs -->
-                                    <div class="file-input-group mb-2" id="newFileTemplate" style="display: none;">
+                                    <div class="file-input-group mb-2 new-file" id="newFileTemplate" style="display: none;">
                                         <div class="row align-items-center">
                                             <div class="col-md-5">
                                                 <input type="text" class="form-control form-control-sm file-name-input" placeholder="Nama file (tanpa ekstensi)" name="file_names[]">
+                                                <small class="new-file-badge">File Baru</small>
                                             </div>
                                             <div class="col-md-5">
                                                 <input class="form-control form-control-sm file-input" type="file" name="_file_lampiran[]" accept="image/*, application/pdf" onchange="validateSingleFile(this)">
@@ -127,6 +149,103 @@
         </div>
     </form>
 
+    <style>
+        .file-input-group {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+        }
+
+        .file-input-group.existing-file {
+            background-color: #f8fff9;
+            border-left: 4px solid #28a745;
+            border: 1px solid #c3e6cb;
+        }
+
+        .file-input-group.new-file {
+            background-color: #f0f8ff;
+            border-left: 4px solid #007bff;
+            border: 1px solid #b8daff;
+        }
+
+        .file-input-group:hover {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .existing-file-badge {
+            background-color: #28a745;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            margin-top: 5px;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .new-file-badge {
+            background-color: #007bff;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            margin-top: 5px;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .file-info {
+            font-size: 12px;
+            color: #495057;
+            padding: 8px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #6c757d;
+        }
+
+        .file-name {
+            font-weight: 500;
+            color: #212529;
+        }
+
+        .file-size {
+            color: #6c757d;
+            font-size: 11px;
+        }
+
+        .file-error {
+            color: #dc3545;
+            font-size: 11px;
+            padding: 5px;
+            background-color: #f8d7da;
+            border-radius: 4px;
+            border-left: 3px solid #dc3545;
+        }
+
+        .btn-replace-file {
+            font-size: 11px;
+            padding: 4px 8px;
+        }
+
+        .file-preview {
+            min-height: 20px;
+        }
+
+        .help-block {
+            font-size: 12px;
+        }
+
+        .help-block ul {
+            margin-bottom: 0;
+        }
+
+        .text-muted {
+            font-size: 11px;
+        }
+    </style>
+
     <script>
         let fileInputCounter = <?= count($lampiranFiles) ?>;
 
@@ -138,6 +257,7 @@
             const newFileInput = template.cloneNode(true);
             newFileInput.id = '';
             newFileInput.style.display = 'block';
+            newFileInput.classList.add('new-file');
 
             container.appendChild(newFileInput);
             updateRemoveButtons();
@@ -145,8 +265,28 @@
 
         function removeFileInput(button) {
             const fileInputGroup = button.closest('.file-input-group');
-            fileInputGroup.remove();
-            updateRemoveButtons();
+
+            // Tampilkan konfirmasi untuk existing files
+            if (fileInputGroup.classList.contains('existing-file')) {
+                Swal.fire({
+                    title: 'Hapus File?',
+                    text: 'File yang dihapus tidak dapat dikembalikan',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, Hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fileInputGroup.remove();
+                        updateRemoveButtons();
+                    }
+                });
+            } else {
+                fileInputGroup.remove();
+                updateRemoveButtons();
+            }
         }
 
         function updateRemoveButtons() {
@@ -156,46 +296,71 @@
             // Disable remove button if only one input remains
             if (fileInputGroups.length === 1) {
                 removeButtons[0].disabled = true;
+                removeButtons[0].title = 'Tidak dapat menghapus satu-satunya file';
             } else {
                 removeButtons.forEach(button => {
                     button.disabled = false;
+                    button.title = '';
                 });
             }
+        }
+
+        function enableFileReplace(button) {
+            const fileInput = button.previousElementSibling;
+            const fileGroup = button.closest('.file-input-group');
+
+            fileInput.style.display = 'block';
+            button.style.display = 'none';
+
+            // Tampilkan pesan
+            const previewContainer = fileGroup.querySelector('.file-preview');
+            previewContainer.innerHTML += `
+                <div class="file-info mt-1">
+                    <small class="text-warning">
+                        <i class="fa fa-exclamation-triangle"></i> 
+                        File akan diganti dengan yang baru
+                    </small>
+                </div>
+            `;
         }
 
         function validateSingleFile(input) {
             const file = input.files[0];
             const previewContainer = input.closest('.file-input-group').querySelector('.file-preview');
+            const fileGroup = input.closest('.file-input-group');
+
+            // Hapus pesan sebelumnya kecuali info file existing
+            const existingFileInfo = previewContainer.querySelector('.file-info:first-child');
+            previewContainer.innerHTML = '';
+            if (existingFileInfo) {
+                previewContainer.appendChild(existingFileInfo);
+            }
 
             if (!file) {
-                // Jika file dihapus, hapus preview baru
-                if (!previewContainer.querySelector('.file-info')) {
-                    previewContainer.innerHTML = '';
-                }
                 return;
             }
 
             const validation = validateFile(file);
 
             if (!validation.isValid) {
-                previewContainer.innerHTML = `
-                    <div class="file-error">
+                previewContainer.innerHTML += `
+                    <div class="file-error mt-1">
                         <strong>${file.name}</strong> - ${validation.error}
                     </div>
                 `;
                 input.value = '';
             } else {
                 const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
-                previewContainer.innerHTML = `
-                    <div class="file-info">
-                        <span class="file-name">${file.name}</span>
+                previewContainer.innerHTML += `
+                    <div class="file-info mt-1">
+                        <span class="file-name">File baru: ${file.name}</span>
                         <span class="file-size">(${sizeInMB} MB)</span>
                     </div>
                 `;
 
                 // Auto-fill filename if empty
-                const fileNameInput = input.closest('.file-input-group').querySelector('.file-name-input');
-                if (!fileNameInput.value) {
+                const fileNameInput = fileGroup.querySelector('.file-name-input');
+                if (!fileNameInput.value.trim()) {
                     const fileNameWithoutExt = file.name.replace(/\.[^/.]+$/, "");
                     fileNameInput.value = fileNameWithoutExt;
                 }
@@ -228,15 +393,51 @@
 
         function validateAllFiles() {
             const fileInputs = document.querySelectorAll('input[name="_file_lampiran[]"]');
+            const fileNameInputs = document.querySelectorAll('input[name="file_names[]"]');
+            let hasNewFileUpload = false;
             let isValid = true;
             let errorMessages = [];
 
-            fileInputs.forEach((input, index) => {
-                const file = input.files[0];
-                const fileNameInput = input.closest('.file-input-group').querySelector('.file-name-input');
+            // Check if there are any new file uploads
+            fileInputs.forEach(input => {
+                if (input.files && input.files[0]) {
+                    hasNewFileUpload = true;
+                }
+            });
 
-                // Only validate if file is selected
+            // If no new files are being uploaded, skip file validation
+            if (!hasNewFileUpload) {
+                // Only check that all existing files have names
+                fileNameInputs.forEach((fileNameInput, index) => {
+                    if (!fileNameInput.value.trim()) {
+                        isValid = false;
+                        errorMessages.push(`Nama file tidak boleh kosong`);
+                        fileNameInput.style.borderColor = '#dc3545';
+                    } else {
+                        fileNameInput.style.borderColor = '';
+                    }
+                });
+
+                return {
+                    isValid: isValid,
+                    errors: errorMessages
+                };
+            }
+
+            // If there are new file uploads, validate them
+            fileInputs.forEach((input, index) => {
+                const file = input.files ? input.files[0] : null;
+                const fileNameInput = fileNameInputs[index];
+                const isExistingFile = input.closest('.file-input-group').classList.contains('existing-file');
+
                 if (file) {
+                    // Validate new file
+                    const validation = validateFile(file);
+                    if (!validation.isValid) {
+                        isValid = false;
+                        errorMessages.push(`File "${file.name}": ${validation.error}`);
+                    }
+
                     if (!fileNameInput.value.trim()) {
                         isValid = false;
                         errorMessages.push(`File "${file.name}" belum memiliki nama`);
@@ -244,14 +445,8 @@
                     } else {
                         fileNameInput.style.borderColor = '';
                     }
-
-                    const validation = validateFile(file);
-                    if (!validation.isValid) {
-                        isValid = false;
-                        errorMessages.push(`File "${file.name}": ${validation.error}`);
-                    }
                 } else {
-                    // For existing files without new file, name is required
+                    // For existing files without new upload, just ensure name exists
                     if (!fileNameInput.value.trim()) {
                         isValid = false;
                         errorMessages.push(`Nama file tidak boleh kosong`);
@@ -318,7 +513,7 @@
             const fileNameInputs = document.querySelectorAll('input[name="file_names[]"]');
 
             fileInputs.forEach((input, index) => {
-                if (input.files[0]) {
+                if (input.files && input.files[0]) {
                     formUpload.append('_file_lampiran[]', input.files[0]);
                 }
                 formUpload.append('file_names[]', fileNameInputs[index].value);
@@ -332,7 +527,6 @@
                             ambilId("loaded_n_total").innerHTML = "Uploaded " + evt.loaded + " bytes of " + evt.total;
                             var percent = (evt.loaded / evt.total) * 100;
                             ambilId("progressBar").value = Math.round(percent);
-                            // ambilId("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
                         }
                     }, false);
                     return xhr;
@@ -346,7 +540,6 @@
                 dataType: 'JSON',
                 beforeSend: function() {
                     ambilId("progressBar").style.display = "block";
-                    // ambilId("status").innerHTML = "Mulai mengupload . . .";
                     ambilId("status").style.color = "blue";
                     ambilId("progressBar").value = 0;
                     ambilId("loaded_n_total").innerHTML = "";
@@ -358,7 +551,6 @@
                     $('div.modal-content-loading').unblock();
 
                     if (resul.status !== 200) {
-                        ambilId("status").innerHTML = "";
                         ambilId("status").style.color = "red";
                         ambilId("progressBar").value = 0;
                         ambilId("loaded_n_total").innerHTML = "";
@@ -388,7 +580,6 @@
                             })
                         }
                     } else {
-                        ambilId("status").innerHTML = "";
                         ambilId("status").style.color = "green";
                         ambilId("progressBar").value = 100;
                         Swal.fire(
@@ -402,7 +593,6 @@
                 },
                 error: function(erro) {
                     console.log(erro);
-                    ambilId("status").innerHTML = "";
                     ambilId("status").style.color = "red";
                     $('div.modal-content-loading').unblock();
                     Swal.fire(
@@ -417,6 +607,12 @@
         // Initialize remove buttons
         document.addEventListener('DOMContentLoaded', function() {
             updateRemoveButtons();
+
+            // Add new-file class to template
+            const template = document.getElementById('newFileTemplate');
+            if (template) {
+                template.classList.add('new-file');
+            }
         });
     </script>
 <?php } ?>
