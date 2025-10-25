@@ -502,8 +502,7 @@ class Dokumen extends BaseController
         ];
 
         // Validasi untuk file baru
-        $fileNames = $this->request->getPost('file_names');
-        $newFiles = $this->request->getFiles('_file_lampiran');
+        $newFiles = $this->request->getFileMultiple('_file_lampiran'); // Gunakan getFileMultiple
 
         if (!empty($newFiles)) {
             foreach ($newFiles as $index => $file) {
