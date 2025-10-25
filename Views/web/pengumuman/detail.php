@@ -125,7 +125,7 @@
                                         <div class="tag-cat">
                                             <ul class="single_post_tag_layout">
                                                 <li>
-                                                    <a target="_blank" href="<?= base_url('uploads/pengumuman') . '/' . $pengumuman->lampiran ?>">Download Lampiran</a>
+                                                    <a target="_blank" href="<?= base_url('uploads/pengumuman') . '/' . $pengumuman->lampiran ?>">Download Lampiran Pengumuman</a>
                                                 </li>
                                             </ul>
                                         </div>
