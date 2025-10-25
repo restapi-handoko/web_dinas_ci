@@ -44,9 +44,12 @@
                                     <th data-orderable="false">#</th>
                                     <th data-orderable="false">Aksi</th>
                                     <th>Status</th>
-                                    <th>Tanggal Terbit</th>
+                                    <th>Tanggal Mulai</th>
+                                    <th>Tanggal Selesai</th>
+                                    <th>Jam</th>
+                                    <th>Penyelenggara</th>
                                     <th>Judul</th>
-                                    <th data-orderable="false">Gambar</th>
+                                    <th data-orderable="false">Tempat</th>
                                     <!-- <th>Deskripsi</th> -->
                                 </tr>
                             </thead>

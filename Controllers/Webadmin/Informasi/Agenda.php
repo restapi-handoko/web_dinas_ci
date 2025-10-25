@@ -57,9 +57,13 @@ class Agenda extends BaseController
                     $row[] = '<span class="badge badge-pill badge-soft-danger">Tidak Terpublish</span>';
                     break;
             }
-            $row[] = $list->tanggal;
+            $row[] = $list->tanggal_mulai;
+            $row[] = $list->tanggal_selesai;
+            $row[] = $list->jam;
+            $row[] = $list->penyelenggara;
             $row[] = $list->judul;
-            $row[] = $image;
+            $row[] = $list->deskripsi;
+            // $row[] = $image;
             // $row[] = $list->deskripsi;
 
             $data[] = $row;
