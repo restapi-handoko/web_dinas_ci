@@ -69,7 +69,7 @@
                                                     <tr>
                                                         <td colspan="2">
                                                             <b>DOKUMEN :</b></br>
-                                                            <ul class="single_post_tag_layout">
+                                                            <ol class="single_post_tag_layout">
                                                                 <?php
                                                                 if ($dokumen->lampiran !== null) {
                                                                     $files = json_decode($dokumen->lampiran, true);
@@ -88,7 +88,7 @@
                                                                 <?php }
                                                                 }
                                                                 ?>
-                                                            </ul>
+                                                            </ol>
                                                         </td>
                                                     </tr>
                                                 </tbody>
