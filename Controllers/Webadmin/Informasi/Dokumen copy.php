@@ -271,7 +271,7 @@ class Dokumen extends BaseController
                     'required' => 'Status tidak boleh kosong. ',
                 ]
             ],
-            '_file_lampiran.*' => [
+            '_file_lampiran[]' => [
                 'rules' => 'uploaded[_file_lampiran.0]|max_size[_file_lampiran,5148]|mime_in[_file_lampiran,image/jpeg,image/jpg,image/png,application/pdf]',
                 'errors' => [
                     'uploaded' => 'Pilih minimal satu file. ',
@@ -279,12 +279,14 @@ class Dokumen extends BaseController
                     'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar/pdf. '
                 ]
             ],
-            'file_names.*' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Nama file tidak boleh kosong. '
-                ]
-            ]
+            // '_file_lampiran' => [
+            //     'rules' => 'uploaded[_file_lampiran]|max_size[_file_lampiran,5148]|mime_in[_file_lampiran,image/jpeg,image/jpg,image/png,application/pdf]',
+            //     'errors' => [
+            //         'uploaded' => 'Pilih file terlebih dahulu. ',
+            //         'max_size' => 'Ukuran file terlalu besar. ',
+            //         'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar/pdf. '
+            //     ]
+            // ],
         ];
 
         if (!$this->validate($rules)) {
@@ -294,8 +296,8 @@ class Dokumen extends BaseController
                 . $this->validator->getError('tahun')
                 . $this->validator->getError('sumber_data')
                 . $this->validator->getError('status')
-                . $this->validator->getError('_file_lampiran.*')
-                . $this->validator->getError('file_names.*');
+                . $this->validator->getError('_file_lampiran[]');
+            // . $this->validator->getError('_file_lampiran');
             return json_encode($response);
         } else {
             $Profilelib = new Profilelib();
@@ -333,28 +335,17 @@ class Dokumen extends BaseController
             ];
 
             $dir = FCPATH . "uploads/dokumen";
-            // Handle multiple files dengan nama custom
             $lampiranFiles = $this->request->getFiles();
-            $fileNames = $this->request->getPost('file_names');
             $uploadedFiles = [];
             $failedUploads = [];
 
-            foreach ($lampiranFiles['_file_lampiran'] as $index => $file) {
+            foreach ($lampiranFiles['_file_lampiran'] as $file) {
                 if ($file->isValid() && !$file->hasMoved()) {
-                    $originalName = $file->getName();
-                    $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
-                    $customFileName = $fileNames[$index] . '.' . $fileExtension;
-                    $newName = _create_name_foto($customFileName);
-
+                    $newName = _create_name_foto($file->getName());
                     $file->move($dir, $newName);
-                    $uploadedFiles[] = [
-                        'original_name' => $originalName,
-                        'custom_name' => $fileNames[$index],
-                        'saved_name' => $newName,
-                        'extension' => $fileExtension
-                    ];
+                    $uploadedFiles[] = $newName;
                 } else {
-                    $failedUploads[] = $file->getErrorString();
+                    $failedUploads[] = $file->getName();
                 }
             }
 
@@ -362,27 +353,42 @@ class Dokumen extends BaseController
             if (!empty($failedUploads)) {
                 // Hapus file yang sudah berhasil diupload
                 foreach ($uploadedFiles as $uploadedFile) {
-                    if (file_exists($dir . '/' . $uploadedFile['saved_name'])) {
-                        unlink($dir . '/' . $uploadedFile['saved_name']);
+                    if (file_exists($dir . '/' . $uploadedFile)) {
+                        unlink($dir . '/' . $uploadedFile);
                     }
                 }
 
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->message = "Gagal mengupload file: " . implode(', ', $failedUploads);
+                $response->message = "Gagal mengupload beberapa file: " . implode(', ', $failedUploads);
                 return json_encode($response);
             }
 
-            // Simpan informasi files sebagai JSON
+            // Simpan nama file sebagai JSON (multiple files)
             $data['lampiran'] = json_encode($uploadedFiles);
+
+
+            // $lampiranFile = $this->request->getFile('_file_lampiran');
+            // $filesNamelampiranFile = $lampiranFile->getName();
+            // $newNamelampiranFile = _create_name_foto($filesNamelampiranFile);
+
+            // if ($lampiranFile->isValid() && !$lampiranFile->hasMoved()) {
+            //     $lampiranFile->move($dir, $newNamelampiranFile);
+            //     $data['lampiran'] = $newNamelampiranFile;
+            // } else {
+            //     $response = new \stdClass;
+            //     $response->status = 400;
+            //     $response->message = "Gagal mengupload file.";
+            //     return json_encode($response);
+            // }
 
             $this->_db->transBegin();
             try {
                 $this->_db->table('_tb_dokumen')->insert($data);
             } catch (\Exception $e) {
                 foreach ($uploadedFiles as $uploadedFile) {
-                    if (file_exists($dir . '/' . $uploadedFile['saved_name'])) {
-                        unlink($dir . '/' . $uploadedFile['saved_name']);
+                    if (file_exists($dir . '/' . $uploadedFile)) {
+                        unlink($dir . '/' . $uploadedFile);
                     }
                 }
                 // unlink($dir . '/' . $newNamelampiranFile);
@@ -404,8 +410,8 @@ class Dokumen extends BaseController
                 return json_encode($response);
             } else {
                 foreach ($uploadedFiles as $uploadedFile) {
-                    if (file_exists($dir . '/' . $uploadedFile['saved_name'])) {
-                        unlink($dir . '/' . $uploadedFile['saved_name']);
+                    if (file_exists($dir . '/' . $uploadedFile)) {
+                        unlink($dir . '/' . $uploadedFile);
                     }
                 }
                 // unlink($dir . '/' . $newNamelampiranFile);

@@ -19,35 +19,20 @@
             </div>
             <div class="col-lg-12 mt-4">
                 <div class="row mt-4">
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div class="mt-3">
-                            <label class="form-label">Lampiran Dokumen: </label>
-                            <button type="button" class="btn btn-sm btn-primary mb-2" onclick="addFileInput()">
-                                <i class="fa fa-plus"></i> Tambah File
-                            </button>
-
-                            <div id="fileInputsContainer">
-                                <!-- Dynamic file inputs will be added here -->
-                                <div class="file-input-group mb-2">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-5">
-                                            <input type="text" class="form-control form-control-sm file-name-input" placeholder="Nama file (tanpa ekstensi)" name="file_names[]">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <input class="form-control form-control-sm file-input" type="file" name="_file_lampiran[]" accept="image/*, application/pdf">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="removeFileInput(this)" disabled>
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="file-preview mt-1"></div>
-                                </div>
-                            </div>
-
+                            <label for="_file_lampiran" class="form-label">Lampiran Dokumen: </label>
+                            <input class="form-control" type="file" id="_file_lampiran" name="_file_lampiran[]" multiple onFocus="inputFocus(this);" accept="image/*, application/pdf" onchange="loadMultipleFiles(this)">
                             <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Images/PDF</code> and Maximum File Size <code>5 Mb</code> per file</p>
                             <div class="help-block _file_lampiran" for="_file_lampiran"></div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <div id="filePreviewContainer" class="file-preview-container">
+                                <p class="text-muted">File yang akan diupload:</p>
+                                <div id="selectedFilesList"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,132 +74,85 @@
         <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
     </div>
 </form>
+
 <style>
-    .file-input-group {
+    .file-preview-container {
         border: 1px solid #ddd;
         border-radius: 4px;
         padding: 10px;
-        background-color: #f8f9fa;
+        max-height: 200px;
+        overflow-y: auto;
     }
 
-    .file-input-group:not(:first-child) {
-        margin-top: 10px;
-    }
-
-    .file-preview {
-        font-size: 12px;
-        color: #6c757d;
-    }
-
-    .file-preview .file-info {
+    .file-item {
         display: flex;
-        justify-content: between;
+        justify-content: space-between;
         align-items: center;
+        padding: 5px;
+        border-bottom: 1px solid #f0f0f0;
     }
 
-    .file-preview .file-name {
-        font-weight: 500;
+    .file-item:last-child {
+        border-bottom: none;
     }
 
-    .file-preview .file-size {
+    .file-name {
+        font-size: 12px;
+        flex-grow: 1;
+    }
+
+    .file-size {
+        font-size: 11px;
         color: #6c757d;
         margin-left: 10px;
     }
 
-    .file-preview .file-error {
+    .file-remove {
+        color: #dc3545;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .file-error {
         color: #dc3545;
         font-size: 11px;
     }
-
-    .file-name-input {
-        font-size: 12px;
-    }
 </style>
+
 <script>
-    let fileInputCounter = 1;
+    let selectedFiles = [];
 
-    function addFileInput() {
-        fileInputCounter++;
-        const container = document.getElementById('fileInputsContainer');
+    function loadMultipleFiles(input) {
+        const files = input.files;
+        selectedFiles = [];
+        const fileListContainer = document.getElementById('selectedFilesList');
+        fileListContainer.innerHTML = '';
 
-        const newFileInput = document.createElement('div');
-        newFileInput.className = 'file-input-group mb-2';
-        newFileInput.innerHTML = `
-        <div class="row align-items-center">
-            <div class="col-md-5">
-                <input type="text" class="form-control form-control-sm file-name-input" placeholder="Nama file (tanpa ekstensi)" name="file_names[]">
-            </div>
-            <div class="col-md-5">
-                <input class="form-control form-control-sm file-input" type="file" name="_file_lampiran[]" accept="image/*, application/pdf" onchange="validateSingleFile(this)">
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-sm btn-danger" onclick="removeFileInput(this)">
-                    <i class="fa fa-times"></i>
-                </button>
-            </div>
-        </div>
-        <div class="file-preview mt-1"></div>
-    `;
-
-        container.appendChild(newFileInput);
-
-        // Enable remove button for all inputs if there's more than one
-        updateRemoveButtons();
-    }
-
-    function removeFileInput(button) {
-        const fileInputGroup = button.closest('.file-input-group');
-        fileInputGroup.remove();
-        updateRemoveButtons();
-    }
-
-    function updateRemoveButtons() {
-        const fileInputGroups = document.querySelectorAll('.file-input-group');
-        const removeButtons = document.querySelectorAll('.file-input-group .btn-danger');
-
-        // Disable remove button if only one input remains
-        if (fileInputGroups.length === 1) {
-            removeButtons[0].disabled = true;
-        } else {
-            removeButtons.forEach(button => {
-                button.disabled = false;
-            });
-        }
-    }
-
-    function validateSingleFile(input) {
-        const file = input.files[0];
-        const previewContainer = input.closest('.file-input-group').querySelector('.file-preview');
-
-        if (!file) {
-            previewContainer.innerHTML = '';
+        if (files.length === 0) {
+            fileListContainer.innerHTML = '<p class="text-muted">Tidak ada file dipilih</p>';
             return;
         }
 
-        const validation = validateFile(file);
+        let hasError = false;
 
-        if (!validation.isValid) {
-            previewContainer.innerHTML = `
-            <div class="file-error">
-                <strong>${file.name}</strong> - ${validation.error}
-            </div>
-        `;
-            input.value = ''; // Clear invalid file
-        } else {
-            const sizeInMB = (file.size / (1024 * 1024)).tofted(2);
-            previewContainer.innerHTML = `
-            <div class="file-info">
-                <span class="file-name">${file.name}</span>
-                <span class="file-size">(${sizeInMB} MB)</span>
-            </div>
-        `;
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const fileItem = validateFile(file);
 
-            // Auto-fill filename if empty
-            const fileNameInput = input.closest('.file-input-group').querySelector('.file-name-input');
-            if (!fileNameInput.value) {
-                const fileNameWithoutExt = file.name.replace(/\.[^/.]+$/, ""); // Remove extension
-                fileNameInput.value = fileNameWithoutExt;
+            if (fileItem.isValid) {
+                selectedFiles.push(file);
+                addFileToList(file.name, file.size, i);
+            } else {
+                hasError = true;
+                addFileToList(file.name, file.size, i, fileItem.error);
             }
+        }
+
+        if (hasError) {
+            // Reset input jika ada error
+            input.value = '';
+            selectedFiles = [];
+            fileListContainer.innerHTML = '<p class="text-danger">Ada file yang tidak valid. Silakan pilih file kembali.</p>';
         }
     }
 
@@ -225,7 +163,7 @@
         if (mime_types.indexOf(file.type) === -1) {
             return {
                 isValid: false,
-                error: 'Format file tidak didukung. Hanya JPG, PNG, PDF yang diizinkan.'
+                error: 'Format file tidak didukung'
             };
         }
 
@@ -242,47 +180,79 @@
         };
     }
 
-    function validateAllFiles() {
-        const fileInputs = document.querySelectorAll('input[name="_file_lampiran[]"]');
-        let isValid = true;
-        let errorMessages = [];
+    function addFileToList(fileName, fileSize, index, error = null) {
+        const fileListContainer = document.getElementById('selectedFilesList');
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
 
-        fileInputs.forEach((input, index) => {
-            const file = input.files[0];
-            const fileNameInput = input.closest('.file-input-group').querySelector('.file-name-input');
+        const sizeInMB = (fileSize / (1024 * 1024)).toFixed(2);
 
-            // Check if file is selected but no name
-            if (file && !fileNameInput.value.trim()) {
-                isValid = false;
-                errorMessages.push(`File "${file.name}" belum memiliki nama`);
-                fileNameInput.style.borderColor = '#dc3545';
-            } else {
-                fileNameInput.style.borderColor = '';
+        if (error) {
+            fileItem.innerHTML = `
+            <div>
+                <div class="file-name text-danger">${fileName}</div>
+                <div class="file-error">${error}</div>
+            </div>
+            <div class="file-remove" onclick="removeFile(${index})">×</div>
+        `;
+        } else {
+            fileItem.innerHTML = `
+            <div>
+                <div class="file-name">${fileName}</div>
+                <div class="file-size">${sizeInMB} MB</div>
+            </div>
+            <div class="file-remove" onclick="removeFile(${index})">×</div>
+        `;
+        }
+
+        fileListContainer.appendChild(fileItem);
+    }
+
+    function removeFile(index) {
+        const input = document.getElementById('_file_lampiran');
+        const dt = new DataTransfer();
+
+        // Add all files except the one to remove
+        for (let i = 0; i < input.files.length; i++) {
+            if (i !== index) {
+                dt.items.add(input.files[i]);
+            }
+        }
+
+        input.files = dt.files;
+        loadMultipleFiles(input); // Refresh the list
+    }
+
+    function loadFilePdf() {
+        const inputF = document.getElementsByName('_file_lampiran')[0];
+        if (inputF.files && inputF.files[0]) {
+            var fileF = inputF.files[0];
+
+            var mime_typesF = ['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'];
+
+            if (mime_typesF.indexOf(fileF.type) == -1) {
+                inputF.value = "";
+                // $('.imagePreviewUpload').attr('src', '');
+                Swal.fire(
+                    'Warning!!!',
+                    "Hanya file type gambar yang diizinkan.",
+                    'warning'
+                );
+                return false;
             }
 
-            // Check if name is provided but no file
-            if (fileNameInput.value.trim() && !file) {
-                isValid = false;
-                errorMessages.push(`Nama file "${fileNameInput.value}" tidak memiliki file`);
-                input.style.borderColor = '#dc3545';
-            } else {
-                input.style.borderColor = '';
+            if (fileF.size > 1 * 5124 * 1000) {
+                inputF.value = "";
+                Swal.fire(
+                    'Warning!!!',
+                    "Ukuran file tidak boleh lebih dari 5 Mb.",
+                    'warning'
+                );
+                return false;
             }
-
-            // Validate file type and size
-            if (file) {
-                const validation = validateFile(file);
-                if (!validation.isValid) {
-                    isValid = false;
-                    errorMessages.push(`File "${file.name}": ${validation.error}`);
-                }
-            }
-        });
-
-        return {
-            isValid: isValid,
-            errors: errorMessages
-        };
+        } else {
+            console.log("failed Load");
+        }
     }
 
     $("#formAddModalData").on("submit", function(e) {
@@ -291,7 +261,7 @@
         const sumber = document.getElementsByName('_sumber')[0].value;
         const tahun = document.getElementsByName('_tahun')[0].value;
         // const fileNameLampiran = document.getElementsByName('_file_lampiran')[0].value;
-        // const files = document.getElementsByName('_file_lampiran[]')[0].files;
+        const files = document.getElementsByName('_file_lampiran[]')[0].files;
 
         let status;
         if ($('#status_publikasi').is(":checked")) {
@@ -344,51 +314,38 @@
             return false;
         }
 
-        // Validasi files
-        const fileValidation = validateAllFiles();
-        if (!fileValidation.isValid) {
-            Swal.fire(
-                "Peringatan!",
-                fileValidation.errors.join('<br>'),
-                "warning"
-            );
-            return false;
-        }
-
-        // Check if at least one file is selected
-        const fileInputs = document.querySelectorAll('input[name="_file_lampiran[]"]');
-        let hasFiles = false;
-        fileInputs.forEach(input => {
-            if (input.files[0]) {
-                hasFiles = true;
+        // Validasi semua file
+        for (let i = 0; i < files.length; i++) {
+            const validation = validateFile(files[i]);
+            if (!validation.isValid) {
+                Swal.fire(
+                    "Peringatan!",
+                    `File "${files[i].name}" tidak valid: ${validation.error}`,
+                    "warning"
+                );
+                return false;
             }
-        });
-
-        if (!hasFiles) {
-            Swal.fire(
-                "Peringatan!",
-                "Pilih minimal satu file dokumen.",
-                "warning"
-            );
-            return false;
         }
+
+        // if (fileNameLampiran === "") {
+        //     Swal.fire(
+        //         "Peringatan!",
+        //         "File dokumen belum dipilih.",
+        //         "warning"
+        //     );
+        //     return true;
+        // }
 
         const formUpload = new FormData();
-
+        for (let i = 0; i < files.length; i++) {
+            formUpload.append('_file_lampiran[]', files[i]);
+        }
+        // const fileF = document.getElementsByName('_file_lampiran')[0].files[0];
+        // formUpload.append('_file_lampiran', fileF);
         formUpload.append('tahun', tahun);
         formUpload.append('sumber_data', sumber);
         formUpload.append('judul', judul);
         formUpload.append('status', status);
-        // Append files and their names
-        const fileInputsArray = document.querySelectorAll('input[name="_file_lampiran[]"]');
-        const fileNameInputs = document.querySelectorAll('input[name="file_names[]"]');
-
-        fileInputsArray.forEach((input, index) => {
-            if (input.files[0]) {
-                formUpload.append('_file_lampiran[]', input.files[0]);
-                formUpload.append('file_names[]', fileNameInputs[index].value);
-            }
-        });
 
         $.ajax({
             xhr: function() {
@@ -478,9 +435,5 @@
                 );
             }
         });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        updateRemoveButtons();
     });
 </script>
