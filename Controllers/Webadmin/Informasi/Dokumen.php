@@ -40,10 +40,21 @@ class Dokumen extends BaseController
                         <a href="javascript:actionHapus(\'' . $list->id . '\', \'' . str_replace("'", "", $list->judul) . '\');" class="delete" id="delete"><button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light mr-2 mb-1">
                         <i class="bx bx-trash font-size-16 align-middle"></i></button>
                         </a>';
+            // Handle multiple files lampiran
+            $lampiran = "-";
             if ($list->lampiran !== null) {
-                $lampiran = '<a target="_blank" href="' . base_url() . '/uploads/dokumen/' . $list->lampiran . '" class="badge badge-pill badge-soft-success">Lampiran</a>';
-            } else {
-                $lampiran = "-";
+                $files = json_decode($list->lampiran, true);
+                if (json_last_error() === JSON_ERROR_NONE && is_array($files) && count($files) > 0) {
+                    $lampiran = '';
+                    foreach ($files as $index => $file) {
+                        $fileName = isset($file['custom_name']) ? $file['custom_name'] : (isset($file['original_name']) ? $file['original_name'] : 'File ' . ($index + 1));
+                        $savedName = isset($file['saved_name']) ? $file['saved_name'] : $file;
+                        $lampiran .= '<a target="_blank" href="' . base_url() . '/uploads/dokumen/' . $savedName . '" class="badge badge-pill badge-soft-success mr-1 mb-1" title="' . $fileName . '">' . $fileName . '</a>';
+                    }
+                } else {
+                    // Fallback untuk data lama (single file)
+                    $lampiran = '<a target="_blank" href="' . base_url() . '/uploads/dokumen/' . $list->lampiran . '" class="badge badge-pill badge-soft-success">Lampiran</a>';
+                }
             }
             $row[] = $action;
             switch ((int)$list->status) {
