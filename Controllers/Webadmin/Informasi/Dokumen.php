@@ -502,7 +502,7 @@ class Dokumen extends BaseController
         ];
 
         // Validasi untuk file baru
-        $newFiles = $this->request->getFileMultiple('_file_lampiran'); // Gunakan getFileMultiple
+        $newFiles = $this->request->getFileMultiple('_file_lampiran');
 
         if (!empty($newFiles)) {
             foreach ($newFiles as $index => $file) {
@@ -581,11 +581,12 @@ class Dokumen extends BaseController
 
             $dir = FCPATH . "uploads/dokumen";
             $uploadedFiles = [];
+            $filesToDelete = []; // File yang akan dihapus
             $fileNames = $this->request->getPost('file_names');
             $existingFiles = $this->request->getPost('existing_files');
             $deletedFiles = $this->request->getPost('deleted_files');
 
-            // PERBAIKAN: Gunakan getFileMultiple() atau handle array manual
+            // PERBAIKAN: Handle files yang diganti (file replacement)
             $newFiles = $this->request->getFileMultiple('_file_lampiran');
 
             // Jika getFileMultiple() tidak bekerja, gunakan pendekatan manual
@@ -609,27 +610,72 @@ class Dokumen extends BaseController
                 foreach ($existingFiles as $index => $existingFile) {
                     // Skip files that are marked for deletion
                     if (!empty($deletedFiles) && in_array($existingFile, $deletedFiles)) {
+                        $filesToDelete[] = $existingFile; // Tandai untuk dihapus
                         continue;
                     }
 
-                    // Pastikan index fileNames ada
-                    $customName = $fileNames[$index] ?? pathinfo($existingFile, PATHINFO_FILENAME);
+                    // PERBAIKAN: Cek apakah file ini diganti dengan file baru
+                    $isFileReplaced = false;
+                    $replacementFile = null;
 
-                    $finalFiles[] = [
-                        'saved_name' => $existingFile,
-                        'custom_name' => $customName,
-                        'original_name' => $customName . '.' . pathinfo($existingFile, PATHINFO_EXTENSION)
-                    ];
+                    // Cari file baru yang menggantikan file existing ini
+                    if (!empty($newFiles)) {
+                        foreach ($newFiles as $fileIndex => $file) {
+                            if (is_object($file) && $file->isValid() && !$file->hasMoved()) {
+                                // File baru untuk index yang sama dengan existing file
+                                if ($fileIndex == $index) {
+                                    $isFileReplaced = true;
+                                    $replacementFile = $file;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    // Jika file diganti
+                    if ($isFileReplaced && $replacementFile) {
+                        $originalName = $replacementFile->getName();
+                        $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
+                        $customFileName = $fileNames[$index] ?? pathinfo($originalName, PATHINFO_FILENAME);
+                        $newName = _create_name_foto($customFileName . '.' . $fileExtension);
+
+                        if ($replacementFile->move($dir, $newName)) {
+                            $finalFiles[] = [
+                                'saved_name' => $newName,
+                                'custom_name' => $customFileName,
+                                'original_name' => $originalName,
+                                'extension' => $fileExtension
+                            ];
+                            $uploadedFiles[] = $newName;
+
+                            // Tandai file lama untuk dihapus
+                            $filesToDelete[] = $existingFile;
+                        }
+                    } else {
+                        // File tidak diganti, tetap pakai yang lama
+                        $customName = $fileNames[$index] ?? pathinfo($existingFile, PATHINFO_FILENAME);
+                        $finalFiles[] = [
+                            'saved_name' => $existingFile,
+                            'custom_name' => $customName,
+                            'original_name' => $customName . '.' . pathinfo($existingFile, PATHINFO_EXTENSION)
+                        ];
+                    }
                 }
             }
 
-            // Handle new files - PERBAIKAN DI SINI
+            // Handle new files (file yang benar-benar baru, bukan replacement)
             if (!empty($newFiles)) {
                 $existingFilesCount = !empty($existingFiles) ? count($existingFiles) : 0;
 
                 foreach ($newFiles as $index => $file) {
-                    // Pastikan $file adalah object UploadedFile, bukan array
-                    if (is_object($file) && $file->isValid() && !$file->hasMoved()) {
+                    // Skip file yang sudah diproses sebagai replacement
+                    $isReplacementFile = false;
+                    if (!empty($existingFiles) && $index < count($existingFiles)) {
+                        $isReplacementFile = true;
+                    }
+
+                    // Hanya proses file baru (bukan replacement)
+                    if (!$isReplacementFile && is_object($file) && $file->isValid() && !$file->hasMoved()) {
                         $originalName = $file->getName();
                         $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
 
@@ -658,9 +704,12 @@ class Dokumen extends BaseController
             $this->_db->transBegin();
             try {
                 $this->_db->table('_tb_dokumen')->where('id', $oldData->id)->update($data);
-                if (!empty($deletedFiles)) {
-                    foreach ($deletedFiles as $deletedFile) {
-                        $filePath = $dir . '/' . $deletedFile;
+
+                // PERBAIKAN: Hapus semua file yang ditandai untuk dihapus
+                $allFilesToDelete = array_merge($filesToDelete, $deletedFiles ?? []);
+                if (!empty($allFilesToDelete)) {
+                    foreach ($allFilesToDelete as $fileToDelete) {
+                        $filePath = $dir . '/' . $fileToDelete;
                         if (file_exists($filePath) && is_file($filePath)) {
                             unlink($filePath);
                         }
@@ -681,13 +730,15 @@ class Dokumen extends BaseController
             }
 
             if ($this->_db->affectedRows() > 0) {
-                // Delete old files that are no longer used
-                // $this->cleanupOldFiles($oldData->lampiran, $finalFiles);
-
                 $this->_db->transCommit();
+                $deletedCount = !empty($allFilesToDelete) ? count($allFilesToDelete) : 0;
+                $newCount = !empty($uploadedFiles) ? count($uploadedFiles) : 0;
+
                 $response = new \stdClass;
                 $response->status = 200;
-                $response->message = "Data berhasil diupdate." . (!empty($deletedFiles) ? " " . count($deletedFiles) . " file dihapus." : "");
+                $response->message = "Data berhasil diupdate." .
+                    ($newCount > 0 ? " $newCount file baru diupload." : "") .
+                    ($deletedCount > 0 ? " $deletedCount file dihapus." : "");
                 $response->redirect = base_url('webadmin/informasi/dokumen/data');
                 return json_encode($response);
             } else {
