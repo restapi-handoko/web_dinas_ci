@@ -302,16 +302,34 @@ class Agenda extends BaseController
                     'required' => 'Judul tidak boleh kosong. ',
                 ]
             ],
-            'tanggal' => [
+            'tanggal_mulai' => [
                 'rules' => 'required|trim',
                 'errors' => [
-                    'required' => 'Tanggal tidak boleh kosong. ',
+                    'required' => 'Tanggal mulai tidak boleh kosong. ',
+                ]
+            ],
+            'tanggal_selesai' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Tanggal selesai tidak boleh kosong. ',
+                ]
+            ],
+            'jam' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Jam tidak boleh kosong. ',
+                ]
+            ],
+            'penyelenggara' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Penyelenggara tidak boleh kosong. ',
                 ]
             ],
             'isi' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Deskripsi tidak boleh kosong. ',
+                    'required' => 'Tempat tidak boleh kosong. ',
                 ]
             ],
             'status' => [
@@ -341,7 +359,10 @@ class Agenda extends BaseController
             $response = new \stdClass;
             $response->status = 400;
             $response->message = $this->validator->getError('judul')
-                . $this->validator->getError('tanggal')
+                . $this->validator->getError('tanggal_mulai')
+                . $this->validator->getError('tanggal_selesai')
+                . $this->validator->getError('jam')
+                . $this->validator->getError('penyelenggara')
                 . $this->validator->getError('isi')
                 . $this->validator->getError('status')
                 . $this->validator->getError('_file');
@@ -359,8 +380,11 @@ class Agenda extends BaseController
             }
 
             $judul = htmlspecialchars($this->request->getVar('judul'), true);
-            $tanggal = htmlspecialchars($this->request->getVar('tanggal'), true);
-            $isi = $this->request->getVar('isi');
+            $tanggal_mulai = htmlspecialchars($this->request->getVar('tanggal_mulai'), true);
+            $tanggal_selesai = htmlspecialchars($this->request->getVar('tanggal_selesai'), true);
+            $jam = htmlspecialchars($this->request->getVar('jam'), true);
+            $penyelenggara = htmlspecialchars($this->request->getVar('penyelenggara'), true);
+            $isi = htmlspecialchars($this->request->getVar('isi'), true);
             $status = htmlspecialchars($this->request->getVar('status'), true);
 
             $slug = generateSlug($judul);
@@ -375,7 +399,10 @@ class Agenda extends BaseController
 
             $data = [
                 'judul' => $judul,
-                'tanggal' => $tanggal,
+                'tanggal_mulai' => $tanggal_mulai,
+                'tanggal_selesai' => $tanggal_selesai,
+                'jam' => $jam,
+                'penyelenggara' => $penyelenggara,
                 'status' => $status,
                 'url' => $slug . '.html',
                 'deskripsi' => $isi,
@@ -459,10 +486,28 @@ class Agenda extends BaseController
                     'required' => 'Judul tidak boleh kosong. ',
                 ]
             ],
-            'tanggal' => [
+            'tanggal_mulai' => [
                 'rules' => 'required|trim',
                 'errors' => [
-                    'required' => 'Tanggal tidak boleh kosong. ',
+                    'required' => 'Tanggal mulai tidak boleh kosong. ',
+                ]
+            ],
+            'tanggal_selesai' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Tanggal selesai tidak boleh kosong. ',
+                ]
+            ],
+            'jam' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Jam tidak boleh kosong. ',
+                ]
+            ],
+            'penyelenggara' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Penyelenggara tidak boleh kosong. ',
                 ]
             ],
             'isi' => [
@@ -499,7 +544,10 @@ class Agenda extends BaseController
             $response->status = 400;
             $response->message = $this->validator->getError('id')
                 . $this->validator->getError('judul')
-                . $this->validator->getError('tanggal')
+                . $this->validator->getError('tanggal_mulai')
+                . $this->validator->getError('tanggal_selesai')
+                . $this->validator->getError('jam')
+                . $this->validator->getError('penyelenggara')
                 . $this->validator->getError('isi')
                 . $this->validator->getError('status')
                 . $this->validator->getError('_file');
@@ -519,8 +567,12 @@ class Agenda extends BaseController
 
             $id = htmlspecialchars($this->request->getVar('id'), true);
             $judul = htmlspecialchars($this->request->getVar('judul'), true);
-            $tanggal = htmlspecialchars($this->request->getVar('tanggal'), true);
-            $isi = $this->request->getVar('isi');
+            $tanggal_mulai = htmlspecialchars($this->request->getVar('tanggal_mulai'), true);
+            $tanggal_selesai = htmlspecialchars($this->request->getVar('tanggal_selesai'), true);
+            $jam = htmlspecialchars($this->request->getVar('jam'), true);
+            $penyelenggara = htmlspecialchars($this->request->getVar('penyelenggara'), true);
+            // $tanggal = htmlspecialchars($this->request->getVar('tanggal'), true);
+            $isi = htmlspecialchars($this->request->getVar('isi'), true);
             $status = htmlspecialchars($this->request->getVar('status'), true);
 
             $oldData =  $this->_db->table('_tb_agenda')->where('id', $id)->get()->getRowObject();
@@ -536,7 +588,10 @@ class Agenda extends BaseController
 
             $data = [
                 'judul' => $judul,
-                'tanggal' => $tanggal,
+                'tanggal_mulai' => $tanggal_mulai,
+                'tanggal_selesai' => $tanggal_selesai,
+                'jam' => $jam,
+                'penyelenggara' => $penyelenggara,
                 'status' => $status,
                 'deskripsi' => $isi,
                 'user_updated' => $user->data->uid,
@@ -557,7 +612,10 @@ class Agenda extends BaseController
             if (
                 (int)$status === (int)$oldData->status
                 && $judul === $oldData->judul
-                && $tanggal === $oldData->tanggal
+                && $tanggal_mulai === $oldData->tanggal_mulai
+                && $tanggal_selesai === $oldData->tanggal_selesai
+                && $jam === $oldData->jam
+                && $penyelenggara === $oldData->penyelenggara
                 && $isi === $oldData->deskripsi
             ) {
                 if ($filenamelampiran == '') {

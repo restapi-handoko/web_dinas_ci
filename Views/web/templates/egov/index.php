@@ -252,7 +252,7 @@
 
         $.ajax({
             type: "post",
-            url: "<?= base_url('assets') ?>/formlihatagenda",
+            url: "<?= base_url('web/agenda') ?>/formlihatagenda",
             data: {
                 // [csrfToken]: csrfHash,
                 csrf_tokencmsdatagoe: $('input[name=csrf_tokencmsdatagoe]').val(),

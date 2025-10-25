@@ -5,9 +5,19 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-lg-2">
-                    <label for="_tanggal" class="col-form-label">Tanggal Agenda:</label>
-                    <input type="date" class="form-control judul" id="_tanggal" value="<?= $data->tanggal ?>" name="_tanggal" onfocusin="inputFocus(this);" required />
+                    <label for="_tanggal" class="col-form-label">Tanggal Mulai:</label>
+                    <input type="date" class="form-control tanggal" value="<?= $data->tanggal_mulai ?>" id="_tanggal" name="_tanggal" onfocusin="inputFocus(this);" required />
                     <div class="help-block _tanggal"></div>
+                </div>
+                <div class="col-lg-2">
+                    <label for="_tanggal_selesai" class="col-form-label">Tanggal Selesai:</label>
+                    <input type="date" class="form-control tanggal_selesai" value="<?= $data->tanggal_selesai ?>" id="_tanggal_selesai" name="_tanggal_selesai" onfocusin="inputFocus(this);" required />
+                    <div class="help-block _tanggal_selesai"></div>
+                </div>
+                <div class="col-lg-2">
+                    <label for="_jam" class="col-form-label">Jam:</label>
+                    <input type="time" class="form-control jam" value="<?= $data->jam ?>" id="_jam" name="_jam" onfocusin="inputFocus(this);" required />
+                    <div class="help-block _jam"></div>
                 </div>
                 <div class="col-lg-10">
                     <label for="_judul" class="col-form-label">Judul Agenda:</label>
@@ -15,8 +25,15 @@
                     <div class="help-block _judul"></div>
                 </div>
                 <div class="col-lg-12">
-                    <label for="_isi" class="col-form-label">Isi Agenda:</label>
-                    <textarea id="_isi" name="_isi"><?= $data->deskripsi ?></textarea>
+                    <label for="_isi" class="col-form-label">Tempat:</label>
+                    <input type="text" class="form-control isi" value="<?= $data->deskripsi ?>" id="_isi" name="_isi" placeholder="Tempat..." onfocusin="inputFocus(this);">
+                    <div class="help-block _isi"></div>
+                    <!-- <textarea id="_isi" name="_isi"></textarea> -->
+                </div>
+                <div class="col-lg-10">
+                    <label for="_penyelenggara" class="col-form-label">Penyelenggara / Pengirim:</label>
+                    <input type="text" class="form-control penyelenggara" value="<?= $data->penyelenggara ?>" id="_penyelenggara" name="_penyelenggara" placeholder="Penyelenggara..." onfocusin="inputFocus(this);">
+                    <div class="help-block _penyelenggara"></div>
                 </div>
                 <div class="col-lg-12 mt-4">
                     <div class="row mt-4">
@@ -71,15 +88,15 @@
     <script>
         initSelect2("_kategori", '.content-detailModal');
 
-        ClassicEditor.create(document.querySelector('#_isi'), {
-            simpleUpload: {
-                uploadUrl: "./uploadImage"
-            }
-        }).then(editors => {
-            editorAdd = editors
-        }).catch(error => {
-            console.log(error);
-        });
+        // ClassicEditor.create(document.querySelector('#_isi'), {
+        //     simpleUpload: {
+        //         uploadUrl: "./uploadImage"
+        //     }
+        // }).then(editors => {
+        //     editorAdd = editors
+        // }).catch(error => {
+        //     console.log(error);
+        // });
 
         function loadFileImage() {
             const input = document.getElementsByName('_file')[0];
@@ -127,8 +144,11 @@
             const id = document.getElementsByName('_id')[0].value;
             const old_image = document.getElementsByName('_old_image')[0].value;
             const judul = document.getElementsByName('_judul')[0].value;
-            const tanggal = document.getElementsByName('_tanggal')[0].value;
-            const isi = editorAdd.getData();
+            const tanggal_mulai = document.getElementsByName('_tanggal')[0].value;
+            const tanggal_selesai = document.getElementsByName('_tanggal_selesai')[0].value;
+            const jam = document.getElementsByName('_jam')[0].value;
+            const penyelenggara = document.getElementsByName('_penyelenggara')[0].value;
+            const isi = document.getElementsByName('_isi')[0].value;
             const fileName = document.getElementsByName('_file')[0].value;
 
             let status;
@@ -159,20 +179,36 @@
                 return false;
             }
 
-            if (tanggal === "") {
+            if (tanggal_mulai === "") {
                 $("input#_tanggal").css("color", "#dc3545");
                 $("input#_tanggal").css("border-color", "#dc3545");
-                $('._tanggal').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Tanggal tidak boleh kosong.</li></ul>');
+                $('._tanggal').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Tanggal Mulai tidak boleh kosong.</li></ul>');
+                return false;
+            }
+            if (tanggal_selesai === "") {
+                $("input#_tanggal_selesai").css("color", "#dc3545");
+                $("input#_tanggal_selesai").css("border-color", "#dc3545");
+                $('._tanggal_selesai').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Tanggal Selesai tidak boleh kosong.</li></ul>');
+                return false;
+            }
+            if (jam === "") {
+                $("input#_jam").css("color", "#dc3545");
+                $("input#_jam").css("border-color", "#dc3545");
+                $('._jam').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Jam tidak boleh kosong.</li></ul>');
+                return false;
+            }
+            if (penyelenggara === "") {
+                $("input#_penyelenggara").css("color", "#dc3545");
+                $("input#_penyelenggara").css("border-color", "#dc3545");
+                $('._penyelenggara').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Penyelenggara tidak boleh kosong.</li></ul>');
                 return false;
             }
 
-            if (isi.length < 5) {
-                Swal.fire(
-                    "Peringatan!",
-                    "Isi dari konten minimal 5 kata.",
-                    "warning"
-                );
-                return true;
+            if (isi === "") {
+                $("input#_isi").css("color", "#dc3545");
+                $("input#_isi").css("border-color", "#dc3545");
+                $('._isi').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Tempat tidak boleh kosong.</li></ul>');
+                return false;
             }
 
             const formUpload = new FormData();
@@ -182,7 +218,10 @@
             }
             formUpload.append('id', id);
             formUpload.append('judul', judul);
-            formUpload.append('tanggal', tanggal);
+            formUpload.append('tanggal_mulai', tanggal_mulai);
+            formUpload.append('tanggal_selesai', tanggal_selesai);
+            formUpload.append('jam', jam);
+            formUpload.append('penyelenggara', penyelenggara);
             formUpload.append('isi', isi);
             formUpload.append('status', status);
 
