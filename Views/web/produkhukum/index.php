@@ -29,7 +29,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
+                                                    <th class="text-center">No</th>
                                                     <td class="text-center">Kategori</td>
                                                     <td class="text-center">Tahun</td>
                                                     <td class="text-center">Nomor</td>
@@ -42,7 +42,7 @@
                                                     <?php if (count($dataProdukHukum) > 0) { ?>
                                                         <?php foreach ($dataProdukHukum as $key => $value) { ?>
                                                             <tr>
-                                                                <td>
+                                                                <td class="text-center">
                                                                     <span class="badge badge-pill badge-light-primary"><?= $key + 1 ?></span>
                                                                 </td>
                                                                 <td class="text-center">
