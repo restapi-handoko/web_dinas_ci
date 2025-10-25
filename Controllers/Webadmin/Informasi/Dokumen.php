@@ -587,31 +587,54 @@ class Dokumen extends BaseController
             $existingFiles = $this->request->getPost('existing_files');
             $deletedFiles = $this->request->getPost('deleted_files');
 
-            // PERBAIKAN: Ambil semua file input termasuk yang kosong
-            $allFileInputs = [];
-            $uploadedFilesData = $_FILES['_file_lampiran'] ?? [];
-
-            if (!empty($uploadedFilesData['name'])) {
-                foreach ($uploadedFilesData['name'] as $index => $fileName) {
-                    $file = $this->request->getFile("_file_lampiran[$index]");
-                    $allFileInputs[$index] = [
-                        'file' => $file,
-                        'has_file' => !empty($fileName),
-                        'file_name' => $fileName
-                    ];
-                }
-            }
+            // PERBAIKAN: Handle files dengan pendekatan yang lebih jelas
+            $newFiles = $this->request->getFileMultiple('_file_lampiran');
 
             log_message('error', '=== DEBUG FILE DATA ===');
             log_message('error', 'File names: ' . print_r($fileNames, true));
             log_message('error', 'Existing files: ' . print_r($existingFiles, true));
             log_message('error', 'Deleted files: ' . print_r($deletedFiles, true));
-            log_message('error', 'All file inputs: ' . print_r(array_keys($allFileInputs), true));
+            log_message('error', 'FILES data: ' . print_r($_FILES['_file_lampiran'] ?? [], true));
+            log_message('error', 'Existing files count: ' . count($existingFiles ?? []));
+
+            // Untuk melihat file baru
+            log_message('error', 'New files count: ' . count($newFiles ?? []));
+
+            // Jika getFileMultiple() tidak bekerja, gunakan pendekatan manual
+            if (empty($newFiles)) {
+                $newFiles = [];
+                $uploadedFilesData = $_FILES['_file_lampiran'] ?? [];
+                if (!empty($uploadedFilesData['name'])) {
+                    foreach ($uploadedFilesData['name'] as $index => $fileName) {
+                        if (!empty($fileName)) {
+                            $newFiles[] = $this->request->getFile("_file_lampiran[$index]");
+                        }
+                    }
+                }
+            }
 
             // Process files
             $finalFiles = [];
 
-            // PERBAIKAN: Handle existing files terlebih dahulu
+            // PERBAIKAN: Pisahkan file replacement dan file baru
+            $replacementFiles = [];
+            $trulyNewFiles = [];
+
+            // Identifikasi file replacement vs file baru
+            if (!empty($newFiles)) {
+                foreach ($newFiles as $index => $file) {
+                    if (is_object($file) && $file->isValid() && !$file->hasMoved()) {
+                        // Cek apakah ini file replacement (ada existing file di index yang sama)
+                        if (!empty($existingFiles) && isset($existingFiles[$index]) && !in_array($existingFiles[$index], $deletedFiles ?? [])) {
+                            $replacementFiles[$index] = $file;
+                        } else {
+                            $trulyNewFiles[] = $file;
+                        }
+                    }
+                }
+            }
+
+            // PERBAIKAN: Handle existing files dengan replacement yang benar
             if (!empty($existingFiles)) {
                 foreach ($existingFiles as $index => $existingFile) {
                     // Skip files that are marked for deletion
@@ -620,84 +643,69 @@ class Dokumen extends BaseController
                         continue;
                     }
 
-                    // Cek apakah ada file replacement untuk existing file ini
-                    $hasReplacement = false;
-                    if (isset($allFileInputs[$index]) && $allFileInputs[$index]['has_file']) {
-                        $file = $allFileInputs[$index]['file'];
-                        if ($file && $file->isValid() && !$file->hasMoved()) {
-                            // Ini adalah file replacement
-                            $originalName = $file->getName();
-                            $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
-                            $customFileName = $fileNames[$index] ?? pathinfo($originalName, PATHINFO_FILENAME);
-                            $newName = _create_name_foto($customFileName . '.' . $fileExtension);
+                    // Cek apakah file ini diganti (ada file replacement di index yang sama)
+                    if (isset($replacementFiles[$index])) {
+                        $file = $replacementFiles[$index];
+                        $originalName = $file->getName();
+                        $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
+                        $customFileName = $fileNames[$index] ?? pathinfo($originalName, PATHINFO_FILENAME);
+                        $newName = _create_name_foto($customFileName . '.' . $fileExtension);
 
-                            if ($file->move($dir, $newName)) {
-                                $finalFiles[] = [
-                                    'saved_name' => $newName,
-                                    'custom_name' => $customFileName,
-                                    'original_name' => $originalName,
-                                    'extension' => $fileExtension
-                                ];
-                                $uploadedFiles[] = $newName;
-                                $filesToDelete[] = $existingFile; // Hapus file lama
-                                $hasReplacement = true;
+                        if ($file->move($dir, $newName)) {
+                            $finalFiles[] = [
+                                'saved_name' => $newName,
+                                'custom_name' => $customFileName,
+                                'original_name' => $originalName,
+                                'extension' => $fileExtension
+                            ];
+                            $uploadedFiles[] = $newName;
 
-                                log_message('error', "File replacement: $existingFile -> $newName");
-                            }
+                            // Tandai file lama untuk dihapus
+                            $filesToDelete[] = $existingFile;
                         }
-                    }
-
-                    // Jika tidak ada replacement, gunakan file existing
-                    if (!$hasReplacement) {
+                    } else {
+                        // File tidak diganti, tetap pakai yang lama
                         $customName = $fileNames[$index] ?? pathinfo($existingFile, PATHINFO_FILENAME);
                         $finalFiles[] = [
                             'saved_name' => $existingFile,
                             'custom_name' => $customName,
                             'original_name' => $customName . '.' . pathinfo($existingFile, PATHINFO_EXTENSION)
                         ];
-                        log_message('error', "Keep existing file: $existingFile");
                     }
                 }
             }
 
-            // PERBAIKAN: Handle file baru (di luar range existing files)
-            $existingFilesCount = !empty($existingFiles) ? count($existingFiles) : 0;
+            // PERBAIKAN: Handle file baru dengan indexing yang benar
+            if (!empty($trulyNewFiles)) {
+                // Hitung offset untuk file_names (setelah existing files)
+                $fileNamesOffset = !empty($existingFiles) ? count($existingFiles) : 0;
 
-            foreach ($allFileInputs as $index => $fileData) {
-                // Skip jika file kosong atau index dalam range existing files (sudah diproses di atas)
-                if (!$fileData['has_file'] || $index < $existingFilesCount) {
-                    continue;
-                }
+                foreach ($trulyNewFiles as $index => $file) {
+                    if (is_object($file) && $file->isValid() && !$file->hasMoved()) {
+                        $originalName = $file->getName();
+                        $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
 
-                // Process file baru
-                $file = $fileData['file'];
-                if ($file && $file->isValid() && !$file->hasMoved()) {
-                    $originalName = $file->getName();
-                    $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
+                        // Cari nama file yang sesuai - PERBAIKAN INDEXING
+                        $fileNamesIndex = $fileNamesOffset + $index;
+                        $customFileName = isset($fileNames[$fileNamesIndex]) ? $fileNames[$fileNamesIndex] : pathinfo($originalName, PATHINFO_FILENAME);
 
-                    // Cari nama file yang sesuai
-                    $customFileName = isset($fileNames[$index]) ? $fileNames[$index] : pathinfo($originalName, PATHINFO_FILENAME);
-                    $newName = _create_name_foto($customFileName . '.' . $fileExtension);
+                        $newName = _create_name_foto($customFileName . '.' . $fileExtension);
 
-                    if ($file->move($dir, $newName)) {
-                        $finalFiles[] = [
-                            'saved_name' => $newName,
-                            'custom_name' => $customFileName,
-                            'original_name' => $originalName,
-                            'extension' => $fileExtension
-                        ];
-                        $uploadedFiles[] = $newName;
-
-                        log_message('error', "New file uploaded: $newName at index $index");
+                        if ($file->move($dir, $newName)) {
+                            $finalFiles[] = [
+                                'saved_name' => $newName,
+                                'custom_name' => $customFileName,
+                                'original_name' => $originalName,
+                                'extension' => $fileExtension
+                            ];
+                            $uploadedFiles[] = $newName;
+                        }
                     }
                 }
             }
 
             // Update lampiran data
             $data['lampiran'] = !empty($finalFiles) ? json_encode($finalFiles) : null;
-
-            log_message('error', 'Final files count: ' . count($finalFiles));
-            log_message('error', 'Final files: ' . print_r($finalFiles, true));
 
             $this->_db->transBegin();
             try {
