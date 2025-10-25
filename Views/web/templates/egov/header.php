@@ -80,42 +80,42 @@
                                 <a href="index.html#">INFORMASI<span class="border-menu"></span></a>
                                 <ul class="sub-menu">
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/layanan"><i class="fas fa-chalkboard-teacher" style="font-size: small;"></i>Layanan</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pengumuman.html"><i class="fas fa-bullhorn" style="font-size: small;"></i>Pengumuman</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/pengumuman"><i class="fas fa-bullhorn" style="font-size: small;"></i>Pengumuman</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/agenda"><i class="far fa-calendar-check" style="font-size: small;"></i>Agenda</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bankdata.html"><i class="fas fa-database" style="font-size: small;"></i>Bank Data</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="produkhukum.html"><i class="fa fa-balance-scale" style="font-size: small;"></i>Produk Hukum</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/bankdata"><i class="fas fa-database" style="font-size: small;"></i>Bank Data</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/produkhukum"><i class="fa fa-balance-scale" style="font-size: small;"></i>Produk Hukum</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/infografis"><i class="far fa-images" style="font-size: small;"></i>Infografis</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/transparansi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi Anggaran</a></li>
-                                    <li class="menu-item menu-item-has-children"><a target="_parent" href="index.html#"><i class="fas fa-expand" style="font-size: small;"></i> Informasi Berkala</a>
-                                        <ul class="sub-menu">
-                                            <!-- looping sub-submenu -->
-                                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rpjpd.html"><i class="fas fa-sticky-note" style="font-size: small;"></i> Daftar Informasi Publik</a></li>
+                                    <!-- <li class="menu-item menu-item-has-children"><a target="_parent" href="index.html#"><i class="fas fa-expand" style="font-size: small;"></i> Informasi Berkala</a> -->
+                                    <ul class="sub-menu">
+                                        <!-- looping sub-submenu -->
+                                        <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rpjpd.html"><i class="fas fa-sticky-note" style="font-size: small;"></i> Daftar Informasi Publik</a></li>
 
-                                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rencana-strategis.html"><i class="far fa-sticky-note" style="font-size: small;"></i> Rencana Strategis</a></li>
+                                        <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rencana-strategis.html"><i class="far fa-sticky-note" style="font-size: small;"></i> Rencana Strategis</a></li>
 
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/pengaduan.html"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
-                                </ul>
+                                    </ul>
                             </li>
+                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/pengaduan.html"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
+                        </ul>
+                        </li>
 
-                            <li class="menu-item menu-item-has-children">
-                                <a href="index.html#">GALERI<span class="border-menu"></span></a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/foto"><i class="far fa-image" style="font-size: small;"></i>Foto</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/video"><i class="fas fa-video" style="font-size: small;"></i>Video</a></li>
-                                </ul>
-                            </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="index.html#">GALERI<span class="border-menu"></span></a>
+                            <ul class="sub-menu">
+                                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/foto"><i class="far fa-image" style="font-size: small;"></i>Foto</a></li>
+                                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/video"><i class="fas fa-video" style="font-size: small;"></i>Video</a></li>
+                            </ul>
+                        </li>
 
-                            <li class="menu-item menu-item-has-children">
-                                <a href="index.html#">INTERAKSI<span class="border-menu"></span></a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/survey"><i class="far fa-check-square" style="font-size: small;"></i>Survei</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="masukansaran.html"><i class="far fa-comments" style="font-size: small;"></i>Masukan Saran</a></li>
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bukutamu.html"><i class="far fa-comment-alt" style="font-size: small;"></i>Buku Tamu</a></li>
-                                </ul>
-                            </li>
-                            <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="ebook.html"> <i class="mdi mdi-book-open-page-variant"></i>E-BOOK<span class="border-menu"></span> </a></li> -->
+                        <li class="menu-item menu-item-has-children">
+                            <a href="index.html#">INTERAKSI<span class="border-menu"></span></a>
+                            <ul class="sub-menu">
+                                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/survey"><i class="far fa-check-square" style="font-size: small;"></i>Survei</a></li>
+                                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="masukansaran.html"><i class="far fa-comments" style="font-size: small;"></i>Masukan Saran</a></li>
+                                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bukutamu.html"><i class="far fa-comment-alt" style="font-size: small;"></i>Buku Tamu</a></li>
+                            </ul>
+                        </li>
+                        <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="ebook.html"> <i class="mdi mdi-book-open-page-variant"></i>E-BOOK<span class="border-menu"></span> </a></li> -->
 
                         </ul>
 
@@ -189,41 +189,41 @@
                 <a href="index.html#">INFORMASI<span class="border-menu"></span></a>
                 <ul class="sub-menu">
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/layanan"><i class="fas fa-chalkboard-teacher" style="font-size: small;"></i>Layanan</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pengumuman.html"><i class="fas fa-bullhorn" style="font-size: small;"></i>Pengumuman</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/pengumuman"><i class="fas fa-bullhorn" style="font-size: small;"></i>Pengumuman</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/agenda"><i class="far fa-calendar-check" style="font-size: small;"></i>Agenda</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bankdata.html"><i class="fas fa-database" style="font-size: small;"></i>Bank Data</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="produkhukum.html"><i class="fa fa-balance-scale" style="font-size: small;"></i>Produk Hukum</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/bankdata"><i class="fas fa-database" style="font-size: small;"></i>Bank Data</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/produkhukum"><i class="fa fa-balance-scale" style="font-size: small;"></i>Produk Hukum</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/infografis"><i class="far fa-images" style="font-size: small;"></i>Infografis</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/transparansi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi Anggaran</a></li>
-                    <li class="menu-item menu-item-has-children"><a target="_parent" href="index.html#"><i class="fas fa-expand" style="font-size: small;"></i> Informasi Berkala</a>
-                        <ul class="sub-menu">
-                            <!-- looping sub-submenu -->
-                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rpjpd.html"><i class="fas fa-sticky-note" style="font-size: small;"></i> Daftar Informasi Publik</a></li>
-                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rencana-strategis.html"><i class="far fa-sticky-note" style="font-size: small;"></i> Rencana Strategis</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/pengaduan.html"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
-                </ul>
+                    <!-- <li class="menu-item menu-item-has-children"><a target="_parent" href="index.html#"><i class="fas fa-expand" style="font-size: small;"></i> Informasi Berkala</a> -->
+                    <ul class="sub-menu">
+                        <!-- looping sub-submenu -->
+                        <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rpjpd.html"><i class="fas fa-sticky-note" style="font-size: small;"></i> Daftar Informasi Publik</a></li>
+                        <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rencana-strategis.html"><i class="far fa-sticky-note" style="font-size: small;"></i> Rencana Strategis</a></li>
+                    </ul>
             </li>
+            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/pengaduan.html"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
+        </ul>
+        </li>
 
-            <li class="menu-item menu-item-has-children">
-                <a href="index.html#">GALERI<span class="border-menu"></span></a>
-                <ul class="sub-menu">
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/foto"><i class="far fa-image" style="font-size: small;"></i>Foto</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/video"><i class="fas fa-video" style="font-size: small;"></i>Video</a></li>
-                </ul>
-            </li>
+        <li class="menu-item menu-item-has-children">
+            <a href="index.html#">GALERI<span class="border-menu"></span></a>
+            <ul class="sub-menu">
+                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/foto"><i class="far fa-image" style="font-size: small;"></i>Foto</a></li>
+                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/video"><i class="fas fa-video" style="font-size: small;"></i>Video</a></li>
+            </ul>
+        </li>
 
-            <li class="menu-item menu-item-has-children">
-                <a href="index.html#">INTERAKSI<span class="border-menu"></span></a>
-                <ul class="sub-menu">
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/survey"><i class="far fa-check-square" style="font-size: small;"></i>Survei</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="masukansaran.html"><i class="far fa-comments" style="font-size: small;"></i>Masukan Saran</a></li>
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bukutamu.html"><i class="far fa-comment-alt" style="font-size: small;"></i>Buku Tamu</a></li>
-                </ul>
-            </li>
+        <li class="menu-item menu-item-has-children">
+            <a href="index.html#">INTERAKSI<span class="border-menu"></span></a>
+            <ul class="sub-menu">
+                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/survey"><i class="far fa-check-square" style="font-size: small;"></i>Survei</a></li>
+                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="masukansaran.html"><i class="far fa-comments" style="font-size: small;"></i>Masukan Saran</a></li>
+                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="bukutamu.html"><i class="far fa-comment-alt" style="font-size: small;"></i>Buku Tamu</a></li>
+            </ul>
+        </li>
 
-            <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="ebook.html"> <i class="mdi mdi-book-open-page-variant"></i>E-BOOK<span class="border-menu"></span> </a></li> -->
+        <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="ebook.html"> <i class="mdi mdi-book-open-page-variant"></i>E-BOOK<span class="border-menu"></span> </a></li> -->
 
         </ul>
 
