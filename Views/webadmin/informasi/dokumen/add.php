@@ -335,15 +335,6 @@
             return false;
         }
 
-        if (files.length === 0) {
-            Swal.fire(
-                "Peringatan!",
-                "Pilih minimal satu file dokumen.",
-                "warning"
-            );
-            return false;
-        }
-
         // Validasi files
         const fileValidation = validateAllFiles();
         if (!fileValidation.isValid) {
