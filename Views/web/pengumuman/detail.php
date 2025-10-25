@@ -120,7 +120,17 @@
 
                                 </div>
                                 <div class="clearfix"></div>
-
+                                <?php if ($pengumuman->lampiran !== NULL) { ?>
+                                    <div class="single_tag_share ">
+                                        <div class="tag-cat">
+                                            <ul class="single_post_tag_layout">
+                                                <li>
+                                                    <a target="_blank" href="<?= base_url('uploads/pengumuman') . '/' . $pengumuman->lampiran ?>">Download Lampiran</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                                 <!-- KOMENTAR -->
 
 
