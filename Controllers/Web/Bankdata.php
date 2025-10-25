@@ -68,14 +68,14 @@ class Bankdata extends BaseController
     public function detail($url)
     {
         // Query database
-        $data['pengumuman'] = $this->_db->table('_tb_pengumuman a')
+        $data['dokumen'] = $this->_db->table('_tb_dokumen a')
             ->select("a.*")
             ->where('a.url', $url)
             ->where('a.status', 1)
             ->get()
             ->getRowObject();
 
-        if (!$data['pengumuman']) {
+        if (!$data['dokumen']) {
             return view('404');
         }
         $data['title'] = 'Detail Bank Data';
