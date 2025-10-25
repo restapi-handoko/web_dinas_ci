@@ -95,7 +95,7 @@
 
                                     </ul>
                             </li>
-                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/pengaduan.html"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
+                            <li class="menu-item current-menu-item current_page_item"><a target="_blank" href="https://lapor.go.id/"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
                         </ul>
                         </li>
 
@@ -202,7 +202,7 @@
                         <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rencana-strategis.html"><i class="far fa-sticky-note" style="font-size: small;"></i> Rencana Strategis</a></li>
                     </ul>
             </li>
-            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/pengaduan.html"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
+            <li class="menu-item current-menu-item current_page_item"><a target="_blank" href="https://lapor.go.id/"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
         </ul>
         </li>
 
