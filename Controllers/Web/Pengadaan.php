@@ -33,7 +33,7 @@ class Pengadaan extends BaseController
             ->limit(5)
             ->get()->getResult();
 
-        $katPengadaan = $this->_db->table('_tb_kategori_pengadaan')->where('status', 1)->get()->getResult();
+        $katPengadaan = $this->_db->table('_tb_kategori_pengadaan')->get()->getResult();
 
         $data['dataPengadaan'] = [];
 
