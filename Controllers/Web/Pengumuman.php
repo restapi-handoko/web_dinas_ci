@@ -22,7 +22,7 @@ class Pengumuman extends BaseController
 
     public function index()
     {
-        $data['title'] = 'Berita';
+        $data['title'] = 'Pengumuman';
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
@@ -33,7 +33,7 @@ class Pengumuman extends BaseController
             ->limit(5)
             ->get()->getResult();
 
-        $countBerita = $this->_db->table('_tb_berita')->where('status', 1)->countAllResults();
+        $countBerita = $this->_db->table('_tb_pengumuman')->where('status', 1)->countAllResults();
         $perPage = 10;
 
         // Get current page from URL, default to 1
@@ -44,11 +44,10 @@ class Pengumuman extends BaseController
         $totalPages = ceil($countBerita / $perPage);
 
         // Get data dengan limit dan offset
-        $data['dataBeritas'] = $this->_db->table('_tb_berita a')
-            ->select("a.*, b.kategori")
-            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
+        $data['dataPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
             ->where('a.status', 1)
-            ->orderBy('a.tanggal', 'DESC')
+            ->orderBy('a.created_at', 'DESC')
             ->limit($perPage, $offset)
             ->get()
             ->getResult();
@@ -63,30 +62,23 @@ class Pengumuman extends BaseController
             'hasNext' => $currentPage < $totalPages
         ];
 
-        return view('web/berita/index', $data);
+        return view('web/pengumuman/index', $data);
     }
 
-    public function detail($tgl, $url)
+    public function detail($url)
     {
-        // Validasi tambahan di controller jika perlu
-        if (!preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/', $tgl)) {
-            return view('404');
-        }
-
         // Query database
-        $data['berita'] = $this->_db->table('_tb_berita a')
-            ->select("a.*, b.kategori")
-            ->join("_tb_kategori_berita b", "b.kid = a.k_id")
-            ->where('a.tanggal', $tgl)
+        $data['pengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
             ->where('a.url', $url)
             ->where('a.status', 1)
             ->get()
             ->getRowObject();
 
-        if (!$data['berita']) {
+        if (!$data['pengumuman']) {
             return view('404');
         }
-        $data['title'] = 'Berita';
+        $data['title'] = 'Detail Pengumuman';
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
@@ -96,6 +88,6 @@ class Pengumuman extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
-        return view('web/berita/detail', $data);
+        return view('web/pengumuman/detail', $data);
     }
 }

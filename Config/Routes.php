@@ -21,6 +21,9 @@ $routes->get('/web/tugas-fungsi', 'Web\Home::tugasFungsi');
 $routes->get('/web/berita', 'Web\Berita::index');
 $routes->get('/web/berita/(:segment)/(:segment)', 'Web\Berita::detail/$1/$2');
 
+$routes->get('/web/pengumuman', 'Web\Pengumuman::index');
+$routes->get('/web/pengumuman/(:segment)', 'Web\Pengumuman::detail/$1');
+
 $routes->get('/web/foto', 'Web\Foto::index');
 $routes->get('/web/foto/(:segment)', 'Web\Foto::detail/$1');
 $routes->get('/web/video', 'Web\Video::index');

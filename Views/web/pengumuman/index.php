@@ -10,152 +10,46 @@
                 <div class="col-md-8 col-sm-12">
                     <div class="section-title">
                         <h1 class="d-flex justify-content-between">
-                            <a class="text-uppercase">Semua Pengumuman</a>
+                            <a class="text-uppercase">Daftar Pengumuman</a>
                             <span class="pr-2" style="font-size:14px; padding-top:2px"></span>
                         </h1>
                     </div>
+
                     <div class="row mb-4">
-                        <?php if (isset($dataBeritas)) { ?>
-                            <?php if (count($dataBeritas) > 0) { ?>
-                                <?php foreach ($dataBeritas as $key => $value) { ?>
-                                    <div class="col-md-12 col-12">
-                                        <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
-                                            <div class="card-body p-1">
-                                                <div class="row align-items-center">
-                                                    <div class="col-3 p-0  pl-3">
-                                                        <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>">
-                                                            <img src="<?= base_url() ?>uploads/berita/<?= $value->image ?>" alt="<?= $value->judul ?>" class="rounded">
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="d-block d-sm-none">
-                                                            <h5 class="title-card">
-                                                                <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" tabindex="-1"><?= $value->judul ?></a>
-                                                            </h5>
-                                                        </div>
-                                                        <div class="d-none d-md-block">
-                                                            <h6 class="title-cardx">
-                                                                <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" tabindex="-1"><?= $value->judul ?></a>
-                                                            </h6>
-                                                        </div>
+                        <div class="col-md-12 col-12">
+                            <div class="entry-content">
 
-                                                        <span class="jl_post_meta">
-                                                            <span class="text-primary">
-                                                                <a href="javascript:;" class="cate"><i class="fas fa-user"></i>Admin</a>
-                                                            </span>
-                                                            <span> | </span>
-                                                            <span class="text-primary">
-                                                                <a href="javascript:;" class="cate"><i class="mdi mdi-folder-multiple"></i><?= $value->kategori ?></a>
-                                                            </span>
-                                                            <span> | </span>
-                                                            <span class="post-date" style="color:#647277;"><i class="mdi mdi-calendar-multiple-check"></i><?= $value->tanggal ?></span>
-                                                            <div class="d-none d-md-block">
-                                                                <p><?= potong_teks($value->deskripsi, 200) ?> ...
-                                                                    <span class="float-right"> <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" class="btn btn-block btn-light btn-sm text-light">Selengkapnya »</a></span>
+                                <!-- <div class="alert p-2 shadow-sm" style='background-color:#AFEEEE; border-color:#e3e3e3;'>
+                                    Anda Punya pertanyaan, keluhan, masukan atau saran, seputar pelayanan kami? Silahkan klik <a href="kritiksaran.html"><b>disini</b></a>, untuk sampaikan.
+                                </div> -->
 
-                                                                </p>
+                                <?php if (isset($dataPengumuman)) { ?>
+                                    <?php if (count($dataPengumuman) > 0) { ?>
+                                        <?php foreach ($dataPengumuman as $key => $value) { ?>
+                                            <div class="list-group mt-2">
+                                                <div class="list-group-item list-group-item-action " onclick="lihatpengumuman('<?= $value->url ?>')">
+                                                    <div class="row no-gutters pointer">
+                                                        <div class="media">
+                                                            <div class="media-body">
+                                                                <a style="font-size: 16px;line-height: 19px; margin-bottom: 0px; color:#696969;"><?= $value->judul ?>e</a>
+                                                                <div class="list-posted">
+                                                                    <i class="fas fa-user-alt"></i> Admin |
+                                                                    <i class="far fa-calendar-alt"></i> <?= $value->created_at ?>
+                                                                    <!-- <i class="far fa-eye"></i> 182 kali -->
+                                                                </div>
                                                             </div>
-                                                        </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        <?php } ?>
+                                    <?php } ?>
                                 <?php } ?>
-                            <?php } ?>
-                        <?php } ?>
-                    </div>
-                    <div class="d-flex justify-content-center mt-4 mb-3">
-                        <?php if (isset($pagination)) { ?>
-                            <nav>
-                                <ul class="pagination">
-                                    <nav aria-label="Page navigation">
-                                        <ul class="pagination">
-                                            <!-- First Page -->
-                                            <?php if ($pagination['currentPage'] > 1): ?>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="<?= base_url('web') ?>/berita?page=1" aria-label="First">
-                                                        <span aria-hidden="true">«</span>
-                                                    </a>
-                                                </li>
-                                            <?php else: ?>
-                                                <li class="page-item disabled">
-                                                    <span class="page-link" aria-hidden="true">«</span>
-                                                </li>
-                                            <?php endif; ?>
-
-                                            <!-- Previous Button -->
-                                            <?php if ($pagination['currentPage'] > 1): ?>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="<?= base_url('web') ?>/berita?page=<?= $pagination['currentPage'] - 1 ?>" aria-label="Previous">
-                                                        <span aria-hidden="true">‹</span>
-                                                    </a>
-                                                </li>
-                                            <?php else: ?>
-                                                <li class="page-item disabled">
-                                                    <span class="page-link" aria-hidden="true">‹</span>
-                                                </li>
-                                            <?php endif; ?>
-
-                                            <!-- Page Numbers dengan ellipsis -->
-                                            <?php
-                                            $startPage = max(1, $pagination['currentPage'] - 2);
-                                            $endPage = min($pagination['totalPages'], $pagination['currentPage'] + 2);
-
-                                            // Tampilkan ellipsis di awal jika perlu
-                                            if ($startPage > 1): ?>
-                                                <li class="page-item disabled">
-                                                    <span class="page-link">...</span>
-                                                </li>
-                                            <?php endif; ?>
-
-                                            <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
-                                                <li class="page-item <?= $i == $pagination['currentPage'] ? 'active' : '' ?>">
-                                                    <a class="page-link" href="<?= base_url('web') ?>/berita?page=<?= $i ?>">
-                                                        <?= $i ?>
-                                                    </a>
-                                                </li>
-                                            <?php endfor; ?>
-
-                                            <!-- Tampilkan ellipsis di akhir jika perlu -->
-                                            <?php if ($endPage < $pagination['totalPages']): ?>
-                                                <li class="page-item disabled">
-                                                    <span class="page-link">...</span>
-                                                </li>
-                                            <?php endif; ?>
-
-                                            <!-- Next Button -->
-                                            <?php if ($pagination['currentPage'] < $pagination['totalPages']): ?>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="<?= base_url('web') ?>/berita?page=<?= $pagination['currentPage'] + 1 ?>" aria-label="Next">
-                                                        <span aria-hidden="true">›</span>
-                                                    </a>
-                                                </li>
-                                            <?php else: ?>
-                                                <li class="page-item disabled">
-                                                    <span class="page-link" aria-hidden="true">›</span>
-                                                </li>
-                                            <?php endif; ?>
-
-                                            <!-- Last Page -->
-                                            <?php if ($pagination['currentPage'] < $pagination['totalPages']): ?>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="<?= base_url('web') ?>/berita?page=<?= $pagination['totalPages'] ?>" aria-label="Last">
-                                                        <span aria-hidden="true">»</span>
-                                                    </a>
-                                                </li>
-                                            <?php else: ?>
-                                                <li class="page-item disabled">
-                                                    <span class="page-link" aria-hidden="true">»</span>
-                                                </li>
-                                            <?php endif; ?>
-                                        </ul>
-                                    </nav>
-                                </ul>
-                            </nav>
-                        <?php } ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <!-- Widget kanan  -->
                 <div class="col-md-4 col-sm-12">
                     <div class="theiaStickySidebar">

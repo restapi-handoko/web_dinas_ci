@@ -17,7 +17,7 @@
                                             <a class="post-category-color-text" style="background:#305b90" href="<?= base_url() ?>"><i class="fa fa-home"></i></a>
                                         </span>
                                         <span class="meta-category-small single_meta_category">
-                                            <a class="post-category-color-text" style="background:#305b90" href="javascript:;"><?= $berita->kategori ?></a>
+                                            <a class="post-category-color-text" style="background:#305b90" href="<?= base_url('web') ?>/pengumuman">Kembali</a>
                                         </span>
                                         <!-- <div class="px-1 py-1 bg-grey rounded shadow-sm">
                                             <a href="#" id="generate-link">
@@ -35,14 +35,14 @@
                                         <div class="d-none d-lg-block d-xl-block">
                                             <span class="meta-category-small single_meta_category">
                                                 <a class="post-category-color-text" style="background:#305b90" href="javascript:;">
-                                                    <?= $berita->judul ?></i>
+                                                    <?= $pengumuman->judul ?></i>
                                                 </a>
                                             </span>
                                         </div>
                                         <h6><span class="badge badge-light-primary"></span></h6>
 
                                         <div class="section-title">
-                                            <h2 class=""><?= $berita->judul ?></h2>
+                                            <h2 class=""><?= $pengumuman->judul ?></h2>
                                         </div>
                                         <span class="jl_post_meta">
                                             <div class="d-flex align-items-center justify-content-between">
@@ -73,18 +73,19 @@
                                                 </ul>
                                                 <ul class="entry__meta text-right">
                                                     <li class="entry__meta-date">
-                                                        <span style="color:#305b90;"><?= $berita->tanggal ?> | Dibaca : <?= $berita->view ?> x</span>
+                                                        <span style="color:#305b90;"><?= $pengumuman->created_at ?></span>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </span>
                                     </div>
-                                    <div class="single_content_header jl_single_feature_below">
-                                        <div class="">
-                                            <img width="1000" height="650" src="<?= base_url() ?>uploads/berita/<?= $berita->image ?>" class="" alt="" loading="lazy">
+                                    <?php if ($pengumuman->image !== NULL) { ?>
+                                        <div class="single_content_header jl_single_feature_below">
+                                            <div class="">
+                                                <img width="1000" height="650" src="<?= base_url() ?>uploads/pengumuman/<?= $pengumuman->image ?>" class="" alt="" loading="lazy">
+                                            </div>
                                         </div>
-                                    </div>
-
+                                    <?php } ?>
                                 </div>
                                 <span class="text-secondary"> </span>
                                 <div class="post_content_w mt-4">
@@ -93,15 +94,15 @@
                                             <div class="jl_single_share_wrapper jl_clear_at">
                                                 <ul class="single_post_share_icon_post">
                                                     <li class="single_post_share_facebook">
-                                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?= base_url('web/berita') . '/' . $berita->tanggal . '/' . $berita->url ?>" target="_blank"><i class="jli-facebook"></i>
+                                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?= base_url('web/pengumuman') . '/' . $berita->url ?>" target="_blank"><i class="jli-facebook"></i>
                                                         </a>
                                                     </li>
                                                     <li class="single_post_share_twitter">
-                                                        <a href="https://twitter.com/intent/tweet?url=<?= base_url('web/berita') . '/' . $berita->tanggal . '/' . $berita->url ?>" target="_blank"><i class="jli-twitter"></i>
+                                                        <a href="https://twitter.com/intent/tweet?url=<?= base_url('web/pengumuman') . '/' . $berita->url ?>" target="_blank"><i class="jli-twitter"></i>
                                                         </a>
                                                     </li>
                                                     <li class="single_post_share_whatsapp">
-                                                        <a href="whatsapp://send?text=<?= base_url('web/berita') . '/' . $berita->tanggal . '/' . $berita->url ?>" target="_blank"><i class="fab fa-whatsapp"></i>
+                                                        <a href="whatsapp://send?text=<?= base_url('web/pengumuman') . '/' . $berita->url ?>" target="_blank"><i class="fab fa-whatsapp"></i>
                                                         </a>
                                                     </li>
                                                     <li class="single_post_share_linkedin">
@@ -113,21 +114,12 @@
                                         </div>
                                     </div>
                                     <div class="post_content jl_content">
-                                        <?= $berita->deskripsi ?>
+                                        <?= $pengumuman->deskripsi ?>
                                         <hr>
                                     </div>
 
                                 </div>
                                 <div class="clearfix"></div>
-                                <div class="single_tag_share ">
-                                    <div class="tag-cat">
-                                        <ul class="single_post_tag_layout">
-                                            <li>
-                                                <a href="javascript:;"><?= $berita->kategori ?></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
 
                                 <!-- KOMENTAR -->
 
