@@ -201,7 +201,7 @@
         `;
             input.value = ''; // Clear invalid file
         } else {
-            const sizeInMB = (file.size / (1024 * 1024)).tofted(2);
+            const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
             previewContainer.innerHTML = `
             <div class="file-info">
                 <span class="file-name">${file.name}</span>
