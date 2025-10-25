@@ -67,7 +67,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>
+                                                        <td colspan="2">
                                                             <b>DOKUMEN :</b></br>
                                                             <ul class="single_post_tag_layout">
                                                                 <li>
