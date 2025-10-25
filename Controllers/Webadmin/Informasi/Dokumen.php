@@ -583,8 +583,23 @@ class Dokumen extends BaseController
             $uploadedFiles = [];
             $fileNames = $this->request->getPost('file_names');
             $existingFiles = $this->request->getPost('existing_files');
-            $deletedFiles = $this->request->getPost('deleted_files'); // File yang dihapus
-            $newFiles = $this->request->getFiles('_file_lampiran');
+            $deletedFiles = $this->request->getPost('deleted_files');
+
+            // PERBAIKAN: Gunakan getFileMultiple() atau handle array manual
+            $newFiles = $this->request->getFileMultiple('_file_lampiran');
+
+            // Jika getFileMultiple() tidak bekerja, gunakan pendekatan manual
+            if (empty($newFiles)) {
+                $newFiles = [];
+                $uploadedFilesData = $_FILES['_file_lampiran'] ?? [];
+                if (!empty($uploadedFilesData['name'])) {
+                    foreach ($uploadedFilesData['name'] as $index => $fileName) {
+                        if (!empty($fileName)) {
+                            $newFiles[] = $this->request->getFile("_file_lampiran[$index]");
+                        }
+                    }
+                }
+            }
 
             // Process files
             $finalFiles = [];
@@ -597,24 +612,30 @@ class Dokumen extends BaseController
                         continue;
                     }
 
+                    // Pastikan index fileNames ada
+                    $customName = $fileNames[$index] ?? pathinfo($existingFile, PATHINFO_FILENAME);
+
                     $finalFiles[] = [
                         'saved_name' => $existingFile,
-                        'custom_name' => $fileNames[$index],
-                        'original_name' => $fileNames[$index] . '.' . pathinfo($existingFile, PATHINFO_EXTENSION)
+                        'custom_name' => $customName,
+                        'original_name' => $customName . '.' . pathinfo($existingFile, PATHINFO_EXTENSION)
                     ];
                 }
             }
 
-            // Handle new files
+            // Handle new files - PERBAIKAN DI SINI
             if (!empty($newFiles)) {
+                $existingFilesCount = !empty($existingFiles) ? count($existingFiles) : 0;
+
                 foreach ($newFiles as $index => $file) {
-                    if ($file->isValid() && !$file->hasMoved()) {
+                    // Pastikan $file adalah object UploadedFile, bukan array
+                    if (is_object($file) && $file->isValid() && !$file->hasMoved()) {
                         $originalName = $file->getName();
                         $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
 
-                        // Calculate correct index for file names
-                        $existingFilesCount = !empty($existingFiles) ? count($existingFiles) : 0;
-                        $customFileName = $fileNames[$existingFilesCount + $index] ?? pathinfo($originalName, PATHINFO_FILENAME);
+                        // Cari nama file yang sesuai dari array file_names
+                        $fileNamesIndex = $existingFilesCount + $index;
+                        $customFileName = $fileNames[$fileNamesIndex] ?? pathinfo($originalName, PATHINFO_FILENAME);
 
                         $newName = _create_name_foto($customFileName . '.' . $fileExtension);
 
@@ -632,7 +653,7 @@ class Dokumen extends BaseController
             }
 
             // Update lampiran data
-            $data['lampiran'] = json_encode($finalFiles);
+            $data['lampiran'] = !empty($finalFiles) ? json_encode($finalFiles) : null;
 
             $this->_db->transBegin();
             try {
