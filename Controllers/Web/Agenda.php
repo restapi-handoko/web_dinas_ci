@@ -90,4 +90,22 @@ class Agenda extends BaseController
             ->get()->getResult();
         return view('web/agenda/detail', $data);
     }
+
+    public function viewAgenda()
+    {
+        $url = htmlspecialchars($this->request->getVar('agenda_id'), true);
+
+        $x['data'] = $this->_db->table('_tb_agenda')->where('url', $url)->get()->getRowObject();
+
+        if (!$x['data']) {
+
+            $response = new \stdClass;
+            $response->message = "Agenda tidak ditemukan";
+            return json_encode($response);
+        }
+
+        $response = new \stdClass;
+        $response->sukses = view('web/agenda/view', $x);
+        return json_encode($response);
+    }
 }
