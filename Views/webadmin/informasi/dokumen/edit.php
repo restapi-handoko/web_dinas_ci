@@ -1,12 +1,29 @@
 <?php if (isset($data)) { ?>
+    <?php
+    // Decode data lampiran untuk multiple files
+    $lampiranFiles = [];
+    if ($data->lampiran !== null) {
+        $decodedFiles = json_decode($data->lampiran, true);
+        if (json_last_error() === JSON_ERROR_NONE && is_array($decodedFiles)) {
+            $lampiranFiles = $decodedFiles;
+        } else {
+            // Fallback untuk data lama (single file)
+            $lampiranFiles[] = [
+                'saved_name' => $data->lampiran,
+                'custom_name' => 'Lampiran',
+                'original_name' => 'Lampiran'
+            ];
+        }
+    }
+    ?>
     <form id="formEditModalData" action="./editSave" method="post" enctype="multipart/form-data">
         <input type="hidden" id="_id" name="_id" value="<?= $data->id ?>">
-        <input type="hidden" id="_old_lampiran" name="_old_lampiran" value="<?= $data->lampiran ?>">
+        <input type="hidden" id="_old_lampiran" name="_old_lampiran" value="<?= htmlspecialchars($data->lampiran) ?>">
         <div class="modal-body">
             <div class="row">
                 <div class="col-lg-10">
                     <label for="_judul" class="col-form-label">Judul Dokumen:</label>
-                    <input type="text" class="form-control judul" value="<?= $data->judul ?>" id="_judul" name="_judul" placeholder="Judul Pengumuman..." onfocusin="inputFocus(this);">
+                    <input type="text" class="form-control judul" value="<?= $data->judul ?>" id="_judul" name="_judul" placeholder="Judul Dokumen..." onfocusin="inputFocus(this);">
                     <div class="help-block _judul"></div>
                 </div>
                 <div class="col-lg-2">
@@ -22,21 +39,64 @@
                 </div>
                 <div class="col-lg-12 mt-4">
                     <div class="row mt-4">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="mt-3">
-                                <label for="_file_lampiran" class="form-label">Lampiran Dokumen: </label>
-                                <input class="form-control" type="file" id="_file_lampiran" name="_file_lampiran" onFocus="inputFocus(this);" accept="image/*, application/pdf" onchange="loadFilePdf()">
-                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Images</code> and Maximum File Size <code>5 Mb</code></p>
-                                <div class="help-block _file_lampiran" for="_file_lampiran"></div>
-                            </div>
-                        </div>
-                        <div class="col-6 mt-4">
-                            <div class="form-group mt-4">
-                                <div class="preview-image-upload mt-4">
-                                    <?php if ($data->lampiran !== null) { ?>
-                                        <a target="_blank" href="<?= base_url() . '/uploads/dokumen/' . $data->lampiran ?>" class="badge badge-pill badge-soft-success">Lampiran Dokumen</a>
-                                    <?php } ?>
+                                <label class="form-label">Lampiran Dokumen: </label>
+                                <button type="button" class="btn btn-sm btn-primary mb-2" onclick="addFileInput()">
+                                    <i class="fa fa-plus"></i> Tambah File
+                                </button>
+
+                                <div id="fileInputsContainer">
+                                    <!-- Existing files -->
+                                    <?php foreach ($lampiranFiles as $index => $file): ?>
+                                        <div class="file-input-group mb-2">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-5">
+                                                    <input type="text" class="form-control form-control-sm file-name-input" placeholder="Nama file (tanpa ekstensi)" name="file_names[]" value="<?= isset($file['custom_name']) ? $file['custom_name'] : '' ?>">
+                                                    <input type="hidden" name="existing_files[]" value="<?= isset($file['saved_name']) ? $file['saved_name'] : $file ?>">
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <input class="form-control form-control-sm file-input" type="file" name="_file_lampiran[]" accept="image/*, application/pdf" onchange="validateSingleFile(this)">
+                                                    <small class="text-muted">Kosongkan jika tidak ingin mengubah file</small>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button type="button" class="btn btn-sm btn-danger" onclick="removeFileInput(this)" <?= count($lampiranFiles) === 1 ? 'disabled' : '' ?>>
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="file-preview mt-1">
+                                                <?php if (isset($file['saved_name'])): ?>
+                                                    <div class="file-info">
+                                                        <span class="file-name">File saat ini: <?= isset($file['custom_name']) ? $file['custom_name'] : $file['saved_name'] ?></span>
+                                                        <a target="_blank" href="<?= base_url() . '/uploads/dokumen/' . $file['saved_name'] ?>" class="badge badge-pill badge-soft-success ml-2">Lihat</a>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+
+                                    <!-- Template for new file inputs -->
+                                    <div class="file-input-group mb-2" id="newFileTemplate" style="display: none;">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control form-control-sm file-name-input" placeholder="Nama file (tanpa ekstensi)" name="file_names[]">
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input class="form-control form-control-sm file-input" type="file" name="_file_lampiran[]" accept="image/*, application/pdf" onchange="validateSingleFile(this)">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-sm btn-danger" onclick="removeFileInput(this)">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="file-preview mt-1"></div>
+                                    </div>
                                 </div>
+
+                                <p class="font-size-11">Format : <code data-toggle="tooltip" data-placement="bottom" title="jpg, png, jpeg, pdf">Images/PDF</code> and Maximum File Size <code>5 Mb</code> per file</p>
+                                <div class="help-block _file_lampiran" for="_file_lampiran"></div>
                             </div>
                         </div>
                     </div>
@@ -68,49 +128,152 @@
     </form>
 
     <script>
-        function loadFilePdf() {
-            const inputF = document.getElementsByName('_file_lampiran')[0];
-            if (inputF.files && inputF.files[0]) {
-                var fileF = inputF.files[0];
+        let fileInputCounter = <?= count($lampiranFiles) ?>;
 
-                var mime_types = ['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'];
+        function addFileInput() {
+            fileInputCounter++;
+            const container = document.getElementById('fileInputsContainer');
+            const template = document.getElementById('newFileTemplate');
 
-                if (mime_types.indexOf(fileF.type) == -1) {
-                    inputF.value = "";
-                    $('.preview-image-upload').css('display', 'block');
-                    Swal.fire(
-                        'Warning!!!',
-                        "Hanya file type gambar yang diizinkan.",
-                        'warning'
-                    );
-                    return false;
-                }
+            const newFileInput = template.cloneNode(true);
+            newFileInput.id = '';
+            newFileInput.style.display = 'block';
 
-                if (fileF.size > 1 * 5124 * 1000) {
-                    inputF.value = "";
-                    $('.preview-image-upload').css('display', 'block');
-                    Swal.fire(
-                        'Warning!!!',
-                        "Ukuran file tidak boleh lebih dari 1 Mb.",
-                        'warning'
-                    );
-                    return false;
-                }
+            container.appendChild(newFileInput);
+            updateRemoveButtons();
+        }
 
-                $('.preview-image-upload').css('display', 'none');
+        function removeFileInput(button) {
+            const fileInputGroup = button.closest('.file-input-group');
+            fileInputGroup.remove();
+            updateRemoveButtons();
+        }
+
+        function updateRemoveButtons() {
+            const fileInputGroups = document.querySelectorAll('.file-input-group');
+            const removeButtons = document.querySelectorAll('.file-input-group .btn-danger');
+
+            // Disable remove button if only one input remains
+            if (fileInputGroups.length === 1) {
+                removeButtons[0].disabled = true;
             } else {
-                console.log("failed Load");
+                removeButtons.forEach(button => {
+                    button.disabled = false;
+                });
             }
+        }
+
+        function validateSingleFile(input) {
+            const file = input.files[0];
+            const previewContainer = input.closest('.file-input-group').querySelector('.file-preview');
+
+            if (!file) {
+                // Jika file dihapus, hapus preview baru
+                if (!previewContainer.querySelector('.file-info')) {
+                    previewContainer.innerHTML = '';
+                }
+                return;
+            }
+
+            const validation = validateFile(file);
+
+            if (!validation.isValid) {
+                previewContainer.innerHTML = `
+                    <div class="file-error">
+                        <strong>${file.name}</strong> - ${validation.error}
+                    </div>
+                `;
+                input.value = '';
+            } else {
+                const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+                previewContainer.innerHTML = `
+                    <div class="file-info">
+                        <span class="file-name">${file.name}</span>
+                        <span class="file-size">(${sizeInMB} MB)</span>
+                    </div>
+                `;
+
+                // Auto-fill filename if empty
+                const fileNameInput = input.closest('.file-input-group').querySelector('.file-name-input');
+                if (!fileNameInput.value) {
+                    const fileNameWithoutExt = file.name.replace(/\.[^/.]+$/, "");
+                    fileNameInput.value = fileNameWithoutExt;
+                }
+            }
+        }
+
+        function validateFile(file) {
+            const mime_types = ['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'];
+            const maxSize = 5 * 1024 * 1024;
+
+            if (mime_types.indexOf(file.type) === -1) {
+                return {
+                    isValid: false,
+                    error: 'Format file tidak didukung. Hanya JPG, PNG, PDF yang diizinkan.'
+                };
+            }
+
+            if (file.size > maxSize) {
+                return {
+                    isValid: false,
+                    error: 'Ukuran file melebihi 5MB'
+                };
+            }
+
+            return {
+                isValid: true,
+                error: null
+            };
+        }
+
+        function validateAllFiles() {
+            const fileInputs = document.querySelectorAll('input[name="_file_lampiran[]"]');
+            let isValid = true;
+            let errorMessages = [];
+
+            fileInputs.forEach((input, index) => {
+                const file = input.files[0];
+                const fileNameInput = input.closest('.file-input-group').querySelector('.file-name-input');
+
+                // Only validate if file is selected
+                if (file) {
+                    if (!fileNameInput.value.trim()) {
+                        isValid = false;
+                        errorMessages.push(`File "${file.name}" belum memiliki nama`);
+                        fileNameInput.style.borderColor = '#dc3545';
+                    } else {
+                        fileNameInput.style.borderColor = '';
+                    }
+
+                    const validation = validateFile(file);
+                    if (!validation.isValid) {
+                        isValid = false;
+                        errorMessages.push(`File "${file.name}": ${validation.error}`);
+                    }
+                } else {
+                    // For existing files without new file, name is required
+                    if (!fileNameInput.value.trim()) {
+                        isValid = false;
+                        errorMessages.push(`Nama file tidak boleh kosong`);
+                        fileNameInput.style.borderColor = '#dc3545';
+                    } else {
+                        fileNameInput.style.borderColor = '';
+                    }
+                }
+            });
+
+            return {
+                isValid: isValid,
+                errors: errorMessages
+            };
         }
 
         $("#formEditModalData").on("submit", function(e) {
             e.preventDefault();
             const id = document.getElementsByName('_id')[0].value;
-            const old_lampiran = document.getElementsByName('_old_lampiran')[0].value;
             const judul = document.getElementsByName('_judul')[0].value;
             const tahun = document.getElementsByName('_tahun')[0].value;
             const sumber = document.getElementsByName('_sumber')[0].value;
-            const fileNameFile = document.getElementsByName('_file_lampiran')[0].value;
 
             let status;
             if ($('#status_publikasi').is(":checked")) {
@@ -119,51 +282,47 @@
                 status = "0";
             }
 
-            if (judul === "") {
-                $("input#_judul").css("color", "#dc3545");
-                $("input#_judul").css("border-color", "#dc3545");
-                $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul tidak boleh kosong.</li></ul>');
+            // Basic validation
+            if (judul === "" || tahun === "" || sumber === "") {
+                Swal.fire("Peringatan!", "Semua field harus diisi.", "warning");
                 return false;
             }
 
-            if (tahun === "") {
-                $("input#_tahun").css("color", "#dc3545");
-                $("input#_tahun").css("border-color", "#dc3545");
-                $('._tahun').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Tahun tidak boleh kosong.</li></ul>');
+            if (judul.length < 5 || judul.length > 250) {
+                Swal.fire("Peringatan!", "Judul harus antara 5-250 karakter.", "warning");
                 return false;
             }
 
-            if (sumber === "") {
-                $("input#_sumber").css("color", "#dc3545");
-                $("input#_sumber").css("border-color", "#dc3545");
-                $('._sumber').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Sumberdata tidak boleh kosong.</li></ul>');
-                return false;
-            }
-
-            if (judul.length < 5) {
-                $("input#_judul").css("color", "#dc3545");
-                $("input#_judul").css("border-color", "#dc3545");
-                $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul minimal 5 karakter.</li></ul>');
-                return false;
-            }
-
-            if (judul.length > 250) {
-                $("input#_judul").css("color", "#dc3545");
-                $("input#_judul").css("border-color", "#dc3545");
-                $('._judul').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Judul maksimal 250 karakter.</li></ul>');
+            // File validation
+            const fileValidation = validateAllFiles();
+            if (!fileValidation.isValid) {
+                Swal.fire("Peringatan!", fileValidation.errors.join('<br>'), "warning");
                 return false;
             }
 
             const formUpload = new FormData();
-            if (fileNameFile !== "") {
-                const fileF = document.getElementsByName('_file_lampiran')[0].files[0];
-                formUpload.append('_file_lampiran', fileF);
-            }
             formUpload.append('id', id);
             formUpload.append('judul', judul);
             formUpload.append('tahun', tahun);
             formUpload.append('sumber_data', sumber);
             formUpload.append('status', status);
+
+            // Append existing files
+            const existingFiles = document.querySelectorAll('input[name="existing_files[]"]');
+            existingFiles.forEach((input, index) => {
+                formUpload.append('existing_files[]', input.value);
+            });
+
+            // Append files and names
+            const fileInputs = document.querySelectorAll('input[name="_file_lampiran[]"]');
+            const fileNameInputs = document.querySelectorAll('input[name="file_names[]"]');
+
+            fileInputs.forEach((input, index) => {
+                if (input.files[0]) {
+                    formUpload.append('_file_lampiran[]', input.files[0]);
+                }
+                formUpload.append('file_names[]', fileNameInputs[index].value);
+            });
 
             $.ajax({
                 xhr: function() {
@@ -253,6 +412,11 @@
                     );
                 }
             });
+        });
+
+        // Initialize remove buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            updateRemoveButtons();
         });
     </script>
 <?php } ?>

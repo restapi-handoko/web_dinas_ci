@@ -466,16 +466,8 @@ class Dokumen extends BaseController
             }
         }
     }
-
     public function editSave()
     {
-        // if ($this->request->getMethod() != 'post') {
-        //     $response = new \stdClass;
-        //     $response->status = 400;
-        //     $response->message = "Permintaan tidak diizinkan";
-        //     return json_encode($response);
-        // }
-
         $rules = [
             'id' => [
                 'rules' => 'required|trim',
@@ -509,19 +501,26 @@ class Dokumen extends BaseController
             ],
         ];
 
-        $filenamelampiranFile = dot_array_search('_file_lampiran.name', $_FILES);
-        if ($filenamelampiranFile != '') {
-            $lampiranValFile = [
-                '_file_lampiran' => [
-                    'rules' => 'uploaded[_file_lampiran]|max_size[_file_lampiran,5148]|mime_in[_file_lampiran,image/jpeg,image/jpg,image/png,application/pdf]',
-                    'errors' => [
-                        'uploaded' => 'Pilih file terlebih dahulu. ',
-                        'max_size' => 'Ukuran file terlalu besar. ',
-                        'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar/pdf. '
-                    ]
-                ],
-            ];
-            $rules = array_merge($rules, $lampiranValFile);
+        // Validasi untuk file baru
+        $fileNames = $this->request->getPost('file_names');
+        $newFiles = $this->request->getFiles('_file_lampiran');
+
+        if (!empty($newFiles)) {
+            foreach ($newFiles as $index => $file) {
+                if ($file->isValid() && !$file->hasMoved()) {
+                    $lampiranValFile = [
+                        "_file_lampiran.$index" => [
+                            'rules' => 'uploaded[_file_lampiran.' . $index . ']|max_size[_file_lampiran.' . $index . ',5148]|mime_in[_file_lampiran.' . $index . ',image/jpeg,image/jpg,image/png,application/pdf]',
+                            'errors' => [
+                                'uploaded' => 'Pilih file terlebih dahulu. ',
+                                'max_size' => 'Ukuran file terlalu besar. ',
+                                'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar/pdf. '
+                            ]
+                        ],
+                    ];
+                    $rules = array_merge($rules, $lampiranValFile);
+                }
+            }
         }
 
         if (!$this->validate($rules)) {
@@ -535,7 +534,6 @@ class Dokumen extends BaseController
                 . $this->validator->getError('_file_lampiran');
             return json_encode($response);
         } else {
-
             $Profilelib = new Profilelib();
             $user = $Profilelib->user();
             if ($user->code != 200) {
@@ -553,7 +551,7 @@ class Dokumen extends BaseController
             $sumber_data = htmlspecialchars($this->request->getVar('sumber_data'), true);
             $status = htmlspecialchars($this->request->getVar('status'), true);
 
-            $oldData =  $this->_db->table('_tb_dokumen')->where('id', $id)->get()->getRowObject();
+            $oldData = $this->_db->table('_tb_dokumen')->where('id', $id)->get()->getRowObject();
 
             if (!$oldData) {
                 $response = new \stdClass;
@@ -573,7 +571,7 @@ class Dokumen extends BaseController
 
             if ($judul !== $oldData->judul) {
                 $slug = generateSlug($judul);
-                $cekData = $this->_db->table('_tb_dokumen')->where(['url' => $slug . '.html'])->get()->getRowObject();
+                $cekData = $this->_db->table('_tb_dokumen')->where(['url' => $slug . '.html'])->where('id !=', $id)->get()->getRowObject();
 
                 if ($cekData) {
                     $slug = $slug . "-" . date('Y-m-d');
@@ -582,61 +580,72 @@ class Dokumen extends BaseController
                 $data['url'] = $slug . '.html';
             }
 
-            if (
-                (int)$status === (int)$oldData->status
-                && $judul === $oldData->judul
-                && $tahun === $oldData->tahun
-                && $sumber_data === $oldData->sumber_data
-            ) {
-                if ($filenamelampiranFile == '') {
-                    $response = new \stdClass;
-                    $response->status = 201;
-                    $response->message = "Tidak ada perubahan data yang disimpan.";
-                    $response->redirect = base_url('webadmin/informasi/dokumen/data');
-                    return json_encode($response);
-                }
-            }
-
             $dir = FCPATH . "uploads/dokumen";
+            $uploadedFiles = [];
+            $fileNames = $this->request->getPost('file_names');
+            $existingFiles = $this->request->getPost('existing_files');
+            $newFiles = $this->request->getFiles('_file_lampiran');
 
-            if ($filenamelampiranFile != '') {
-                $lampiranFile = $this->request->getFile('_file_lampiran');
-                $filesNamelampiranFile = $lampiranFile->getName();
-                $newNamelampiranFile = _create_name_foto($filesNamelampiranFile);
+            // Process files
+            $finalFiles = [];
 
-                if ($lampiranFile->isValid() && !$lampiranFile->hasMoved()) {
-                    $lampiranFile->move($dir, $newNamelampiranFile);
-                    $data['lampiran'] = $newNamelampiranFile;
-                } else {
-                    $response = new \stdClass;
-                    $response->status = 400;
-                    $response->message = "Gagal mengupload file.";
-                    return json_encode($response);
+            // Handle existing files
+            if (!empty($existingFiles)) {
+                foreach ($existingFiles as $index => $existingFile) {
+                    $finalFiles[] = [
+                        'saved_name' => $existingFile,
+                        'custom_name' => $fileNames[$index],
+                        'original_name' => $fileNames[$index] . '.' . pathinfo($existingFile, PATHINFO_EXTENSION)
+                    ];
                 }
             }
+
+            // Handle new files
+            if (!empty($newFiles)) {
+                foreach ($newFiles as $index => $file) {
+                    if ($file->isValid() && !$file->hasMoved()) {
+                        $originalName = $file->getName();
+                        $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
+                        $customFileName = $fileNames[count($existingFiles) + $index] ?? pathinfo($originalName, PATHINFO_FILENAME);
+                        $newName = _create_name_foto($customFileName . '.' . $fileExtension);
+
+                        if ($file->move($dir, $newName)) {
+                            $finalFiles[] = [
+                                'saved_name' => $newName,
+                                'custom_name' => $customFileName,
+                                'original_name' => $originalName,
+                                'extension' => $fileExtension
+                            ];
+                            $uploadedFiles[] = $newName;
+                        }
+                    }
+                }
+            }
+
+            // Update lampiran data
+            $data['lampiran'] = json_encode($finalFiles);
+
             $this->_db->transBegin();
             try {
                 $this->_db->table('_tb_dokumen')->where('id', $oldData->id)->update($data);
             } catch (\Exception $e) {
-                if ($filenamelampiranFile != '') {
-                    unlink($dir . '/' . $newNamelampiranFile);
+                // Rollback uploaded files
+                foreach ($uploadedFiles as $uploadedFile) {
+                    if (file_exists($dir . '/' . $uploadedFile)) {
+                        unlink($dir . '/' . $uploadedFile);
+                    }
                 }
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->message = "Data gagal disimpan.";
+                $response->message = "Data gagal disimpan: " . $e->getMessage();
                 return json_encode($response);
             }
 
             if ($this->_db->affectedRows() > 0) {
-                if ($filenamelampiranFile != '') {
-                    if ($oldData->lampiran !== null) {
-                        try {
-                            unlink($dir . '/' . $oldData->lampiran);
-                        } catch (\Throwable $th) {
-                        }
-                    }
-                }
+                // Delete old files that are no longer used
+                $this->cleanupOldFiles($oldData->lampiran, $finalFiles);
+
                 $this->_db->transCommit();
                 $response = new \stdClass;
                 $response->status = 200;
@@ -644,14 +653,49 @@ class Dokumen extends BaseController
                 $response->redirect = base_url('webadmin/informasi/dokumen/data');
                 return json_encode($response);
             } else {
-                if ($filenamelampiranFile != '') {
-                    unlink($dir . '/' . $newNamelampiranFile);
+                // Rollback uploaded files
+                foreach ($uploadedFiles as $uploadedFile) {
+                    if (file_exists($dir . '/' . $uploadedFile)) {
+                        unlink($dir . '/' . $uploadedFile);
+                    }
                 }
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->message = "Gagal mengupate data";
+                $response->message = "Gagal mengupdate data";
                 return json_encode($response);
+            }
+        }
+    }
+
+    private function cleanupOldFiles($oldLampiranData, $newFiles)
+    {
+        if (empty($oldLampiranData)) {
+            return;
+        }
+
+        $dir = FCPATH . "uploads/dokumen";
+        $oldFiles = [];
+
+        // Decode old files
+        $decodedOldFiles = json_decode($oldLampiranData, true);
+        if (json_last_error() === JSON_ERROR_NONE && is_array($decodedOldFiles)) {
+            $oldFiles = $decodedOldFiles;
+        } else {
+            // Single file format
+            $oldFiles[] = ['saved_name' => $oldLampiranData];
+        }
+
+        // Find files to delete
+        $newFileNames = array_column($newFiles, 'saved_name');
+
+        foreach ($oldFiles as $oldFile) {
+            $oldFileName = $oldFile['saved_name'] ?? $oldFile;
+            if (!in_array($oldFileName, $newFileNames)) {
+                $filePath = $dir . '/' . $oldFileName;
+                if (file_exists($filePath) && is_file($filePath)) {
+                    unlink($filePath);
+                }
             }
         }
     }
