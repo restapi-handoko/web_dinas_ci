@@ -321,7 +321,7 @@
                                                         <!-- <span class="text-primary">
                                                             Lembata - NTT </span>
                                                         <span> | </span> -->
-                                                        <span class="post-date" style="color:#647277;"><?= $value->tangal_mulai ?> <?= $value->tanggal_selesai !== NULL ? '- ' . $value->tanggal_selesai : '' ?></span>
+                                                        <span class="post-date" style="color:#647277;"><?= $value->tanggal_mulai ?> <?= $value->tanggal_selesai !== NULL ? '- ' . $value->tanggal_selesai : '' ?></span>
                                                     </span>
                                                 </div>
                                             </div>
