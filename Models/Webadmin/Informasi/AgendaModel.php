@@ -10,7 +10,7 @@ class AgendaModel extends Model
     protected $table = "_tb_agenda a";
     protected $column_order = array(null, null, 'a.status', 'a.tanggal', 'a.judul', null);
     protected $column_search = array('a.judul', 'a.deskripsi');
-    protected $order = array('a.tanggal' => 'desc', 'a.created_at' => 'desc');
+    protected $order = array('a.created_at' => 'desc');
     protected $request;
     protected $db;
     protected $dt;
