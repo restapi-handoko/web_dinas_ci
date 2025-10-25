@@ -42,9 +42,9 @@
                         <div class="col-lg-12">
                             <div class="mt-3">
                                 <label class="form-label">Lampiran Dokumen: </label>
-                                <button type="button" class="btn btn-sm btn-primary mb-2" onclick="addFileInput()">
+                                <!-- <button type="button" class="btn btn-sm btn-primary mb-2" onclick="addFileInput()">
                                     <i class="fa fa-plus"></i> Tambah File Baru
-                                </button>
+                                </button> -->
 
                                 <div id="fileInputsContainer">
                                     <!-- Existing files -->
@@ -65,11 +65,11 @@
                                                         File: <?= isset($file['saved_name']) ? $file['saved_name'] : '' ?>
                                                     </small>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <!-- <div class="col-md-2">
                                                     <button type="button" class="btn btn-sm btn-danger" onclick="removeFileInput(this)" <?= count($lampiranFiles) === 1 ? 'disabled' : '' ?>>
                                                         <i class="fa fa-times"></i>
                                                     </button>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="file-preview mt-1">
                                                 <?php if (isset($file['saved_name'])): ?>
