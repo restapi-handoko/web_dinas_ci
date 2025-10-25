@@ -43,8 +43,8 @@
                                                                     </thead>
                                                                     <tbody>
                                                                         <?php if (isset($v->items)) { ?>
-                                                                            <?php if (count($$v->items) > 0) { ?>
-                                                                                <?php foreach ($$v->items as $key => $value) { ?>
+                                                                            <?php if (count($v->items) > 0) { ?>
+                                                                                <?php foreach ($v->items as $key => $value) { ?>
                                                                                     <tr>
                                                                                         <td class="text-center">
                                                                                             <span class="badge badge-pill badge-light-primary"><?= $key + 1 ?></span>
