@@ -49,7 +49,7 @@ class Dokumen extends BaseController
                     foreach ($files as $index => $file) {
                         $fileName = isset($file['custom_name']) ? $file['custom_name'] : (isset($file['original_name']) ? $file['original_name'] : 'File ' . ($index + 1));
                         $savedName = isset($file['saved_name']) ? $file['saved_name'] : $file;
-                        $lampiran .= '<a target="_blank" href="' . base_url() . '/uploads/dokumen/' . $savedName . '" class="badge badge-pill badge-soft-success mr-1 mb-1" title="' . $fileName . '">' . $fileName . '</a>';
+                        $lampiran .= '<a target="_blank" href="' . base_url() . '/uploads/dokumen/' . $savedName . '" class="badge badge-pill badge-soft-success mr-1 mb-1" title="' . $fileName . '">' . $fileName . '</a>&nbsp;&nbsp;';
                     }
                 } else {
                     // Fallback untuk data lama (single file)
