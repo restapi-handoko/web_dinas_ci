@@ -26,6 +26,9 @@ $routes->get('/web/pengumuman/(:segment)', 'Web\Pengumuman::detail/$1');
 
 $routes->get('/web/produkhukum', 'Web\Produkhukum::index');
 
+$routes->get('/web/pengadaan', 'Web\Pengadaan::index');
+$routes->get('/web/pengadaan/(:segment)', 'Web\Pengadaan::detail/$1');
+
 $routes->get('/web/agenda', 'Web\Agenda::index');
 // $routes->get('/web/agenda/(:segment)', 'Web\Agenda::detail/$1');
 $routes->post('/web/agenda/formlihatagenda', 'Web\Agenda::viewAgenda');
