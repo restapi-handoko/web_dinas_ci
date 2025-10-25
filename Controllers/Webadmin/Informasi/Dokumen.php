@@ -660,36 +660,23 @@ class Dokumen extends BaseController
                 }
             }
 
-            // PERBAIKAN: Handle khusus untuk kasus file baru di index yang salah
+            // PERBAIKAN: Handle file baru (di luar range existing files)
             $existingFilesCount = !empty($existingFiles) ? count($existingFiles) : 0;
-            $hasReplacementFiles = false;
 
-            // Cek apakah ada file replacement
             foreach ($allFileInputs as $index => $fileData) {
-                if ($fileData['has_file'] && $index < $existingFilesCount) {
-                    $hasReplacementFiles = true;
-                    break;
-                }
-            }
-
-            // Jika tidak ada replacement files, maka file di index 0 adalah file baru
-            if (!$hasReplacementFiles && isset($allFileInputs[0]) && $allFileInputs[0]['has_file']) {
-                // Cari index kosong pertama untuk file baru
-                $newFileIndex = $existingFilesCount;
-                foreach ($fileNames as $index => $name) {
-                    if ($index >= $existingFilesCount && !empty($name)) {
-                        $newFileIndex = $index;
-                        break;
-                    }
+                // Skip jika file kosong atau index dalam range existing files (sudah diproses di atas)
+                if (!$fileData['has_file'] || $index < $existingFilesCount) {
+                    continue;
                 }
 
-                // Process sebagai file baru
-                $fileData = $allFileInputs[0];
+                // Process file baru
                 $file = $fileData['file'];
                 if ($file && $file->isValid() && !$file->hasMoved()) {
                     $originalName = $file->getName();
                     $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
-                    $customFileName = $fileNames[$newFileIndex] ?? pathinfo($originalName, PATHINFO_FILENAME);
+
+                    // Cari nama file yang sesuai
+                    $customFileName = isset($fileNames[$index]) ? $fileNames[$index] : pathinfo($originalName, PATHINFO_FILENAME);
                     $newName = _create_name_foto($customFileName . '.' . $fileExtension);
 
                     if ($file->move($dir, $newName)) {
@@ -701,7 +688,7 @@ class Dokumen extends BaseController
                         ];
                         $uploadedFiles[] = $newName;
 
-                        log_message('error', "New file (workaround): $newName at index $newFileIndex");
+                        log_message('error', "New file uploaded: $newName at index $index");
                     }
                 }
             }
