@@ -95,9 +95,9 @@ class Agenda extends BaseController
     {
         $url = htmlspecialchars($this->request->getVar('agenda_id'), true);
 
-        $x['data'] = $this->_db->table('_tb_agenda')->where('url', $url)->get()->getRowObject();
+        $x['agenda'] = $this->_db->table('_tb_agenda')->where('url', $url)->get()->getRowObject();
 
-        if (!$x['data']) {
+        if (!$x['agenda']) {
 
             $response = new \stdClass;
             $response->message = "Agenda tidak ditemukan";
