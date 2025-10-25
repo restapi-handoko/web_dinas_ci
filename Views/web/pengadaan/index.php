@@ -66,13 +66,12 @@
                                                                 </table>
                                                             </div>
                                                         </div>
-                                                        <div class="d-flex justify-content-center mt-4 mb-3">
+                                                        <!-- <div class="d-flex justify-content-center mt-4 mb-3">
                                                             <?php if (isset($v->pagination)) { ?>
                                                                 <nav>
                                                                     <ul class="pagination">
                                                                         <nav aria-label="Page navigation">
                                                                             <ul class="pagination">
-                                                                                <!-- First Page -->
                                                                                 <?php if ($v->pagination['currentPage'] > 1): ?>
                                                                                     <li class="page-item">
                                                                                         <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=1" aria-label="First">
@@ -84,8 +83,6 @@
                                                                                         <span class="page-link" aria-hidden="true">«</span>
                                                                                     </li>
                                                                                 <?php endif; ?>
-
-                                                                                <!-- Previous Button -->
                                                                                 <?php if ($v->pagination['currentPage'] > 1): ?>
                                                                                     <li class="page-item">
                                                                                         <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $v->pagination['currentPage'] - 1 ?>" aria-label="Previous">
@@ -97,13 +94,9 @@
                                                                                         <span class="page-link" aria-hidden="true">‹</span>
                                                                                     </li>
                                                                                 <?php endif; ?>
-
-                                                                                <!-- Page Numbers dengan ellipsis -->
                                                                                 <?php
                                                                                 $startPage = max(1, $v->pagination['currentPage'] - 2);
                                                                                 $endPage = min($v->pagination['totalPages'], $v->pagination['currentPage'] + 2);
-
-                                                                                // Tampilkan ellipsis di awal jika perlu
                                                                                 if ($startPage > 1): ?>
                                                                                     <li class="page-item disabled">
                                                                                         <span class="page-link">...</span>
@@ -117,15 +110,11 @@
                                                                                         </a>
                                                                                     </li>
                                                                                 <?php endfor; ?>
-
-                                                                                <!-- Tampilkan ellipsis di akhir jika perlu -->
                                                                                 <?php if ($endPage < $v->pagination['totalPages']): ?>
                                                                                     <li class="page-item disabled">
                                                                                         <span class="page-link">...</span>
                                                                                     </li>
                                                                                 <?php endif; ?>
-
-                                                                                <!-- Next Button -->
                                                                                 <?php if ($v->pagination['currentPage'] < $v->pagination['totalPages']): ?>
                                                                                     <li class="page-item">
                                                                                         <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $v->pagination['currentPage'] + 1 ?>" aria-label="Next">
@@ -137,8 +126,6 @@
                                                                                         <span class="page-link" aria-hidden="true">›</span>
                                                                                     </li>
                                                                                 <?php endif; ?>
-
-                                                                                <!-- Last Page -->
                                                                                 <?php if ($v->pagination['currentPage'] < $v->pagination['totalPages']): ?>
                                                                                     <li class="page-item">
                                                                                         <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $v->pagination['totalPages'] ?>" aria-label="Last">
@@ -155,7 +142,7 @@
                                                                     </ul>
                                                                 </nav>
                                                             <?php } ?>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                             <?php } ?>
