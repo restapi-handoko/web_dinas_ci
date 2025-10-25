@@ -69,24 +69,25 @@
                                                     <tr>
                                                         <td colspan="2">
                                                             <b>DOKUMEN :</b></br>
-                                                            <ul>
-                                                                <li>
-                                                                    <?php
-                                                                    if ($dokumen->lampiran !== null) {
-                                                                        $files = json_decode($dokumen->lampiran, true);
-                                                                        if (json_last_error() === JSON_ERROR_NONE && is_array($files) && count($files) > 0) {
-                                                                            foreach ($files as $index => $file) {
-                                                                                $fileName = isset($file['custom_name']) ? $file['custom_name'] : (isset($file['original_name']) ? $file['original_name'] : 'File ' . ($index + 1));
-                                                                                $savedName = isset($file['saved_name']) ? $file['saved_name'] : $file; ?>
+                                                            <ul class="single_post_tag_layout">
+                                                                <?php
+                                                                if ($dokumen->lampiran !== null) {
+                                                                    $files = json_decode($dokumen->lampiran, true);
+                                                                    if (json_last_error() === JSON_ERROR_NONE && is_array($files) && count($files) > 0) {
+                                                                        foreach ($files as $index => $file) {
+                                                                            $fileName = isset($file['custom_name']) ? $file['custom_name'] : (isset($file['original_name']) ? $file['original_name'] : 'File ' . ($index + 1));
+                                                                            $savedName = isset($file['saved_name']) ? $file['saved_name'] : $file; ?>
+                                                                            <li>
                                                                                 <a target="_blank" href="<?= base_url() . '/uploads/dokumen/' . $savedName ?>" title="<?= $fileName ?>"><?= $fileName ?></a>
-                                                                            <?php }
-                                                                        } else { ?>
-                                                                            // Fallback untuk data lama (single file)
+                                                                            </li>
+                                                                        <?php }
+                                                                    } else { ?>
+                                                                        <li>
                                                                             <a target="_blank" href="<?= base_url() . '/uploads/dokumen/' . $dokumen->lampiran ?>">Lampiran</a>
-                                                                    <?php }
-                                                                    }
-                                                                    ?>
-                                                                </li>
+                                                                        </li>
+                                                                <?php }
+                                                                }
+                                                                ?>
                                                             </ul>
                                                         </td>
                                                     </tr>
