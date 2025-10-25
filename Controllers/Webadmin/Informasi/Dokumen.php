@@ -271,14 +271,22 @@ class Dokumen extends BaseController
                     'required' => 'Status tidak boleh kosong. ',
                 ]
             ],
-            '_file_lampiran' => [
-                'rules' => 'uploaded[_file_lampiran]|max_size[_file_lampiran,5148]|mime_in[_file_lampiran,image/jpeg,image/jpg,image/png,application/pdf]',
+            '_file_lampiran[]' => [
+                'rules' => 'uploaded[_file_lampiran.0]|max_size[_file_lampiran,5148]|mime_in[_file_lampiran,image/jpeg,image/jpg,image/png,application/pdf]',
                 'errors' => [
-                    'uploaded' => 'Pilih file terlebih dahulu. ',
+                    'uploaded' => 'Pilih minimal satu file. ',
                     'max_size' => 'Ukuran file terlalu besar. ',
                     'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar/pdf. '
                 ]
             ],
+            // '_file_lampiran' => [
+            //     'rules' => 'uploaded[_file_lampiran]|max_size[_file_lampiran,5148]|mime_in[_file_lampiran,image/jpeg,image/jpg,image/png,application/pdf]',
+            //     'errors' => [
+            //         'uploaded' => 'Pilih file terlebih dahulu. ',
+            //         'max_size' => 'Ukuran file terlalu besar. ',
+            //         'mime_in' => 'Ekstensi yang anda upload harus berekstensi gambar/pdf. '
+            //     ]
+            // ],
         ];
 
         if (!$this->validate($rules)) {
@@ -288,7 +296,8 @@ class Dokumen extends BaseController
                 . $this->validator->getError('tahun')
                 . $this->validator->getError('sumber_data')
                 . $this->validator->getError('status')
-                . $this->validator->getError('_file_lampiran');
+                . $this->validator->getError('_file_lampiran[]');
+            // . $this->validator->getError('_file_lampiran');
             return json_encode($response);
         } else {
             $Profilelib = new Profilelib();
@@ -326,26 +335,63 @@ class Dokumen extends BaseController
             ];
 
             $dir = FCPATH . "uploads/dokumen";
+            $lampiranFiles = $this->request->getFiles();
+            $uploadedFiles = [];
+            $failedUploads = [];
 
-            $lampiranFile = $this->request->getFile('_file_lampiran');
-            $filesNamelampiranFile = $lampiranFile->getName();
-            $newNamelampiranFile = _create_name_foto($filesNamelampiranFile);
+            foreach ($lampiranFiles['_file_lampiran'] as $file) {
+                if ($file->isValid() && !$file->hasMoved()) {
+                    $newName = _create_name_foto($file->getName());
+                    $file->move($dir, $newName);
+                    $uploadedFiles[] = $newName;
+                } else {
+                    $failedUploads[] = $file->getName();
+                }
+            }
 
-            if ($lampiranFile->isValid() && !$lampiranFile->hasMoved()) {
-                $lampiranFile->move($dir, $newNamelampiranFile);
-                $data['lampiran'] = $newNamelampiranFile;
-            } else {
+            // Jika ada file yang gagal diupload
+            if (!empty($failedUploads)) {
+                // Hapus file yang sudah berhasil diupload
+                foreach ($uploadedFiles as $uploadedFile) {
+                    if (file_exists($dir . '/' . $uploadedFile)) {
+                        unlink($dir . '/' . $uploadedFile);
+                    }
+                }
+
                 $response = new \stdClass;
                 $response->status = 400;
-                $response->message = "Gagal mengupload file.";
+                $response->message = "Gagal mengupload beberapa file: " . implode(', ', $failedUploads);
                 return json_encode($response);
             }
+
+            // Simpan nama file sebagai JSON (multiple files)
+            $data['lampiran'] = json_encode($uploadedFiles);
+
+
+            // $lampiranFile = $this->request->getFile('_file_lampiran');
+            // $filesNamelampiranFile = $lampiranFile->getName();
+            // $newNamelampiranFile = _create_name_foto($filesNamelampiranFile);
+
+            // if ($lampiranFile->isValid() && !$lampiranFile->hasMoved()) {
+            //     $lampiranFile->move($dir, $newNamelampiranFile);
+            //     $data['lampiran'] = $newNamelampiranFile;
+            // } else {
+            //     $response = new \stdClass;
+            //     $response->status = 400;
+            //     $response->message = "Gagal mengupload file.";
+            //     return json_encode($response);
+            // }
 
             $this->_db->transBegin();
             try {
                 $this->_db->table('_tb_dokumen')->insert($data);
             } catch (\Exception $e) {
-                unlink($dir . '/' . $newNamelampiranFile);
+                foreach ($uploadedFiles as $uploadedFile) {
+                    if (file_exists($dir . '/' . $uploadedFile)) {
+                        unlink($dir . '/' . $uploadedFile);
+                    }
+                }
+                // unlink($dir . '/' . $newNamelampiranFile);
                 $this->_db->transRollback();
 
                 $response = new \stdClass;
@@ -363,7 +409,12 @@ class Dokumen extends BaseController
                 $response->redirect = base_url('webadmin/informasi/dokumen/data');
                 return json_encode($response);
             } else {
-                unlink($dir . '/' . $newNamelampiranFile);
+                foreach ($uploadedFiles as $uploadedFile) {
+                    if (file_exists($dir . '/' . $uploadedFile)) {
+                        unlink($dir . '/' . $uploadedFile);
+                    }
+                }
+                // unlink($dir . '/' . $newNamelampiranFile);
                 $this->_db->transRollback();
                 $response = new \stdClass;
                 $response->status = 400;
