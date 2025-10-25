@@ -14,59 +14,57 @@
                             <span class="pr-2" style="font-size:14px; padding-top:2px"></span>
                         </h1>
                     </div>
-
                     <div class="row mb-4">
                         <div class="col-md-12 col-12">
                             <div class="entry-content">
-                                <div id="accordion">
-                                    <?php if (isset($dataPengadaan)) { ?>
-                                        <?php if (count($dataPengadaan) > 0) { ?>
-                                            <?php foreach ($dataPengadaan as $key => $v) { ?>
-                                                <div class="card mb-0">
-                                                    <div class="card-header p-3" id="heading8">
-                                                        <h6 class="m-0 font-14">
-                                                            <a href="#collapse<?= $v->kid ?>" class="text-dark" data-toggle="collapse" aria-expanded="true" aria-controls="collapse<?= $v->kid ?>">
-                                                                <i class="fa fa-balance-scale"></i> <?= $v->kategori ?></a>
-                                                        </h6>
-                                                    </div>
-                                                    <div id="collapse<?= $v->kid ?>" class="collapse showx" aria-labelledby="heading<?= $v->kid ?>" data-parent="#accordion">
-                                                        <div class="card-body p-2">
-                                                            <div class="table-responsive">
-                                                                <table class="table">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th class="text-center">No</th>
-                                                                            <td class="text-center">Judul</td>
-                                                                            <td class="text-center">Tanggal</td>
-                                                                            <td class="text-center">#</td>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php if (isset($v->items)) { ?>
-                                                                            <?php if (count($v->items) > 0) { ?>
-                                                                                <?php foreach ($v->items as $key => $value) { ?>
-                                                                                    <tr>
-                                                                                        <td class="text-center">
-                                                                                            <span class="badge badge-pill badge-light-primary"><?= $key + 1 ?></span>
-                                                                                        </td>
-                                                                                        <td class="text-center">
-                                                                                            <span style="font-size: 12px"><?= $value->judul ?></span>
-                                                                                        </td>
-                                                                                        <td class="text-center">
-                                                                                            <span style="font-size: 12px"><?= $value->tanggal ?></span>
-                                                                                        </td>
-                                                                                        <td class="text-center">
-                                                                                            <a target="_blank" href="<?= base_url('web/pengadaan') . '/' . $value->url ?>"><span class="badge badge-primary"> <i class="fas fa-eye"></i> Detail</span></a>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                <?php } ?>
+                                <?php if (isset($dataPengadaan)) { ?>
+                                    <?php if (count($dataPengadaan) > 0) { ?>
+                                        <?php foreach ($dataPengadaan as $key => $v) { ?>
+                                            <div class="card mb-0">
+                                                <div class="card-header p-3" id="heading8">
+                                                    <h6 class="m-0 font-14">
+                                                        <a href="#collapse<?= $v->kid ?>" class="text-dark" data-toggle="collapse" aria-expanded="true" aria-controls="collapse<?= $v->kid ?>">
+                                                            <i class="fa fa-balance-scale"></i> <?= $v->kategori ?></a>
+                                                    </h6>
+                                                </div>
+                                                <div id="collapse<?= $v->kid ?>" class="collapse showx" aria-labelledby="heading<?= $v->kid ?>" data-parent="#accordion">
+                                                    <div class="card-body p-2">
+                                                        <div class="table-responsive">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="text-center">No</th>
+                                                                        <td class="text-center">Judul</td>
+                                                                        <td class="text-center">Tanggal</td>
+                                                                        <td class="text-center">#</td>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php if (isset($v->items)) { ?>
+                                                                        <?php if (count($v->items) > 0) { ?>
+                                                                            <?php foreach ($v->items as $key => $value) { ?>
+                                                                                <tr>
+                                                                                    <td class="text-center">
+                                                                                        <span class="badge badge-pill badge-light-primary"><?= $key + 1 ?></span>
+                                                                                    </td>
+                                                                                    <td class="text-center">
+                                                                                        <span style="font-size: 12px"><?= $value->judul ?></span>
+                                                                                    </td>
+                                                                                    <td class="text-center">
+                                                                                        <span style="font-size: 12px"><?= $value->tanggal ?></span>
+                                                                                    </td>
+                                                                                    <td class="text-center">
+                                                                                        <a target="_blank" href="<?= base_url('web/pengadaan') . '/' . $value->url ?>"><span class="badge badge-primary"> <i class="fas fa-eye"></i> Detail</span></a>
+                                                                                    </td>
+                                                                                </tr>
                                                                             <?php } ?>
                                                                         <?php } ?>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
+                                                                    <?php } ?>
+                                                                </tbody>
+                                                            </table>
                                                         </div>
-                                                        <!-- <div class="d-flex justify-content-center mt-4 mb-3">
+                                                    </div>
+                                                    <!-- <div class="d-flex justify-content-center mt-4 mb-3">
                                                             <?php if (isset($v->pagination)) { ?>
                                                                 <nav>
                                                                     <ul class="pagination">
@@ -143,87 +141,85 @@
                                                                 </nav>
                                                             <?php } ?>
                                                         </div> -->
-                                                    </div>
                                                 </div>
-                                            <?php } ?>
+                                            </div>
                                         <?php } ?>
                                     <?php } ?>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Widget kanan  -->
-            <div class="col-md-4 col-sm-12">
-                <div class="theiaStickySidebar">
-                    <div class="section-title">
-                        <h1 class="text-uppercase"><a href="opini.html">Berita Popular</a></h1>
-                    </div>
-                    <?php if (isset($dataWidgetBerita)) { ?>
-                        <?php if (count($dataWidgetBerita) > 0) { ?>
-                            <?php foreach ($dataWidgetBerita as $key => $value) { ?>
-                                <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
-                                    <div class="card-body p-1">
-                                        <div class="row align-items-center justify-content-center">
-                                            <div class="col-4 pr-2">
-                                                <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>">
-                                                    <img src="<?= base_url() ?>uploads/berita/<?= $value->image ?>" alt="<?= $value->judul ?>" class="rounded">
-                                                </a>
-                                                <!-- <h3 class="text-primary pl-3">1</h3> -->
-                                            </div>
-                                            <div class="col-8 pl-0">
-                                                <h3 class="title-card">
-                                                    <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" tabindex="-1"><?= $value->judul ?></a>
-                                                </h3>
-                                                <span class="jl_post_meta">
-                                                    <span class="text-primary">
-                                                        <a href="javascript:;"><?= $value->kategori ?></a>
+                <!-- Widget kanan  -->
+                <div class="col-md-4 col-sm-12">
+                    <div class="theiaStickySidebar">
+                        <div class="section-title">
+                            <h1 class="text-uppercase"><a href="opini.html">Berita Popular</a></h1>
+                        </div>
+                        <?php if (isset($dataWidgetBerita)) { ?>
+                            <?php if (count($dataWidgetBerita) > 0) { ?>
+                                <?php foreach ($dataWidgetBerita as $key => $value) { ?>
+                                    <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
+                                        <div class="card-body p-1">
+                                            <div class="row align-items-center justify-content-center">
+                                                <div class="col-4 pr-2">
+                                                    <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>">
+                                                        <img src="<?= base_url() ?>uploads/berita/<?= $value->image ?>" alt="<?= $value->judul ?>" class="rounded">
+                                                    </a>
+                                                    <!-- <h3 class="text-primary pl-3">1</h3> -->
+                                                </div>
+                                                <div class="col-8 pl-0">
+                                                    <h3 class="title-card">
+                                                        <a href="<?= base_url('web/berita') . '/' . $value->tanggal . '/' . $value->url ?>" tabindex="-1"><?= $value->judul ?></a>
+                                                    </h3>
+                                                    <span class="jl_post_meta">
+                                                        <span class="text-primary">
+                                                            <a href="javascript:;"><?= $value->kategori ?></a>
+                                                        </span>
+                                                        <span> | </span>
+                                                        <span class="post-date" style="color:#647277;"><?= $value->tanggal ?></span>
                                                     </span>
-                                                    <span> | </span>
-                                                    <span class="post-date" style="color:#647277;"><?= $value->tanggal ?></span>
-                                                </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php } ?>
                             <?php } ?>
                         <?php } ?>
-                    <?php } ?>
-                    <div class="section-title">
-                        <h1>Pengumuman</h1>
-                    </div>
-                    <?php if (isset($dataPengumuman)) { ?>
-                        <?php if (count($dataPengumuman) > 0) { ?>
-                            <?php foreach ($dataPengumuman as $key => $value) { ?>
-                                <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
-                                    <div class="card-body p-1">
-                                        <div class="row align-items-center justify-content-center">
-                                            <div class="col-2 pr-0">
-                                                <h3 class="text-primary pl-3"><?= $key + 1 ?></h3>
-                                            </div>
-                                            <div class="col-10 pl-0">
-                                                <h3 class="title-card">
-                                                    <a href="<?= base_url('web/pengumuman') . '/' . $value->url ?>" tabindex="-1"><?= $value->judul ?></a>
-                                                </h3>
-                                                <span class="jl_post_meta">
-                                                    <!-- <span class="text-primary">
+                        <div class="section-title">
+                            <h1>Pengumuman</h1>
+                        </div>
+                        <?php if (isset($dataPengumuman)) { ?>
+                            <?php if (count($dataPengumuman) > 0) { ?>
+                                <?php foreach ($dataPengumuman as $key => $value) { ?>
+                                    <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
+                                        <div class="card-body p-1">
+                                            <div class="row align-items-center justify-content-center">
+                                                <div class="col-2 pr-0">
+                                                    <h3 class="text-primary pl-3"><?= $key + 1 ?></h3>
+                                                </div>
+                                                <div class="col-10 pl-0">
+                                                    <h3 class="title-card">
+                                                        <a href="<?= base_url('web/pengumuman') . '/' . $value->url ?>" tabindex="-1"><?= $value->judul ?></a>
+                                                    </h3>
+                                                    <span class="jl_post_meta">
+                                                        <!-- <span class="text-primary">
                                                             <a href="category/artikel.html" class="cate">Artikel</a>
                                                         </span>
                                                         <span> | </span> -->
-                                                    <span class="post-date" style="color:#647277;"><?= $value->creaated_at ?></span>
-                                                </span>
+                                                        <span class="post-date" style="color:#647277;"><?= $value->creaated_at ?></span>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php } ?>
                             <?php } ?>
                         <?php } ?>
-                    <?php } ?>
 
 
-                    <!-- <section class="home_section1">
+                        <!-- <section class="home_section1">
                             <div class="section-title">
                                 <h1><a href="infografis.html">INFOGRAFIS</a></h1>
                             </div>
@@ -360,106 +356,106 @@
                                 </div>
                             </div>
                         </section> -->
-                    <hr />
-                    <!-- jajak pendapat -->
-                    <div class="section-title">
-                        <h1 class="text-uppercase"><a href="opini.html">Jajak Pendapat</a></h1>
-                    </div>
-
-                    <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
-                        <div class="card-body p-2">
-
-                            <!-- Sidebar Widget ISI POLING -->
-                            <div class="text-left text-primary">
-                                <b>Bagaimanakah menurut Anda dengan Pelayanan dan Kinerja Bagian Pengadaan Barang dan Jasa Sekretariat Daerah Kab. Lampung Tengah ?</b>
-                                <hr>
-                                <form action="https://cms.datagoe.com/" class="formtambah" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-                                    <input type="hidden" name="csrf_tokencmsdatagoe" value="54e75f03c3ccb5e008b102e10bc27b73"> <input class=pointer type=radio name=poling_id id=poling_id value='2' />
-                                    <class style="color:#666;font-size:14px; padding:2px required">
-                                        <div class='invalid-feedback errorpoling_id'></div>&nbsp;&nbsp;Sangat Baik<br /> <input class=pointer type=radio name=poling_id id=poling_id value='3' />
-                                        <class style="color:#666;font-size:14px; padding:2px required">
-                                            <div class='invalid-feedback errorpoling_id'></div>&nbsp;&nbsp;Baik<br /> <input class=pointer type=radio name=poling_id id=poling_id value='4' />
-                                            <class style="color:#666;font-size:14px; padding:2px required">
-                                                <div class='invalid-feedback errorpoling_id'></div>&nbsp;&nbsp;Cukup Baik<br /> <input class=pointer type=radio name=poling_id id=poling_id value='6' />
-                                                <class style="color:#666;font-size:14px; padding:2px required">
-                                                    <div class='invalid-feedback errorpoling_id'></div>&nbsp;&nbsp;Belum Tahu<br /> <br>
-                                                    <center class='mb-2'>
-                                                        <input style='width: 110px; padding:2px; font-size:12px;' type=button class='btn btn-primary btnsimpanisipoling' value='PILIH' />
-                                                        <input style='width: 110px; padding:2px; font-size:12px;' type=button class='btn btn-info btnlihatpoling' value='LIHAT HASIL' />
-                                </form>
-                                </center>
-                            </div>
-
-
-                            <!-- END ISI POLING -->
-
-                            <!-- Sidebar Widget ISI POLING -->
+                        <hr />
+                        <!-- jajak pendapat -->
+                        <div class="section-title">
+                            <h1 class="text-uppercase"><a href="opini.html">Jajak Pendapat</a></h1>
                         </div>
-                    </div>
-                    <!-- end jajak -->
 
-                    <!-- <div class="section-title home_section1">
+                        <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
+                            <div class="card-body p-2">
+
+                                <!-- Sidebar Widget ISI POLING -->
+                                <div class="text-left text-primary">
+                                    <b>Bagaimanakah menurut Anda dengan Pelayanan dan Kinerja Bagian Pengadaan Barang dan Jasa Sekretariat Daerah Kab. Lampung Tengah ?</b>
+                                    <hr>
+                                    <form action="https://cms.datagoe.com/" class="formtambah" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                                        <input type="hidden" name="csrf_tokencmsdatagoe" value="54e75f03c3ccb5e008b102e10bc27b73"> <input class=pointer type=radio name=poling_id id=poling_id value='2' />
+                                        <class style="color:#666;font-size:14px; padding:2px required">
+                                            <div class='invalid-feedback errorpoling_id'></div>&nbsp;&nbsp;Sangat Baik<br /> <input class=pointer type=radio name=poling_id id=poling_id value='3' />
+                                            <class style="color:#666;font-size:14px; padding:2px required">
+                                                <div class='invalid-feedback errorpoling_id'></div>&nbsp;&nbsp;Baik<br /> <input class=pointer type=radio name=poling_id id=poling_id value='4' />
+                                                <class style="color:#666;font-size:14px; padding:2px required">
+                                                    <div class='invalid-feedback errorpoling_id'></div>&nbsp;&nbsp;Cukup Baik<br /> <input class=pointer type=radio name=poling_id id=poling_id value='6' />
+                                                    <class style="color:#666;font-size:14px; padding:2px required">
+                                                        <div class='invalid-feedback errorpoling_id'></div>&nbsp;&nbsp;Belum Tahu<br /> <br>
+                                                        <center class='mb-2'>
+                                                            <input style='width: 110px; padding:2px; font-size:12px;' type=button class='btn btn-primary btnsimpanisipoling' value='PILIH' />
+                                                            <input style='width: 110px; padding:2px; font-size:12px;' type=button class='btn btn-info btnlihatpoling' value='LIHAT HASIL' />
+                                    </form>
+                                    </center>
+                                </div>
+
+
+                                <!-- END ISI POLING -->
+
+                                <!-- Sidebar Widget ISI POLING -->
+                            </div>
+                        </div>
+                        <!-- end jajak -->
+
+                        <!-- <div class="section-title home_section1">
                                 <h1 class="text-uppercase"><a href="/informasi">MUTIARA</a></h1>
                             </div> -->
 
-                    <div class="section-title">
-                        <h1 class="text-uppercase"><a href="#">Agenda</a></h1>
-                    </div>
-                    <!-- loop -->
-                    <?php if (isset($dataAgenda)) { ?>
-                        <?php if (count($dataAgenda) > 0) { ?>
-                            <?php foreach ($dataAgenda as $key => $value) { ?>
-                                <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
-                                    <div class="card-body p-1">
-                                        <div class="row align-items-center">
-                                            <div class="col-3 p-0  pl-3">
-                                                <a onclick="lihatagenda('<?= $value->url ?>')">
+                        <div class="section-title">
+                            <h1 class="text-uppercase"><a href="#">Agenda</a></h1>
+                        </div>
+                        <!-- loop -->
+                        <?php if (isset($dataAgenda)) { ?>
+                            <?php if (count($dataAgenda) > 0) { ?>
+                                <?php foreach ($dataAgenda as $key => $value) { ?>
+                                    <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
+                                        <div class="card-body p-1">
+                                            <div class="row align-items-center">
+                                                <div class="col-3 p-0  pl-3">
+                                                    <a onclick="lihatagenda('<?= $value->url ?>')">
 
-                                                    <img class="rounded" src="<?= base_url('assets') ?>/img/informasi/agenda/agenda128.png" alt="agenda" style="width: 75px; height:auto">
-                                                </a>
-                                            </div>
-                                            <div class="col-9">
-                                                <h3 class="title-card">
-                                                    <a onclick="lihatagenda('<?= $value->url ?>')" tabindex="-1"><?= $value->judul ?></a>
-                                                </h3>
-                                                <span class="jl_post_meta">
-                                                    <!-- <span class="text-primary">
+                                                        <img class="rounded" src="<?= base_url('assets') ?>/img/informasi/agenda/agenda128.png" alt="agenda" style="width: 75px; height:auto">
+                                                    </a>
+                                                </div>
+                                                <div class="col-9">
+                                                    <h3 class="title-card">
+                                                        <a onclick="lihatagenda('<?= $value->url ?>')" tabindex="-1"><?= $value->judul ?></a>
+                                                    </h3>
+                                                    <span class="jl_post_meta">
+                                                        <!-- <span class="text-primary">
                                                             Lembata - NTT </span>
                                                         <span> | </span> -->
-                                                    <span class="post-date" style="color:#647277;"><?= $value->tanggal ?></span>
-                                                </span>
+                                                        <span class="post-date" style="color:#647277;"><?= $value->tanggal ?></span>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php } ?>
                             <?php } ?>
                         <?php } ?>
-                    <?php } ?>
 
-                    <hr>
-                    <div class="card p-2" style="margin-bottom: 1px;">
-                        <div class="card-body p-1">
-                            <h3 class="title-card">
-                                “Mewujudkan Kabupaten Lampung Tengah sebagai <i style="color:#AC0C0C;">kota budaya</i> yang Modern, Tangguh, Gesit, Kreatif dan Sejahtera” </h3>
+                        <hr>
+                        <div class="card p-2" style="margin-bottom: 1px;">
+                            <div class="card-body p-1">
+                                <h3 class="title-card">
+                                    “Mewujudkan Kabupaten Lampung Tengah sebagai <i style="color:#AC0C0C;">kota budaya</i> yang Modern, Tangguh, Gesit, Kreatif dan Sejahtera” </h3>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="section-title home_section1">
-                        <h1 class="text-uppercase"><a href="https://goo.gl/maps/QVtSNqKmgkHTBUCN8">KANTOR KAMI</a></h1>
+                        <div class="section-title home_section1">
+                            <h1 class="text-uppercase"><a href="https://goo.gl/maps/QVtSNqKmgkHTBUCN8">KANTOR KAMI</a></h1>
+                        </div>
+                        <style type="text/css" media="screen">
+                            iframe {
+                                height: 250px;
+                                width: 100%;
+                            }
+                        </style>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d834.4279860241364!2d105.21089284490535!3d-4.977783227678374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40af5b0acdfd77%3A0xc510aceca59cc656!2s26C6%2BV6C%2C%20Gn.%20Sugih%2C%20Kec.%20Gn.%20Sugih%2C%20Kabupaten%20Lampung%20Tengah%2C%20Lampung!5e0!3m2!1sid!2sid!4v1761308296968!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                    <style type="text/css" media="screen">
-                        iframe {
-                            height: 250px;
-                            width: 100%;
-                        }
-                    </style>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d834.4279860241364!2d105.21089284490535!3d-4.977783227678374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40af5b0acdfd77%3A0xc510aceca59cc656!2s26C6%2BV6C%2C%20Gn.%20Sugih%2C%20Kec.%20Gn.%20Sugih%2C%20Kabupaten%20Lampung%20Tengah%2C%20Lampung!5e0!3m2!1sid!2sid!4v1761308296968!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-        </div>
 
-</div>
-</section>
+        </div>
+    </section>
 </div>
 
 <!-- LINK ALL -->
