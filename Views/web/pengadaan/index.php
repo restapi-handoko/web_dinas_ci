@@ -17,135 +17,137 @@
                     <div class="row mb-4">
                         <div class="col-md-12 col-12">
                             <div class="entry-content">
-                                <?php if (isset($dataPengadaan)) { ?>
-                                    <?php if (count($dataPengadaan) > 0) { ?>
-                                        <?php foreach ($dataPengadaan as $key => $v) { ?>
-                                            <div class="card mb-0">
-                                                <div class="card-header p-3" id="heading8">
-                                                    <h6 class="m-0 font-14">
-                                                        <a href="#collapse<?= $v->kid ?>" class="text-dark" data-toggle="collapse" aria-expanded="true" aria-controls="collapse<?= $v->kid ?>">
-                                                            <i class="fa fa-balance-scale"></i> <?= $v->kategori ?></a>
-                                                    </h6>
-                                                </div>
-                                                <div id="collapse<?= $v->kid ?>" class="collapse showx" aria-labelledby="heading<?= $v->kid ?>" data-parent="#accordion">
-                                                    <div class="card-body p-2">
-                                                        <div class="table-responsive">
-                                                            <table class="table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="text-center">No</th>
-                                                                        <td class="text-center">Judul</td>
-                                                                        <td class="text-center">Tanggal</td>
-                                                                        <td class="text-center">#</td>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <?php if (isset($v->items)) { ?>
-                                                                        <?php if (count($v->items) > 0) { ?>
-                                                                            <?php foreach ($v->items as $key => $value) { ?>
-                                                                                <tr>
-                                                                                    <td class="text-center">
-                                                                                        <span class="badge badge-pill badge-light-primary"><?= $key + 1 ?></span>
-                                                                                    </td>
-                                                                                    <td class="text-center">
-                                                                                        <span style="font-size: 12px"><?= $value->judul ?></span>
-                                                                                    </td>
-                                                                                    <td class="text-center">
-                                                                                        <span style="font-size: 12px"><?= $value->tanggal ?></span>
-                                                                                    </td>
-                                                                                    <td class="text-center">
-                                                                                        <a target="_blank" href="<?= base_url('web/pengadaan') . '/' . $value->url ?>"><span class="badge badge-primary"> <i class="fas fa-eye"></i> Detail</span></a>
-                                                                                    </td>
-                                                                                </tr>
+                                <div id="accordion">
+                                    <?php if (isset($dataPengadaan)) { ?>
+                                        <?php if (count($dataPengadaan) > 0) { ?>
+                                            <?php foreach ($dataPengadaan as $key => $v) { ?>
+                                                <div class="card mb-0">
+                                                    <div class="card-header p-3" id="heading<?= $v->kid ?>">
+                                                        <h6 class="m-0 font-14">
+                                                            <a href="#collapse<?= $v->kid ?>" class="text-dark" data-toggle="collapse" aria-expanded="true" aria-controls="collapse<?= $v->kid ?>">
+                                                                <i class="fa fa-balance-scale"></i> <?= $v->kategori ?></a>
+                                                        </h6>
+                                                    </div>
+                                                    <div id="collapse<?= $v->kid ?>" class="collapse showx" aria-labelledby="heading<?= $v->kid ?>" data-parent="#accordion">
+                                                        <div class="card-body p-2">
+                                                            <div class="table-responsive">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center">No</th>
+                                                                            <td class="text-center">Judul</td>
+                                                                            <td class="text-center">Tanggal</td>
+                                                                            <td class="text-center">#</td>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php if (isset($v->items)) { ?>
+                                                                            <?php if (count($v->items) > 0) { ?>
+                                                                                <?php foreach ($v->items as $key => $value) { ?>
+                                                                                    <tr>
+                                                                                        <td class="text-center">
+                                                                                            <span class="badge badge-pill badge-light-primary"><?= $key + 1 ?></span>
+                                                                                        </td>
+                                                                                        <td class="text-center">
+                                                                                            <span style="font-size: 12px"><?= $value->judul ?></span>
+                                                                                        </td>
+                                                                                        <td class="text-center">
+                                                                                            <span style="font-size: 12px"><?= $value->tanggal ?></span>
+                                                                                        </td>
+                                                                                        <td class="text-center">
+                                                                                            <a target="_blank" href="<?= base_url('web/pengadaan') . '/' . $value->url ?>"><span class="badge badge-primary"> <i class="fas fa-eye"></i> Detail</span></a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                <?php } ?>
                                                                             <?php } ?>
                                                                         <?php } ?>
-                                                                    <?php } ?>
-                                                                </tbody>
-                                                            </table>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-center mt-4 mb-3">
+                                                            <?php if (isset($v->pagination)) { ?>
+                                                                <nav>
+                                                                    <ul class="pagination">
+                                                                        <nav aria-label="Page navigation">
+                                                                            <ul class="pagination">
+                                                                                <?php if ($v->pagination['currentPage'] > 1): ?>
+                                                                                    <li class="page-item">
+                                                                                        <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=1" aria-label="First">
+                                                                                            <span aria-hidden="true">«</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                <?php else: ?>
+                                                                                    <li class="page-item disabled">
+                                                                                        <span class="page-link" aria-hidden="true">«</span>
+                                                                                    </li>
+                                                                                <?php endif; ?>
+                                                                                <?php if ($v->pagination['currentPage'] > 1): ?>
+                                                                                    <li class="page-item">
+                                                                                        <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $v->pagination['currentPage'] - 1 ?>" aria-label="Previous">
+                                                                                            <span aria-hidden="true">‹</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                <?php else: ?>
+                                                                                    <li class="page-item disabled">
+                                                                                        <span class="page-link" aria-hidden="true">‹</span>
+                                                                                    </li>
+                                                                                <?php endif; ?>
+                                                                                <?php
+                                                                                $startPage = max(1, $v->pagination['currentPage'] - 2);
+                                                                                $endPage = min($v->pagination['totalPages'], $v->pagination['currentPage'] + 2);
+                                                                                if ($startPage > 1): ?>
+                                                                                    <li class="page-item disabled">
+                                                                                        <span class="page-link">...</span>
+                                                                                    </li>
+                                                                                <?php endif; ?>
+
+                                                                                <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
+                                                                                    <li class="page-item <?= $i == $v->pagination['currentPage'] ? 'active' : '' ?>">
+                                                                                        <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $i ?>">
+                                                                                            <?= $i ?>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                <?php endfor; ?>
+                                                                                <?php if ($endPage < $v->pagination['totalPages']): ?>
+                                                                                    <li class="page-item disabled">
+                                                                                        <span class="page-link">...</span>
+                                                                                    </li>
+                                                                                <?php endif; ?>
+                                                                                <?php if ($v->pagination['currentPage'] < $v->pagination['totalPages']): ?>
+                                                                                    <li class="page-item">
+                                                                                        <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $v->pagination['currentPage'] + 1 ?>" aria-label="Next">
+                                                                                            <span aria-hidden="true">›</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                <?php else: ?>
+                                                                                    <li class="page-item disabled">
+                                                                                        <span class="page-link" aria-hidden="true">›</span>
+                                                                                    </li>
+                                                                                <?php endif; ?>
+                                                                                <?php if ($v->pagination['currentPage'] < $v->pagination['totalPages']): ?>
+                                                                                    <li class="page-item">
+                                                                                        <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $v->pagination['totalPages'] ?>" aria-label="Last">
+                                                                                            <span aria-hidden="true">»</span>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                <?php else: ?>
+                                                                                    <li class="page-item disabled">
+                                                                                        <span class="page-link" aria-hidden="true">»</span>
+                                                                                    </li>
+                                                                                <?php endif; ?>
+                                                                            </ul>
+                                                                        </nav>
+                                                                    </ul>
+                                                                </nav>
+                                                            <?php } ?>
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex justify-content-center mt-4 mb-3">
-                                                        <?php if (isset($v->pagination)) { ?>
-                                                            <nav>
-                                                                <ul class="pagination">
-                                                                    <nav aria-label="Page navigation">
-                                                                        <ul class="pagination">
-                                                                            <?php if ($v->pagination['currentPage'] > 1): ?>
-                                                                                <li class="page-item">
-                                                                                    <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=1" aria-label="First">
-                                                                                        <span aria-hidden="true">«</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            <?php else: ?>
-                                                                                <li class="page-item disabled">
-                                                                                    <span class="page-link" aria-hidden="true">«</span>
-                                                                                </li>
-                                                                            <?php endif; ?>
-                                                                            <?php if ($v->pagination['currentPage'] > 1): ?>
-                                                                                <li class="page-item">
-                                                                                    <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $v->pagination['currentPage'] - 1 ?>" aria-label="Previous">
-                                                                                        <span aria-hidden="true">‹</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            <?php else: ?>
-                                                                                <li class="page-item disabled">
-                                                                                    <span class="page-link" aria-hidden="true">‹</span>
-                                                                                </li>
-                                                                            <?php endif; ?>
-                                                                            <?php
-                                                                            $startPage = max(1, $v->pagination['currentPage'] - 2);
-                                                                            $endPage = min($v->pagination['totalPages'], $v->pagination['currentPage'] + 2);
-                                                                            if ($startPage > 1): ?>
-                                                                                <li class="page-item disabled">
-                                                                                    <span class="page-link">...</span>
-                                                                                </li>
-                                                                            <?php endif; ?>
-
-                                                                            <?php for ($i = $startPage; $i <= $endPage; $i++): ?>
-                                                                                <li class="page-item <?= $i == $v->pagination['currentPage'] ? 'active' : '' ?>">
-                                                                                    <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $i ?>">
-                                                                                        <?= $i ?>
-                                                                                    </a>
-                                                                                </li>
-                                                                            <?php endfor; ?>
-                                                                            <?php if ($endPage < $v->pagination['totalPages']): ?>
-                                                                                <li class="page-item disabled">
-                                                                                    <span class="page-link">...</span>
-                                                                                </li>
-                                                                            <?php endif; ?>
-                                                                            <?php if ($v->pagination['currentPage'] < $v->pagination['totalPages']): ?>
-                                                                                <li class="page-item">
-                                                                                    <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $v->pagination['currentPage'] + 1 ?>" aria-label="Next">
-                                                                                        <span aria-hidden="true">›</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            <?php else: ?>
-                                                                                <li class="page-item disabled">
-                                                                                    <span class="page-link" aria-hidden="true">›</span>
-                                                                                </li>
-                                                                            <?php endif; ?>
-                                                                            <?php if ($v->pagination['currentPage'] < $v->pagination['totalPages']): ?>
-                                                                                <li class="page-item">
-                                                                                    <a class="page-link" href="<?= base_url('web') ?>/produkhukum?page=<?= $v->pagination['totalPages'] ?>" aria-label="Last">
-                                                                                        <span aria-hidden="true">»</span>
-                                                                                    </a>
-                                                                                </li>
-                                                                            <?php else: ?>
-                                                                                <li class="page-item disabled">
-                                                                                    <span class="page-link" aria-hidden="true">»</span>
-                                                                                </li>
-                                                                            <?php endif; ?>
-                                                                        </ul>
-                                                                    </nav>
-                                                                </ul>
-                                                            </nav>
-                                                        <?php } ?>
-                                                    </div>
                                                 </div>
-                                            </div>
+                                            <?php } ?>
                                         <?php } ?>
                                     <?php } ?>
-                                <?php } ?>
+                                </div>
                             </div>
                         </div>
                     </div>
