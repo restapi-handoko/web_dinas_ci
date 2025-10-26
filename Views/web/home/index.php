@@ -771,7 +771,7 @@
                                                         <span class="post-date" style="color:#305b90;"><?= $value->created_at ?></span>
                                                     </span>
                                                     <div class="video-text pl-2 pr-2 pb-2">
-                                                        <h3><a onclick="lihatfoto('<?= $value->id ?>','<?= $value->judul ?>')">Detail</a></h3>
+                                                        <h3><a onclick="lihatfoto('<?= $value->url ?>','<?= $value->judul ?>')">Detail</a></h3>
                                                     </div>
                                                 </div>
                                             </div>
