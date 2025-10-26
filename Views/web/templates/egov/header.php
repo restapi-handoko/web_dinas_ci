@@ -159,6 +159,9 @@
             <li class="menu-item current-menu-item current_page_item">
                 <a href="<?= base_url('web') ?>/berita">BERITA<span class="border-menu"></span></a>
             </li>
+            <li class="menu-item current-menu-item current_page_item">
+                <a href="<?= base_url('web') ?>/transparansi">TRANSPARANSI & INOVASI<span class="border-menu"></span></a>
+            </li>
         </ul>
     </div>
 </div>

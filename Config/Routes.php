@@ -32,6 +32,9 @@ $routes->get('/web/pengadaan/(:segment)', 'Web\Pengadaan::detail/$1');
 $routes->get('/web/bankdata', 'Web\Bankdata::index');
 $routes->get('/web/bankdata/(:segment)', 'Web\Bankdata::detail/$1');
 
+$routes->get('/web/transparansi-inovasi', 'Web\Transparansi::index');
+$routes->get('/web/transparansi-inovasi/(:segment)', 'Web\Transparansi::detail/$1');
+
 $routes->get('/web/agenda', 'Web\Agenda::index');
 // $routes->get('/web/agenda/(:segment)', 'Web\Agenda::detail/$1');
 $routes->post('/web/agenda/formlihatagenda', 'Web\Agenda::viewAgenda');
