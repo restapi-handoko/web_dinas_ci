@@ -688,13 +688,10 @@ function getMenuPublik()
     try {
         $data = $db->table('_tb_menu_lain')
             ->where('has_sub', 1)
+            ->where('status', 1)
             ->orderBy('urut', 'ASC')
             ->get()->getResult();
-        if ($data) {
-            return $data;
-        } else {
-            return [];
-        }
+        return $data;
     } catch (\Exception $e) {
         return [];
     }
@@ -708,13 +705,10 @@ function getSubMenuPublik($parent)
         $data = $db->table('_tb_menu_lain')
             // ->where('has_sub', 0)
             ->where('parent', $parent)
+            ->where('status', 1)
             ->orderBy('urut', 'ASC')
             ->get()->getResult();
-        if ($data) {
-            return $data;
-        } else {
-            return [];
-        }
+        return $data;
     } catch (\Exception $e) {
         return [];
     }
