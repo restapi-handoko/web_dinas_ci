@@ -98,7 +98,7 @@
                                                             <a href="category/artikel.html" class="cate">Artikel</a>
                                                         </span>
                                                         <span> | </span> -->
-                                                        <span class="post-date" style="color:#647277;"><?= $value->creaated_at ?></span>
+                                                        <span class="post-date" style="color:#647277;"><?= $value->created_at ?></span>
                                                     </span>
                                                 </div>
                                             </div>
