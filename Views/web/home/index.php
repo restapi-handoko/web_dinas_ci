@@ -567,7 +567,7 @@
                                     </div>
 
                                 </div>
-                                <!-- <div class="item-slide" style="margin-top: 60px;">
+                                <div class="item-slide" style="margin-top: 60px;">
 
                                     <div class="container">
                                         <div class="card card-profile shadow-sm">
@@ -582,14 +582,14 @@
                                                 <h3 class="title-card" style="padding-top: 60px;">
                                                     <a href="<?= base_url('web') ?>/pegawai" tabindex="-1">PEGAWAI</a>
                                                 </h3>
-                                                <a href="<?= base_url('web') ?>/pegawai" target="_blank">
+                                                <a href="<?= base_url('web') ?>/pegawai">
                                                     <span class="badge badge-light-primary profile-badge">Kunjungi <i class="fas fa-arrow-right"></i></span>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
 
-                                </div> -->
+                                </div>
                                 <div class="item-slide" style="margin-top: 60px;">
 
                                     <div class="container">

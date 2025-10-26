@@ -71,7 +71,7 @@
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/visi-misi"><i class="mdi mdi-library-books" style="font-size: small;"></i>Visi dan Misi</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/struktur"><i class="fa fa-users" style="font-size: small;"></i>Struktur Organisasi</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/tugas-fungsi"><i class="mdi mdi-buffer" style="font-size: small;"></i>Tugas Pokok dan Fungsi</a></li>
-                                    <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pegawai.html"><i class="fas fa-user-tie" style="font-size: small;"></i>Data Pegawai</a></li> -->
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/pegawai"><i class="fas fa-user-tie" style="font-size: small;"></i>Data Pegawai</a></li>
                                 </ul>
                             </li>
                             <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/berita"> <i class=""></i>BERITA<span class="border-menu"></span> </a></li>
@@ -160,6 +160,9 @@
                 <a href="<?= base_url('web') ?>/berita">BERITA<span class="border-menu"></span></a>
             </li>
             <li class="menu-item current-menu-item current_page_item">
+                <a href="<?= base_url('web') ?>/pegawai">PEGAWAI<span class="border-menu"></span></a>
+            </li>
+            <li class="menu-item current-menu-item current_page_item">
                 <a href="<?= base_url('web') ?>/transparansi-inovasi">TRANSPARANSI & INOVASI<span class="border-menu"></span></a>
             </li>
         </ul>
@@ -182,7 +185,7 @@
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/visi-misi"><i class="mdi mdi-library-books" style="font-size: small;"></i>Visi dan Misi</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/struktur"><i class="fa fa-users" style="font-size: small;"></i>Struktur Organisasi</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/tugas-fungsi"><i class="mdi mdi-buffer" style="font-size: small;"></i>Tugas Pokok dan Fungsi</a></li>
-                    <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="pegawai.html"><i class="fas fa-user-tie" style="font-size: small;"></i>Data Pegawai</a></li> -->
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/pegawai"><i class="fas fa-user-tie" style="font-size: small;"></i>Data Pegawai</a></li>
                 </ul>
             </li>
 
