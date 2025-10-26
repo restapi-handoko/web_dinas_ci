@@ -533,7 +533,7 @@
                                                 <!-- <div class="font-small">
                                                                 <span class="text-muted">Sistem transaksi online program Pengelolaan Data...</span>
                                                             </div> -->
-                                                <a href="<?= base_url('web') ?>/agenda" target="_blank">
+                                                <a href="<?= base_url('web') ?>/agenda">
                                                     <span class="badge badge-light-primary profile-badge">Kunjungi <i class="fas fa-arrow-right"></i></span>
                                                 </a>
                                             </div>
@@ -559,7 +559,7 @@
                                                 <!-- <div class="font-small">
                                                                 <span class="text-muted">Sistem transaksi online program Pengelolaan Data...</span>
                                                             </div> -->
-                                                <a href="<?= base_url('web') ?>/bankdata" target="_blank">
+                                                <a href="<?= base_url('web') ?>/bankdata">
                                                     <span class="badge badge-light-primary profile-badge">Kunjungi <i class="fas fa-arrow-right"></i></span>
                                                 </a>
                                             </div>
@@ -605,7 +605,7 @@
                                                 <h3 class="title-card" style="padding-top: 60px;">
                                                     <a href="<?= base_url('web') ?>/struktur" tabindex="-1">STRUKTUR</a>
                                                 </h3>
-                                                <a href="<?= base_url('web') ?>/struktur" target="_blank">
+                                                <a href="<?= base_url('web') ?>/struktur">
                                                     <span class="badge badge-light-primary profile-badge">Kunjungi <i class="fas fa-arrow-right"></i></span>
                                                 </a>
                                             </div>
@@ -631,7 +631,7 @@
                                                 <!-- <div class="font-small">
                                                                 <span class="text-muted">Sistem transaksi online program Pengelolaan Data...</span>
                                                             </div> -->
-                                                <a href="<?= base_url('web') ?>/visi-misi" target="_blank">
+                                                <a href="<?= base_url('web') ?>/visi-misi">
                                                     <span class="badge badge-light-primary profile-badge">Kunjungi <i class="fas fa-arrow-right"></i></span>
                                                 </a>
                                             </div>
