@@ -32,6 +32,13 @@ class Foto extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
 
         $data['dataAlbum'] = $this->_db->table('_tb_foto')
             ->select("*, count(album) as jumlah")
@@ -98,6 +105,13 @@ class Foto extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
         return view('web/galeri/foto/detail', $data);
     }
 }

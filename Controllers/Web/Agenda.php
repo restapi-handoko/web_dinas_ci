@@ -32,6 +32,13 @@ class Agenda extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
 
         $countBerita = $this->_db->table('_tb_agenda')->where('status', 1)->countAllResults();
         $perPage = 10;
@@ -88,6 +95,13 @@ class Agenda extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
         return view('web/agenda/detail', $data);
     }
 

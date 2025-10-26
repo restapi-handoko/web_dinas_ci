@@ -33,6 +33,13 @@ class Home extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
         $data['dataBeritaPopular'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
@@ -56,6 +63,13 @@ class Home extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
 
         return view('web/home/sejarah', $data);
     }
@@ -73,6 +87,13 @@ class Home extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
 
         return view('web/home/visi-misi', $data);
     }
@@ -90,6 +111,13 @@ class Home extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
 
         return view('web/home/struktur', $data);
     }
@@ -107,6 +135,13 @@ class Home extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
 
         return view('web/home/tugas-fungsi', $data);
     }

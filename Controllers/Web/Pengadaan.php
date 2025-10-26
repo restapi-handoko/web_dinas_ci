@@ -32,6 +32,13 @@ class Pengadaan extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
 
         $katPengadaan = $this->_db->table('_tb_kategori_pengadaan')->get()->getResult();
 
@@ -103,6 +110,13 @@ class Pengadaan extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
         return view('web/pengadaan/detail', $data);
     }
 }

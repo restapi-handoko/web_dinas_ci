@@ -30,6 +30,13 @@ class Video extends BaseController
             ->where('a.status', 1)->orderBy('a.tanggal', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataWidgetPengumuman'] = $this->_db->table('_tb_pengumuman a')
+            ->select("a.*")
+            ->where('a.status', 1)
+            ->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()
+            ->getResult();
 
         $data['footer'] = getFooterPublik();
         $data['dataVideo'] = $this->_db->table('_tb_video')

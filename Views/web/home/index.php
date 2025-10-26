@@ -37,10 +37,10 @@
                             <span class="re-info">Pengumuman <i class="fas fa-bullhorn text-light"></i></span>
                         </div>
                         <div class="dinas-info col-md-12">
-                            <?php if (isset($dataPengumuman)) { ?>
-                                <?php if (count($dataPengumuman) > 0) { ?>
+                            <?php if (isset($dataWidgetPengumuman)) { ?>
+                                <?php if (count($dataWidgetPengumuman) > 0) { ?>
                                     <marquee onMouseOver="this.stop()" onMouseOut="this.start()" class="item">
-                                        <?php foreach ($dataPengumuman as $key => $value) { ?>
+                                        <?php foreach ($dataWidgetPengumuman as $key => $value) { ?>
                                             <span style="color:#f5f5f5;background:orange;padding:3px 5px;"><?= $value->created_at ?></span>
                                             <span class="pointer" onclick="lihatpengumuman('<?= $value->url ?>')"><?= $value->judul ?></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <?php } ?>
@@ -807,9 +807,9 @@
                         <div class="section-title">
                             <h1>Pengumuman</h1>
                         </div>
-                        <?php if (isset($dataPengumuman)) { ?>
-                            <?php if (count($dataPengumuman) > 0) { ?>
-                                <?php foreach ($dataPengumuman as $key => $value) { ?>
+                        <?php if (isset($dataWidgetPengumuman)) { ?>
+                            <?php if (count($dataWidgetPengumuman) > 0) { ?>
+                                <?php foreach ($dataWidgetPengumuman as $key => $value) { ?>
                                     <div class="card p-0 shadow-sm" style="margin-bottom: 10px;">
                                         <div class="card-body p-1">
                                             <div class="row align-items-center justify-content-center">
