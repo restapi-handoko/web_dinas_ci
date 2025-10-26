@@ -87,15 +87,14 @@
                                     <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/infografis"><i class="far fa-images" style="font-size: small;"></i>Infografis</a></li> -->
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/transparansi-inovasi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi & Inovasi</a></li>
                                     <!-- <li class="menu-item menu-item-has-children"><a target="_parent" href="index.html#"><i class="fas fa-expand" style="font-size: small;"></i> Informasi Berkala</a> -->
-                                    <ul class="sub-menu">
-                                        <!-- looping sub-submenu -->
+                                    <!-- <ul class="sub-menu">
                                         <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rpjpd.html"><i class="fas fa-sticky-note" style="font-size: small;"></i> Daftar Informasi Publik</a></li>
 
                                         <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rencana-strategis.html"><i class="far fa-sticky-note" style="font-size: small;"></i> Rencana Strategis</a></li>
 
-                                    </ul>
+                                    </ul> -->
                             </li>
-                            <li class="menu-item current-menu-item current_page_item"><a target="_blank" href="https://lapor.go.id/"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
+                            <!-- <li class="menu-item current-menu-item current_page_item"><a target="_blank" href="https://lapor.go.id/"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li> -->
                         </ul>
                         </li>
 
@@ -226,13 +225,12 @@
                     <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/infografis"><i class="far fa-images" style="font-size: small;"></i>Infografis</a></li> -->
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/transparansi-inovasi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi & Inovasi</a></li>
                     <!-- <li class="menu-item menu-item-has-children"><a target="_parent" href="index.html#"><i class="fas fa-expand" style="font-size: small;"></i> Informasi Berkala</a> -->
-                    <ul class="sub-menu">
-                        <!-- looping sub-submenu -->
+                    <!-- <ul class="sub-menu">
                         <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rpjpd.html"><i class="fas fa-sticky-note" style="font-size: small;"></i> Daftar Informasi Publik</a></li>
                         <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="page/rencana-strategis.html"><i class="far fa-sticky-note" style="font-size: small;"></i> Rencana Strategis</a></li>
-                    </ul>
+                    </ul> -->
             </li>
-            <li class="menu-item current-menu-item current_page_item"><a target="_blank" href="https://lapor.go.id/"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
+            <!-- <li class="menu-item current-menu-item current_page_item"><a target="_blank" href="https://lapor.go.id/"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li> -->
         </ul>
         </li>
 
