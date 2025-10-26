@@ -680,3 +680,44 @@ function getFooterPublik()
         return false;
     }
 }
+
+// FUNGSI WEB PUBLIK
+function getMenuPublik()
+{
+    $db      = \Config\Database::connect();
+    try {
+        $data = $db->table('_tb_menu_lain')
+            ->where('id', 1)
+            // ->where('has_sub', 1)
+            ->orderBy('urut', 'ASC')
+            ->get()->getRowObject();
+        if ($data) {
+            return $data;
+        } else {
+            return [];
+        }
+    } catch (\Exception $e) {
+        return [];
+    }
+}
+
+// FUNGSI WEB PUBLIK
+function getSubMenuPublik($parent)
+{
+    $db      = \Config\Database::connect();
+    try {
+        $data = $db->table('_tb_menu_lain')
+            ->where('id', 1)
+            // ->where('has_sub', 0)
+            ->where('parent', $parent)
+            ->orderBy('urut', 'ASC')
+            ->get()->getRowObject();
+        if ($data) {
+            return $data;
+        } else {
+            return [];
+        }
+    } catch (\Exception $e) {
+        return [];
+    }
+}
