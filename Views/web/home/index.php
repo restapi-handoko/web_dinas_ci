@@ -469,7 +469,7 @@
                         </div>
                         <div class="jl-w-slider jl_full_feature_w">
                             <div class="jl-eb-slider jelly_loading_pro" data-arrows="true" data-play="true" data-effect="false" data-speed="500" data-autospeed="7000" data-loop="true" data-dots="false" data-swipe="true" data-items="4" data-xs-items="2" data-sm-items="2" data-md-items="3" data-lg-items="3" data-xl-items="3">
-                                <div class="item-slide" style="margin-top: 60px;">
+                                <!-- <div class="item-slide" style="margin-top: 60px;">
 
                                     <div class="container">
                                         <div class="card card-profile shadow-sm">
@@ -484,9 +484,6 @@
                                                 <h3 class="title-card" style="padding-top: 60px;">
                                                     <a href="<?= base_url('web') ?>/layanan" tabindex="-1">LAYANAN</a>
                                                 </h3>
-                                                <!-- <div class="font-small">
-                                                                <span class="text-muted">Sistem transaksi online program Pengelolaan Data...</span>
-                                                            </div> -->
                                                 <a href="<?= base_url('web') ?>/layanan" target="_blank">
                                                     <span class="badge badge-light-primary profile-badge">Kunjungi <i class="fas fa-arrow-right"></i></span>
                                                 </a>
@@ -494,8 +491,8 @@
                                         </div>
                                     </div>
 
-                                </div>
-                                <div class="item-slide" style="margin-top: 60px;">
+                                </div> -->
+                                <!-- <div class="item-slide" style="margin-top: 60px;">
 
                                     <div class="container">
                                         <div class="card card-profile shadow-sm">
@@ -510,9 +507,6 @@
                                                 <h3 class="title-card" style="padding-top: 60px;">
                                                     <a href="<?= base_url('web') ?>/survey" tabindex="-1">SURVEI</a>
                                                 </h3>
-                                                <!-- <div class="font-small">
-                                                                <span class="text-muted">Sistem transaksi online program Pengelolaan Data...</span>
-                                                            </div> -->
                                                 <a href="<?= base_url('web') ?>/survey" target="_blank">
                                                     <span class="badge badge-light-primary profile-badge">Kunjungi <i class="fas fa-arrow-right"></i></span>
                                                 </a>
@@ -520,7 +514,7 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> -->
                                 <div class="item-slide" style="margin-top: 60px;">
 
                                     <div class="container">
@@ -573,7 +567,7 @@
                                     </div>
 
                                 </div>
-                                <div class="item-slide" style="margin-top: 60px;">
+                                <!-- <div class="item-slide" style="margin-top: 60px;">
 
                                     <div class="container">
                                         <div class="card card-profile shadow-sm">
@@ -588,9 +582,6 @@
                                                 <h3 class="title-card" style="padding-top: 60px;">
                                                     <a href="<?= base_url('web') ?>/pegawai" tabindex="-1">PEGAWAI</a>
                                                 </h3>
-                                                <!-- <div class="font-small">
-                                                                <span class="text-muted">Sistem transaksi online program Pengelolaan Data...</span>
-                                                            </div> -->
                                                 <a href="<?= base_url('web') ?>/pegawai" target="_blank">
                                                     <span class="badge badge-light-primary profile-badge">Kunjungi <i class="fas fa-arrow-right"></i></span>
                                                 </a>
@@ -598,7 +589,7 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> -->
                                 <div class="item-slide" style="margin-top: 60px;">
 
                                     <div class="container">
@@ -614,9 +605,6 @@
                                                 <h3 class="title-card" style="padding-top: 60px;">
                                                     <a href="<?= base_url('web') ?>/struktur" tabindex="-1">STRUKTUR</a>
                                                 </h3>
-                                                <!-- <div class="font-small">
-                                                                <span class="text-muted">Sistem transaksi online program Pengelolaan Data...</span>
-                                                            </div> -->
                                                 <a href="<?= base_url('web') ?>/struktur" target="_blank">
                                                     <span class="badge badge-light-primary profile-badge">Kunjungi <i class="fas fa-arrow-right"></i></span>
                                                 </a>
