@@ -10,18 +10,33 @@
     <link rel="apple-touch-icon-precomposed" href="<?= base_url('assets') ?>/wp-content/images/lampung-tengah.png" />
     <meta name="msapplication-TileImage" content="<?= base_url('assets') ?>/wp-content/images/lampung-tengah.png" />
 
+    <!-- <meta content="Website Resmi Bagian Pengadaan Barang dan Jasa" name="description" /> -->
+    <meta content="handokowae.my.id" name="author" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="Pengadaan Barang dan Jasa, PBJ, lampung, lampung tengah, kabupaten lampung tengah">
+
+    <meta property="og:title" content="Website Resmi Bagian Pengadaan Barang dan Jasa Kab. Lampung Tengah" />
+    <meta property="og:url" content="<?= base_url() ?>" />
+    <meta property="og:image" content="<?= base_url('favicon/android-icon-192x192.png'); ?>" />
+    <meta property="og:description" content="Website Resmi Bagian Pengadaan Barang dan Jasa Kab. Lampung Tengah" />
+
+    <meta itemprop="name" content="Website Resmi Bagian Pengadaan Barang dan Jasa Kab. Lampung Tengah" />
+    <meta itemprop="description" content="Website Resmi Bagian Pengadaan Barang dan Jasa Kab. Lampung Tengah" />
+    <meta itemprop="image" content="<?= base_url('favicon/android-icon-192x192.png'); ?>" />
+
     <title><?= $title ?? "Dashboard" ?></title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="Diskominfotik LT" name="author">
+    <!-- <meta content="Diskominfotik LT" name="author"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="index,follow" name="googlebot">
-    <meta name="robots" content="index,follow">
-    <meta content="In-Id" http-equiv="content-language">
-    <meta content="id" name="language">
-    <meta content="id" name="geo.country">
-    <meta content="Indonesia" name="geo.placename">
+    <!-- <meta content="index,follow" name="googlebot"> -->
+    <!-- <meta name="robots" content="index,follow"> -->
+    <!-- <meta content="In-Id" http-equiv="content-language"> -->
+    <!-- <meta content="id" name="language"> -->
+    <!-- <meta content="id" name="geo.country"> -->
+    <!-- <meta content="Indonesia" name="geo.placename"> -->
     <link rel="canonical" href="https://diskominfotik.lampungtengahkab.go.id/" />
 
     <!-- facebook META -->
@@ -60,8 +75,10 @@
     <link href="<?= base_url('assets') ?>/standar/assets/css/icons.css" rel="stylesheet" type="text/css">
     <script src="<?= base_url('assets') ?>/standar/assets/js/jquery.min.js"></script>
 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?Skin=sunburst"></script>
+    <!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
+    <!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?Skin=sunburst"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
     <style>
         .pointer {
             cursor: pointer;

@@ -5,19 +5,19 @@
     <meta charset="utf-8" />
     <title><?= isset($title) ? $title : "Administrator" ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Website Resmi Bagian PBJ" name="description" />
+    <meta content="Website Resmi Bagian Pengadaan Barang dan Jasa" name="description" />
     <meta content="handokowae.my.id" name="author" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="keywords" content="lampung, lampung tengah, kabupaten lampung tengah">
+    <meta name="keywords" content="Pengadaan Barang dan Jasa, PBJ, lampung, lampung tengah, kabupaten lampung tengah">
 
-    <meta property="og:title" content="Website Resmi Bagian PBJ Kab. Lampung Tengah" />
+    <meta property="og:title" content="Website Resmi Bagian Pengadaan Barang dan Jasa Kab. Lampung Tengah" />
     <meta property="og:url" content="<?= base_url() ?>" />
     <meta property="og:image" content="<?= base_url('favicon/android-icon-192x192.png'); ?>" />
-    <meta property="og:description" content="Website Resmi Bagian  Kab. Lampung Tengah" />
+    <meta property="og:description" content="Website Resmi Bagian Pengadaan Barang dan Jasa Kab. Lampung Tengah" />
 
-    <meta itemprop="name" content="Website Resmi Bagian  Kab. Lampung Tengah" />
-    <meta itemprop="description" content="Website Resmi Bagian  Kab. Lampung Tengah" />
+    <meta itemprop="name" content="Website Resmi Bagian Pengadaan Barang dan Jasa Kab. Lampung Tengah" />
+    <meta itemprop="description" content="Website Resmi Bagian Pengadaan Barang dan Jasa Kab. Lampung Tengah" />
     <meta itemprop="image" content="<?= base_url('favicon/android-icon-192x192.png'); ?>" />
 
     <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url('favicon/apple-icon-57x57.png'); ?>">
