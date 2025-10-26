@@ -138,7 +138,7 @@ class Sliderads extends BaseController
         } else {
             $id = htmlspecialchars($this->request->getVar('id'), true);
 
-            $current = $this->_db->table('_tb_slider')
+            $current = $this->_db->table('_tb_sliderads')
                 ->where('id', $id)->get()->getRowObject();
 
             if ($current) {
@@ -193,7 +193,7 @@ class Sliderads extends BaseController
                 $response->message = "Permintaan diizinkan";
                 return json_encode($response);
             }
-            $current = $this->_db->table('_tb_slider')
+            $current = $this->_db->table('_tb_sliderads')
                 ->where('id', $id)->get()->getRowObject();
 
             if ($current) {
