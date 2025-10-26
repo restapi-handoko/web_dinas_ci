@@ -96,46 +96,44 @@
                                     </ul>
                             </li>
                             <li class="menu-item current-menu-item current_page_item"><a target="_blank" href="https://lapor.go.id/"><i class="mdi mdi-access-point-network" style="font-size: small;"></i>Pengaduan</a></li>
-                        </ul>
-                        </li>
 
-                        <li class="menu-item menu-item-has-children">
-                            <a href="#">GALERI<span class="border-menu"></span></a>
-                            <ul class="sub-menu">
-                                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/foto"><i class="far fa-image" style="font-size: small;"></i>Foto</a></li>
-                                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/video"><i class="fas fa-video" style="font-size: small;"></i>Video</a></li>
-                            </ul>
-                        </li>
+                            <li class="menu-item menu-item-has-children">
+                                <a href="#">GALERI<span class="border-menu"></span></a>
+                                <ul class="sub-menu">
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/foto"><i class="far fa-image" style="font-size: small;"></i>Foto</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/video"><i class="fas fa-video" style="font-size: small;"></i>Video</a></li>
+                                </ul>
+                            </li>
 
-                        <?php
-                        $menuPublik = getMenuPublik();
-                        if (isset($menuPublik)) { ?>
-                            <?php if (count($menuPublik) > 0) { ?>
-                                <?php foreach ($menuPublik as $key => $value) { ?>
-                                    <?php //if ((int)$value->has_sub == 1) { 
-                                    ?>
-                                    <li class="menu-item menu-item-has-children">
-                                        <a href="#"><?= $value->judul ?><span class="border-menu"></span></a>
-                                        <ul class="sub-menu">
-                                            <?php
-                                            $menuSubPublik = getSubMenuPublik($value->parent);
-                                            if (isset($menuSubPublik)) { ?>
-                                                <?php if (count($menuSubPublik) > 0) { ?>
-                                                    <?php foreach ($menuSubPublik as $keyV => $v) { ?>
-                                                        <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= $v->url ?>"><?= $value->icon ?? '' ?><?= $value->judul ?></a></li>
+                            <?php
+                            $menuPublik = getMenuPublik();
+                            if (isset($menuPublik)) { ?>
+                                <?php if (count($menuPublik) > 0) { ?>
+                                    <?php foreach ($menuPublik as $key => $value) { ?>
+                                        <?php //if ((int)$value->has_sub == 1) { 
+                                        ?>
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="#"><?= $value->judul ?><span class="border-menu"></span></a>
+                                            <ul class="sub-menu">
+                                                <?php
+                                                $menuSubPublik = getSubMenuPublik($value->parent);
+                                                if (isset($menuSubPublik)) { ?>
+                                                    <?php if (count($menuSubPublik) > 0) { ?>
+                                                        <?php foreach ($menuSubPublik as $keyV => $v) { ?>
+                                                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= $v->url ?>"><?= $value->icon ?? '' ?><?= $value->judul ?></a></li>
+                                                        <?php } ?>
                                                     <?php } ?>
                                                 <?php } ?>
-                                            <?php } ?>
-                                        </ul>
-                                    </li>
-                                    <?php //} else { 
-                                    ?>
-                                    <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= $value->url ?>"> <?= $value->icon ?? '' ?><?= $value->judul ?><span class="border-menu"></span> </a></li> -->
-                                    <?php //} 
-                                    ?>
+                                            </ul>
+                                        </li>
+                                        <?php //} else { 
+                                        ?>
+                                        <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= $value->url ?>"> <?= $value->icon ?? '' ?><?= $value->judul ?><span class="border-menu"></span> </a></li> -->
+                                        <?php //} 
+                                        ?>
+                                    <?php } ?>
                                 <?php } ?>
                             <?php } ?>
-                        <?php } ?>
                         </ul>
 
                         <ul>
