@@ -17,7 +17,7 @@
                                             <a class="post-category-color-text" style="background:#305b90" href="<?= base_url() ?>"><i class="fa fa-home"></i></a>
                                         </span>
                                         <span class="meta-category-small single_meta_category">
-                                            <a class="post-category-color-text" style="background:#305b90" href="<?= base_url('web') ?>/transparansi">Kembali</a>
+                                            <a class="post-category-color-text" style="background:#305b90" href="<?= base_url('web') ?>/transparansi-inovasi">Kembali</a>
                                         </span>
                                         <h6><span class="badge badge-light-primary"></span></h6>
 

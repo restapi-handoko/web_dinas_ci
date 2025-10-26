@@ -85,7 +85,7 @@
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/bankdata"><i class="fas fa-database" style="font-size: small;"></i>Bank Data</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/produkhukum"><i class="fa fa-balance-scale" style="font-size: small;"></i>Produk Hukum</a></li>
                                     <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/infografis"><i class="far fa-images" style="font-size: small;"></i>Infografis</a></li> -->
-                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/transparansi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi & Inovasi</a></li>
+                                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/transparansi-inovasi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi & Inovasi</a></li>
                                     <!-- <li class="menu-item menu-item-has-children"><a target="_parent" href="index.html#"><i class="fas fa-expand" style="font-size: small;"></i> Informasi Berkala</a> -->
                                     <ul class="sub-menu">
                                         <!-- looping sub-submenu -->
@@ -160,7 +160,7 @@
                 <a href="<?= base_url('web') ?>/berita">BERITA<span class="border-menu"></span></a>
             </li>
             <li class="menu-item current-menu-item current_page_item">
-                <a href="<?= base_url('web') ?>/transparansi">TRANSPARANSI & INOVASI<span class="border-menu"></span></a>
+                <a href="<?= base_url('web') ?>/transparansi-inovasi">TRANSPARANSI & INOVASI<span class="border-menu"></span></a>
             </li>
         </ul>
     </div>
@@ -197,7 +197,7 @@
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/bankdata"><i class="fas fa-database" style="font-size: small;"></i>Bank Data</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/produkhukum"><i class="fa fa-balance-scale" style="font-size: small;"></i>Produk Hukum</a></li>
                     <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/infografis"><i class="far fa-images" style="font-size: small;"></i>Infografis</a></li> -->
-                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/transparansi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi & Inovasi</a></li>
+                    <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/transparansi-inovasi"><i class="fas fa-chart-pie" style="font-size: small;"></i>Transparansi & Inovasi</a></li>
                     <!-- <li class="menu-item menu-item-has-children"><a target="_parent" href="index.html#"><i class="fas fa-expand" style="font-size: small;"></i> Informasi Berkala</a> -->
                     <ul class="sub-menu">
                         <!-- looping sub-submenu -->

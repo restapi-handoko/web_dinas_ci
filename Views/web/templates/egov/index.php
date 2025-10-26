@@ -334,6 +334,11 @@
 
 
     //view pengumuman-----------
+    function lihattransparansi(informasi_id) {
+        document.location.href = `<?= base_url('web/transparansi-inovasi') ?>/${informasi_id}`;
+    }
+
+    //view pengumuman-----------
     function lihatpengumuman(informasi_id) {
         document.location.href = `<?= base_url('web/pengumuman') ?>/${informasi_id}`;
 
