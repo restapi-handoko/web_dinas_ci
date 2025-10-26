@@ -687,7 +687,7 @@ function getMenuPublik()
     $db      = \Config\Database::connect();
     try {
         $data = $db->table('_tb_menu_lain')
-            ->where('has_sub', 1)
+            ->where('parent', 0)
             ->where('status', 1)
             ->orderBy('urut', 'ASC')
             ->get()->getResult();

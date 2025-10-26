@@ -106,32 +106,36 @@
                                 <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/video"><i class="fas fa-video" style="font-size: small;"></i>Video</a></li>
                             </ul>
                         </li>
-
-                        <?php
-                        $menuPublik = getMenuPublik(); ?>
-                        <?php if (count($menuPublik) > 0) { ?>
-                            <?php foreach ($menuPublik as $key => $value) { ?>
-                                <?php //if ((int)$value->has_sub == 1) { 
-                                ?>
-                                <li class="menu-item menu-item-has-children">
-                                    <a href="#"><?= $value->judul ?><span class="border-menu"></span></a>
-                                    <ul class="sub-menu">
-                                        <?php
-                                        $menuSubPublik = getSubMenuPublik($value->id); ?>
-                                        <?php if (count($menuSubPublik) > 0) { ?>
-                                            <?php foreach ($menuSubPublik as $keyV => $v) { ?>
-                                                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= $v->url ?>"><?= $v->icon ?? '' ?><?= $v->judul ?></a></li>
-                                            <?php } ?>
-                                        <?php } ?>
-                                    </ul>
-                                </li>
-                                <?php //} else { 
-                                ?>
-                                <!-- <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= $value->url ?>"> <?= $value->icon ?? '' ?><?= $value->judul ?><span class="border-menu"></span> </a></li> -->
-                                <?php //} 
-                                ?>
-                            <?php } ?>
-                        <?php } ?>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#">Layanan Publik<span class="border-menu"></span></a>
+                            <ul class="sub-menu">
+                                <?php
+                                $menuPublik = getMenuPublik(); ?>
+                                <?php if (count($menuPublik) > 0) { ?>
+                                    <?php foreach ($menuPublik as $key => $value) { ?>
+                                        <?php if ((int)$value->has_sub == 1) {
+                                        ?>
+                                            <li class="menu-item menu-item-has-children">
+                                                <a href="#"><?= $value->judul ?><span class="border-menu"></span></a>
+                                                <ul class="sub-menu">
+                                                    <?php
+                                                    $menuSubPublik = getSubMenuPublik($value->id); ?>
+                                                    <?php if (count($menuSubPublik) > 0) { ?>
+                                                        <?php foreach ($menuSubPublik as $keyV => $v) { ?>
+                                                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= $v->url ?>"><?= $v->icon ?? '' ?><?= $v->judul ?></a></li>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </ul>
+                                            </li>
+                                        <?php } else {
+                                        ?>
+                                            <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= $value->url ?>"> <?= $value->icon ?? '' ?><?= $value->judul ?><span class="border-menu"></span> </a></li>
+                                        <?php }
+                                        ?>
+                                    <?php } ?>
+                                <?php } ?>
+                            </ul>
+                        </li>
                         </ul>
 
                         <ul>
