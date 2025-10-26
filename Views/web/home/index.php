@@ -155,7 +155,7 @@
                                             <div class="font-small">
                                                 <span class="text-muted">RUP</span>
                                             </div>
-                                            <a href="#" target="_blank">
+                                            <a href="<?= base_url('web') ?>/pengadaan#collapse1">
                                                 <span class="badge badge-light-primary profile-badge" title="Sumber Data">Lihat <i class="fas fa-arrow-right"></i></span>
                                             </a>
                                         </div>
@@ -179,9 +179,9 @@
                                                 <a href="#" tabindex="-1">0</a>
                                             </h3>
                                             <div class="font-small">
-                                                <span class="text-muted">Peng. Pemilihan</span>
+                                                <span class="text-muted">Pemilihan</span>
                                             </div>
-                                            <a href="#" target="_blank">
+                                            <a href="<?= base_url('web') ?>/pengadaan#collapse2">
                                                 <span class="badge badge-light-primary profile-badge" title="Sumber Data">Lihat <i class="fas fa-arrow-right"></i></span>
                                             </a>
                                         </div>
@@ -207,7 +207,7 @@
                                             <div class="font-small">
                                                 <span class="text-muted">Hasil Pemilihan</span>
                                             </div>
-                                            <a href="#" target="_blank">
+                                            <a href="<?= base_url('web') ?>/pengadaan#collapse3">
                                                 <span class="badge badge-light-primary profile-badge" title="Sumber Data">Lihat <i class="fas fa-arrow-right"></i></span>
                                             </a>
                                         </div>
@@ -233,7 +233,7 @@
                                             <div class="font-small">
                                                 <span class="text-muted">Terpilih</span>
                                             </div>
-                                            <a href="#" target="_blank">
+                                            <a href="<?= base_url('web') ?>/pengadaan#collapse4">
                                                 <span class="badge badge-light-primary profile-badge" title="Sumber Data">Lihat <i class="fas fa-arrow-right"></i></span>
                                             </a>
                                         </div>

@@ -539,6 +539,22 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('scriptBottom'); ?>
+<script>
+    $(document).ready(function() {
+        // Jika ada hash di URL, buka accordion tersebut
+        if (window.location.hash) {
+            $(window.location.hash).collapse('show');
+        } else {
+            // Default: buka accordion ke-4 (Daftar Penyedia Terpilih)
+            $('#collapse1').collapse('show');
+        }
+
+        // Update URL hash ketika accordion dibuka
+        $('.collapse').on('show.bs.collapse', function() {
+            window.location.hash = '#' + this.id;
+        });
+    });
+</script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         jQuery('.content, .sidebar').theiaStickySidebar({
