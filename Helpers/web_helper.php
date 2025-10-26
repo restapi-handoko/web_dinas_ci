@@ -706,7 +706,7 @@ function getSubMenuPublik($parent)
     $db      = \Config\Database::connect();
     try {
         $data = $db->table('_tb_menu_lain')
-            ->where('has_sub', 0)
+            // ->where('has_sub', 0)
             ->where('parent', $parent)
             ->orderBy('urut', 'ASC')
             ->get()->getResult();
