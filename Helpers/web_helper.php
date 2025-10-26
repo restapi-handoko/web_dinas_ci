@@ -690,7 +690,7 @@ function getMenuPublik()
             ->where('id', 1)
             // ->where('has_sub', 1)
             ->orderBy('urut', 'ASC')
-            ->get()->getRowObject();
+            ->get()->getResult();
         if ($data) {
             return $data;
         } else {
@@ -711,7 +711,7 @@ function getSubMenuPublik($parent)
             // ->where('has_sub', 0)
             ->where('parent', $parent)
             ->orderBy('urut', 'ASC')
-            ->get()->getRowObject();
+            ->get()->getResult();
         if ($data) {
             return $data;
         } else {
