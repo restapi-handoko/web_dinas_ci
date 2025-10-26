@@ -52,6 +52,12 @@ class Home extends BaseController
             ->where('a.status', 1)->orderBy('a.created_at', 'DESC')
             ->limit(5)
             ->get()->getResult();
+        $data['dataFoto'] = $this->_db->table('_tb_foto a')
+            ->select("a.*")
+            // ->join("_tb_kategori_berita b", "b.kid = a.k_id")
+            ->where('a.status', 1)->orderBy('a.created_at', 'DESC')
+            ->limit(5)
+            ->get()->getResult();
 
         return view('web/home/index', $data);
     }
