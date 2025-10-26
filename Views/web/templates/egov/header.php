@@ -117,7 +117,7 @@
                                     <a href="#"><?= $value->judul ?><span class="border-menu"></span></a>
                                     <ul class="sub-menu">
                                         <?php
-                                        $menuSubPublik = getSubMenuPublik($value->parent); ?>
+                                        $menuSubPublik = getSubMenuPublik($value->id); ?>
                                         <?php if (count($menuSubPublik) > 0) { ?>
                                             <?php foreach ($menuSubPublik as $keyV => $v) { ?>
                                                 <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= $v->url ?>"><?= $v->icon ?? '' ?><?= $v->judul ?></a></li>
