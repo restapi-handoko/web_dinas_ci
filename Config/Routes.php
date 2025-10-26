@@ -26,6 +26,8 @@ $routes->get('/web/pengumuman/(:segment)', 'Web\Pengumuman::detail/$1');
 
 $routes->get('/web/produkhukum', 'Web\Produkhukum::index');
 
+$routes->get('/web/pegawai', 'Web\Pegawai::index');
+
 $routes->get('/web/pengadaan', 'Web\Pengadaan::index');
 $routes->get('/web/pengadaan/(:segment)', 'Web\Pengadaan::detail/$1');
 
