@@ -65,7 +65,7 @@
                             <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url() ?>"> <i class="fas fa-home"></i>HOME<span class="border-menu"></span> </a></li>
 
                             <li class="menu-item menu-item-has-children">
-                                <a href="index.html#">PROFIL<span class="border-menu"></span></a>
+                                <a href="#">PROFIL<span class="border-menu"></span></a>
                                 <ul class="sub-menu">
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/sejarah"><i class="mdi mdi-library-books" style="font-size: small;"></i>Sejarah</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/visi-misi"><i class="mdi mdi-library-books" style="font-size: small;"></i>Visi dan Misi</a></li>
@@ -77,7 +77,7 @@
                             <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/berita"> <i class=""></i>BERITA<span class="border-menu"></span> </a></li>
 
                             <li class="menu-item menu-item-has-children">
-                                <a href="index.html#">INFORMASI<span class="border-menu"></span></a>
+                                <a href="#">INFORMASI<span class="border-menu"></span></a>
                                 <ul class="sub-menu">
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/pengadaan"><i class="fas fa-chalkboard-teacher" style="font-size: small;"></i>Pengadaan</a></li>
                                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/pengumuman"><i class="fas fa-bullhorn" style="font-size: small;"></i>Pengumuman</a></li>
@@ -100,7 +100,7 @@
                         </li>
 
                         <li class="menu-item menu-item-has-children">
-                            <a href="index.html#">GALERI<span class="border-menu"></span></a>
+                            <a href="#">GALERI<span class="border-menu"></span></a>
                             <ul class="sub-menu">
                                 <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/foto"><i class="far fa-image" style="font-size: small;"></i>Foto</a></li>
                                 <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/video"><i class="fas fa-video" style="font-size: small;"></i>Video</a></li>
@@ -148,13 +148,13 @@
     <div class="menu-primary-container navigation_wrapper">
         <ul id="mainmenu" class="jl_main_menu">
             <li class="menu-item current-menu-item current_page_item">
-                <a href="index.html">BERANDA<span class="border-menu"></span></a>
+                <a href="<?= base_url() ?>">BERANDA<span class="border-menu"></span></a>
             </li>
             <li class="menu-item current-menu-item current_page_item">
-                <a href="pegawai.html">PEGAWAI<span class="border-menu"></span></a>
+                <a href="<?= base_url('web/pegawai') ?>">PEGAWAI<span class="border-menu"></span></a>
             </li>
             <li class="menu-item current-menu-item current_page_item">
-                <a href="page/sejarah.html">PROFIL DINAS<span class="border-menu"></span></a>
+                <a href="<?= base_url('web/sejarah') ?>">PROFIL<span class="border-menu"></span></a>
             </li>
             <li class="menu-item current-menu-item current_page_item">
                 <a href="<?= base_url('web') ?>/transparansi">TRANSPARANSI ANGGARAN<span class="border-menu"></span></a>
@@ -173,7 +173,7 @@
             <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url() ?>"> <i class="fas fa-home"></i>HOME<span class="border-menu"></span> </a></li>
 
             <li class="menu-item menu-item-has-children">
-                <a href="index.html#">PROFIL<span class="border-menu"></span></a>
+                <a href="#">PROFIL<span class="border-menu"></span></a>
                 <ul class="sub-menu">
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/sejarah"><i class="mdi mdi-library-books" style="font-size: small;"></i>Sejarah</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/visi-misi"><i class="mdi mdi-library-books" style="font-size: small;"></i>Visi dan Misi</a></li>
@@ -186,7 +186,7 @@
             <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/berita"> <i class=""></i>BERITA<span class="border-menu"></span> </a></li>
 
             <li class="menu-item menu-item-has-children">
-                <a href="index.html#">INFORMASI<span class="border-menu"></span></a>
+                <a href="#">INFORMASI<span class="border-menu"></span></a>
                 <ul class="sub-menu">
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/pengadaan"><i class="fas fa-chalkboard-teacher" style="font-size: small;"></i>Pengadaan</a></li>
                     <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/pengumuman"><i class="fas fa-bullhorn" style="font-size: small;"></i>Pengumuman</a></li>
@@ -207,7 +207,7 @@
         </li>
 
         <li class="menu-item menu-item-has-children">
-            <a href="index.html#">GALERI<span class="border-menu"></span></a>
+            <a href="#">GALERI<span class="border-menu"></span></a>
             <ul class="sub-menu">
                 <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/foto"><i class="far fa-image" style="font-size: small;"></i>Foto</a></li>
                 <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web') ?>/video"><i class="fas fa-video" style="font-size: small;"></i>Video</a></li>
