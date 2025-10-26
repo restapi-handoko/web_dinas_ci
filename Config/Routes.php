@@ -288,6 +288,17 @@ $routes->post('/webadmin/informasi/pengumuman/addSave', 'Webadmin\Informasi\Peng
 $routes->post('/webadmin/informasi/pengumuman/editSave', 'Webadmin\Informasi\Pengumuman::editSave');
 $routes->post('/webadmin/informasi/pengumuman/uploadImage', 'Webadmin\Informasi\Pengumuman::uploadImage');
 
+$routes->get('/webadmin/informasi/transparansi', 'Webadmin\Informasi\Transparansi::index');
+$routes->get('/webadmin/informasi/transparansi/data', 'Webadmin\Informasi\Transparansi::data');
+$routes->get('/webadmin/informasi/transparansi/add', 'Webadmin\Informasi\Transparansi::add');
+$routes->post('/webadmin/informasi/transparansi/edit', 'Webadmin\Informasi\Transparansi::edit');
+$routes->post('/webadmin/informasi/transparansi/detail', 'Webadmin\Informasi\Transparansi::detail');
+$routes->post('/webadmin/informasi/transparansi/getAll', 'Webadmin\Informasi\Transparansi::getAll');
+$routes->post('/webadmin/informasi/transparansi/delete', 'Webadmin\Informasi\Transparansi::delete');
+$routes->post('/webadmin/informasi/transparansi/addSave', 'Webadmin\Informasi\Transparansi::addSave');
+$routes->post('/webadmin/informasi/transparansi/editSave', 'Webadmin\Informasi\Transparansi::editSave');
+$routes->post('/webadmin/informasi/transparansi/uploadImage', 'Webadmin\Informasi\Transparansi::uploadImage');
+
 $routes->get('/webadmin/informasi/regulasi', 'Webadmin\Informasi\Regulasi::index');
 $routes->get('/webadmin/informasi/regulasi/data', 'Webadmin\Informasi\Regulasi::data');
 $routes->get('/webadmin/informasi/regulasi/add', 'Webadmin\Informasi\Regulasi::add');
