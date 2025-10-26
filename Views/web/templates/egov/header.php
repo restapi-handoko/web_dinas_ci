@@ -32,13 +32,13 @@
 
                     <div class="jl-w-slider jl_full_feature_w ">
                         <div class="jl-eb-slider jelly_loading_pro" data-arrows="true" data-play="true" data-effect="false" data-speed="500" data-autospeed="7000" data-loop="true" data-dots="false" data-swipe="true" data-items="1" data-xs-items="1" data-sm-items="1" data-md-items="1" data-lg-items="1" data-xl-items="1">
-                            <?php if (isset($dataSliders)) { ?>
-                                <?php if (count($dataSliders) > 0) { ?>
-                                    <?php foreach ($dataSliders as $key => $value) { ?>
+                            <?php if (isset($dataSliderAds)) { ?>
+                                <?php if (count($dataSliderAds) > 0) { ?>
+                                    <?php foreach ($dataSliderAds as $key => $value) { ?>
                                         <div class="item-slide jl_radus_e">
                                             <div class="slide-inner">
                                                 <a href="javascript:;">
-                                                    <img src="<?= base_url() . 'uploads/slider/' . $value->image ?>" title="<?= $value->judul ?>" />
+                                                    <img src="<?= base_url() . 'uploads/sliderads/' . $value->image ?>" title="<?= $value->judul ?>" />
                                                 </a>
                                             </div>
                                         </div>

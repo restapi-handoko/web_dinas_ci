@@ -26,6 +26,7 @@ class Home extends BaseController
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
+        $data['dataSliderAds'] = $this->_db->table('_tb_sliderads')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
         $data['dataSliders'] = $this->_db->table('_tb_slider')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
         $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
@@ -68,6 +69,7 @@ class Home extends BaseController
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
+        $data['dataSliderAds'] = $this->_db->table('_tb_sliderads')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
         $data['data'] = $this->_db->table('_web_profil')->where('id', 1)->get()->getRowObject();
         $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
@@ -92,6 +94,7 @@ class Home extends BaseController
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
+        $data['dataSliderAds'] = $this->_db->table('_tb_sliderads')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
         $data['data'] = $this->_db->table('_web_profil')->where('id', 2)->get()->getRowObject();
         $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
@@ -116,6 +119,7 @@ class Home extends BaseController
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
+        $data['dataSliderAds'] = $this->_db->table('_tb_sliderads')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
         $data['data'] = $this->_db->table('_web_profil')->where('id', 5)->get()->getRowObject();
         $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
@@ -140,6 +144,7 @@ class Home extends BaseController
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
+        $data['dataSliderAds'] = $this->_db->table('_tb_sliderads')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
         $data['data'] = $this->_db->table('_web_profil')->where('id', 4)->get()->getRowObject();
         $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")

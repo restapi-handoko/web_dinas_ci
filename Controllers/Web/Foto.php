@@ -26,6 +26,7 @@ class Foto extends BaseController
         $data['admin'] = false;
 
         $data['footer'] = getFooterPublik();
+        $data['dataSliderAds'] = $this->_db->table('_tb_sliderads')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
         $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")
@@ -99,6 +100,7 @@ class Foto extends BaseController
         $data['album'] = $album;
 
         $data['footer'] = getFooterPublik();
+        $data['dataSliderAds'] = $this->_db->table('_tb_sliderads')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
         $data['dataWidgetBerita'] = $this->_db->table('_tb_berita a')
             ->select("a.*, b.kategori")
             ->join("_tb_kategori_berita b", "b.kid = a.k_id")

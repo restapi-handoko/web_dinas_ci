@@ -39,6 +39,7 @@ class Video extends BaseController
             ->getResult();
 
         $data['footer'] = getFooterPublik();
+        $data['dataSliderAds'] = $this->_db->table('_tb_sliderads')->where('status', 1)->orderBy('urut', 'ASC')->get()->getResult();
         $data['dataVideo'] = $this->_db->table('_tb_video')
             ->where('status', 1)
             ->orderBy('created_at', 'DESC')
