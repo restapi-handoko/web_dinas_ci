@@ -1039,7 +1039,7 @@
                                                         <!-- <span class="text-primary">
                                                             Lembata - NTT </span>
                                                         <span> | </span> -->
-                                                        <span class="post-date" style="color:#647277;"><?= $value->tanggal ?></span>
+                                                        <span class="post-date" style="color:#647277;"><?= $value->created_at ?></span>
                                                     </span>
                                                 </div>
                                             </div>
