@@ -202,8 +202,14 @@ class Home extends BaseController
             ->where('url', $id)
             ->get()->getRowObject();
 
+        if (!$x['foto']) {
+            $response = new \stdClass;
+            $response->error = "Tidak ditemukan.";
+            return json_encode($response);
+        }
+
         $response = new \stdClass;
-        $response->data = view('web/templates/egov/view_foto', $x);
+        $response->sukses = view('web/templates/egov/view_foto', $x);
         return json_encode($response);
     }
 

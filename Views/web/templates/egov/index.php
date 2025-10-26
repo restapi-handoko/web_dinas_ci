@@ -238,7 +238,7 @@
             type: "post",
             url: "<?= base_url('web') ?>/formlihatfoto",
             data: {
-                csrf_tokencmsdatagoe: $('input[name=csrf_tokencmsdatagoe]').val(),
+                // csrf_tokencmsdatagoe: $('input[name=csrf_tokencmsdatagoe]').val(),
                 foto_id: foto_id,
                 nama_kategori_foto: nama_kategori_foto
             },
@@ -254,12 +254,12 @@
                     });
                     $('#modalview').modal('show');
                     $('body').removeClass("modal-open");
-                    $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
+                    // $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
                 }
             },
             error: function(xhr, ajaxOptions, thrownerror) {
 
-                $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
+                // $('input[name=csrf_tokencmsdatagoe]').val(response.csrf_tokencmsdatagoe);
             }
         });
     }
