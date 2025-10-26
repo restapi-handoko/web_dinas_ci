@@ -114,7 +114,7 @@
                                     <?php foreach ($menuPublik as $key => $value) { ?>
                                         <?php if ((int)$value->has_sub == 1) { ?>
                                             <li class="menu-item menu-item-has-children">
-                                                <a href="#"><?= $value->judul ?><span class="border-menu"></span></a>
+                                                <a href="#"><?= $value->icon ?? '' ?><?= $value->judul ?><span class="border-menu"></span></a>
                                                 <ul class="sub-menu">
                                                     <?php
                                                     $menuSubPublik = getSubMenuPublik($value->id); ?>
