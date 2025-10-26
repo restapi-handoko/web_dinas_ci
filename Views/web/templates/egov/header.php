@@ -144,24 +144,24 @@
     </div>
 </header>
 <!-- top menu -->
-<!-- <div class="d-block d-sm-none scrollmenu jl_menu_sticky jl_stick">
+<div class="d-block d-sm-none scrollmenu jl_menu_sticky jl_stick">
     <div class="menu-primary-container navigation_wrapper">
         <ul id="mainmenu" class="jl_main_menu">
             <li class="menu-item current-menu-item current_page_item">
                 <a href="<?= base_url() ?>">BERANDA<span class="border-menu"></span></a>
             </li>
             <li class="menu-item current-menu-item current_page_item">
-                <a href="<?= base_url('web/pegawai') ?>">PEGAWAI<span class="border-menu"></span></a>
+                <a href="<?= base_url('web') ?>/pengadaan">PENGADAAN<span class="border-menu"></span></a>
             </li>
             <li class="menu-item current-menu-item current_page_item">
-                <a href="<?= base_url('web/sejarah') ?>">PROFIL<span class="border-menu"></span></a>
+                <a href="<?= base_url('web') ?>/sejarah">PROFIL<span class="border-menu"></span></a>
             </li>
             <li class="menu-item current-menu-item current_page_item">
-                <a href="<?= base_url('web') ?>/transparansi">TRANSPARANSI ANGGARAN<span class="border-menu"></span></a>
+                <a href="<?= base_url('web') ?>/berita">BERITA<span class="border-menu"></span></a>
             </li>
         </ul>
     </div>
-</div> -->
+</div>
 <!-- menu mobile -->
 <div id="content_nav" class="jl_mobile_nav_wrapper">
     <div id="nav" class="jl_mobile_nav_inner">
