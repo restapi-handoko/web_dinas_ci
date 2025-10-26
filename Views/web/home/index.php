@@ -763,8 +763,8 @@
                                             <div class="slide-inner m-1">
                                                 <div class="card-mod jl_grid_w shadow-sm">
                                                     <div class="jl_img_box jl_radus_e">
-                                                        <a onclick="lihatfoto('<?= $value->id ?>','<?= $value->judul ?>')"> <span class="jl_post_type_icon"><i class="jli-gallery"></i></span>
-                                                            <img width="500" height="350" src="<?= base_url('uploads/foto') . '/' . $value->url ?>" class="attachment-sprasa_slider_grid_small size-sprasa_slider_grid_small wp-post-image" alt="" loading="lazy">
+                                                        <a onclick="lihatfoto('<?= $value->url ?>','<?= $value->judul ?>')"> <span class="jl_post_type_icon"><i class="jli-gallery"></i></span>
+                                                            <img width="500" height="350" src="<?= base_url('uploads/foto') . '/' . $value->image ?>" class="attachment-sprasa_slider_grid_small size-sprasa_slider_grid_small wp-post-image" alt="" loading="lazy">
                                                         </a>
                                                     </div>
                                                     <span class="jl_post_meta pl-2">

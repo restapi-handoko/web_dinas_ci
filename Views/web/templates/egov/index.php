@@ -236,7 +236,7 @@
 
         $.ajax({
             type: "post",
-            url: "<?= base_url('assets') ?>/formlihatfoto",
+            url: "<?= base_url('web') ?>/formlihatfoto",
             data: {
                 csrf_tokencmsdatagoe: $('input[name=csrf_tokencmsdatagoe]').val(),
                 foto_id: foto_id,

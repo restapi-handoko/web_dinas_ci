@@ -42,6 +42,7 @@ $routes->get('/web/video', 'Web\Video::index');
 
 $routes->get('/web/lihatpoling', 'Web\Home::viewPoling');
 $routes->post('/web/ubahpoling', 'Web\Home::postPoling');
+$routes->post('/web/formlihatfoto', 'Web\Home::formlihatfoto');
 
 // $routes->get('/home', 'Home::index');
 $routes->get('/auth', 'Auth::index');

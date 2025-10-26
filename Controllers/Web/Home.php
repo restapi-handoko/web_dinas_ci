@@ -195,6 +195,18 @@ class Home extends BaseController
         return json_encode($response);
     }
 
+    public function formlihatfoto()
+    {
+        $id = htmlspecialchars($this->request->getVar('foto_id'), true);
+        $x['foto'] = $this->_db->table('_tb_foto')
+            ->where('url', $id)
+            ->get()->getRowObject();
+
+        $response = new \stdClass;
+        $response->data = view('web/templates/egov/view_foto', $x);
+        return json_encode($response);
+    }
+
     public function viewPoling()
     {
 
