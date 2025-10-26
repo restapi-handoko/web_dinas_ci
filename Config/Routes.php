@@ -186,6 +186,15 @@ $routes->post('/webadmin/galeri/slider/delete', 'Webadmin\Galeri\Slider::delete'
 $routes->post('/webadmin/galeri/slider/addSave', 'Webadmin\Galeri\Slider::addSave');
 $routes->post('/webadmin/galeri/slider/editSave', 'Webadmin\Galeri\Slider::editSave');
 
+$routes->get('/webadmin/galeri/sliderads', 'Webadmin\Galeri\Sliderads::index');
+$routes->get('/webadmin/galeri/sliderads/data', 'Webadmin\Galeri\Sliderads::data');
+$routes->get('/webadmin/galeri/sliderads/add', 'Webadmin\Galeri\Sliderads::add');
+$routes->post('/webadmin/galeri/sliderads/edit', 'Webadmin\Galeri\Sliderads::edit');
+$routes->post('/webadmin/galeri/sliderads/getAll', 'Webadmin\Galeri\Sliderads::getAll');
+$routes->post('/webadmin/galeri/sliderads/delete', 'Webadmin\Galeri\Sliderads::delete');
+$routes->post('/webadmin/galeri/sliderads/addSave', 'Webadmin\Galeri\Sliderads::addSave');
+$routes->post('/webadmin/galeri/sliderads/editSave', 'Webadmin\Galeri\Sliderads::editSave');
+
 $routes->get('/webadmin/galeri/video', 'Webadmin\Galeri\Video::index');
 $routes->get('/webadmin/galeri/video/data', 'Webadmin\Galeri\Video::data');
 $routes->get('/webadmin/galeri/video/add', 'Webadmin\Galeri\Video::add');
