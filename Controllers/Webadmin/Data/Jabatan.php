@@ -122,12 +122,12 @@ class Jabatan extends BaseController
 
     public function edit()
     {
-        if ($this->request->getMethod() != 'post') {
-            $response = new \stdClass;
-            $response->status = 400;
-            $response->message = "Permintaan tidak diizinkan";
-            return json_encode($response);
-        }
+        // if ($this->request->getMethod() != 'post') {
+        //     $response = new \stdClass;
+        //     $response->status = 400;
+        //     $response->message = "Permintaan tidak diizinkan";
+        //     return json_encode($response);
+        // }
 
         $rules = [
             'id' => [
