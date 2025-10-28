@@ -188,7 +188,17 @@
                                             }
 
                                         }
-
+                                        if (response.gagal) {
+                                            Swal.fire({
+                                                title: "Maaf gagal mengirim data!",
+                                                html: `${response.gagal}`,
+                                                icon: "error",
+                                                showConfirmButton: false,
+                                                timer: 3100
+                                            }).then(function() {
+                                                window.location = '';
+                                            })
+                                        }
                                         if (response.sukses) {
                                             Swal.fire({
                                                 title: "Terima Kasih!",

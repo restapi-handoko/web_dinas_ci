@@ -54,4 +54,92 @@ class Layanan extends BaseController
             ->getResult();
         return view('web/layanan/detail', $data);
     }
+
+    public function simpankritik()
+    {
+        $rules = [
+            'nama' => [
+                'rules' => 'required|trim',
+                'errors' => [
+                    'required' => 'Nama tidak boleh kosong. ',
+                ]
+            ],
+            'no_hpusr' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nomor handphone tidak boleh kosong. ',
+                ]
+            ],
+            'email' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Email tidak boleh kosong. ',
+                ]
+            ],
+            'judul' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Pilih topik boleh kosong. ',
+                ]
+            ],
+            'isi_kritik' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Isi kritik tidak boleh kosong. ',
+                ]
+            ],
+        ];
+
+
+        if (!$this->validate($rules)) {
+            $response = new \stdClass;
+            $resEror = new \stdClass;
+            $resEror->nama = $this->validator->getError('nama');
+            $resEror->no_hpusr =  $this->validator->getError('no_hpusr');
+            $resEror->email =  $this->validator->getError('email');
+            $resEror->judul =  $this->validator->getError('judul');
+            $resEror->isi_kritik =  $this->validator->getError('isi_kritik');
+            $response->error = $resEror;
+            return json_encode($response);
+        } else {
+
+            $nama = htmlspecialchars($this->request->getVar('nama'), true);
+            $nohp = htmlspecialchars($this->request->getVar('no_hpusr'), true);
+            $email = htmlspecialchars($this->request->getVar('email'), true);
+            $topic = htmlspecialchars($this->request->getVar('judul'), true);
+            $isi = htmlspecialchars($this->request->getVar('isi'), true);
+
+            $data = [
+                'nama_pengirim' => $nama,
+                'nohp_pengirim' => $nohp,
+                'email_pengirim' => $email,
+                'topic' => $topic,
+                'isi' => $isi,
+                'created_at' => date('Y-m-d H:i:s'),
+            ];
+
+            $this->_db->transBegin();
+            try {
+                $this->_db->table('_tb_kritik_saran')->insert($data);
+            } catch (\Exception $e) {
+                $this->_db->transRollback();
+
+                $response = new \stdClass;
+                $response->gagal = "Gagal menyimpan data.";
+                return json_encode($response);
+            }
+
+            if ($this->_db->affectedRows() > 0) {
+                $this->_db->transCommit();
+                $response = new \stdClass;
+                $response->sukses = "Data berhasil disimpan.";
+                return json_encode($response);
+            } else {
+                $this->_db->transRollback();
+                $response = new \stdClass;
+                $response->gagal = "Gagal menyimpan data";
+                return json_encode($response);
+            }
+        }
+    }
 }

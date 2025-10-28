@@ -32,6 +32,7 @@ $routes->get('/web/pengadaan', 'Web\Pengadaan::index');
 $routes->get('/web/pengadaan/(:segment)', 'Web\Pengadaan::detail/$1');
 
 $routes->get('/web/layanan/(:segment)', 'Web\Layanan::detail/$1');
+$routes->post('/web/simpankritik', 'Web\Layanan::simpankritik');
 
 $routes->get('/web/bankdata', 'Web\Bankdata::index');
 $routes->get('/web/bankdata/(:segment)', 'Web\Bankdata::detail/$1');
