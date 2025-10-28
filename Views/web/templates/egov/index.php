@@ -214,7 +214,7 @@
                                     error: function(xhr, ajaxOptions, thrownerror) {
                                         Swal.fire({
                                             title: "Maaf gagal mengirim data!",
-                                            html: `Silahkan coba kembali Error Code: <strong>${(xhr.status + "\n")}</strong> `,
+                                            text: `Silahkan coba kembali Error Code: <strong>${(xhr.status + "\n")}</strong> `,
                                             icon: "error",
                                             // showConfirmButton: false,
                                             // timer: 3100
