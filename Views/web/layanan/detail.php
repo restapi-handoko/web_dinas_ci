@@ -52,10 +52,15 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <div class="post_content jl_content">
-                                        <?= $data->isi ?>
+                                    <?php if ((int)$data->used_code == 1) { ?>
+                                        <?= $data->source_code ?>
                                         <hr>
-                                    </div>
+                                    <?php } else { ?>
+                                        <div class="post_content jl_content">
+                                            <?= $data->isi ?>
+                                            <hr>
+                                        </div>
+                                    <?php } ?>
 
                                 </div>
                                 <div class="clearfix"></div>
