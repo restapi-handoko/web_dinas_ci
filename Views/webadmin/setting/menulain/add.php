@@ -146,6 +146,10 @@
         }
     }
 
+    function removeSpecialCharsAndKeepSpaces(str) {
+        return str.replace(/[^a-zA-Z0-9\s]/g, '');
+    }
+
     $("#formAddModalData").on("submit", function(e) {
         e.preventDefault();
         const judul = document.getElementsByName('_judul')[0].value;
@@ -217,7 +221,7 @@
         }
 
         const formUpload = new FormData();
-        formUpload.append('judul', judul);
+        formUpload.append('judul', removeSpecialCharsAndKeepSpaces(judul));
         formUpload.append('external_link', externalLink);
         formUpload.append('isi', isi);
         formUpload.append('status', status);
