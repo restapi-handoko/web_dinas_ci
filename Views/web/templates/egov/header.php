@@ -123,7 +123,7 @@
                                                             <?php if ((int)$value->external_link == 1) { ?>
                                                                 <li class="menu-item current-menu-item current_page_item"><a target="_blank" href="<?= $v->url ?>"><?= $v->icon ?? '' ?><?= $v->judul ?></a></li>
                                                             <?php } else { ?>
-                                                                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= $v->url ?>"><?= $v->icon ?? '' ?><?= $v->judul ?></a></li>
+                                                                <li class="menu-item current-menu-item current_page_item"><a target="_parent" href="<?= base_url('web/layanan') . '/' . $v->url ?>"><?= $v->icon ?? '' ?><?= $v->judul ?></a></li>
                                                             <?php } ?>
                                                         <?php } ?>
                                                     <?php } ?>
