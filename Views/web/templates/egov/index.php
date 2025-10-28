@@ -107,12 +107,117 @@
 
             <div class="mobile_menu_overlay"></div>
 
-            <input type="hidden" name="csrf_tokencmsdatagoe" value="54e75f03c3ccb5e008b102e10bc27b73" id="csrf_tokencmsdatagoe" />
-
             <?= $this->renderSection('content'); ?>
             <?= $this->renderSection('scriptBottom'); ?>
             <script>
-                $(document).ready(function() {});
+                $(document).ready(function() {
+                    $('.formkritik').submit(function(e) {
+                        e.preventDefault();
+
+                        Swal.fire({
+                            title: 'Apakah anda yakin ingin menyimpan data ini?',
+                            text: "Kritik dan saran ",
+                            showCancelButton: true,
+                            icon: 'question',
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ya, Simpan!'
+                        }).then((result) => {
+                            if (result.value) {
+                                $.ajax({
+                                    type: "post",
+                                    url: $(this).attr('action'),
+                                    data: $(this).serialize(),
+                                    dataType: "json",
+                                    beforeSend: function() {
+                                        $('.btnkritik').prop('disable', true);
+                                        $('.btnkritik').html('<span class="spinner-border spinner-border-sm text-light" role="status" aria-hidden="true"></span> <i>Loading...')
+
+                                    },
+                                    complete: function() {
+                                        $('.btnkritik').prop('disable', false);
+                                        $('.btnkritik').html('Kirim Pesan')
+                                        $('.btnkritik').html('&nbsp;<i class="fas fa-paper-plane"></i> &nbsp Kirim Pesan&nbsp');
+                                    },
+                                    success: function(response) {
+                                        if (response.error) {
+
+                                            if (response.error.nama) {
+                                                $('#nama').addClass('is-invalid');
+                                                $('.errornama').html(response.error.nama);
+                                            } else {
+                                                $('#nama').removeClass('is-invalid');
+                                                $('.errornama').html();
+                                                $('#nama').addClass('is-valid');
+                                            }
+
+                                            if (response.error.email) {
+                                                $('#email').addClass('is-invalid');
+                                                $('.erroremail').html(response.error.email);
+                                            } else {
+                                                $('#email').removeClass('is-invalid');
+                                                $('.erroremail').html();
+                                                $('#email').addClass('is-valid');
+                                            }
+
+                                            if (response.error.no_hpusr) {
+                                                $('#no_hpusr').addClass('is-invalid');
+                                                $('.errorno_hpusr').html(response.error.no_hpusr);
+                                            } else {
+                                                $('#no_hpusr').removeClass('is-invalid');
+                                                $('.errorno_hpusr').html();
+                                                $('#no_hpusr').addClass('is-valid');
+                                            }
+
+                                            if (response.error.judul) {
+                                                $('#judul').addClass('is-invalid');
+                                                $('.errorjudul').html(response.error.judul);
+                                            } else {
+                                                $('#judul').removeClass('is-invalid');
+                                                $('.errorjudul').html();
+                                                $('#judul').addClass('is-valid');
+                                            }
+
+                                            if (response.error.isi_kritik) {
+                                                $('#isi_kritik').addClass('is-invalid');
+                                                $('.errorisi_kritik').html(response.error.isi_kritik);
+                                            } else {
+                                                $('#isi_kritik').removeClass('is-invalid');
+                                                $('.errorisi_kritik').html();
+                                                $('#isi_kritik').addClass('is-valid');
+                                            }
+
+                                        }
+
+                                        if (response.sukses) {
+                                            Swal.fire({
+                                                title: "Terima Kasih!",
+                                                text: response.sukses,
+                                                icon: "success",
+                                                // showConfirmButton: false,
+                                                // timer: 4550
+                                            }).then(function() {
+                                                window.location = '<?= base_url('web') ?>';
+                                            });
+                                        }
+                                    },
+                                    error: function(xhr, ajaxOptions, thrownerror) {
+                                        Swal.fire({
+                                            title: "Maaf gagal mengirim data!",
+                                            html: `Silahkan coba kembali Error Code: <strong>${(xhr.status + "\n")}</strong> `,
+                                            icon: "error",
+                                            showConfirmButton: false,
+                                            timer: 3100
+                                        }).then(function() {
+                                            window.location = '';
+                                        })
+                                    }
+                                });
+                                return false;
+                            }
+                        })
+                    });
+                });
             </script>
 
             <?= $this->include('web/templates/egov/footer'); ?>
