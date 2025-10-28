@@ -191,12 +191,12 @@
                                         if (response.gagal) {
                                             Swal.fire({
                                                 title: "Maaf gagal mengirim data!",
-                                                html: `${response.gagal}`,
+                                                text: `${response.gagal}`,
                                                 icon: "error",
-                                                showConfirmButton: false,
-                                                timer: 3100
+                                                // showConfirmButton: false,
+                                                // timer: 3100
                                             }).then(function() {
-                                                window.location = '';
+                                                // window.location = '';
                                             })
                                         }
                                         if (response.sukses) {
@@ -216,10 +216,10 @@
                                             title: "Maaf gagal mengirim data!",
                                             html: `Silahkan coba kembali Error Code: <strong>${(xhr.status + "\n")}</strong> `,
                                             icon: "error",
-                                            showConfirmButton: false,
-                                            timer: 3100
+                                            // showConfirmButton: false,
+                                            // timer: 3100
                                         }).then(function() {
-                                            window.location = '';
+                                            // window.location = '';
                                         })
                                     }
                                 });
