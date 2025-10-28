@@ -24,37 +24,6 @@
                                         <div class="section-title">
                                             <h2 class=""><?= $data->judul ?></h2>
                                         </div>
-                                        <!-- <span class="jl_post_meta">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <ul class="entry__meta" style="padding: 0px;">
-                                                    <li class="author-avatar penulis-info">
-                                                        <div class="d-flex align-items-center">
-
-                                                            <div class="row">
-                                                                <div class="col-3">
-                                                                    <a href="javascript:;">
-
-                                                                        <img class="pic alignnone photo" alt="" src="<?= base_url('assets') ?>/img/user/1723273287_fceb142dbae7f7e6d320.png" style="max-width: 30px">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-9">
-                                                                    <a href="javascript:;" style="text-decoration: none !important;">
-                                                                        <span class="entry-author__name">Admin <i class="fa fa-check-circle" style="color:#305b90;"></i>
-                                                                        </span>
-                                                                    </a>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <ul class="entry__meta text-right">
-                                                    <li class="entry__meta-date">
-                                                        <span style="color:#305b90;"><?= $pengumuman->created_at ?></span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </span> -->
                                     </div>
                                 </div>
                                 <span class="text-secondary"> </span>
