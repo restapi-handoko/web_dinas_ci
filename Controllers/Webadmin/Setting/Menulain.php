@@ -384,7 +384,7 @@ class Menulain extends BaseController
 
                 $slug = generateSlug($judul);
 
-                $cekData = $this->_db->table('_tb_menu_lain')->where(['url' => 'lain-lain/' . $slug . '.html'])->get()->getRowObject();
+                $cekData = $this->_db->table('_tb_menu_lain')->where(['url' => $slug . '.html'])->get()->getRowObject();
 
                 if ($cekData) {
                     $slug = $slug . "-" . date('Y-m-d') . "-" . date('H-i-s') . ".html";
@@ -555,7 +555,7 @@ class Menulain extends BaseController
                 if ((int)$external_link == 0) {
                     if ($judul !== $oldData->judul) {
                         $slug = generateSlug($judul);
-                        $cekData = $this->_db->table('_tb_menu_lain')->where(['url' => 'lain-lain/' . $slug . '.html'])->get()->getRowObject();
+                        $cekData = $this->_db->table('_tb_menu_lain')->where(['url' => $slug . '.html'])->get()->getRowObject();
 
                         if ($cekData) {
                             $slug = $slug . "-" . date('Y-m-d') . "-" . date('H-i-s') . ".html";
@@ -578,7 +578,7 @@ class Menulain extends BaseController
                 if ((int)$external_link == 0) {
                     if ($judul !== $oldData->judul) {
                         $slug = generateSlug($judul);
-                        $cekData = $this->_db->table('_tb_menu_lain')->where(['url' => 'lain-lain/' . $slug . '.html'])->get()->getRowObject();
+                        $cekData = $this->_db->table('_tb_menu_lain')->where(['url' => $slug . '.html'])->get()->getRowObject();
 
                         if ($cekData) {
                             $slug = $slug . "-" . date('Y-m-d') . "-" . date('H-i-s') . ".html";
