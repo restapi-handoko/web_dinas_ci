@@ -207,7 +207,7 @@
                                                 // showConfirmButton: false,
                                                 // timer: 4550
                                             }).then(function() {
-                                                window.location = '<?= base_url('web') ?>';
+                                                window.location = '<?= base_url() ?>';
                                             });
                                         }
                                     },

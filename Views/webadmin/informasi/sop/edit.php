@@ -4,22 +4,27 @@
         <input type="hidden" id="_old_image" name="_old_image" value="<?= $data->image ?>">
         <div class="modal-body">
             <div class="row">
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="mb-3">
                         <label class="form-label">Bidang SOP: </label>
                         <select class="form-control select2" name="_bidang" id="_bidang" style="width: 100%" required>
                             <option value="">-- Pilih --</option>
-                            <?php if (isset($bidangs)) {
-                                if (count($bidangs) > 0) {
-                                    foreach ($bidangs as $key => $val) { ?>
-                                        <option value="<?= $val['id'] ?>" <?= $val['id'] === $data->bidang ? ' selected' : '' ?>><?= $val['bidang'] ?></option>
-                            <?php }
-                                }
-                            } ?>
+                            <?php // if (isset($bidangs)) {
+                            // if (count($bidangs) > 0) {
+                            //     foreach ($bidangs as $key => $val) { 
+                            ?>
+                                        <option value="<?php // echo $val['id'] 
+                                                        ?>" <?php //echo $val['id'] === $data->bidang ? ' selected' : '' 
+                                                            ?>><?php //echo $val['bidang'] 
+                                                                ?></option>
+                            <?php // }
+                            //     }
+                            // } 
+                            ?>
                         </select>
                     </div>
                     <div class="help-block _bidang" for="_bidang"></div>
-                </div>
+                </div> -->
                 <div class="col-lg-10">
                     <label for="_judul" class="col-form-label">Judul SOP:</label>
                     <input type="text" class="form-control judul" value="<?= $data->judul ?>" id="_judul" name="_judul" placeholder="Judul SOP..." onfocusin="inputFocus(this);">
@@ -134,7 +139,7 @@
             const id = document.getElementsByName('_id')[0].value;
             const old_image = document.getElementsByName('_old_image')[0].value;
             const judul = document.getElementsByName('_judul')[0].value;
-            const bidang = document.getElementsByName('_bidang')[0].value;
+            // const bidang = document.getElementsByName('_bidang')[0].value;
             const isi = editorAdd.getData();
             const fileName = document.getElementsByName('_file')[0].value;
 
@@ -145,12 +150,12 @@
                 status = "0";
             }
 
-            if (bidang === "") {
-                $("select#_bidang").css("color", "#dc3545");
-                $("select#_bidang").css("border-color", "#dc3545");
-                $('._bidang').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Bidang tidak boleh kosong.</li></ul>');
-                return false;
-            }
+            // if (bidang === "") {
+            //     $("select#_bidang").css("color", "#dc3545");
+            //     $("select#_bidang").css("border-color", "#dc3545");
+            //     $('._bidang').html('<ul role="alert" style="color: #dc3545; list-style-type:none; padding-inline-start: 10px;"><li style="color: #dc3545;">Bidang tidak boleh kosong.</li></ul>');
+            //     return false;
+            // }
 
             if (judul === "") {
                 $("input#_judul").css("color", "#dc3545");
@@ -188,7 +193,7 @@
                 formUpload.append('_file', file);
             }
             formUpload.append('id', id);
-            formUpload.append('bidang', bidang);
+            // formUpload.append('bidang', bidang);
             formUpload.append('judul', judul);
             formUpload.append('isi', isi);
             formUpload.append('status', status);

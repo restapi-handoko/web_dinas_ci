@@ -8,7 +8,7 @@ use CodeIgniter\Model;
 class SopModel extends Model
 {
     protected $table = "_tb_sop a";
-    protected $column_order = array(null, null, 'a.status', 'a.bidang', 'a.judul', null);
+    protected $column_order = array(null, null, 'a.status', 'a.judul', null);
     protected $column_search = array('a.judul', 'a.deskripsi');
     protected $order = array('a.judul' => 'asc', 'a.created_at' => 'desc');
     protected $request;

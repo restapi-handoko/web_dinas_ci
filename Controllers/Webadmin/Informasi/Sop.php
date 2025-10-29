@@ -57,7 +57,7 @@ class Sop extends BaseController
                     $row[] = '<span class="badge badge-pill badge-soft-danger">Tidak Terpublish</span>';
                     break;
             }
-            $row[] = $list->bidang;
+            // $row[] = $list->bidang;
             $row[] = $list->judul;
             $row[] = $image;
             // $row[] = $list->deskripsi;
@@ -109,12 +109,13 @@ class Sop extends BaseController
             return json_encode($response);
         }
 
-        $x['bidangs'] = json_decode(file_get_contents(FCPATH . "uploads/bidang.json"), true);
+        // $x['bidangs'] = json_decode(file_get_contents(FCPATH . "uploads/bidang.json"), true);
 
         $response = new \stdClass;
         $response->status = 200;
         $response->message = "Permintaan diizinkan";
-        $response->data = view('webadmin/informasi/sop/add', $x);
+        $response->data = view('webadmin/informasi/sop/add');
+        // $response->data = view('webadmin/informasi/sop/add', $x);
         return json_encode($response);
     }
 
@@ -149,7 +150,7 @@ class Sop extends BaseController
 
             if ($current) {
                 $data['data'] = $current;
-                $data['bidangs'] = json_decode(file_get_contents(FCPATH . "uploads/bidang.json"), true);
+                // $data['bidangs'] = json_decode(file_get_contents(FCPATH . "uploads/bidang.json"), true);
                 $response = new \stdClass;
                 $response->status = 200;
                 $response->message = "Permintaan diizinkan";
@@ -299,12 +300,12 @@ class Sop extends BaseController
         // }
 
         $rules = [
-            'bidang' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Bidang sop tidak boleh kosong. ',
-                ]
-            ],
+            // 'bidang' => [
+            //     'rules' => 'required|trim',
+            //     'errors' => [
+            //         'required' => 'Bidang sop tidak boleh kosong. ',
+            //     ]
+            // ],
             'judul' => [
                 'rules' => 'required|trim',
                 'errors' => [
@@ -345,7 +346,7 @@ class Sop extends BaseController
             $response = new \stdClass;
             $response->status = 400;
             $response->message = $this->validator->getError('judul')
-                . $this->validator->getError('bidang')
+                // . $this->validator->getError('bidang')
                 . $this->validator->getError('isi')
                 . $this->validator->getError('status')
                 . $this->validator->getError('_file');
@@ -362,12 +363,13 @@ class Sop extends BaseController
                 return json_encode($response);
             }
 
-            $bidang = htmlspecialchars($this->request->getVar('bidang'), true);
+            // $bidang = htmlspecialchars($this->request->getVar('bidang'), true);
             $judul = htmlspecialchars($this->request->getVar('judul'), true);
             $isi = $this->request->getVar('isi');
             $status = htmlspecialchars($this->request->getVar('status'), true);
 
-            $slug = generateSlug($bidang . '-' . $judul);
+            $slug = generateSlug($judul);
+            // $slug = generateSlug($bidang . '-' . $judul);
 
             $cekData = $this->_db->table('_tb_sop')->where(['url' => $slug . '.html'])->get()->getRowObject();
 
@@ -378,7 +380,7 @@ class Sop extends BaseController
             $isi = str_replace('<img src=', '<img style="max-width: 100%;" src=', $isi);
 
             $data = [
-                'bidang' => $bidang,
+                // 'bidang' => $bidang,
                 'judul' => $judul,
                 'status' => $status,
                 'url' => $slug . '.html',
@@ -463,12 +465,12 @@ class Sop extends BaseController
                     'required' => 'Judul sop tidak boleh kosong. ',
                 ]
             ],
-            'bidang' => [
-                'rules' => 'required|trim',
-                'errors' => [
-                    'required' => 'Bidang sop tidak boleh kosong. ',
-                ]
-            ],
+            // 'bidang' => [
+            //     'rules' => 'required|trim',
+            //     'errors' => [
+            //         'required' => 'Bidang sop tidak boleh kosong. ',
+            //     ]
+            // ],
             'isi' => [
                 'rules' => 'required',
                 'errors' => [
@@ -502,7 +504,7 @@ class Sop extends BaseController
             $response = new \stdClass;
             $response->status = 400;
             $response->message = $this->validator->getError('id')
-                . $this->validator->getError('bidang')
+                // . $this->validator->getError('bidang')
                 . $this->validator->getError('judul')
                 . $this->validator->getError('isi')
                 . $this->validator->getError('status')
@@ -522,7 +524,7 @@ class Sop extends BaseController
             }
 
             $id = htmlspecialchars($this->request->getVar('id'), true);
-            $bidang = htmlspecialchars($this->request->getVar('bidang'), true);
+            // $bidang = htmlspecialchars($this->request->getVar('bidang'), true);
             $judul = htmlspecialchars($this->request->getVar('judul'), true);
             $isi = $this->request->getVar('isi');
             $status = htmlspecialchars($this->request->getVar('status'), true);
@@ -539,7 +541,7 @@ class Sop extends BaseController
             $isi = str_replace('<img src=', '<img style="max-width: 100%;" src=', $isi);
 
             $data = [
-                'bidang' => $bidang,
+                // 'bidang' => $bidang,
                 'judul' => $judul,
                 'status' => $status,
                 'deskripsi' => $isi,
@@ -548,7 +550,8 @@ class Sop extends BaseController
             ];
 
             if ($judul !== $oldData->judul) {
-                $slug = generateSlug($bidang . "-" . $judul);
+                $slug = generateSlug($judul);
+                // $slug = generateSlug($bidang . "-" . $judul);
                 $cekData = $this->_db->table('_tb_sop')->where(['url' => $slug . '.html'])->get()->getRowObject();
 
                 if ($cekData) {
