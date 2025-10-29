@@ -22,7 +22,7 @@
         </div>
         <!-- end page title -->
 
-        <div class="row">
+        <!-- <div class="row">
 
             <div class="col-xl-8">
                 <div class="row">
@@ -86,7 +86,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- end row -->
 
                 <div class="card">
                     <div class="card-body">
@@ -140,7 +139,6 @@
                     </div>
                 </div>
             </div>
-            <!-- end col -->
 
             <div class="col-xl-4">
                 <div class="card">
@@ -260,12 +258,10 @@
                     </div>
                 </div>
             </div>
-            <!-- end col -->
 
-        </div>
-        <!-- end row -->
+        </div> -->
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-xl-4 col-lg-6">
                 <div class="card">
                     <div class="card-header bg-transparent border-bottom">
@@ -292,7 +288,6 @@
                     <div class="card-body">
 
                         <div data-simplebar style="max-height: 295px;">
-                            <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane active" id="post-recent" role="tabpanel">
                                     <ul class="list-group list-group-flush">
@@ -404,7 +399,6 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <!-- end tab pane -->
 
                                 <div class="tab-pane" id="post-popular" role="tabpanel">
 
@@ -521,14 +515,11 @@
 
                                     </ul>
                                 </div>
-                                <!-- end tab pane -->
                             </div>
-                            <!-- end tab content -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- end col -->
 
             <div class="col-xl-4 col-lg-6">
                 <div class="card">
@@ -633,7 +624,6 @@
                     </div>
                 </div>
             </div>
-            <!-- end col -->
 
             <div class="col-xl-4">
                 <div class="card">
@@ -708,11 +698,10 @@
                     </div>
                 </div>
             </div>
-            <!-- end col -->
-        </div>
+        </div> -->
         <!-- end row -->
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
@@ -817,9 +806,7 @@
                         <div class="text-center mt-4"><a href="ecommerce-orders.html" class="btn btn-primary waves-effect waves-light btn-sm">View More <i class="mdi mdi-arrow-right ms-1"></i></a></div>
                     </div>
                 </div>
-                <!-- end card -->
             </div>
-            <!-- end col -->
             <div class="col-xl-8">
                 <div class="card">
                     <div class="card-body">
@@ -957,11 +944,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- end card -->
             </div>
-            <!-- end col -->
-        </div>
-        <!-- end row -->
+        </div> -->
 
     </div>
 </div>
